@@ -106,7 +106,7 @@ Em 08/11/2026, o Codex preparou os procedimentos das 12 métricas (#63), impleme
 | `1.0` | 17/10/2026 | Criação da política de uso ético de IA, registro individual e estrutura para a equipe | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.1` | 18/10/2026 | Registro de uso de IA referente à especificação das métricas, níveis de julgamento e rastreabilidade da Fase 2 | [Lucca Medeiros Silva](https://github.com/luccameds) | - |
 | `1.2` | 19/10/2026 | Registro individual de uso de IA de Miguel Arthur (modelagem SQuaRE, priorização e governança) | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | - |
-| `1.3` | 04/11/2026 | Registro individual de uso de IA de Mateus (gestão, atas, revisão das Fases 1 e 2 e slides do PC2) | [Mateus Vinícius Vieira](https://github.com/matix0) | - |
+| `1.3` | 04/11/2026 | Registro individual de uso de IA de Mateus (gestão, atas, revisão das Fases 1 e 2 e slides do PC2) | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `1.4` | 08/11/2026 | Registro de apoio do Codex às issues #63, #89 e #73 | Lucca Medeiros Silva | - |
 
 
