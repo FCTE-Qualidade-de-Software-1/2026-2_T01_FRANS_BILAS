@@ -33,6 +33,7 @@ nav = [
   ] },
   { "Melhorias Técnicas" = [
     { "Testes do Serviço de Embeds" = "dados/melhoria-73/index.md" },
+    { "Permissão nas Ações de Selos" = "dados/melhoria-80/index.md" },
   ] },
   { "Entregas" = [
     { "Ponto de Controle 1" = "entregas/1.md" },
