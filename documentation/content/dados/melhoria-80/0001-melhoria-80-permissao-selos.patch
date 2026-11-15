@@ -1,0 +1,138 @@
+diff --git a/app/controllers/decidim/admin/proposal_badges_controller.rb b/app/controllers/decidim/admin/proposal_badges_controller.rb
+index 8c2ee35..82d2c89 100644
+--- a/app/controllers/decidim/admin/proposal_badges_controller.rb
++++ b/app/controllers/decidim/admin/proposal_badges_controller.rb
+@@ -3,6 +3,9 @@ module Decidim
+     class ProposalBadgesController < Decidim::Admin::ApplicationController
+       helper_method :manifest, :current_participatory_space
+ 
++      before_action :set_component_and_user
++      before_action :enforce_badge_permission
++
+       def index
+         component_id = params[:id]
+         @component = Decidim::Component.find(component_id)
+@@ -84,6 +87,19 @@ module Decidim
+ 
+       private
+ 
++      # As rotas usam :component_id; o formulário de update envia :current_component; o index usa :id.
++      def set_component_and_user
++        @user = current_user
++        component_id = params[:component_id] || params[:current_component] || params[:id]
++        @component = Decidim::Component.find(component_id) if component_id.present?
++      end
++
++      # Só administradores da organização atual alteram selos, e só de componentes dessa organização.
++      def enforce_badge_permission
++        enforce_permission_to :update, :organization, organization: current_organization
++        raise ActiveRecord::RecordNotFound if @component && @component.organization != current_organization
++      end
++
+       def proposal_badge_params
+         params.require(:proposal_badge).permit(:name, :description) # Ajuste conforme seus parâmetros
+       end
+diff --git a/spec/controllers/decidim/admin/proposal_badges_controller_spec.rb b/spec/controllers/decidim/admin/proposal_badges_controller_spec.rb
+new file mode 100644
+index 0000000..90a1faf
+--- /dev/null
++++ b/spec/controllers/decidim/admin/proposal_badges_controller_spec.rb
+@@ -0,0 +1,98 @@
++# frozen_string_literal: true
++
++require "rails_helper"
++
++module Decidim
++  module Admin
++    describe ProposalBadgesController, type: :controller do
++      include Devise::Test::ControllerHelpers
++
++      let(:organization) { create(:organization) }
++      let(:component) { create(:proposal_component, organization: organization) }
++      let(:admin) { create(:user, :admin, :confirmed, organization: organization) }
++      let(:participant) { create(:user, :confirmed, organization: organization) }
++
++      before do
++        request.env["decidim.current_organization"] = organization
++        request.env["HTTP_REFERER"] = "http://#{organization.host}/admin"
++      end
++
++      shared_examples "acesso negado" do
++        it "redireciona com alerta e não altera selos" do
++          expect(DestroyBadgeProposals).not_to receive(:call)
++          expect(UpdateBadgeProposals).not_to receive(:call)
++
++          perform
++
++          expect(response).to have_http_status(:redirect)
++          expect(flash[:alert]).to be_present
++        end
++      end
++
++      describe "sem login" do
++        context "DELETE destroy_all_badges" do
++          let(:perform) { delete :destroy_all_badges, params: { component_id: component.id } }
++
++          it_behaves_like "acesso negado"
++        end
++
++        context "PATCH update" do
++          let(:perform) { patch :update, params: { component_id: component.id, current_component: component.id } }
++
++          it_behaves_like "acesso negado"
++        end
++
++        context "DELETE destroy_one_badge" do
++          let(:perform) do
++            delete :destroy_one_badge, params: { component_id: component.id, proposal_id: 1, badge_id: "mais-votada" }
++          end
++
++          it_behaves_like "acesso negado"
++        end
++
++        context "PATCH update_proposal_badge" do
++          let(:perform) do
++            patch :update_proposal_badge, params: { component_id: component.id, proposal_id: 1, badge_id: "mais-votada" }
++          end
++
++          it_behaves_like "acesso negado"
++        end
++      end
++
++      describe "participante sem papel de administrador" do
++        before { sign_in participant, scope: :user }
++
++        context "DELETE destroy_all_badges" do
++          let(:perform) { delete :destroy_all_badges, params: { component_id: component.id } }
++
++          it_behaves_like "acesso negado"
++        end
++
++        context "PATCH update" do
++          let(:perform) { patch :update, params: { component_id: component.id, current_component: component.id } }
++
++          it_behaves_like "acesso negado"
++        end
++      end
++
++      describe "administrador da organização" do
++        before { sign_in admin, scope: :user }
++
++        it "executa a remoção dos selos do componente" do
++          expect(DestroyBadgeProposals).to receive(:call).with(component, admin)
++
++          delete :destroy_all_badges, params: { component_id: component.id }
++        end
++
++        it "não acessa componente de outra organização" do
++          other_component = create(:proposal_component)
++
++          expect(DestroyBadgeProposals).not_to receive(:call)
++          expect do
++            delete :destroy_all_badges, params: { component_id: other_component.id }
++          end.to raise_error(ActiveRecord::RecordNotFound)
++        end
++      end
++    end
++  end
++end
