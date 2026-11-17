@@ -21,6 +21,7 @@ nav = [
     { "Fase 1: Planejamento e Modelo" = "fases/1.md" },
     { "Fase 2: Especificação (GQM)" = "fases/2.md" },
     { "Fase 3: Plano de Avaliação" = "fases/3.md" },
+    { "Fase 4: Julgamento" = "fases/4.md" },
   ] },
   { "Coleta de Dados" = [
     { "Procedimentos de Coleta" = "procedimentos/coleta.md" },

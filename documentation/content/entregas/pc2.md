@@ -80,13 +80,15 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 NOTA PARA APRESENTAÇÃO (José):
 - Critérios F3-C1 (método e instruções repetíveis) e F3-C2 (recursos e ambiente).
 - Mostrar a tabela da Seção 2 da Fase 3 no site: cada métrica tem questão, método, recursos e saída registrada.
-- Atualizar no dia a situação do passo a passo (#63, Lucca) e do ambiente (#64, Davi). Em 04/11 as duas seções ainda estavam em elaboração. Não citar versões, hardware ou passos que não estejam escritos.
+- A Seção 4 da Fase 3 separa as versões do produto das configurações da máquina de sessão, que não estão registradas. Não apresentar hardware ou versões de navegador como medidos.
+- Não há relatórios publicados da inspeção M1.4; não apresentar um valor de ICA.
 - F3-C7: a Fase 3 está no menu da GitPage, com links para a Fase 2, o TCLE e os dados.
 -->
 
 - **Quatro métodos**: teste com usuários (M1.1 a M1.3), questionário SUS (M1.5), inspeção automatizada de acessibilidade (M1.4) e análise estática (M2.x e M3.x)
 - **Decisões**: nenhum teste contra a produção, versão fixa no commit `176b046` e coleta única no Sprint 4
-- **Passo a passo de cada medida** (#63) e **ambiente com massa de dados e perfil dos participantes** (#64): em elaboração
+- **Procedimento de coleta**: publicado em página própria; a Fase 3 registra o ambiente conhecido e as configurações ainda não documentadas
+- **M1.4**: sem relatórios publicados; valor não calculável com os dados do repositório
 - Detalhes na [Fase 3](../fases/3.md)
 
 ---
@@ -100,7 +102,7 @@ NOTA PARA APRESENTAÇÃO (José):
 - Critérios F3-C3 (cronograma alinhado à Fase 4) e F3-C8 (consistência entre as Fases 2 e 3).
 - A análise estática não depende de participantes e começa primeiro.
 - As sessões dependem de três itens do Sprint 3: TCLE completo (#45), cópia local (#64) e participantes (#67). Com menos de cinco sessões até 10/11, a limitação entra no julgamento da Fase 4.
-- A tabela que confere o plano contra os níveis e critérios da Fase 2 (#68) ainda está em elaboração: dizer isso, sem prometer o que não está pronto.
+- A matriz de rastreabilidade entre as Fases 2 e 3 está na Seção 6.1 da Fase 3. Os resultados de interação ainda não foram publicados.
 -->
 
 | Data | Atividade | Métricas |
@@ -112,7 +114,7 @@ NOTA PARA APRESENTAÇÃO (José):
 
 Fonte: cronograma da coleta (issue #65), que entra na Seção 5 da Fase 3.
 
-- **Consistência**: as 12 métricas da Fase 2 têm método e recurso no plano; a conferência contra os níveis e critérios (#68) está em elaboração
+- **Consistência**: a Fase 3 contém a matriz de rastreabilidade; o julgamento de G1 depende dos dados das sessões e da inspeção de acessibilidade
 
 ---
 
@@ -168,11 +170,25 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 - Registrar as respostas na próxima ata.
 -->
 
-- **Riscos**: cópia local e recrutamento atrasarem as sessões; quadro do Projects sem horas reais
+- **Pendências documentais**: relatórios de acessibilidade e fichas anonimizadas das sessões não estão publicados; medições dos Sprints 4 e 5 não estão nos dados versionados
 - **Perguntas**:
   - M3.1 soma alertas com peso pela confiança do Brakeman. Chamá-la de "densidade" é aceitável, ou ela deve ser dividida pelo tamanho do código?
   - M3.3 mede autorização. Ela fica melhor em Autenticidade ou em Confidencialidade e Integridade?
   - Coleta única, sem piloto e sem nova medição depois das melhorias: atende ao que se espera da Fase 4?
+
+---
+
+## 9. Fase 4: Resultados Publicados
+
+<p class="apresentador">Davi Mesquita Sousa</p>
+
+| Característica | Resultado registrado |
+| :--- | :--- |
+| Capacidade de Interação | Sem fichas de sessão ou relatórios M1.4 publicados; julgamento pendente |
+| Manutenibilidade | TSN 60,14%, CCM média 2,29 e máximo 47, DLC média 67,03 e máximo 595, ICT 39,43% |
+| Segurança | DVC 22, CDV 156 pares (gem, CVE), TPE 91,3% |
+
+Fonte: [Fase 4](../fases/4.md) e dados de [Manutenibilidade](../dados/manutenibilidade/index.md) e [Segurança](../dados/seguranca/index.md).
 
 ---
 
@@ -188,8 +204,8 @@ NOTA PARA APRESENTAÇÃO (João):
 -->
 
 - **TCLE** ([página](../tcle.md)): formulário feito e validados (duração de 20 a 30 min, formato híbrido, áudio opcional e guarda institucional privada)
-- **Recrutamento**: meta de pelo menos três participantes.
-- **Coleta**: sessões entre 06/11 e 17/11, com TCLE assinado, na cópia local
+- **Recrutamento**: o plano previa cinco perfis; o repositório não contém fichas que confirmem a quantidade de sessões.
+- **Coleta**: divulgar resultados apenas depois de confirmar as fichas anonimizadas e a guarda privada dos TCLEs assinados.
 
 ---
 
@@ -202,3 +218,4 @@ NOTA PARA APRESENTAÇÃO (João):
 | `1.2` | 04/11/2026 | Slide da medição do Sprint 3 (N1 a N6) no lugar do apêndice do quadro | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `1.3` | 04/11/2026 | Datas do cronograma versão 2 (PC2 em 16/11 ou 18/11) e N2 recalculado para a release de 21/11 | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `1.4` | 10/11/2026 | Atualização do status dos campos do TCLE na nota de apresentação (#45) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
+| `1.5` | 17/11/2026 | Inclusão dos resultados publicados da Fase 4 e das pendências de coleta e medição | Davi Mesquita Sousa | - |

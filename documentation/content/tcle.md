@@ -33,7 +33,7 @@ Durante as tarefas, a equipe registrará o tempo de execução, a conclusão com
 
 A atividade envolve riscos mínimos, limitados a eventual cansaço decorrente da atenção dedicada às tarefas. Esclarecemos que o teste avalia exclusivamente a interface e a usabilidade do software. Eventuais falhas ou dúvidas decorrem do projeto da plataforma e jamais de quem a opera. Você tem plena liberdade para fazer pausas, pedir esclarecimentos ou interromper a sessão a qualquer momento.
 
-As respostas e medidas obtidas serão consolidadas em relatórios acadêmicos e no site público da disciplina. Todas as informações serão anonimizadas antes da divulgação, identificando os participantes apenas por códigos sequenciais (como P1, P2). Os arquivos de vídeo e áudio brutos não serão divulgados publicamente nem incluídos no repositório de código aberto do projeto; permanecerão armazenados em pasta restrita na nuvem institucional da UnB, acessível apenas à equipe e à professora orientadora. Esses registros serão excluídos definitivamente ao término do semestre letivo 2026.2, após a homologação das notas finais. Os resultados gerais poderão ser acompanhados no portal do projeto: <https://fcte-qualidade-de-software-1.github.io/2026-2_T02_FRANS_BILAS/>.
+As respostas e medidas obtidas serão consolidadas em relatórios acadêmicos e no site público da disciplina. Todas as informações serão anonimizadas antes da divulgação, identificando os participantes apenas por códigos sequenciais (como P01, P02). Os arquivos de vídeo e áudio brutos não serão divulgados publicamente nem incluídos no repositório de código aberto do projeto; permanecerão armazenados em pasta restrita na nuvem institucional da UnB, acessível apenas à equipe e à professora orientadora. Esses registros serão excluídos definitivamente ao término do semestre letivo 2026.2, após a homologação das notas finais. Os resultados gerais poderão ser acompanhados no portal do projeto: <https://fcte-qualidade-de-software-1.github.io/2026-2_T02_FRANS_BILAS/>.
 
 A sua participação é inteiramente voluntária e gratuita, sem remuneração financeira e sem custos para você. A recusa em participar ou a desistência em qualquer etapa não acarreta nenhuma penalidade acadêmica ou pessoal.
 
@@ -59,7 +59,7 @@ Declaro que li e compreendi os objetivos e procedimentos da pesquisa, tive a opo
 1. Disponibilizar o documento com antecedência para leitura atenta do participante: impresso em duas vias para testes presenciais ou em formulário digital seguro para testes remotos.
 2. Obter a assinatura e a opção de gravação antes de iniciar o cronômetro ou qualquer tarefa na plataforma.
 3. Se o participante não autorizar a gravação de tela, o observador utilizará cronômetro manual para registrar os tempos de cada tarefa (métrica M1.2) e anotará os erros diretamente na ficha de observação. Caso autorize apenas a gravação de tela, a sessão será realizada com o microfone desativado.
-4. Atribuir a cada participante um código alfanumérico (P1, P2, ...) logo após a coleta. A planilha que relaciona nomes reais aos códigos identificadores fica arquivada na pasta protegida da equipe, completamente isolada do repositório público.
+4. Atribuir a cada participante um código alfanumérico (P01, P02, ...) logo após a coleta. A planilha que relaciona nomes reais aos códigos identificadores fica arquivada na pasta protegida da equipe, completamente isolada do repositório público.
 
 ---
 
@@ -70,3 +70,4 @@ Declaro que li e compreendi os objetivos e procedimentos da pesquisa, tive a opo
 | `1.0` | 26/10/2026 | Preenchimento do modelo de TCLE para as sessões de teste com usuários da Fase 3 | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `1.1` | 10/11/2026 | Preenchimento definitivo de todos os campos pendentes (duração, local híbrido, áudio opcional, armazenamento institucional, prazo de guarda e contato) para a issue #45 | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.2` | 10/11/2026 | Revisão do texto com foco em clareza, tom humanizado para os participantes e detalhamento das salvaguardas de privacidade | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
+| `1.3` | 17/11/2026 | Padronização dos exemplos de códigos pseudônimos para P01 e P02 | Davi Mesquita Sousa | - |

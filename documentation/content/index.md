@@ -39,7 +39,8 @@ A documentação está organizada em seções interligadas para facilitar a leit
 ### Fases da Avaliação de Produto
 - [Fase 1: Planejamento da Avaliação e Modelo de Qualidade](fases/1.md): Propósito da avaliação, mapeamento de stakeholders, caracterização arquitetural do software, modelo SQuaRE adaptado, matriz de priorização ponderada, escopo de auditoria e alinhamento ao ODS 16 (Meta 16.7).
 - [Fase 2: Especificação da Avaliação (GQM)](fases/2.md): Objetivos de medição G1 a G3, questões operacionais, hipóteses, fichas técnicas das doze métricas quantitativas, níveis de pontuação e matriz de rastreabilidade vertical.
-- [Fase 3: Plano de Avaliação](fases/3.md): Métodos de avaliação (testes de usabilidade, questionário SUS, inspeção de acessibilidade e análise estática), ambiente de teste e cronograma de coleta.
+- [Fase 3: Plano de Avaliação](fases/3.md): métodos, recursos, ambiente e estado das coletas.
+- [Fase 4: Julgamento da Avaliação](fases/4.md): resultados publicados de Manutenibilidade e Segurança e dados ainda ausentes de Capacidade de Interação.
 - [TCLE das Sessões com Usuários](tcle.md): Termo de Consentimento Livre e Esclarecido para as sessões de teste com participantes humanos, garantindo salvaguardas éticas e anonimização de dados.
 - [Dados Brutos de Segurança](dados/seguranca/index.md): Relatórios primários de execução das ferramentas Brakeman, bundler-audit e matriz de endpoints sensíveis.
 
@@ -85,3 +86,4 @@ A equipe é composta por seis estudantes de Engenharia de Software da Universida
 | :---: | :---: | :--- | :--- | :--- |
 | `1.0` | 17/10/2026 | Estruturação da página inicial, tabela de integrantes e características avaliadas | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.1` | 10/11/2026 | Expansão da narrativa para leitor externo, inclusão do mapa de navegação das fases e texto alternativo (alt-text) nas imagens | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
+| `1.2` | 17/11/2026 | Inclusão da Fase 4 no resumo de navegação da documentação | Davi Mesquita Sousa | - |

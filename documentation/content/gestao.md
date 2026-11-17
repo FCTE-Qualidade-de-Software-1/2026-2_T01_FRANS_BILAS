@@ -260,11 +260,13 @@ A Tabela 10 resume o foco, a situação e a medição de cada sprint.
 | **Sprint 1** | 14/10 a 19/10 | Fase 1 completa, estruturação da GitPage, slides e apresentação do PC1. | **Concluído** | Linha de base (estimativa): 100% dos itens do plano concluídos |
 | **Sprint 2** | 20/10 a 25/10 | Fase 2 (GQM), Gestão PSM/CID, artigo científico v1 e Release E1. | **Concluído** | Linha de base (estimativa) |
 | **Sprint 3** | 27/10 a 04/11 | Fase 3: Plano de Avaliação, recursos de teste e apresentação das métricas PSM (04/11 ou 11/11). | **Em encerramento** | 1ª medição de N1 a N6 em 04/11 ([Seção 12](#12-medicao-do-sprint-3)) |
-| **Sprint 4** | 05/11 a 11/11 | Execução da coleta, consolidação de dados brutos e primeira melhoria técnica. | Planejado | 2ª medição de N1 a N6 |
-| **Sprint 5** | 12/11 a 21/11 | Fase 4: julgamento, segunda melhoria técnica, artigo v2, Ponto de Controle 2 (16/11 ou 18/11) e release E2 em 21/11. | Planejado | 3ª medição de N1 a N6 |
+| **Sprint 4** | 05/11 a 11/11 | Execução da coleta, consolidação de dados brutos e primeira melhoria técnica. | Sem medição publicada | 2ª medição de N1 a N6 |
+| **Sprint 5** | 12/11 a 21/11 | Fase 4: julgamento, segunda melhoria técnica, artigo v2, Ponto de Controle 2 (16/11 ou 18/11) e release E2 em 21/11. | Em andamento em 17/11; sem medição publicada | 3ª medição de N1 a N6 |
 | **Sprint 6** | 22/11 a 02/12 | Entrega final (22/11), apresentações finais (23/11, 25/11 e 30/11), 2ª Avaliação Cruzada e Autoavaliação 2 (até 02/12). | Planejado | Continuação da série |
 
 Fonte: Plano de Sprints de 14/10 e GitHub Projects 33.
+
+O diretório [`dados/gestao/`](dados/gestao/) contém a medição do Sprint 3, mas não contém arquivos de dados dos Sprints 4 ou 5. Por isso, esta página não apresenta valores de N1 a N6 para esses períodos. N3 e N4 exigem horas reais registradas nas issues; não devem ser derivados das horas estimadas.
 
 Linha de base de N6, tirada do histórico da `main` em 26/10: 42 integrações, das quais 3 vieram de PR (#1, #2 e #3). Nenhum dos três PRs tem revisão registrada no GitHub, então \(V = 0\) e \(\%_{\text{rev}} = \frac{0}{42} \times 100 = 0\%\).
 
@@ -274,11 +276,11 @@ O planejamento do Sprint 3 foi feito na reunião de 29/10 ([Ata 02](atas/index.m
 
 ## 8. Tabela de Contribuição da Equipe (Critério AG-C5)
 
-Os valores da Entrega 1 refletem as medições registradas diretamente nas issues do GitHub Projects 33. O esforço estimado foi calibrado conforme a complexidade técnica das tarefas, e as horas realizadas nas issues concluídas foram apuradas em aproximadamente 1/3 do tempo estimado, registrando a dedicação efetiva dos membros. A Tabela 11 resume a divisão.
+Esta tabela é um registro histórico da Entrega 1. A coluna calculada como 1/3 das horas estimadas é uma estimativa, não uma coleta de horas reais. Esses percentuais não representam a contribuição final da Entrega 2, que depende das horas reais das Sprints 4 e 5 e da aprovação explícita dos seis integrantes.
 
 **Tabela 11**: Contribuição da equipe na Entrega 1.
 
-| Integrante | Usuário GitHub | Papel no Projeto | Principais Responsabilidades e Entregáveis | Horas Estimadas | Horas Realizadas (1/3) | Esforço Real (%) |
+| Integrante | Usuário GitHub | Papel no Projeto | Principais Responsabilidades e Entregáveis | Horas Estimadas | Estimativa de esforço (1/3) | Participação estimada (%) |
 | :--- | :--- | :--- | :--- | :---: | :---: | :---: |
 | **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | Dupla 1 (Qualidade/GQM) | Propósito da avaliação, partes interessadas, contextualização técnica, arquitetura do software, estruturação do artigo em LaTeX IEEEtran, introdução, metodologia, governança anti-meat-proxy e estimativa de esforço do backlog no Projects. | 39,0h | 13,2h | **36,3%** |
 | **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | Dupla 2 (GQM/Métricas) | Fichas técnicas das doze métricas quantitativas, formulação matemática com MathJax, níveis de pontuação, critérios de julgamento, grafo GQM completo e matriz de rastreabilidade vertical. | 20,0h | 6,7h | **18,4%** |
@@ -422,7 +424,7 @@ A adequação está pronta quando os seis indicadores tiverem valor nos três sp
 
 ## 12. Medição do Sprint 3
 
-A primeira medição da série foi feita em 04/11, último dia do sprint, às 03h. O script [`scripts/psm_medicao.py`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/blob/main/scripts/psm_medicao.py) lê o GitHub Projects 33, os PRs e o histórico da `main`, e grava os dados brutos e os indicadores em [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). Itens fechados até o fim do dia entram numa nova execução do mesmo script.
+A primeira medição da série foi feita em 04/11, último dia do sprint, às 03h. O script [`scripts/psm_medicao.py`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/blob/main/scripts/psm_medicao.py) lê o GitHub Projects 33, os PRs e o histórico da `main`, e grava os dados brutos e os indicadores em [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). Itens fechados até o fim do dia entram numa nova execução do mesmo script.
 
 O comprometido são as 17 issues listadas por responsável na redistribuição de 30/10 ([Ata 02](atas/index.md), seção 3.6). O texto da ata fala em 18 issues, mas a tabela da mesma seção lista 17, e a medição usa a lista.
 
@@ -513,3 +515,4 @@ A Parte 3 do guia (garantia de software e dívida técnica) não entra na gestã
 | `2.5` | 04/11/2026 | Origem dos dados do painel automático e correção dos valores fixos (issue #106) | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `2.6` | 04/11/2026 | Datas do cronograma versão 2 da disciplina: release em 21/11, entrega final em 22/11, PC2 em 16/11 ou 18/11 e apresentação das métricas PSM em 04/11 ou 11/11; N2 recalculado | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `2.7` | 04/11/2026 | Fechamento dos pontos em validação da Gestão (issue #44): limites de N3 e N4, divisão do PC2 e calendário | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
+| `2.8` | 17/11/2026 | Registro da ausência de medições publicadas dos Sprints 4 e 5 e distinção entre estimativa e horas reais | Davi Mesquita Sousa | - |
