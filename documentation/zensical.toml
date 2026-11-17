@@ -26,6 +26,7 @@ nav = [
     { "Procedimentos de Coleta" = "procedimentos/coleta.md" },
     { "TCLE das Sessões com Usuários" = "tcle.md" },
     { "Dados Brutos de Segurança" = "dados/seguranca/index.md" },
+    { "Fichas das Sessões com Usuários" = "dados/interacao/index.md" },
   ] },
   { "Resultados da Avaliação" = [
     { "Manutenibilidade" = "dados/manutenibilidade/index.md" },
