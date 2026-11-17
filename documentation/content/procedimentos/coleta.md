@@ -12,7 +12,7 @@ Este protocolo detalha a Seção 3 da [Fase 3](../fases/3.md) para as 12 métric
 2. Confirme o commit `176b04673d956af4b1ab645e922cedd796b6a22e` do [decidim-govbr](https://gitlab.com/lappis-unb/decidimbr/decidim-govbr/-/tree/176b04673d956af4b1ab645e922cedd796b6a22e). Uma versão diferente exige registro do motivo e dos arquivos alterados. Não misture resultados de versões diferentes numa única amostra.
 3. Crie uma pasta por execução em `documentation/content/dados/`. Registre data com fuso, commit completo, sistema, versões das ferramentas, comandos e códigos de saída. Preserve as saídas brutas junto aos cálculos.
 4. Antes das sessões, complete o [TCLE](../tcle.md), confirme o ambiente da issue #64 e registre o processo participativo, a proposta de teste e as quatro URLs usadas. As rotas variam conforme a massa de dados local.
-5. Mantenha termos assinados e qualquer chave entre identidade e código do participante fora do repositório público. Os dados publicados usam códigos como `P01`. Não publique cookies, credenciais ou gravações identificáveis.
+5. Mantenha termos assinados, gravações brutas e a chave entre identidade e código fora do repositório público, em pasta institucional sem link público e com acesso restrito aos seis integrantes da equipe e à professora. Publique apenas dados revisados com códigos como `P01`; remova nomes, e-mails, CPFs, IPs, rostos, cookies e credenciais dos arquivos e metadados.
 
 ## M1.1, M1.2 e M1.3: sessão observada
 

@@ -22,7 +22,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OWNER = "FCTE-Qualidade-de-Software-1"
-REPO = "2026-2_T02_FRANS_BILAS"
+REPO = "2026-2_T01_FRANS_BILAS"
 PROJECT_NUMBER = 33
 BRT = timezone(timedelta(hours=-3))
 

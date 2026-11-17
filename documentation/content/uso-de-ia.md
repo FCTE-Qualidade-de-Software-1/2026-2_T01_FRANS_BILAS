@@ -63,10 +63,10 @@ Os relatos identificam a ferramenta, as tarefas apoiadas por IA e as conferênci
 
 ### Davi Mesquita Sousa
 
-- **Papel no Projeto**: Ainda não definido no registro atual da equipe.
-- **Ferramentas Utilizadas**: Gemini.
-- **Tarefas Realizadas com Apoio de IA**: Correção textual dos conteúdos da documentação.
-- **Procedimento de Revisão Humana**: O texto corrigido foi revisado manualmente antes do registro.
+- **Papel no Projeto**: Dupla 3; ambiente de avaliação e medição do sprint.
+- **Ferramentas Utilizadas**: Gemini e GitHub Copilot (17/11/2026).
+- **Tarefas Realizadas com Apoio de IA**: Atualização da Fase 3, criação da Fase 4, registro das lacunas de M1.4 e PSM, revisão do protocolo de privacidade, navegação e slides do PC2.
+- **Revisão**: Dados conferidos nos arquivos do projeto; informações ausentes foram marcadas como pendentes. Humanizer e build Zensical passaram. Revisão final da equipe pendente antes do PR.
 
 ---
 
@@ -108,5 +108,6 @@ Em 08/11/2026, o Codex preparou os procedimentos das 12 métricas (#63), impleme
 | `1.2` | 19/10/2026 | Registro individual de uso de IA de Miguel Arthur (modelagem SQuaRE, priorização e governança) | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | - |
 | `1.3` | 04/11/2026 | Registro individual de uso de IA de Mateus (gestão, atas, revisão das Fases 1 e 2 e slides do PC2) | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `1.4` | 08/11/2026 | Registro de apoio do Codex às issues #63, #89 e #73 | Lucca Medeiros Silva | - |
+| `1.5` | 17/11/2026 | Registro de uso do GitHub Copilot por Davi na documentação das Fases 3 e 4 e na revisão de privacidade e PSM | Davi Mesquita Sousa | - |
 
 
