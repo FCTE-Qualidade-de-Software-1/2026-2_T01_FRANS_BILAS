@@ -32,15 +32,14 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 
 ## 2. Gestão: Medição do Sprint 3
 
-<p class="apresentador">Davi Mesquita Sousa</p>
+<p class="apresentador">Davi Mesquita Sousa e Miguel Arthur Oliveira de Lima</p>
 
 <!--
-NOTA PARA APRESENTAÇÃO (Davi):
+NOTA PARA APRESENTAÇÃO (Davi e Miguel):
 - Primeira medição da série, feita em 04/11 com o script scripts/psm_medicao.py; dados brutos em dados/gestao/sprint-3.json. Detalhes na Seção 12 da Gestão.
-- N1: o critério de Pronto exige PR revisado por outra dupla. Só a #62 passou; 6 de 17 issues fecharam.
-- N2: 8 de 40 itens concluídos com 32% do prazo até a release de 21/11 já passado; o escopo cresceu de 33 para 40.
-- N3, N4 e N5 não puderam ser calculados: ninguém preencheu horas reais nem datas. Isso é o resultado da avaliação da medição, e a decisão vai para a Ata 03.
-- A medição também achou uma falha no painel automático, que mostrava valores fixos (issue #106).
+- Davi apresenta os indicadores N1, N2 e N6: critério de Pronto (só #62 passou formalmente; 6 de 17 issues fecharam), burndown da E2 (8 de 40 itens concluídos com 32% do prazo) e obrigatoriedade de PRs na main (#43).
+- Miguel apresenta os indicadores N3, N4 e N5: ausência de horas reais registradas na medição inicial, as deliberações de fechamento da issue #44 (limites de esforço de 10% a 25% e precisão de 80% a 120%) e o encaminhamento das decisões para a Ata 03.
+- Ambos abordam a falha encontrada e corrigida no painel automático (issue #106).
 -->
 
 | Indicador | Sprint 3 | Decisão |
@@ -102,7 +101,7 @@ NOTA PARA APRESENTAÇÃO (José):
 - Critérios F3-C3 (cronograma alinhado à Fase 4) e F3-C8 (consistência entre as Fases 2 e 3).
 - A análise estática não depende de participantes e começa primeiro.
 - As sessões dependem de três itens do Sprint 3: TCLE completo (#45), cópia local (#64) e participantes (#67). Com menos de cinco sessões até 10/11, a limitação entra no julgamento da Fase 4.
-- A matriz de rastreabilidade entre as Fases 2 e 3 está na Seção 6.1 da Fase 3. Os resultados de interação ainda não foram publicados.
+- A conferência contra os níveis e critérios da Fase 2 (#68) foi concluída na Seção 6 da Fase 3: matriz de rastreabilidade vertical com as 12 métricas alinhadas.
 -->
 
 | Data | Atividade | Métricas |
@@ -219,3 +218,4 @@ NOTA PARA APRESENTAÇÃO (João):
 | `1.3` | 04/11/2026 | Datas do cronograma versão 2 (PC2 em 16/11 ou 18/11) e N2 recalculado para a release de 21/11 | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `1.4` | 10/11/2026 | Atualização do status dos campos do TCLE na nota de apresentação (#45) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.5` | 17/11/2026 | Inclusão dos resultados publicados da Fase 4 e das pendências de coleta e medição | Davi Mesquita Sousa | - |
+| `1.6` | 16/11/2026 | Inclusão de Miguel Arthur na apresentação de Gestão (Slide 2) e atualização do status da rastreabilidade vertical (#68) no Slide 5 | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | [Davi Mesquita Sousa](https://github.com/davimesquit) |
