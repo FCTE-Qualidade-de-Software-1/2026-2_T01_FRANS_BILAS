@@ -462,31 +462,6 @@ xychart-beta
 
 Fonte: [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). A linha ideal vai de 31 itens abertos em 27/10 a zero em 21/11.
 
-### 12.2 Interpretação e decisões
-
-A Tabela 16 liga cada indicador fora do critério à causa e à decisão de gestão.
-
-**Tabela 16**: Decisões de gestão a partir da medição do Sprint 3.
-
-| Indicador | Causa identificada | Decisão | Situação |
-| :--- | :--- | :--- | :--- |
-| N1 | Dez issues do sprint sem nenhum trabalho registrado até o último dia; PRs de 04/11 integrados sem revisão de outra dupla | Redistribuição dos Sprints 4 a 6 com uma issue por pessoa e carga entre 10 h e 17 h; coleta (#89, #90) movida para o Sprint 4 | Aplicada no Projects 33 em 04/11 |
-| N2 | Escopo da E2 cresceu 21% (33 para 40 itens) e a coleta passou para o Sprint 4 | Se a variância passar de 10% de novo em 11/11, a segunda melhoria (#80) sai do escopo. A especificação exige uma melhoria, e a equipe planejou duas | Proposta para a Ata 03 (#94) |
-| N3, N4 e N5 | "Esforço real", "Início" e "Conclusão" não foram preenchidos ao fechar as issues, contra a regra 2 da coleta | Cada responsável preenche os três campos antes de fechar a issue; a planning do Sprint 4 confere os do Sprint 3 | Proposta para a Ata 03 (#94) |
-| N6 | A `main` ainda aceitava commit direto, e os PRs de 04/11 entraram sem revisão de outra dupla | Proteger a `main` com PR obrigatório e aprovação de outra dupla | Concluído (issue #43) |
-
-Fonte: elaborado pela equipe a partir da Tabela 15.
-
-### 12.3 Avaliação da medição
-
-A quarta atividade do PSM pergunta se as medidas estão em uso (Seção 5). No Sprint 3:
-
-- **Indicadores em uso.** N1, N2 e N6 tiveram dado coletado, e os três levaram a uma decisão (Tabela 16).
-- **Indicadores sem dado.** N3, N4 e N5 dependem de campos preenchidos à mão, e nenhum foi preenchido. A tabela de contribuição da E2 sai de N3. Se os campos continuarem vazios no Sprint 4, o indicador perde o uso e precisa ser trocado, com o motivo registrado em ata.
-- **Status no quadro.** As seis issues fechadas continuam com Status "Backlog" no Projects. O fechamento da issue é a fonte usada por N1 e N2; o campo Status não entra na conta.
-- **Painel automático.** Ao conferir os dados, a medição encontrou uma falha no painel da Seção 9: quando a consulta ao Projects falhava, o script usava valores fixos no código, e as Tabelas 12 e 13 deixaram de mudar depois de 27/10. A falha foi corrigida na issue #106, como descreve a Seção 9.
-- **Limitação de N2.** O burndown foi reconstruído pelo milestone atual e pelas datas de criação e fechamento. Uma issue reaberta (#75) conta como aberta no período todo.
-
 ---
 
 ## Referências
