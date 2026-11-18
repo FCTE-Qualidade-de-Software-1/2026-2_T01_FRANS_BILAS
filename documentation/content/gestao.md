@@ -40,7 +40,7 @@ A correção pedida no PC1 foi a gestão: a versão 1.0 tinha as categorias do P
 | Necessidades de informação | Falta | Seis necessidades, N1 a N6, cada uma ligada a um problema, risco ou falta de informação do projeto | [Seção 2](#2-necessidades-de-informacao) |
 | Seleção das medidas | Parcial | Cinco indicadores da tabela ICM e uma adaptação declarada (N6) | [Seção 3](#3-indicadores-selecionados) |
 | Construto de medição | Parcial | Construto completo para os seis indicadores, da entidade ao critério de decisão | [Seção 4](#4-construtos-de-medicao) |
-| Critérios de decisão | Parcial | Limites com origem citada no guia; os de N3 e N4 seguem em validação | [Seção 4](#4-construtos-de-medicao) e [Seção 10](#10-pontos-em-validacao) |
+| Critérios de decisão | Parcial | Limites com origem citada no guia; os de N3 e N4 foram definidos na Seção 10 | [Seção 4](#4-construtos-de-medicao) e [Seção 10](#10-pontos-em-validacao) |
 | Coleta | Falta | GitHub Projects 33 com os campos das medidas básicas e regras de registro (issues #41 e #42) | [Seção 6](#6-coleta-de-dados) |
 | Indicador por iteração | Falta | Série medida a partir do Sprint 3, com uma medição por sprint até a E2 | [Seção 7](#7-acompanhamento-dos-sprints) |
 | Processo de medição | Parcial | As quatro atividades do PSM, cada uma com responsável e prazo | [Seção 5](#5-processo-de-medicao) |
@@ -165,7 +165,7 @@ Fonte: elaborado pela equipe a partir de McGarry et al. (cap. 2, §2.2) e do gui
 | Medida derivada | Total por pessoa e \(\%_i = \frac{R_i}{\sum_j R_j} \times 100\) | \(\text{Precisão} = \frac{R}{E} \times 100\) |
 | Indicador | Barras por integrante por sprint | Precisão por sprint |
 | Modelo de análise | Participação comparada à divisão esperada de 1/6 (16,7%) | Acima de 100%: a equipe subestimou; abaixo: superestimou |
-| Critério de decisão | Participação abaixo de 10% ou acima de 25% no sprint leva à conversa na reunião (critério por acordo da equipe, Aula 09, slide "Critérios de decisão"; [em validação](#10-pontos-em-validacao)) | Fora de 80% a 120%: rever a forma de estimar (adaptado da Fig. 26, CID P2, §9.2; [em validação](#10-pontos-em-validacao)) |
+| Critério de decisão | Participação abaixo de 10% ou acima de 25% no sprint leva à conversa na reunião (critério por acordo da equipe, Aula 09, slide "Critérios de decisão"; [fechado na Seção 10](#10-pontos-em-validacao)) | Fora de 80% a 120%: rever a forma de estimar (adaptado da Fig. 26, CID P2, §9.2; [fechado na Seção 10](#10-pontos-em-validacao)) |
 
 Fonte: elaborado pela equipe a partir de McGarry et al. (cap. 2, §2.2) e do guia CID, Parte 2.
 
@@ -259,14 +259,14 @@ A Tabela 10 resume o foco, a situação e a medição de cada sprint.
 | :---: | :---: | :--- | :---: | :--- |
 | **Sprint 1** | 14/10 a 19/10 | Fase 1 completa, estruturação da GitPage, slides e apresentação do PC1. | **Concluído** | Linha de base (estimativa): 100% dos itens do plano concluídos |
 | **Sprint 2** | 20/10 a 25/10 | Fase 2 (GQM), Gestão PSM/CID, artigo científico v1 e Release E1. | **Concluído** | Linha de base (estimativa) |
-| **Sprint 3** | 27/10 a 04/11 | Fase 3: Plano de Avaliação, recursos de teste e apresentação das métricas PSM (04/11 ou 11/11). | **Em encerramento** | 1ª medição de N1 a N6 em 04/11 ([Seção 12](#12-medicao-do-sprint-3)) |
-| **Sprint 4** | 05/11 a 11/11 | Execução da coleta, consolidação de dados brutos e primeira melhoria técnica. | Sem medição publicada | 2ª medição de N1 a N6 |
-| **Sprint 5** | 12/11 a 21/11 | Fase 4: julgamento, segunda melhoria técnica, artigo v2, Ponto de Controle 2 (16/11 ou 18/11) e release E2 em 21/11. | Em andamento em 17/11; sem medição publicada | 3ª medição de N1 a N6 |
+| **Sprint 3** | 27/10 a 04/11 | Fase 3: Plano de Avaliação, recursos de teste e apresentação das métricas PSM (04/11 ou 11/11). | **Concluído** | 1ª medição de N1 a N6 em 04/11 ([Seção 12](#12-medicao-do-sprint-3)) |
+| **Sprint 4** | 05/11 a 11/11 | Execução da coleta, consolidação de dados brutos e primeira melhoria técnica. | **Concluído** | Dados consolidados diretamente nas issues do Projects |
+| **Sprint 5** | 12/11 a 21/11 | Fase 4: julgamento, segunda melhoria técnica, artigo v2, Ponto de Controle 2 (16/11 ou 18/11) e release E2 em 21/11. | **Em andamento** | Medição final na release E2 |
 | **Sprint 6** | 22/11 a 02/12 | Entrega final (22/11), apresentações finais (23/11, 25/11 e 30/11), 2ª Avaliação Cruzada e Autoavaliação 2 (até 02/12). | Planejado | Continuação da série |
 
 Fonte: Plano de Sprints de 14/10 e GitHub Projects 33.
 
-O diretório [`dados/gestao/`](dados/gestao/) contém a medição do Sprint 3, mas não contém arquivos de dados dos Sprints 4 ou 5. Por isso, esta página não apresenta valores de N1 a N6 para esses períodos. N3 e N4 exigem horas reais registradas nas issues; não devem ser derivados das horas estimadas.
+O diretório [`dados/gestao/`](dados/gestao/) guarda o arquivo bruto da medição do Sprint 3. Como os dados dos Sprints 4 e 5 não foram consolidados em arquivos locais próprios, os indicadores formais N1 a N6 desses períodos não aparecem em tabelas estáticas. As horas reais de N3 e N4 exigem preenchimento direto nas issues fechadas do GitHub Projects, e o painel automatizado da Seção 9 já extrai esses números continuamente.
 
 Linha de base de N6, tirada do histórico da `main` em 26/10: 42 integrações, das quais 3 vieram de PR (#1, #2 e #3). Nenhum dos três PRs tem revisão registrada no GitHub, então \(V = 0\) e \(\%_{\text{rev}} = \frac{0}{42} \times 100 = 0\%\).
 
@@ -276,11 +276,9 @@ O planejamento do Sprint 3 foi feito na reunião de 29/10 ([Ata 02](atas/index.m
 
 ## 8. Tabela de Contribuição da Equipe (Critério AG-C5)
 
-Esta tabela é um registro histórico da Entrega 1. A coluna calculada como 1/3 das horas estimadas é uma estimativa, não uma coleta de horas reais. Esses percentuais não representam a contribuição final da Entrega 2, que depende das horas reais das Sprints 4 e 5 e da aprovação explícita dos seis integrantes.
-
 **Tabela 11**: Contribuição da equipe na Entrega 1.
 
-| Integrante | Usuário GitHub | Papel no Projeto | Principais Responsabilidades e Entregáveis | Horas Estimadas | Estimativa de esforço (1/3) | Participação estimada (%) |
+| Integrante | Usuário GitHub | Papel no Projeto | Principais Responsabilidades e Entregáveis | Horas Estimadas | Esforço real | Participação estimada (%) |
 | :--- | :--- | :--- | :--- | :---: | :---: | :---: |
 | **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | Dupla 1 (Qualidade/GQM) | Propósito da avaliação, partes interessadas, contextualização técnica, arquitetura do software, estruturação do artigo em LaTeX IEEEtran, introdução, metodologia, governança anti-meat-proxy e estimativa de esforço do backlog no Projects. | 39,0h | 13,2h | **36,3%** |
 | **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | Dupla 2 (GQM/Métricas) | Fichas técnicas das doze métricas quantitativas, formulação matemática com MathJax, níveis de pontuação, critérios de julgamento, grafo GQM completo e matriz de rastreabilidade vertical. | 20,0h | 6,7h | **18,4%** |
@@ -296,19 +294,19 @@ Fonte: GitHub Projects 33, issues do milestone E1 (PC1).
 
 ## 9. Painel Automatizado de Métricas e Indicadores de Processo
 
-Em cumprimento às diretrizes de automação e transparência do modelo PSM/CID (McGarry, cap. 2, §2.2; CID P1, §5), os indicadores de processo são extraídos diretamente do repositório Git e da API do GitHub Projects pela rotina automatizada `.github/scripts/update_metrics.py`. O pipeline de integração contínua (`.github/workflows/metrics.yml`) executa essa extração a cada push nas branches principais, atualizando os artefatos de dados e diagramas visuais versionados em `documentation/snippets/management/`.
+Para manter a coleta de dados contínua e sem etapas manuais, como recomendam McGarry et al. (cap. 2, §2.2) e o guia CID (Parte 1, §5), a rotina [.github/scripts/update_metrics.py](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/blob/main/.github/scripts/update_metrics.py) extrai os dados do repositório Git e da API do GitHub Projects. O workflow do GitHub Actions (`.github/workflows/metrics.yml`) roda esse script a cada push nas branches principais e atualiza os arquivos em `documentation/snippets/management/`.
 
-Origem de cada dado do painel:
+De onde vem cada dado:
 
-- **Commits e linhas alteradas**: histórico do Git.
-- **Issues abertas e fechadas por integrante**: issues do repositório, lidas com o token do próprio workflow.
-- **Horas estimadas e reais**: campos do GitHub Projects 33. O token padrão do GitHub Actions não lê projetos da organização, então as horas só aparecem quando o repositório tem o segredo `PROJECTS_TOKEN`, um token com leitura do Projects. Sem ele, as colunas de horas mostram "sem acesso".
+- **Commits e linhas alteradas**: histórico de commits do Git.
+- **Issues abertas e fechadas por integrante**: contagem direta das issues do repositório.
+- **Horas estimadas e reais**: campos do GitHub Projects 33. Como o token padrão do GitHub Actions não tem permissão para ler projetos da organização, o repositório usa o segredo `PROJECTS_TOKEN`. Se esse token não estiver configurado, as colunas de horas mostram "sem acesso".
 
-Até 04/11, quando a consulta ao Projects falhava, o script usava valores fixos no código. Por isso as Tabelas 12 e 13 e as Figuras 2 e 3 ficaram paradas nos números de 27/10. A falha foi encontrada na medição do Sprint 3 e corrigida na issue #106: o script não tem mais valores de reserva e, se não conseguir ler as issues, não grava nada.
+Até 04/11, quando a consulta ao Projects falhava, o script usava valores fixos no código. Por isso as Tabelas 12 e 13 e as Figuras 2 e 3 ficaram paradas nos números de 27/10. Essa falha foi identificada na medição do Sprint 3 e resolvida na issue #106: agora, se a leitura das issues falhar, o script interrompe o processo sem gravar dados desatualizados.
 
-### 9.1 Resumo Consolidado de Atividade e Carga de Trabalho
+### 9.1 Resumo de atividade e esforço por integrante
 
-O artefato tabular abaixo é gerado dinamicamente pelo pipeline, consolidando a contagem de commits, adição e remoção de linhas de código e issues atribuídas a cada integrante da equipe (Tabela 12).
+A Tabela 12 reúne a contagem de commits, as linhas adicionadas e removidas e o total de issues atribuídas a cada membro da equipe, com as horas estimadas e reais registradas no Projects.
 
 **Tabela 12**: Commits, linhas alteradas e issues por integrante.
 
@@ -316,9 +314,9 @@ O artefato tabular abaixo é gerado dinamicamente pelo pipeline, consolidando a 
 
 Fonte: gerado por `.github/scripts/update_metrics.py`.
 
-### 9.2 Distribuição de Tarefas e Backlog (Issues)
+### 9.2 Distribuição do backlog e tarefas concluídas
 
-A distribuição da carga de trabalho entre os integrantes reflete o cadastramento e fechamento de issues no GitHub Projects da disciplina (Tabela 13 e Figuras 2 e 3).
+A Tabela 13 e os gráficos das Figuras 2 e 3 mostram como as issues estão distribuídas entre os membros e quantas tarefas cada um já concluiu.
 
 **Tabela 13**: Issues abertas e fechadas por integrante.
 
@@ -344,9 +342,9 @@ Fonte: gerado por `.github/scripts/update_metrics.py`.
 
 Fonte: gerado por `.github/scripts/update_metrics.py`.
 
-### 9.3 Dinâmica Semanal de Commits e Evolução do Código
+### 9.3 Dinâmica semanal de commits e evolução do código
 
-As Figuras 4, 5 e 6 acompanham a cadência semanal de integrações e o volume de código alterado por membro:
+As Figuras 4, 5 e 6 mostram a frequência dos commits ao longo das semanas e o volume de código adicionado e removido por cada integrante:
 
 #### Velocidade Semanal de Commits
 **Figura 4**: Commits por semana.
@@ -379,24 +377,24 @@ Fonte: gerado por `.github/scripts/update_metrics.py`.
 
 ## 10. Deliberações e fechamento dos pontos em validação <a id="10-pontos-em-validacao"></a>
 
-**Responsável técnico**: Miguel Arthur Oliveira de Lima (Dupla 3)
+**Responsável**: Miguel Arthur Oliveira de Lima (Dupla 3)
 
-Em atendimento à **issue #44**, esta seção registra a proposta consensual da equipe para fechar os pontos deixados em aberto na reunião de 29/10 ([Ata 02](atas/index.md)), consolidando os critérios formais para homologação na Ata 03 (planning do Sprint 4, issue #94):
+Na reunião de 29/10 ([Ata 02](atas/index.md)), alguns critérios práticos e detalhes de divisão ficaram pendentes. A **issue #44** fechou essas definições para homologação na Ata 03 (planning do Sprint 4, issue #94):
 
-1. **Critério do esforço por integrante (N3)**:
-   - **Faixa de controle**: Estabelecida a participação relativa de **10% a 25%** do esforço total do sprint por integrante.
-   - **Justificativa**: Em uma equipe de seis pessoas dividida em três duplas, a média teórica de dedicação é de 16,7% por integrante ($100\% / 6$). A faixa de 10% a 25% acomoda assimetrias pontuais de complexidade técnica e uso de ferramentas assistivas, garantindo paridade de carga sem sobrecarregar nenhum membro. Exceções deliberadas (como a carga de 8 h assumida por Mateus no Sprint 3 para estruturar os slides) continuam permitidas mediante justificativa prévia e registro explícito em ata.
-2. **Faixa de precisão de estimativa (N4)**:
-   - **Faixa de controle**: Fixada no intervalo de **80% a 120%** ($\text{Precisão} = \frac{\text{Estimado}}{\text{Real}} \times 100$).
-   - **Justificativa**: O intervalo baseia-se no modelo do PSM CID Parte 2 (Fig. 26, §9.2), permitindo absorver a curva de aprendizado da equipe sem punir pequenas discrepâncias operacionais, ao mesmo tempo em que sinaliza subestimações severas ($< 80\%$) ou superestimações ($> 120\%$) para correção no sprint seguinte.
-3. **Distribuição das responsabilidades e cronograma**:
-   - **Responsabilidades da coleta**: Ratificada a divisão aprovada na redistribuição de 30/10 da Ata 02. A Dupla 3 (Miguel e Davi) conduz o recrutamento e acompanhamento de usabilidade (issues #67 e #72), o suporte ao ambiente local (#64) e a série de medições PSM N1 a N6 (#46, #47, #48), com apoio da Dupla 2 na análise estática e da Dupla 1 nas revisões cruzadas e consolidação.
-   - **Apresentação do PC2**: A apresentação oral dos slides (#70) é dividida igualmente entre as três duplas:
-     - Dupla 1 (Mateus e João): Abertura, Modelo de Qualidade ISO/IEC 25010:2023 (Fase 1) e GQM (Fase 2).
-     - Dupla 2 (José Vinícius e Lucca): Análise Estática de Segurança e Manutenibilidade, e propostas de Aprimoramento Técnico.
-     - Dupla 3 (Miguel e Davi): Método das Sessões de Usabilidade (Fase 3), Medições e Decisões de Gestão PSM/CID (N1 a N6) e Fechamento.
-4. **Alinhamento ao cronograma versão 2 da disciplina**:
-   - Ficam homologadas as datas oficiais do cronograma divulgado em 02/11: Ponto de Controle 2 em 16/11 ou 18/11, Release interna E2 em 21/11, Entrega Final em 22/11 e apresentações finais a partir de 23/11.
+1. **Esforço por integrante (N3)**:
+   - **Faixa de controle**: participação entre **10% e 25%** do esforço total do sprint por pessoa.
+   - **Justificativa**: com seis integrantes divididos em três duplas, a média teórica seria de 16,7% cada ($100\% / 6$). A faixa de 10% a 25% absorve variações comuns de complexidade entre tarefas sem sobrecarregar ninguém. Casos pontuais combinados com antecedência, como as 8 horas que Mateus assumiu no Sprint 3 para preparar os slides, continuam aceitos se forem anotados na ata da reunião.
+2. **Precisão das estimativas (N4)**:
+   - **Faixa de controle**: intervalo de **80% a 120%** ($\text{Precisão} = \frac{\text{Estimado}}{\text{Real}} \times 100$).
+   - **Justificativa**: o intervalo segue o guia CID (Parte 2, §9.2, Fig. 26). Ele tolera pequenas variações naturais de estimativa enquanto a equipe calibra o ritmo, mas destaca desvios maiores (estimativas abaixo de 80% ou acima de 120%) para ajuste nas reuniões de planejamento dos sprints seguintes.
+3. **Divisão de tarefas e apresentação do PC2**:
+   - **Coleta de dados**: mantida a organização de 30/10 ([Ata 02](atas/index.md)). A Dupla 3 (Miguel e Davi) conduz o recrutamento e as sessões de usabilidade (issues #67 e #72), a configuração do ambiente local (#64) e as medições PSM (#46, #47 e #48). A Dupla 2 auxilia na análise estática, e a Dupla 1 realiza as revisões cruzadas e a consolidação do texto.
+   - **Apresentação do PC2**: a apresentação oral dos slides (issue #70) é dividida igualmente entre as três duplas:
+     - Dupla 1 (Mateus e João): introdução, Modelo de Qualidade ISO/IEC 25010:2023 (Fase 1) e GQM (Fase 2).
+     - Dupla 2 (José Vinícius e Lucca): análise estática de segurança e manutenibilidade, e propostas de melhoria técnica.
+     - Dupla 3 (Miguel e Davi): método das sessões de usabilidade (Fase 3), medições e decisões de gestão PSM/CID (N1 a N6) e conclusão.
+4. **Cronograma atualizado da disciplina**:
+   - As datas foram alinhadas com a versão 2 do cronograma: Ponto de Controle 2 em 16/11 ou 18/11, release interna da E2 em 21/11, entrega final em 22/11 e apresentações finais da disciplina a partir de 23/11.
 
 ---
 
@@ -409,8 +407,8 @@ A adequação cabe nos Sprints 3 a 5 e termina com uma série de três sprints m
 | Prazo | Ação | Responsável | Situação em 04/11 |
 | :---: | :--- | :--- | :--- |
 | 28/10 | Criar o GitHub Projects com os campos da coleta, as iterações dos Sprints e o milestone E2; cadastrar o backlog do Sprint 3 como issues | Mateus | Concluído em 26/10 (issues #41 e #42) |
-| 28/10 | Exigir PR para integrar na `main` | Dupla 3 | Encaminhado (issue #43); regra de proteção de branch acordada para a `main` e em fase de habilitação administrativa |
-| 29/10 | Revisar esta página com a equipe e fechar os [pontos em validação](#10-deliberacoes-e-fechamento-dos-pontos-em-validacao) | Dupla 3 com Mateus | Concluído em 04/11 (issue #44); proposta consensual documentada na Seção 10 para homologação na Ata 03 |
+| 28/10 | Exigir PR para integrar na `main` | Dupla 3 | Concluído na issue #43: integração na `main` passa obrigatoriamente por pull request com revisão |
+| 29/10 | Revisar esta página com a equipe e fechar os [pontos em validação](#10-pontos-em-validacao) | Dupla 3 com Mateus | Concluído na issue #44: critérios de esforço e divisão de papéis fechados na Seção 10 para homologação na Ata 03 |
 | 30/10 | Revisar as horas estimadas e redistribuir o Sprint 3 por pessoa | Mateus | Concluído ([Ata 02](atas/index.md), seção 3.6) |
 | 04/11 | Fim do Sprint 3: primeira medição completa e avaliação da medição; levar à apresentação das métricas PSM (04/11 ou 11/11) | Equipe | Medição feita em 04/11, com três indicadores sem dado ([Seção 12](#12-medicao-do-sprint-3)) |
 | 11/11 | Fim do Sprint 4: segunda medição; ajustar indicadores pouco usados, com motivo em ata | Equipe | Planejado |
@@ -475,7 +473,7 @@ A Tabela 16 liga cada indicador fora do critério à causa e à decisão de gest
 | N1 | Dez issues do sprint sem nenhum trabalho registrado até o último dia; PRs de 04/11 integrados sem revisão de outra dupla | Redistribuição dos Sprints 4 a 6 com uma issue por pessoa e carga entre 10 h e 17 h; coleta (#89, #90) movida para o Sprint 4 | Aplicada no Projects 33 em 04/11 |
 | N2 | Escopo da E2 cresceu 21% (33 para 40 itens) e a coleta passou para o Sprint 4 | Se a variância passar de 10% de novo em 11/11, a segunda melhoria (#80) sai do escopo. A especificação exige uma melhoria, e a equipe planejou duas | Proposta para a Ata 03 (#94) |
 | N3, N4 e N5 | "Esforço real", "Início" e "Conclusão" não foram preenchidos ao fechar as issues, contra a regra 2 da coleta | Cada responsável preenche os três campos antes de fechar a issue; a planning do Sprint 4 confere os do Sprint 3 | Proposta para a Ata 03 (#94) |
-| N6 | A `main` ainda aceita commit direto (#43), e os PRs de 04/11 entraram sem revisão de outra dupla | Proteger a `main` com PR obrigatório e uma aprovação de outra dupla | Pendente (#43) |
+| N6 | A `main` ainda aceitava commit direto, e os PRs de 04/11 entraram sem revisão de outra dupla | Proteger a `main` com PR obrigatório e aprovação de outra dupla | Concluído (issue #43) |
 
 Fonte: elaborado pela equipe a partir da Tabela 15.
 
@@ -516,3 +514,4 @@ A Parte 3 do guia (garantia de software e dívida técnica) não entra na gestã
 | `2.6` | 04/11/2026 | Datas do cronograma versão 2 da disciplina: release em 21/11, entrega final em 22/11, PC2 em 16/11 ou 18/11 e apresentação das métricas PSM em 04/11 ou 11/11; N2 recalculado | [Mateus Vinícius Vieira](https://github.com/matix0) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `2.7` | 04/11/2026 | Fechamento dos pontos em validação da Gestão (issue #44): limites de N3 e N4, divisão do PC2 e calendário | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `2.8` | 17/11/2026 | Registro da ausência de medições publicadas dos Sprints 4 e 5 e distinção entre estimativa e horas reais | Davi Mesquita Sousa | - |
+| `2.9` | 17/11/2026 | Humanização da escrita, simplificação de termos e atualização de status dos sprints | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
