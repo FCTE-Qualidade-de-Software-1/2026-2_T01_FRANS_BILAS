@@ -420,15 +420,15 @@ A adequação está pronta quando os seis indicadores tiverem valor nos três sp
 
 ---
 
-## 12. Medição do Sprint 3
+## 12. Medição do Sprint 3 e Burndown da E2 <a id="12-medicao-do-sprint-3"></a>
 
 A primeira medição da série foi feita em 04/11, último dia do sprint, às 03h. O script [`scripts/psm_medicao.py`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/blob/main/scripts/psm_medicao.py) lê o GitHub Projects 33, os PRs e o histórico da `main`, e grava os dados brutos e os indicadores em [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). Itens fechados até o fim do dia entram numa nova execução do mesmo script.
 
 O comprometido são as 17 issues listadas por responsável na redistribuição de 30/10 ([Ata 02](atas/index.md), seção 3.6). O texto da ata fala em 18 issues, mas a tabela da mesma seção lista 17, e a medição usa a lista.
 
-### 12.1 Resultados
+### 12.1 Indicadores do Sprint 3
 
-A Tabela 15 compara cada indicador com o critério de decisão da Seção 4, e a Figura 7 mostra o burndown da E2.
+A Tabela 15 compara cada indicador com o critério de decisão da Seção 4.
 
 **Tabela 15**: Indicadores do Sprint 3 diante dos critérios de decisão.
 
@@ -446,8 +446,12 @@ Fonte: [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json), gerado por `s
 Detalhes que explicam os números:
 
 - **N1.** A única issue no critério de Pronto é a #62, fechada pelo PR #92 com revisão de Mateus (Dupla 1) sobre trabalho de José Vinícius (Dupla 2). As #59, #60, #69 e #70 fecharam por PRs sem revisão de outra dupla (#100, #101 e #103), e a #66 pelo PR #104, também sem revisão registrada. Das 11 abertas, 10 não têm branch nem PR; a exceção é a #65 (PR #105).
-- **N2.** A variância é a diferença entre a parte do prazo já passada (8 de 25 dias, de 27/10 até a release de 21/11) e a parte dos itens concluída (8 de 40). O guia não fixa essa conta, e a equipe adotou essa. O escopo da E2 cresceu de 33 para 40 itens no sprint: #89 e #90 em 30/10, #93 a #97 em 04/11.
+- **N2.** A variância é a diferença entre a parte do prazo já passada (8 de 25 dias, de 27/10 até a release de 21/11) e a parte dos itens concluída (8 de 40). O escopo da E2 cresceu de 33 para 40 itens no sprint: #89 e #90 em 30/10, #93 a #97 em 04/11.
 - **N6.** As 9 integrações excluem os commits automáticos do painel (`github-actions[bot]`). As duas que não vieram de PR são commits diretos de 28/10 e 29/10. A revisão do #92 foi registrada como comentário, sem aprovação formal no GitHub.
+
+### 12.2 Burndown do Milestone E2
+
+A Figura 7 acompanha a evolução diária dos itens em aberto no milestone E2 desde o início do Sprint 3 (27/10) até 17/11, comparando com a linha ideal de término até a release de 21/11.
 
 **Figura 7**: Burndown do milestone E2 acompanhado de 27/10 a 17/11, com itens abertos ao fim de cada dia e a linha ideal até a release de 21/11.
 
