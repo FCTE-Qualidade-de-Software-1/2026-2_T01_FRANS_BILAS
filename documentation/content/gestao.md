@@ -449,18 +449,13 @@ Detalhes que explicam os números:
 - **N2.** A variância é a diferença entre a parte do prazo já passada (8 de 25 dias, de 27/10 até a release de 21/11) e a parte dos itens concluída (8 de 40). O guia não fixa essa conta, e a equipe adotou essa. O escopo da E2 cresceu de 33 para 40 itens no sprint: #89 e #90 em 30/10, #93 a #97 em 04/11.
 - **N6.** As 9 integrações excluem os commits automáticos do painel (`github-actions[bot]`). As duas que não vieram de PR são commits diretos de 28/10 e 29/10. A revisão do #92 foi registrada como comentário, sem aprovação formal no GitHub.
 
-**Figura 7**: Burndown da E2 no Sprint 3, com itens abertos ao fim de cada dia e a linha ideal até a release de 21/11.
+**Figura 7**: Burndown do milestone E2 acompanhado de 27/10 a 17/11, com itens abertos ao fim de cada dia e a linha ideal até a release de 21/11.
 
 ```mermaid
-xychart-beta
-    title "Itens abertos no milestone E2"
-    x-axis ["27/10", "28/10", "29/10", "30/10", "31/10", "01/11", "02/11", "03/11", "04/11"]
-    y-axis "Itens abertos" 0 --> 40
-    line [31, 31, 31, 33, 33, 33, 33, 33, 32]
-    line [31, 29.8, 28.5, 27.3, 26, 24.8, 23.6, 22.3, 21.1]
+--8<-- "management/burndown-e2.mmd"
 ```
 
-Fonte: [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). A linha ideal vai de 31 itens abertos em 27/10 a zero em 21/11.
+Fonte: gerado por `.github/scripts/update_metrics.py` a partir das issues do repositório. A linha ideal vai de 31 itens abertos em 27/10 a zero em 21/11.
 
 ---
 

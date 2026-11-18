@@ -14,7 +14,7 @@ import subprocess
 import sys
 import urllib.request
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -222,7 +222,14 @@ query($cursor: String) {
   repository(owner: "%s", name: "%s") {
     issues(first: 100, after: $cursor) {
       pageInfo { hasNextPage endCursor }
-      nodes { number state assignees(first: 10) { nodes { login } } }
+      nodes {
+        number
+        state
+        createdAt
+        closedAt
+        milestone { title }
+        assignees(first: 10) { nodes { login } }
+      }
     }
   }
 }
@@ -310,7 +317,7 @@ def get_project_and_issue_metrics():
         for c in counts.values():
             for key in ("est_closed", "real_closed", "est_all", "real_all"):
                 c[key] = None
-    return counts
+    return counts, issues
 
 
 def format_hours(value) -> str:
@@ -374,6 +381,59 @@ def render_bar_chart(title: str, y_label: str, counts_by_author: dict, key: str 
         f'    x-axis [{", ".join(x_labels)}]\n'
         f'    y-axis "{y_label}" 0 --> {max_bound}\n'
         + "\n".join(bar_lines)
+    )
+    return chart
+
+
+def render_burndown_chart(issues: list, end_date: date = None) -> str:
+    """Gera o grafico Mermaid xychart-beta com o burndown diario do milestone E2."""
+    if end_date is None:
+        now_brt = datetime.now(timezone(timedelta(hours=-3))).date()
+        end_date = min(date(2026, 11, 21), now_brt)
+
+    start_date = date(2026, 10, 27)
+    release_date = date(2026, 11, 21)
+    total_days = (release_date - start_date).days
+
+    e2_issues = [
+        i for i in issues
+        if (i.get("milestone") or {}).get("title") == "E2"
+        or (isinstance(i.get("milestone"), str) and i.get("milestone").strip() == "E2")
+    ]
+
+    dias_labels = []
+    abertos = []
+    ideais = []
+
+    curr = start_date
+    while curr <= end_date:
+        def ate(ts):
+            if not ts:
+                return False
+            return datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(timezone(timedelta(hours=-3))).date() <= curr
+
+        plan = [i for i in e2_issues if ate(i.get("createdAt"))]
+        conc = [i for i in plan if ate(i.get("closedAt"))]
+        aberto = len(plan) - len(conc)
+
+        day_idx = (curr - start_date).days
+        ideal = max(0.0, round(31.0 - (31.0 / total_days) * day_idx, 1))
+
+        day_str = curr.strftime("%d/%m")
+        dias_labels.append(f'"{day_str}"')
+        abertos.append(str(aberto))
+        ideais.append(str(ideal))
+        curr += timedelta(days=1)
+
+    x_axis_str = f"[{', '.join(dias_labels)}]"
+    chart = (
+        MERMAID_INIT +
+        f'xychart-beta\n'
+        f'    title "Itens abertos no milestone E2"\n'
+        f'    x-axis {x_axis_str}\n'
+        f'    y-axis "Itens abertos" 0 --> 40\n'
+        f"    line [{', '.join(abertos)}]\n"
+        f"    line [{', '.join(ideais)}]"
     )
     return chart
 
@@ -484,7 +544,7 @@ def main():
     SNIPPETS_DIR.mkdir(parents=True, exist_ok=True)
 
     weeks, commits, additions, deletions, git_totals = get_git_log_data()
-    issue_counts = get_project_and_issue_metrics()
+    issue_counts, issues_list = get_project_and_issue_metrics()
 
     # Generate charts
     velocity_chart = render_timeline_chart(
@@ -517,6 +577,7 @@ def main():
         issue_counts,
         key="closed",
     )
+    burndown_chart = render_burndown_chart(issues_list)
 
     # Generate markdown tables
     contributions_table = generate_contributions_table(git_totals, issue_counts)
@@ -528,6 +589,7 @@ def main():
     (SNIPPETS_DIR / "code-deletions.mmd").write_text(deletions_chart + "\n", encoding="utf-8")
     (SNIPPETS_DIR / "assigned-issues.mmd").write_text(issues_chart + "\n", encoding="utf-8")
     (SNIPPETS_DIR / "resolved-issues.mmd").write_text(resolved_chart + "\n", encoding="utf-8")
+    (SNIPPETS_DIR / "burndown-e2.mmd").write_text(burndown_chart + "\n", encoding="utf-8")
     (SNIPPETS_DIR / "contributions-summary.md").write_text(contributions_table + "\n", encoding="utf-8")
     (SNIPPETS_DIR / "issues-summary.md").write_text(issues_table + "\n", encoding="utf-8")
 
