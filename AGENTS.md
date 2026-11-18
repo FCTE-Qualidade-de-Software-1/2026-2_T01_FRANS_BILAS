@@ -56,10 +56,9 @@ Muitos membros de equipes acadêmicas operam como *meat-proxies* — copiam e co
 
 **Qualquer agente de IA atuando neste repositório DEVE OBRIGATORIAMENTE seguir estas restrições inegociáveis:**
 
-1. **PROIBIDO INVENTAR DADOS**: Jamais alucine métricas, percentuais, linhas de código, números de vulnerabilidade ou estatísticas fictícias. Toda medida deve vir comprovadamente do código do Brasil Participativo, de ferramentas de análise estática ou de sessões documentadas de teste.
-2. **ZERO TOLERÂNCIA A VÍCIOS DE IA**: Banimento absoluto de introduções clichês ("No cenário atual", "Na era digital contemporânea"), falsos contrastes ("não é apenas X, é Y"), encheções de linguiça ("vale ressaltar que", "desempenha um papel fundamental") e adjetivações vazias ("robusto", "inovador", "vital").
-3. **GROUNDING TÉCNICO RIGOROSO**: Todas as afirmações sobre o software devem citar componentes reais do Decidim (módulos, gems, controllers, banco PostgreSQL, testes RSpec) ou trechos exatos das normas SQuaRE e critérios da professora (`references/discipline/`).
-4. **SEM ARTEFATOS DE CHATBOT**: Nunca incluir saídas como "Certamente!", "Espero ter ajudado!", "Como uma inteligência artificial..." em arquivos de documentação, LaTeX ou slides.
+1. **ZERO TOLERÂNCIA A VÍCIOS DE IA**: Banimento absoluto de introduções clichês ("No cenário atual", "Na era digital contemporânea"), falsos contrastes ("não é apenas X, é Y"), encheções de linguiça ("vale ressaltar que", "desempenha um papel fundamental") e adjetivações vazias ("robusto", "inovador", "vital").
+2. **GROUNDING TÉCNICO RIGOROSO**: Todas as afirmações sobre o software devem citar componentes reais do Decidim (módulos, gems, controllers, banco PostgreSQL, testes RSpec) ou trechos exatos das normas SQuaRE e critérios da professora (`references/discipline/`).
+3. **SEM ARTEFATOS DE CHATBOT**: Nunca incluir saídas como "Certamente!", "Espero ter ajudado!", "Como uma inteligência artificial..." em arquivos de documentação, LaTeX ou slides.
 
 ---
 
