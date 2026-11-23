@@ -22,7 +22,7 @@ SNIPPETS_DIR = REPO_ROOT / "documentation" / "snippets" / "management"
 
 PROJECT_ID = "PVT_kwDODIobq84BoE3c"
 REPO_OWNER = "FCTE-Qualidade-de-Software-1"
-REPO_NAME = "2026-2_T02_FRANS_BILAS"
+REPO_NAME = "2026-2_T01_FRANS_BILAS"
 
 TEAM_MEMBERS = [
     {

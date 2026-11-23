@@ -1,5 +1,5 @@
 [project]
-site_url = "https://fcte-qualidade-de-software-1.github.io/2026-2_T02_FRANS_BILAS/"
+site_url = "https://fcte-qualidade-de-software-1.github.io/2026-2_T01_FRANS_BILAS/"
 site_name = "Frans Bilas - Brasil Participativo"
 docs_dir = "content"
 # site_description = "Your project description"
@@ -7,8 +7,8 @@ docs_dir = "content"
 
 copyright = "Equipe Frans Bilas &bull; Qualidade de Software 1 (FGA0315 - 2026.2) &bull; UnB FCTE"
 
-repo_url = "https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS"
-repo_name = "FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS"
+repo_url = "https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS"
+repo_name = "FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS"
 edit_uri = "edit/main/documentation/"
 
 nav = [

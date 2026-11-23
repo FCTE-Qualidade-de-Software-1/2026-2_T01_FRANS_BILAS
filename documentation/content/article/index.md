@@ -7,7 +7,7 @@ icon: lucide/microscope
 Esta página apresenta as diretrizes, a estrutura e o andamento do artigo científico elaborado pela equipe **Frans Bilas (Turma 01)** na disciplina **Qualidade de Software 1 (FGA0315 - 2026.2)**, ministrada pela Profa. Dra. Cristiane Soares Ramos na Universidade de Brasília (Campus UnB Gama: Faculdade de Ciências e Tecnologias em Engenharia - Brasília / FCTE).
 
 > [!TIP] Acesso Direto ao Artigo Compilado
-> O manuscrito consolidado da avaliação pode ser visualizado e baixado em formato PDF: [Artigo Científico IEEEtran (PDF)](source/main.pdf). O código-fonte em LaTeX está versionado em [`documentation/content/article/source/main.tex`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/tree/main/documentation/content/article/source/main.tex).
+> O manuscrito consolidado da avaliação pode ser visualizado e baixado em formato PDF: [Artigo Científico IEEEtran (PDF)](source/main.pdf). O código-fonte em LaTeX está versionado em [`documentation/content/article/source/main.tex`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/tree/main/documentation/content/article/source/main.tex).
 
 ---
 
@@ -26,7 +26,7 @@ O artigo científico constitui o relatório técnico final consolidado da discip
 A especificação do projeto permitia a escolha entre três modelos clássicos de computação: SBC, ACM ou IEEE. A equipe optou pelo padrão **IEEE (classe `IEEEtran` em modo `journal`)**:
 
 - **Justificativa da Escolha**: O formato IEEE organiza o conteúdo em duas colunas densas, permitindo acomodar equações matemáticas, tabelas comparativas de métricas e gráficos analíticos de forma compacta e padronizada na engenharia de software.
-- **Localização dos Fontes**: O código-fonte em LaTeX está versionado no repositório em [`documentation/content/article/source/main.tex`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/tree/main/documentation/content/article/source/main.tex), acompanhado do modelo original de referência `ieee_bare_jrnl.tex`.
+- **Localização dos Fontes**: O código-fonte em LaTeX está versionado no repositório em [`documentation/content/article/source/main.tex`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/tree/main/documentation/content/article/source/main.tex), acompanhado do modelo original de referência `ieee_bare_jrnl.tex`.
 - **Ambiente Colaborativo**: A redação em equipe é sincronizada via [projeto compartilhado no Overleaf](https://www.overleaf.com/project/6ac3b29fe9cf3708a6a46735) e versionada via Git.
 
 ---
@@ -99,6 +99,7 @@ Os arquivos temporários (`*.aux`, `*.log`, `*.out`, `*.bbl`, `*.blg`) são igno
 | `1.0` | 17/10/2026 | Documentação sobre a escolha do modelo IEEEtran, requisitos pedagógicos e estrutura do artigo | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.1` | 26/10/2026 | Atualização da estrutura com inclusão da seção explícita de Metodologia, conclusão dos itens da Fase 1 e apêndices | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.2` | 10/11/2026 | Inclusão de link direto para download do PDF compilado, crosslinks com as fases e painel de gestão | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
+| `1.3` | 22/11/2026 | Link dos fontes do artigo apontando para o repositório da T01 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 
 
 
