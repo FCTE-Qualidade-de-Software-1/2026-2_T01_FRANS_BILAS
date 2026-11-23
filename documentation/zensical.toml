@@ -43,6 +43,7 @@ nav = [
     { "Ponto de Controle 1" = "entregas/1.md" },
     { "Métricas de Gestão (PSM)" = "entregas/psm.md" },
     { "Ponto de Controle 2" = "entregas/pc2.md" },
+    { "Apresentação Final" = "entregas/final.md" },
   ] },
   { "Artigo Científico" = "article/index.md" },
   { "Extras" = [
