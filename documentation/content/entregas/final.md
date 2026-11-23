@@ -4,7 +4,7 @@ icon: lucide/presentation
 
 # Apresentação Final: Avaliação de Qualidade do Brasil Participativo
 
-**Equipe Frans Bilas (Turma 02)**  
+**Equipe Frans Bilas (Turma 01)**  
 Disciplina: Qualidade de Software 1 (FGA0315, semestre 2026.2)  
 Professora: Dra. Cristiane Soares Ramos  
 Faculdade de Ciências e Tecnologias em Engenharia (FCTE, Campus UnB Gama)
@@ -258,3 +258,4 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 | `1.0` | 22/11/2026 | Apresentação final no visual do PC1, com PDF, roteiro e notas por apresentador (#84) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `1.1` | 22/11/2026 | Códigos de P02 e P04 corrigidos e efeito da build local na T2 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `1.2` | 22/11/2026 | Nomes de quem apresenta retirados dos slides; ficam só nas notas de fala | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.3` | 22/11/2026 | Turma corrigida para T01 e endereço do site atualizado | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
