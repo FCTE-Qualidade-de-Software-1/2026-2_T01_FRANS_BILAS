@@ -75,17 +75,18 @@ NOTA PARA APRESENTAÇÃO (Davi):
 <!--
 NOTA PARA APRESENTAÇÃO (Miguel):
 - O tempo vem da gravação: começa no quadro em que a tela da tarefa aparece, momento em que o observador dava o comando, e termina no estado final.
-- T1: P03 e P04 clicaram em "Entrar com gov.br" e caíram no login simulado; P04 errou a senha.
-- T2: buscas sem resultado e carrossel com rota quebrada; todos precisaram de ajuda com o menu.
+- T1: P03 e P02 clicaram em "Entrar com gov.br" e caíram no login simulado; P02 errou a senha.
+- T2: foi a tarefa mais afetada pela build local. O botão "WAI WCAG" cobria o menu, e o banco só tinha o processo de teste, então a busca por "processo" não achou nada e o carrossel levava a processos inexistentes. Todos precisaram de ajuda.
 - T3: P03 enviou descrição com 14 caracteres e a mensagem não disse o que corrigir.
-- T4: P04 votou numa proposta alheia e recebeu erro 500 ao retirar votos.
+- T4: P02 votou numa proposta alheia e recebeu erro 500 ao retirar votos.
+- As contas p02 e p04 foram usadas trocadas; as fichas usam o código do perfil (P02, mais de 50 anos; P04, usuário do Gov.br).
 -->
 
 | Participante | T1 | T2 | T3 | T4 |
 | :--- | :---: | :---: | :---: | :---: |
-| P02 | 31,4 s | 19,7 s, com ajuda | 49,6 s | 5,2 s |
+| P02 | 108,8 s, com ajuda, 2 erros | 73,8 s, com ajuda, 1 erro | 104,5 s | 107,1 s, com ajuda, 3 erros |
 | P03 | 51,7 s, com ajuda, 1 erro | 83,0 s, com ajuda, 1 erro | 93,1 s, com ajuda, 1 erro | 38,1 s |
-| P04 | 108,8 s, com ajuda, 2 erros | 73,8 s, com ajuda, 1 erro | 104,5 s | 107,1 s, com ajuda, 3 erros |
+| P04 | 31,4 s | 19,7 s, com ajuda | 49,6 s | 5,2 s |
 
 Fonte: [Dados de interação](../dados/interacao/index.md).
 
@@ -237,7 +238,7 @@ NOTA PARA APRESENTAÇÃO:
 
 - **D1 (LAPPIS)**: testes de requisição nos fluxos de voto e proposta antes de refatorar; corrigir o erro 500
 - **D2 (Dataprev e MGI)**: chamado de segurança; atualizar Ruby, Rails e gems; proteger as ações da M3.3
-- **D3 (Secretaria)**: mínimo de caracteres e erro junto do campo; processos na página inicial; nomes acessíveis
+- **D3 (Secretaria)**: mínimo de caracteres e erro junto do campo; repetir a T2 com dados reais antes de mexer na navegação; nomes acessíveis
 - **Executadas**: [melhoria #73](../dados/melhoria-73/index.md) e [melhoria #80](../dados/melhoria-80/index.md)
 
 ---
@@ -273,8 +274,8 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 - Lições: testar a gravação antes, contas novas por sessão, script de cálculo publicado com os dados.
 -->
 
-- **Limites**: amostra de 3, sessões repetidas, ambiente de desenvolvimento, ICA só automático e login Gov.br não avaliado
-- **Lições**: testar a gravação antes da sessão, usar contas sem uso anterior e publicar o script de cálculo com os dados
+- **Limites**: amostra de 3, sessões repetidas, build local (menu coberto e banco quase vazio na T2), ICA só automático e login Gov.br não avaliado
+- **Lições**: testar a gravação antes da sessão, usar contas sem uso anterior, popular o banco da cópia local e publicar o script de cálculo com os dados
 
 ---
 
@@ -283,3 +284,4 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 | Versão | Data | Descrição | Autor | Revisor |
 | :---: | :---: | :--- | :--- | :--- |
 | `1.0` | 22/11/2026 | Apresentação final no visual do PC1, com PDF, roteiro e notas por apresentador (#84) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.1` | 22/11/2026 | Códigos de P02 e P04 corrigidos e efeito da build local na T2 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |

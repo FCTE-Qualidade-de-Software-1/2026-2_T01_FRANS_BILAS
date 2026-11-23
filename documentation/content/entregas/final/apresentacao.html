@@ -198,15 +198,15 @@
     <p class="sub">Tempo tirado da gravação: começa no quadro em que a tela da tarefa aparece (momento do comando) e termina no estado final.</p>
     <table>
       <tr><th>Participante</th><th class="c">T1 · Entrar</th><th class="c">T2 · Achar o processo</th><th class="c">T3 · Enviar proposta</th><th class="c">T4 · Votar na proposta</th></tr>
-      <tr><td><b>P02</b> · mais de 50 anos</td><td class="c">31,4 s</td><td class="c">19,7 s · com ajuda</td><td class="c">49,6 s</td><td class="c">5,2 s</td></tr>
+      <tr><td><b>P02</b> · mais de 50 anos</td><td class="c">108,8 s · ajuda · 2 erros</td><td class="c">73,8 s · ajuda · 1 erro</td><td class="c">104,5 s</td><td class="c">107,1 s · ajuda · 3 erros</td></tr>
       <tr><td><b>P03</b> · estudante de humanas</td><td class="c">51,7 s · ajuda · 1 erro</td><td class="c">83,0 s · ajuda · 1 erro</td><td class="c">93,1 s · ajuda · 1 erro</td><td class="c">38,1 s</td></tr>
-      <tr><td><b>P04</b> · usuário do Gov.br</td><td class="c">108,8 s · ajuda · 2 erros</td><td class="c">73,8 s · ajuda · 1 erro</td><td class="c">104,5 s</td><td class="c">107,1 s · ajuda · 3 erros</td></tr>
+      <tr><td><b>P04</b> · usuário do Gov.br</td><td class="c">31,4 s</td><td class="c">19,7 s · com ajuda</td><td class="c">49,6 s</td><td class="c">5,2 s</td></tr>
     </table>
     <div class="grid g4" style="margin-top:18px;flex:none">
-      <div class="card escuro"><p><span class="rotulo">T1</span> Dois clicaram em "Entrar com gov.br" e caíram no login simulado. P04 errou a senha.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T2</span> Busca por "processo" sem resultado e carrossel com rota quebrada. Todos precisaram de ajuda com o menu.</p></div>
+      <div class="card escuro"><p><span class="rotulo">T1</span> Dois clicaram em "Entrar com gov.br" e caíram no login simulado. P02 errou a senha.</p></div>
+      <div class="card escuro"><p><span class="rotulo">T2</span> Build local: menu coberto pelo botão "WAI WCAG" e banco só com o processo de teste. Todos precisaram de ajuda.</p></div>
       <div class="card escuro"><p><span class="rotulo">T3</span> P03 enviou descrição com 14 caracteres. A mensagem não disse o que corrigir.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T4</span> P04 votou em proposta alheia e recebeu erro 500 ao tentar retirar votos.</p></div>
+      <div class="card escuro"><p><span class="rotulo">T4</span> P02 votou em proposta alheia e recebeu erro 500 ao tentar retirar votos.</p></div>
     </div>
   </div>
   <div class="apresentador">Miguel Arthur</div>
@@ -231,7 +231,7 @@
         <tr><td><b>TME</b></td><td>31,4 s · 77,1 s · 21,7 s (T2 sem dado)</td><td class="c"><span class="faixa exc">Exc.</span> <span class="faixa bom">Bom</span></td></tr>
         <tr><td><b>FET</b></td><td>1,00 · 0,67 · 0,33 · 1,00</td><td class="c"><span class="faixa bom">Bom</span></td></tr>
         <tr><td><b>ICA</b></td><td>91,2% (196 de 215)</td><td class="c"><span class="faixa bom">Bom</span></td></tr>
-        <tr><td><b>SUS</b></td><td>80,0 (80,0 · 77,5 · 82,5)</td><td class="c"><span class="faixa exc">Excelente</span></td></tr>
+        <tr><td><b>SUS</b></td><td>80,0 (82,5 · 77,5 · 80,0)</td><td class="c"><span class="faixa exc">Excelente</span></td></tr>
       </table>
     </div>
     <div class="card ouro" style="margin-top:18px"><p><b>O contraste:</b> os participantes avaliaram bem a plataforma (SUS 80), mas nenhuma tarefa teve 75% de conclusão sem ajuda. Pela regra da Fase 2, TCR abaixo de 75% indica barreira ao cidadão.</p></div>
@@ -327,7 +327,7 @@
     <div class="fluxo" style="margin-bottom:14px">
       <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>TSN 60,14% · ICT 39,43%</p></div><div class="seta">▶</div>
       <div class="card branco" style="flex:2"><p><b>Botão de voto sobrescrito</b> chama um método que só existe no <code>ProposalsController</code>. Ao retirar voto, outro controller renderiza o botão → erro 500 na T4.</p></div><div class="seta">▶</div>
-      <div class="card ouro" style="flex:1"><h3>Interação</h3><p>T4 de P04</p></div>
+      <div class="card ouro" style="flex:1"><h3>Interação</h3><p>T4 de P02</p></div>
     </div>
     <div class="fluxo" style="margin-bottom:14px">
       <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>controller e formulário sobrescritos</p></div><div class="seta">▶</div>
@@ -368,7 +368,7 @@
     <div class="grid g3">
       <div class="card"><div class="selo">D1</div><h3 class="centro">LAPPIS</h3><ul><li><b>Alta:</b> testes de requisição para votar, retirar voto e publicar proposta; depois refatorar essas sobrescritas</li><li><b>Alta:</b> corrigir o erro 500 do botão de voto</li><li>Atacar <code>permissions.rb</code> e <code>form_builder.rb</code></li></ul></div>
       <div class="card"><div class="selo">D2</div><h3 class="centro">Dataprev e MGI</h3><ul><li><b>Alta:</b> abrir chamado de segurança</li><li>Atualizar Ruby, Rails e as gems com CVE</li><li>Proteger as 13 ações da M3.3 no padrão da melhoria #80</li></ul></div>
-      <div class="card"><div class="selo">D3</div><h3 class="centro">Sec. de Participação Digital</h3><ul><li><b>Alta:</b> mostrar o mínimo de caracteres e o erro junto do campo; corrigir o <code>aria-label</code></li><li><b>Média:</b> lista de processos na página inicial e busca por tipo</li><li><b>Média:</b> nomes acessíveis e textos alternativos</li></ul></div>
+      <div class="card"><div class="selo">D3</div><h3 class="centro">Sec. de Participação Digital</h3><ul><li><b>Alta:</b> mostrar o mínimo de caracteres e o erro junto do campo; corrigir o <code>aria-label</code></li><li><b>Média:</b> repetir a T2 com dados reais; se persistir, processos na página inicial e busca por tipo</li><li><b>Média:</b> nomes acessíveis e textos alternativos</li></ul></div>
     </div>
   </div>
   <div class="apresentador">João V. Farias</div>
@@ -416,8 +416,8 @@
   <div class="conteudo">
     <h1>Limites e lições</h1>
     <div class="grid g2" style="flex:none;margin-top:10px">
-      <div class="card"><h3>Limites dos resultados</h3><ul><li><b>Amostra:</b> 3 participantes, abaixo da meta de 5</li><li><b>Repetição:</b> as sessões gravadas não foram a primeira tentativa</li><li><b>Ambiente:</b> login simulado, rota quebrada e botão "WAI WCAG" só existem em desenvolvimento</li><li><b>ICA:</b> só verificações automáticas</li><li><b>Gov.br:</b> o login real não foi avaliado</li></ul></div>
-      <div class="card"><h3>O que aprendemos</h3><ul><li>Testar a gravação antes de cada sessão: as primeiras três travaram</li><li>Contas novas por sessão, sem uso anterior</li><li>Script de cálculo publicado junto com os dados brutos</li><li>Números de produto e de processo explicam um ao outro: o defeito do voto apareceu na sessão e foi rastreado até o código</li></ul></div>
+      <div class="card"><h3>Limites dos resultados</h3><ul><li><b>Amostra:</b> 3 participantes, abaixo da meta de 5</li><li><b>Repetição:</b> as sessões gravadas não foram a primeira tentativa</li><li><b>Build local:</b> na T2, menu coberto pelo botão "WAI WCAG" e banco só com o processo de teste; login simulado e rota quebrada só existem em desenvolvimento</li><li><b>ICA:</b> só verificações automáticas</li><li><b>Gov.br:</b> o login real não foi avaliado</li></ul></div>
+      <div class="card"><h3>O que aprendemos</h3><ul><li>Testar a gravação antes de cada sessão: as primeiras três travaram</li><li>Contas novas por sessão, sem uso anterior, e conferir qual conta cada participante usa</li><li>Popular o banco da cópia local e esconder as ferramentas de desenvolvimento antes das sessões</li><li>Script de cálculo publicado junto com os dados brutos</li><li>Números de produto e de processo explicam um ao outro: o defeito do voto apareceu na sessão e foi rastreado até o código</li></ul></div>
     </div>
     <p class="nota">Dados brutos, scripts e relatórios na GitPage, em "Coleta de Dados" e "Resultados da Avaliação".</p>
   </div>

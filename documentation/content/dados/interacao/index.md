@@ -6,7 +6,7 @@ icon: lucide/users
 
 Esta página reúne os registros das sessões com usuários, de onde saem as métricas M1.1, M1.2, M1.3 e M1.5 definidas na [Fase 2](../../fases/2.md) e planejadas na [Fase 3](../../fases/3.md). A inspeção de acessibilidade (M1.4) não usa estas fichas.
 
-**Situação em 22/11/2026**: três sessões realizadas e gravadas (P02, P03 e P04). As fichas usam as gravações das 20:31, 20:33 e 20:38, com tempo tirado do vídeo. Os participantes já tinham feito as tarefas em rodadas anteriores, o que favorece os resultados. As respostas do SUS estão em `M1.5-sus.csv`, com os três questionários completos. Os detalhes estão na Seção 8 do [roteiro](roteiro.md).
+**Situação em 22/11/2026**: três sessões realizadas e gravadas (P02, P03 e P04). As fichas usam as gravações das 20:31, 20:33 e 20:38, com tempo tirado do vídeo. Os participantes já tinham feito as tarefas em rodadas anteriores, o que favorece os resultados. As contas `p02` e `p04` foram usadas trocadas: P02 (mais de 50 anos) entrou com `p04@teste.local`, e P04 (usuário do Gov.br) com `p02@teste.local`. As fichas usam o código do perfil, como define a Fase 3. As respostas do SUS estão em `M1.5-sus.csv`, com os três questionários completos. Os detalhes estão na Seção 8 do [roteiro](roteiro.md).
 
 ---
 
@@ -21,10 +21,10 @@ A Tabela 1 identifica a execução. Os campos em aberto são preenchidos na prim
 | Repositório e commit | `decidim-govbr`, commit `176b04673d956af4b1ab645e922cedd796b6a22e` |
 | Condução das sessões | Mateus Vinícius Vieira (issue #90) |
 | Rotulagem por métrica | Miguel Arthur Oliveira de Lima (issue #72) |
-| Datas das sessões, com fuso | 22/11/2026, UTC−3: P02 às 20:31:03, P03 às 20:33:32 e P04 às 20:38:48 (início das gravações). Rodadas anteriores com as mesmas contas entre 19:50 e 20:25 |
+| Datas das sessões, com fuso | 22/11/2026, UTC−3: P04 às 20:31:03, P03 às 20:33:32 e P02 às 20:38:48 (início das gravações). Rodadas anteriores com as mesmas contas entre 19:50 e 20:25 |
 | Máquina, sistema e navegador | Notebook Lenovo, Ubuntu, Firefox (versões não registradas) |
 | Processo participativo usado em T2 | Praças e Parques do Bairro (`pracas-e-parques-teste`), criado na cópia local e listado no menu principal |
-| Proposta de teste usada em T4 | A proposta que o próprio participante publicou: proposta 10 (P02), 11 (P03) e 13 (P04, que publicou a 12 na T3 e criou a 13 durante a T4) |
+| Proposta de teste usada em T4 | A proposta que o próprio participante publicou: proposta 10 (P04), 11 (P03) e 13 (P02, que publicou a 12 na T3 e criou a 13 durante a T4) |
 | URLs iniciais de T1 a T4 | T1: `http://localhost:3000/?locale=pt-BR`; T2: página inicial com login; T3: `http://localhost:3000/processes/pracas-e-parques-teste/f/31`; T4: página da proposta publicada na T3 (`.../f/31/proposals/{id}`) |
 | Sessões realizadas e sessões com gravação autorizada | 3 realizadas e 3 gravadas, com autorização. As gravações das rodadas anteriores travaram num quadro fixo |
 
