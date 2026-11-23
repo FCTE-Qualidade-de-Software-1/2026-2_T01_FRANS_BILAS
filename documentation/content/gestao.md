@@ -288,7 +288,7 @@ O planejamento do Sprint 3 foi feito na reunião de 29/10 ([Ata 02](atas/index.m
 | **Davi Mesquita Sousa** | [@davimesquit](https://github.com/davimesquit) | Dupla 3 (Gestão/Infra) | Delimitação de escopo, profundidade e objetos de avaliação, alinhamento aos ODS e metas, alinhamento de seções e slides com a Fase 1 e revisão de sumário e referências do artigo. | 9,0h | 3,1h | **8,5%** |
 | **TOTAL** | - | **Esforço Coletivo Consolidado** | **Execução das atividades da Entrega 1 registradas no GitHub Projects 33** | **108,0h** | **36,4h** | **100,00%** |
 
-Fonte: GitHub Projects 33, issues do milestone E1 (PC1).
+Fonte: GitHub Projects 33, issues do milestone E1 (PC1). Para o resumo consolidado da Entrega 2 e 2ª Avaliação Cruzada, veja a [Seção 13](#13-avaliacao-cruzada-2).
 
 ---
 
@@ -463,6 +463,32 @@ Fonte: gerado por `.github/scripts/update_metrics.py` a partir das issues do rep
 
 ---
 
+## 13. Resumo de participação para a 2ª Avaliação Cruzada <a id="13-avaliacao-cruzada-2"></a>
+
+A Tabela 16 reúne os dados individuais exigidos pela issue #85, apurados em 23/11/2026 no repositório do GitHub, nas atas publicadas ([Atas de Reunião](atas/index.md)) e nos registros desta página. Commits e linhas alteradas estão no painel automático da [Seção 9.1](#91-resumo-de-atividade-e-esforco-por-integrante).
+
+**Tabela 16**: Resumo individual de participação para a 2ª Avaliação Cruzada até 23/11/2026 (issue #85).
+
+| Integrante | GitHub | Issues fechadas (E2 / Total) | PRs abertos (mesclados) | PRs revisados | Presença em atas | Horas registradas (E1 / Sprint 3) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | 5 / 25 de 25 | 2 | 5 (#112 a #116) | 2/2 (Atas 01 e 02) | E1: 39,0h est., 13,2h real; Sprint 3: 4,5h est. |
+| **Mateus Vinícius Vieira** | [@matix0](https://github.com/matix0) | 14 / 17 de 19 | 14 | 1 (#92) | 2/2 (Atas 01 e 02) | E1: 10,0h est., 3,4h real; Sprint 3: 8,0h est. |
+| **José Vinícius Alvares Soares de Queiroz** | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | 6 / 15 de 15 | 3 | 5 (#121 a #124, #126) | 2/2 (Atas 01 e 02) | E1: 18,0h est., 6,0h real; Sprint 3: 5,0h est. |
+| **Miguel Arthur Oliveira de Lima** | [@zlimaz](https://github.com/zlimaz) | 7 / 15 de 16 | 4 | 0 | 2/2 (Atas 01 e 02) | E1: 12,0h est., 4,1h real; Sprint 3: 5,5h est. |
+| **Davi Mesquita Sousa** | [@davimesquit](https://github.com/davimesquit) | 8 / 15 de 15 | 1 | 0 | 2/2 (Atas 01 e 02) | E1: 9,0h est., 3,1h real; Sprint 3: 4,0h est. |
+| **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | 3 / 12 de 12 | 5 | 0 | 1/2 (Ata 01; ausente na 02) | E1: 20,0h est., 6,7h real; Sprint 3: 4,0h est. |
+
+Fonte: API do GitHub e `issues-summary.md` em 23/11/2026, [Atas de Reunião](atas/index.md) e Tabela 11.
+
+Critérios e limites dos números da Tabela 16:
+
+- **Issues**: em 23/11, permanecem abertas apenas `#84` e `#99` (Mateus) e `#85` (Miguel, fechada pelo PR desta seção). Issues com dois responsáveis contam para ambos na soma individual (96 issues distintas ao todo: 93 fechadas e 3 abertas). Issues sem milestone associada no GitHub completam a diferença entre E2 e o total.
+- **Pull Requests**: todos os 29 PRs do repositório foram mesclados na `main`. A revisão contabiliza apenas aprovações ou comentários formais na aba *Reviews* por integrante diferente do autor (11 PRs); os outros 18 PRs foram mesclados sem revisão formal registrada no GitHub.
+- **Presença**: considera apenas as duas reuniões formalmente documentadas em [`atas/index.md`](atas/index.md) (Ata 01 em 16/10 e Ata 02 em 29/10, na qual Lucca tentou entrar após o encerramento).
+- **Horas registradas**: na Entrega 1, os valores de horas (108,0h estimadas e 36,4h distribuídas) são estimativas (Seção 6 e Tabela 11). No Sprint 3, a redistribuição de 30/10 somou 31,0h estimadas (Ata 02, §3.6), sem preenchimento de "Esforço real" nas issues em [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). As tabelas da Seção 9 registram `sem acesso` ao Projects 33 por falta do token `PROJECTS_TOKEN`, e os Sprints 4 e 5 não têm arquivo local com horas reais apuradas.
+
+---
+
 ## Referências
 
 - JONES, C. L. et al. *PSM Continuous Iterative Development Measurement Framework, Part 1*, v2.1, 2021: §2 (conceitos), §4 (modelo de informação), §5 (princípios), §7 (tabela ICM, Tab. 5, linhas 1, 7, 8, 18 e 32).
@@ -489,3 +515,4 @@ A Parte 3 do guia (garantia de software e dívida técnica) não entra na gestã
 | `2.7` | 04/11/2026 | Fechamento dos pontos em validação da Gestão (issue #44): limites de N3 e N4, divisão do PC2 e calendário | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) |
 | `2.8` | 17/11/2026 | Registro da ausência de medições publicadas dos Sprints 4 e 5 e distinção entre estimativa e horas reais | Davi Mesquita Sousa | - |
 | `2.9` | 17/11/2026 | Humanização da escrita, simplificação de termos e atualização de status dos sprints | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
+| `2.10` | 23/11/2026 | Inclusão do resumo individual de participação para a 2ª Avaliação Cruzada (issue #85) | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | A definir |
