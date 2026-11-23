@@ -9,13 +9,11 @@ Disciplina: Qualidade de Software 1 (FGA0315, semestre 2026.2)
 Professora: Dra. Cristiane Soares Ramos  
 Faculdade de Ciências e Tecnologias em Engenharia (FCTE, Campus UnB Gama)
 
-Os slides no visual do Ponto de Controle 1 estão em [PDF](final/apresentacao-final.pdf), gerado a partir de [`final/apresentacao.html`](final/apresentacao.html). Esta página traz o mesmo roteiro, com quem apresenta cada slide e as notas de fala.
+Os slides no visual do Ponto de Controle 1 estão em [PDF](final/apresentacao-final.pdf), gerado a partir de [`final/apresentacao.html`](final/apresentacao.html). Esta página traz o mesmo roteiro. Quem apresenta cada slide está só nas notas de fala, que não aparecem nos slides.
 
 ---
 
 ## 1. Produto e Propósito
-
-<p class="apresentador">João Victor da Silva Batista de Farias</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (João):
@@ -32,8 +30,6 @@ NOTA PARA APRESENTAÇÃO (João):
 
 ## 2. Modelo e GQM
 
-<p class="apresentador">João Victor da Silva Batista de Farias</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (João):
 - ISO/IEC 25010:2023, três características, um objetivo GQM para cada, três questões por objetivo, 12 métricas.
@@ -49,8 +45,6 @@ NOTA PARA APRESENTAÇÃO (João):
 ---
 
 ## 3. Como Coletamos
-
-<p class="apresentador">Davi Mesquita Sousa</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Davi):
@@ -69,8 +63,6 @@ NOTA PARA APRESENTAÇÃO (Davi):
 ---
 
 ## 4. G1: As Sessões
-
-<p class="apresentador">Miguel Arthur Oliveira de Lima</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Miguel):
@@ -94,8 +86,6 @@ Fonte: [Dados de interação](../dados/interacao/index.md).
 
 ## 5. G1: Resultados
 
-<p class="apresentador">Mateus Vinícius Vieira</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Mateus):
 - TCR abaixo de 75% nas quatro tarefas; é a regra da Fase 2 que indica barreira ao cidadão.
@@ -115,8 +105,6 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 
 ## 6. G1: Acessibilidade
 
-<p class="apresentador">Davi Mesquita Sousa</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Davi):
 - ICA de 91,2%: 196 de 215 verificações automáticas aprovadas; 48 itens sem decisão.
@@ -133,8 +121,6 @@ Fonte: [Dados de acessibilidade](../dados/acessibilidade/index.md).
 ---
 
 ## 7. G2: Manutenibilidade
-
-<p class="apresentador">Lucca Medeiros Silva</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Lucca):
@@ -153,8 +139,6 @@ NOTA PARA APRESENTAÇÃO (Lucca):
 
 ## 8. G3: Segurança
 
-<p class="apresentador">José Vinícius Alvares Soares de Queiroz</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (José):
 - Dois alertas de confiança alta (Rails e Ruby sem suporte) classificam a segurança como Insuficiente e exigem chamado.
@@ -170,8 +154,6 @@ NOTA PARA APRESENTAÇÃO (José):
 ---
 
 ## 9. Respostas às Questões
-
-<p class="apresentador">José Vinícius Alvares Soares de Queiroz</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (José):
@@ -192,8 +174,6 @@ Fonte: [Fase 4](../fases/4.md), Tabela 2.
 
 ## 10. Relações entre as Características
 
-<p class="apresentador">Mateus Vinícius Vieira</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Mateus):
 - O erro 500 da T4 vem do botão de voto sobrescrito, que chama um método existente só no ProposalsController.
@@ -208,8 +188,6 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 ---
 
 ## 11. Julgamento por Objetivo
-
-<p class="apresentador">João Victor da Silva Batista de Farias</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (João):
@@ -227,8 +205,6 @@ NOTA PARA APRESENTAÇÃO (João):
 
 ## 12. Recomendações e Melhorias
 
-<p class="apresentador">João Victor da Silva Batista de Farias, Lucca Medeiros Silva e José Vinícius Alvares Soares de Queiroz</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO:
 - João: recomendações por decisão, com prioridade alta quando a regra exige ação.
@@ -244,8 +220,6 @@ NOTA PARA APRESENTAÇÃO:
 ---
 
 ## 13. Gestão do Projeto
-
-<p class="apresentador">Davi Mesquita Sousa e Miguel Arthur Oliveira de Lima</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Davi e Miguel):
@@ -266,8 +240,6 @@ Fonte: [Gestão](../gestao.md), Tabela 15.
 
 ## 14. Limites e Lições
 
-<p class="apresentador">Mateus Vinícius Vieira</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Mateus):
 - Limites: 3 participantes, sessões repetidas, elementos do modo de desenvolvimento, ICA só automático, Gov.br não avaliado.
@@ -285,3 +257,4 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 | :---: | :---: | :--- | :--- | :--- |
 | `1.0` | 22/11/2026 | Apresentação final no visual do PC1, com PDF, roteiro e notas por apresentador (#84) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `1.1` | 22/11/2026 | Códigos de P02 e P04 corrigidos e efeito da build local na T2 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.2` | 22/11/2026 | Nomes de quem apresenta retirados dos slides; ficam só nas notas de fala | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
