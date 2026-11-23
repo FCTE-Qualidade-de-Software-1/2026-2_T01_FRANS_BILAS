@@ -1,1 +1,10 @@
 participante,tarefa,instante,acao,resposta_observada
+P03,T1,2026-11-22T20:33:49-03:00,"Clicou em ""Entrar com gov.br""","Abriu o formulario do login simulado de desenvolvimento (""User Info""), que nao leva ao login"
+P03,T2,2026-11-22T20:35:06-03:00,Clicou num destaque do carrossel da pagina inicial,"Pagina ""Routing Error"" do modo de desenvolvimento (rota /processes/brasilparticipativo/f/33/ inexistente)"
+P03,T3,2026-11-22T20:37:04-03:00,Publicou a proposta com descricao de 14 caracteres,"Formulario devolvido com ""Erro ao criar proposta. Verifique os campos obrigatorios"" e aviso de minimo de 15 caracteres"
+P04,T1,2026-11-22T20:39:08-03:00,"Clicou em ""Entrar com gov.br""","Abriu o formulario do login simulado de desenvolvimento (""User Info""), que nao leva ao login"
+P04,T1,2026-11-22T20:40:03-03:00,Enviou e-mail e senha no login de estrangeiro,"Login recusado (resposta 401); a pagina voltou para ""Conecte-se"" com o formulario de estrangeiro fechado"
+P04,T2,2026-11-22T20:41:26-03:00,Clicou num destaque do carrossel da pagina inicial,"Pagina ""Routing Error"" do modo de desenvolvimento (rota /processes/brasilparticipativo/f/33/ inexistente)"
+P04,T4,2026-11-22T20:44:10-03:00,"Clicou em ""Votar"" na proposta 3, de outro participante",Voto registrado na proposta errada
+P04,T4,2026-11-22T20:44:12-03:00,"Clicou em ""Retirar voto"" na proposta 8, criada pela conta numa rodada anterior",Erro 500 no servidor; o botao nao mudou
+P04,T4,2026-11-22T20:44:15-03:00,"Clicou em ""Retirar voto"" na proposta 9, criada pela conta numa rodada anterior",Erro 500 no servidor; o botao nao mudou

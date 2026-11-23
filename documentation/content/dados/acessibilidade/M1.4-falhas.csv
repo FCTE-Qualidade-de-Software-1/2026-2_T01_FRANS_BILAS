@@ -1,0 +1,94 @@
+pagina,ferramenta,regra,impacto,seletor
+1-inicio,axe-core,image-alt,critical,".news-card__list__item:nth-child(1) > img[data-accessibility-violation=""true""]"
+1-inicio,axe-core,image-alt,critical,".news-card__list__item:nth-child(2) > img[data-accessibility-violation=""true""]"
+1-inicio,axe-core,image-alt,critical,".news-card__list__item:nth-child(3) > img[data-accessibility-violation=""true""]"
+1-inicio,axe-core,label-content-name-mismatch,serious,"button[data-target=""language-menu""]"
+1-inicio,axe-core,label-content-name-mismatch,serious,#avatar-dropdown-trigger
+1-inicio,axe-core,link-name,serious,".show-desktop > .carousel-stage > a[href=""/assemblies/confjuv4/f/34/""]"
+1-inicio,axe-core,link-name,serious,".show-desktop > .carousel-stage > a[href=""/assemblies/cnsan6/f/41/""]"
+1-inicio,axe-core,link-name,serious,".show-desktop > .carousel-stage > a[href=""/processes/programas/f/45/""]"
+1-inicio,axe-core,link-name,serious,"a[href$=""pt-br""][target=""_blank""][data-accessibility-violation=""true""]:nth-child(2)"
+1-inicio,axe-core,link-name,serious,.participacao-social-logo
+1-inicio,axe-core,link-name,serious,".logos__container > a[href$=""pt-br""][target=""_blank""][data-accessibility-violation=""true""]:nth-child(4)"
+1-inicio,axe-core,link-name,serious,"a[href=""/""][data-accessibility-violation=""true""]"
+1-inicio,axe-core,link-name,serious,"a[href$=""dataprev.gov.br/""]"
+1-inicio,axe-core,link-name,serious,"a[href$=""unb.br/""][rel=""noopener""][target=""_blank""]"
+1-inicio,axe-core,link-name,serious,"a[rel=""noopener""][href$=""pt-br""][target=""_blank""]:nth-child(3)"
+1-inicio,axe-core,link-name,serious,"a[rel=""noopener""][href$=""pt-br""][target=""_blank""]:nth-child(4)"
+1-inicio,axe-core,link-name,serious,"a[data-remote=""true""]"
+1-inicio,lighthouse,image-alt,,section.news-card > div.news-card__list > a.news-card__list__item > img
+1-inicio,lighthouse,image-alt,,section.news-card > div.news-card__list > a.news-card__list__item > img
+1-inicio,lighthouse,image-alt,,section.news-card > div.news-card__list > a.news-card__list__item > img
+1-inicio,lighthouse,link-name,,div.br-col-sm-12 > div.br-carousel > div.carousel-stage > a
+1-inicio,lighthouse,link-name,,div.br-col-sm-12 > div.br-carousel > div.carousel-stage > a
+1-inicio,lighthouse,link-name,,div.br-col-sm-12 > div.br-carousel > div.carousel-stage > a
+1-inicio,lighthouse,link-name,,section#html-block > section.logos__section > div.logos__container > a
+1-inicio,lighthouse,link-name,,section#html-block > section.logos__section > div.logos__container > a.participacao-social-logo
+1-inicio,lighthouse,link-name,,section#html-block > section.logos__section > div.logos__container > a
+1-inicio,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.logo > a
+1-inicio,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+1-inicio,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+1-inicio,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+1-inicio,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+1-inicio,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.br-footer-container > a.cc-badge
+1-inicio,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div.language-dropdown-container > button.br-button
+1-inicio,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div > button#avatar-dropdown-trigger
+2-processos,axe-core,label-content-name-mismatch,serious,"button[data-target=""language-menu""]"
+2-processos,axe-core,label-content-name-mismatch,serious,#avatar-dropdown-trigger
+2-processos,axe-core,link-name,serious,"#participatory_process_3 > a[data-accessibility-violation=""true""]"
+2-processos,axe-core,link-name,serious,"a[href=""/""][data-accessibility-violation=""true""]"
+2-processos,axe-core,link-name,serious,"a[href$=""dataprev.gov.br/""]"
+2-processos,axe-core,link-name,serious,"a[href$=""unb.br/""]"
+2-processos,axe-core,link-name,serious,"a[href$=""pt-br""][rel=""noopener""][data-accessibility-violation=""true""]:nth-child(3)"
+2-processos,axe-core,link-name,serious,"a[href$=""pt-br""][rel=""noopener""][data-accessibility-violation=""true""]:nth-child(4)"
+2-processos,axe-core,link-name,serious,".cc-badge[rel=""license noopener""][data-remote=""true""]"
+2-processos,lighthouse,heading-order,,section#processes-list-header > div > div.flex--sbe > h3.section-heading
+2-processos,lighthouse,link-name,,section#processes-grid > div.component-content > div#participatory_process_3 > a
+2-processos,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.logo > a
+2-processos,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+2-processos,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+2-processos,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+2-processos,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+2-processos,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.br-footer-container > a.cc-badge
+2-processos,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div.language-dropdown-container > button.br-button
+2-processos,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div > button#avatar-dropdown-trigger
+3-formulario,axe-core,label-content-name-mismatch,serious,"button[data-target=""language-menu""]"
+3-formulario,axe-core,label-content-name-mismatch,serious,#avatar-dropdown-trigger
+3-formulario,axe-core,link-name,serious,"a[href=""/""][data-accessibility-violation=""true""]"
+3-formulario,axe-core,link-name,serious,"a[href$=""dataprev.gov.br/""]"
+3-formulario,axe-core,link-name,serious,"a[href$=""unb.br/""]"
+3-formulario,axe-core,link-name,serious,"a[href$=""pt-br""][rel=""noopener""][data-accessibility-violation=""true""]:nth-child(3)"
+3-formulario,axe-core,link-name,serious,"a[href$=""pt-br""][rel=""noopener""][data-accessibility-violation=""true""]:nth-child(4)"
+3-formulario,axe-core,link-name,serious,"a[data-remote=""true""]"
+3-formulario,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.logo > a
+3-formulario,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+3-formulario,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+3-formulario,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+3-formulario,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+3-formulario,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.br-footer-container > a.cc-badge
+3-formulario,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div.language-dropdown-container > button.br-button
+3-formulario,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div > button#avatar-dropdown-trigger
+4-proposta,axe-core,label-content-name-mismatch,serious,"button[data-target=""language-menu""]"
+4-proposta,axe-core,label-content-name-mismatch,serious,#avatar-dropdown-trigger
+4-proposta,axe-core,link-name,serious,.facebook-share-button
+4-proposta,axe-core,link-name,serious,.twitter-share-button
+4-proposta,axe-core,link-name,serious,.linkedin-share-button
+4-proposta,axe-core,link-name,serious,.whatsapp-share-button
+4-proposta,axe-core,link-name,serious,"a[href=""/""][data-accessibility-violation=""true""][data-asw-orgfontsize=""14""]"
+4-proposta,axe-core,link-name,serious,"a[href$=""dataprev.gov.br/""]"
+4-proposta,axe-core,link-name,serious,"a[href$=""unb.br/""]"
+4-proposta,axe-core,link-name,serious,"a[href$=""pt-br""][rel=""noopener""][data-accessibility-violation=""true""]:nth-child(3)"
+4-proposta,axe-core,link-name,serious,"a[href$=""pt-br""][rel=""noopener""][data-accessibility-violation=""true""]:nth-child(4)"
+4-proposta,axe-core,link-name,serious,".cc-badge[rel=""license noopener""][data-remote=""true""]"
+4-proposta,lighthouse,link-name,,div.side-content > div.share_container > div.social_media_icons_container > a.facebook-share-button
+4-proposta,lighthouse,link-name,,div.side-content > div.share_container > div.social_media_icons_container > a.twitter-share-button
+4-proposta,lighthouse,link-name,,div.side-content > div.share_container > div.social_media_icons_container > a.linkedin-share-button
+4-proposta,lighthouse,link-name,,div.side-content > div.share_container > div.social_media_icons_container > a.whatsapp-share-button
+4-proposta,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.logo > a
+4-proposta,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+4-proposta,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+4-proposta,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+4-proposta,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.footer-logos-container > a
+4-proposta,lighthouse,link-name,,footer.br-footer > div.br-container-lg > div.br-footer-container > a.cc-badge
+4-proposta,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div.language-dropdown-container > button.br-button
+4-proposta,lighthouse,label-content-name-mismatch,,div.header-top > div.header-actions > div > button#avatar-dropdown-trigger

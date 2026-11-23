@@ -80,7 +80,7 @@ lighthouse "$URL_LOCAL" --only-categories=accessibility --disable-storage-reset 
 
 Os pesos são os totais de verificações com decisão de cada ferramenta e página, como detalhado na Fase 2. O índice descreve esses resultados automáticos. A conformidade integral com WCAG ou eMAG depende também das verificações manuais, registradas separadamente.
 
-Os comandos seguem as referências da [CLI do axe](https://github.com/dequelabs/axe-core-npm/blob/develop/packages/cli/README.md) e do [Lighthouse](https://github.com/GoogleChrome/lighthouse). A autenticação e as URLs dependem do ambiente da issue #64; esta etapa ainda não foi executada neste trabalho.
+Os comandos seguem as referências da [CLI do axe](https://github.com/dequelabs/axe-core-npm/blob/develop/packages/cli/README.md) e do [Lighthouse](https://github.com/GoogleChrome/lighthouse). A autenticação e as URLs dependem do ambiente da issue #64. A execução de 22/11/2026 está registrada em [Dados de acessibilidade](../dados/acessibilidade/index.md).
 
 ## M2.1 a M2.4: código e testes de Manutenibilidade
 
