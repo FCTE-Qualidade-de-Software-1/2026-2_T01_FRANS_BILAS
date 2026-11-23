@@ -59,9 +59,9 @@ A documentação está organizada em seções interligadas para facilitar a leit
 
 Todo o trabalho desenvolvido pela equipe é público e auditável:
 
-- **Repositório Oficial no GitHub**: [FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS)
+- **Repositório Oficial no GitHub**: [FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS)
 - **Quadro de Gestão (GitHub Projects 33)**: [FRANS BILAS - Brasil Participativo](https://github.com/orgs/FCTE-Qualidade-de-Software-1/projects/33/views/1)
-- **Releases do Projeto**: [Histórico de Releases no GitHub](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/releases)
+- **Releases do Projeto**: [Histórico de Releases no GitHub](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/releases)
 
 ---
 
@@ -71,12 +71,12 @@ A equipe é composta por seis estudantes de Engenharia de Software da Universida
 
 | Foto | Nome Completo | Matrícula | Dupla | GitHub | Contribuições no Git |
 | :---: | :--- | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/davimesquit.png" width="40" style="border-radius: 50%;" alt="Foto de Davi Mesquita Sousa"> | Davi Mesquita Sousa | 222006650 | Dupla 3 | [@davimesquit](https://github.com/davimesquit) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/commits?author=davimesquit) |
-| <img src="https://github.com/beyondmagic.png" width="40" style="border-radius: 50%;" alt="Foto de João Victor da Silva Batista de Farias"> | João Victor da Silva Batista de Farias | 221022604 | Dupla 1 | [@beyondmagic](https://github.com/beyondmagic) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/commits?author=beyondmagic) |
-| <img src="https://github.com/JoseViniciusQueiroz.png" width="40" style="border-radius: 50%;" alt="Foto de José Vinícius Alvares Soares de Queiroz"> | José Vinícius Alvares Soares de Queiroz | 222006884 | Dupla 2 | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/commits?author=JoseViniciusQueiroz) |
-| <img src="https://github.com/luccameds.png" width="40" style="border-radius: 50%;" alt="Foto de Lucca Medeiros Silva"> | Lucca Medeiros Silva | 222031528 | Dupla 2 | [@luccameds](https://github.com/luccameds) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/commits?author=luccameds) |
-| <img src="https://github.com/matix0.png" width="40" style="border-radius: 50%;" alt="Foto de Mateus Vinícius Vieira"> | Mateus Vinícius Vieira | 202016963 | Dupla 1 | [@matix0](https://github.com/matix0) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/commits?author=matix0) |
-| <img src="https://github.com/zlimaz.png" width="40" style="border-radius: 50%;" alt="Foto de Miguel Arthur Oliveira de Lima"> | Miguel Arthur Oliveira de Lima | 211062320 | Dupla 3 | [@zlimaz](https://github.com/zlimaz) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS/commits?author=zlimaz) |
+| <img src="https://github.com/davimesquit.png" width="40" style="border-radius: 50%;" alt="Foto de Davi Mesquita Sousa"> | Davi Mesquita Sousa | 222006650 | Dupla 3 | [@davimesquit](https://github.com/davimesquit) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/commits?author=davimesquit) |
+| <img src="https://github.com/beyondmagic.png" width="40" style="border-radius: 50%;" alt="Foto de João Victor da Silva Batista de Farias"> | João Victor da Silva Batista de Farias | 221022604 | Dupla 1 | [@beyondmagic](https://github.com/beyondmagic) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/commits?author=beyondmagic) |
+| <img src="https://github.com/JoseViniciusQueiroz.png" width="40" style="border-radius: 50%;" alt="Foto de José Vinícius Alvares Soares de Queiroz"> | José Vinícius Alvares Soares de Queiroz | 222006884 | Dupla 2 | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/commits?author=JoseViniciusQueiroz) |
+| <img src="https://github.com/luccameds.png" width="40" style="border-radius: 50%;" alt="Foto de Lucca Medeiros Silva"> | Lucca Medeiros Silva | 222031528 | Dupla 2 | [@luccameds](https://github.com/luccameds) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/commits?author=luccameds) |
+| <img src="https://github.com/matix0.png" width="40" style="border-radius: 50%;" alt="Foto de Mateus Vinícius Vieira"> | Mateus Vinícius Vieira | 202016963 | Dupla 1 | [@matix0](https://github.com/matix0) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/commits?author=matix0) |
+| <img src="https://github.com/zlimaz.png" width="40" style="border-radius: 50%;" alt="Foto de Miguel Arthur Oliveira de Lima"> | Miguel Arthur Oliveira de Lima | 211062320 | Dupla 3 | [@zlimaz](https://github.com/zlimaz) | [Commits](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/commits?author=zlimaz) |
 
 ---
 
@@ -87,3 +87,4 @@ A equipe é composta por seis estudantes de Engenharia de Software da Universida
 | `1.0` | 17/10/2026 | Estruturação da página inicial, tabela de integrantes e características avaliadas | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.1` | 10/11/2026 | Expansão da narrativa para leitor externo, inclusão do mapa de navegação das fases e texto alternativo (alt-text) nas imagens | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `1.2` | 17/11/2026 | Inclusão da Fase 4 no resumo de navegação da documentação | Davi Mesquita Sousa | - |
+| `1.3` | 22/11/2026 | Links do repositório, das releases e dos commits apontando para o endereço da T01 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |

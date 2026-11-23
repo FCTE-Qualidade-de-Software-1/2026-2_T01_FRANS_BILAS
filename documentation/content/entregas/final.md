@@ -4,18 +4,16 @@ icon: lucide/presentation
 
 # Apresentação Final: Avaliação de Qualidade do Brasil Participativo
 
-**Equipe Frans Bilas (Turma 02)**  
+**Equipe Frans Bilas (Turma 01)**  
 Disciplina: Qualidade de Software 1 (FGA0315, semestre 2026.2)  
 Professora: Dra. Cristiane Soares Ramos  
 Faculdade de Ciências e Tecnologias em Engenharia (FCTE, Campus UnB Gama)
 
-Os slides no visual do Ponto de Controle 1 estão em [PDF](final/apresentacao-final.pdf), gerado a partir de [`final/apresentacao.html`](final/apresentacao.html). Esta página traz o mesmo roteiro, com quem apresenta cada slide e as notas de fala.
+Os slides no visual do Ponto de Controle 1 estão em [PDF](final/apresentacao-final.pdf), gerado a partir de [`final/apresentacao.html`](final/apresentacao.html). Esta página traz o mesmo roteiro. Quem apresenta cada slide está só nas notas de fala, que não aparecem nos slides.
 
 ---
 
 ## 1. Produto e Propósito
-
-<p class="apresentador">João Victor da Silva Batista de Farias</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (João):
@@ -32,8 +30,6 @@ NOTA PARA APRESENTAÇÃO (João):
 
 ## 2. Modelo e GQM
 
-<p class="apresentador">João Victor da Silva Batista de Farias</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (João):
 - ISO/IEC 25010:2023, três características, um objetivo GQM para cada, três questões por objetivo, 12 métricas.
@@ -49,8 +45,6 @@ NOTA PARA APRESENTAÇÃO (João):
 ---
 
 ## 3. Como Coletamos
-
-<p class="apresentador">Davi Mesquita Sousa</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Davi):
@@ -70,30 +64,27 @@ NOTA PARA APRESENTAÇÃO (Davi):
 
 ## 4. G1: As Sessões
 
-<p class="apresentador">Miguel Arthur Oliveira de Lima</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Miguel):
 - O tempo vem da gravação: começa no quadro em que a tela da tarefa aparece, momento em que o observador dava o comando, e termina no estado final.
-- T1: P03 e P04 clicaram em "Entrar com gov.br" e caíram no login simulado; P04 errou a senha.
-- T2: buscas sem resultado e carrossel com rota quebrada; todos precisaram de ajuda com o menu.
+- T1: P03 e P02 clicaram em "Entrar com gov.br" e caíram no login simulado; P02 errou a senha.
+- T2: foi a tarefa mais afetada pela build local. O botão "WAI WCAG" cobria o menu, e o banco só tinha o processo de teste, então a busca por "processo" não achou nada e o carrossel levava a processos inexistentes. Todos precisaram de ajuda.
 - T3: P03 enviou descrição com 14 caracteres e a mensagem não disse o que corrigir.
-- T4: P04 votou numa proposta alheia e recebeu erro 500 ao retirar votos.
+- T4: P02 votou numa proposta alheia e recebeu erro 500 ao retirar votos.
+- As contas p02 e p04 foram usadas trocadas; as fichas usam o código do perfil (P02, mais de 50 anos; P04, usuário do Gov.br).
 -->
 
 | Participante | T1 | T2 | T3 | T4 |
 | :--- | :---: | :---: | :---: | :---: |
-| P02 | 31,4 s | 19,7 s, com ajuda | 49,6 s | 5,2 s |
+| P02 | 108,8 s, com ajuda, 2 erros | 73,8 s, com ajuda, 1 erro | 104,5 s | 107,1 s, com ajuda, 3 erros |
 | P03 | 51,7 s, com ajuda, 1 erro | 83,0 s, com ajuda, 1 erro | 93,1 s, com ajuda, 1 erro | 38,1 s |
-| P04 | 108,8 s, com ajuda, 2 erros | 73,8 s, com ajuda, 1 erro | 104,5 s | 107,1 s, com ajuda, 3 erros |
+| P04 | 31,4 s | 19,7 s, com ajuda | 49,6 s | 5,2 s |
 
 Fonte: [Dados de interação](../dados/interacao/index.md).
 
 ---
 
 ## 5. G1: Resultados
-
-<p class="apresentador">Mateus Vinícius Vieira</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Mateus):
@@ -114,8 +105,6 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 
 ## 6. G1: Acessibilidade
 
-<p class="apresentador">Davi Mesquita Sousa</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Davi):
 - ICA de 91,2%: 196 de 215 verificações automáticas aprovadas; 48 itens sem decisão.
@@ -132,8 +121,6 @@ Fonte: [Dados de acessibilidade](../dados/acessibilidade/index.md).
 ---
 
 ## 7. G2: Manutenibilidade
-
-<p class="apresentador">Lucca Medeiros Silva</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Lucca):
@@ -152,8 +139,6 @@ NOTA PARA APRESENTAÇÃO (Lucca):
 
 ## 8. G3: Segurança
 
-<p class="apresentador">José Vinícius Alvares Soares de Queiroz</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (José):
 - Dois alertas de confiança alta (Rails e Ruby sem suporte) classificam a segurança como Insuficiente e exigem chamado.
@@ -169,8 +154,6 @@ NOTA PARA APRESENTAÇÃO (José):
 ---
 
 ## 9. Respostas às Questões
-
-<p class="apresentador">José Vinícius Alvares Soares de Queiroz</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (José):
@@ -191,8 +174,6 @@ Fonte: [Fase 4](../fases/4.md), Tabela 2.
 
 ## 10. Relações entre as Características
 
-<p class="apresentador">Mateus Vinícius Vieira</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Mateus):
 - O erro 500 da T4 vem do botão de voto sobrescrito, que chama um método existente só no ProposalsController.
@@ -207,8 +188,6 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 ---
 
 ## 11. Julgamento por Objetivo
-
-<p class="apresentador">João Victor da Silva Batista de Farias</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (João):
@@ -226,8 +205,6 @@ NOTA PARA APRESENTAÇÃO (João):
 
 ## 12. Recomendações e Melhorias
 
-<p class="apresentador">João Victor da Silva Batista de Farias, Lucca Medeiros Silva e José Vinícius Alvares Soares de Queiroz</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO:
 - João: recomendações por decisão, com prioridade alta quando a regra exige ação.
@@ -237,14 +214,12 @@ NOTA PARA APRESENTAÇÃO:
 
 - **D1 (LAPPIS)**: testes de requisição nos fluxos de voto e proposta antes de refatorar; corrigir o erro 500
 - **D2 (Dataprev e MGI)**: chamado de segurança; atualizar Ruby, Rails e gems; proteger as ações da M3.3
-- **D3 (Secretaria)**: mínimo de caracteres e erro junto do campo; processos na página inicial; nomes acessíveis
+- **D3 (Secretaria)**: mínimo de caracteres e erro junto do campo; repetir a T2 com dados reais antes de mexer na navegação; nomes acessíveis
 - **Executadas**: [melhoria #73](../dados/melhoria-73/index.md) e [melhoria #80](../dados/melhoria-80/index.md)
 
 ---
 
 ## 13. Gestão do Projeto
-
-<p class="apresentador">Davi Mesquita Sousa e Miguel Arthur Oliveira de Lima</p>
 
 <!--
 NOTA PARA APRESENTAÇÃO (Davi e Miguel):
@@ -265,16 +240,14 @@ Fonte: [Gestão](../gestao.md), Tabela 15.
 
 ## 14. Limites e Lições
 
-<p class="apresentador">Mateus Vinícius Vieira</p>
-
 <!--
 NOTA PARA APRESENTAÇÃO (Mateus):
 - Limites: 3 participantes, sessões repetidas, elementos do modo de desenvolvimento, ICA só automático, Gov.br não avaliado.
 - Lições: testar a gravação antes, contas novas por sessão, script de cálculo publicado com os dados.
 -->
 
-- **Limites**: amostra de 3, sessões repetidas, ambiente de desenvolvimento, ICA só automático e login Gov.br não avaliado
-- **Lições**: testar a gravação antes da sessão, usar contas sem uso anterior e publicar o script de cálculo com os dados
+- **Limites**: amostra de 3, sessões repetidas, build local (menu coberto e banco quase vazio na T2), ICA só automático e login Gov.br não avaliado
+- **Lições**: testar a gravação antes da sessão, usar contas sem uso anterior, popular o banco da cópia local e publicar o script de cálculo com os dados
 
 ---
 
@@ -283,3 +256,6 @@ NOTA PARA APRESENTAÇÃO (Mateus):
 | Versão | Data | Descrição | Autor | Revisor |
 | :---: | :---: | :--- | :--- | :--- |
 | `1.0` | 22/11/2026 | Apresentação final no visual do PC1, com PDF, roteiro e notas por apresentador (#84) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.1` | 22/11/2026 | Códigos de P02 e P04 corrigidos e efeito da build local na T2 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.2` | 22/11/2026 | Nomes de quem apresenta retirados dos slides; ficam só nas notas de fala | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.3` | 22/11/2026 | Turma corrigida para T01 e endereço do site atualizado | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |

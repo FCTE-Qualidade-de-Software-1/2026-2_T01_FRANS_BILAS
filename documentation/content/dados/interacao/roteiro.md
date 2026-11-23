@@ -50,7 +50,7 @@ No primeiro login em `/system`, crie a organização com host `localhost`, portu
 | Item | Preencher |
 | :--- | :--- |
 | Página inicial (início da T1) | `http://localhost:3000/?locale=pt-BR`, sem ninguém logado |
-| Contas de teste (e-mail de cada uma; a senha fica fora do repositório) | P02: `p02@teste.local`; P03: `p03@teste.local`; P04: `p04@teste.local` |
+| Contas de teste (e-mail de cada uma; a senha fica fora do repositório) | `p02@teste.local`, `p03@teste.local` e `p04@teste.local`. Na aplicação, P02 usou `p04@teste.local` e P04 usou `p02@teste.local` (ver Seção 8) |
 | Processo participativo da T2 (nome e URL) | Praças e Parques do Bairro: `http://localhost:3000/processes/pracas-e-parques-teste` |
 | Formulário de nova proposta da T3 | `http://localhost:3000/processes/pracas-e-parques-teste/f/31/proposals/new` |
 | Proposta votada na T4 | A proposta que o próprio participante publicou na T3. A proposta 1, "Instalar bebedouros nas praças do bairro" (`http://localhost:3000/processes/pracas-e-parques-teste/f/31/proposals/1`), ficou na lista do processo |
@@ -223,14 +223,16 @@ Com três participantes, a amostra fica menor que a meta de cinco do plano. Regi
 
 ## 8. Registro da aplicação em 22/11/2026
 
-- As sessões usadas nas fichas são as três gravadas em 22/11/2026 (UTC−3): P02 às 20:31:03, P03 às 20:33:32 e P04 às 20:38:48. Os arquivos ficam na pasta restrita como `p02.mp4`, `p03.mp4` e `p04.mp4`.
-- Antes dessas sessões, entre 19:50 e 20:25, as mesmas contas fizeram as tarefas em outras rodadas. As gravações dessas rodadas travaram num quadro fixo, e as rodadas das 19:50 e das 19:55 com a conta de P02 foram testes da equipe. Por isso, nas sessões gravadas, os participantes já conheciam o caminho, e o Firefox sugeria o e-mail e os títulos digitados antes. Isso favorece os tempos e precisa constar no julgamento.
+- As sessões usadas nas fichas são as três gravadas em 22/11/2026 (UTC−3): P04 às 20:31:03, P03 às 20:33:32 e P02 às 20:38:48. Os arquivos ficam na pasta restrita como `p02.mp4`, `p03.mp4` e `p04.mp4`, nomeados pela conta usada.
+- As contas foram usadas trocadas: P02 (mais de 50 anos) entrou com `p04@teste.local` e aparece em `p04.mp4`; P04 (usuário frequente do Gov.br) entrou com `p02@teste.local` e aparece em `p02.mp4`. O observador identificou a troca depois da coleta. As fichas e o SUS usam o código do perfil, como define a Fase 3, e o campo `observacao` da ficha registra a conta de cada linha.
+- Antes dessas sessões, entre 19:50 e 20:25, as mesmas contas fizeram as tarefas em outras rodadas. As gravações dessas rodadas travaram num quadro fixo, e as rodadas das 19:50 e das 19:55 com a conta `p02` foram testes da equipe. Por isso, nas sessões gravadas, os participantes já conheciam o caminho, e o Firefox sugeria o e-mail e os títulos digitados antes. Isso favorece os tempos e precisa constar no julgamento.
 - A T4 aplicada foi votar na proposta que o próprio participante publicou na T3, e não na proposta 1. A Tabela 5 já traz essa versão.
 - O tempo vem das gravações. O início de cada tarefa é o primeiro quadro em que a tela inicial da tarefa aparece, porque o observador dava o comando nesse momento. A T1 começa no primeiro quadro da gravação, já na página inicial sem login. O fim é o primeiro quadro do estado final. Como o fim de uma tarefa é a tela inicial da seguinte, as tarefas ficam encadeadas. Quando a página carregava primeiro sem estilo, contou o primeiro quadro com a página já montada.
 - Os erros vêm das gravações, conferidas com o log do servidor. As tentativas de abrir o menu coberto pelo botão "WAI WCAG" não ficam claras no vídeo e não entraram na contagem.
-- O observador só orientou em quatro situações: depois de um envio inválido da proposta (pediu para ler o texto com atenção), quando o login dava erro (indicou o login de estrangeiro), quando um clique levava a uma URL quebrada e depois de cerca de dois erros ao tentar abrir o menu. Nessas tarefas, a ficha marca `ajuda = sim`. Na T4 de P04, o observador confirmou que orientou depois dos erros 500.
+- O observador só orientou em quatro situações: depois de um envio inválido da proposta (pediu para ler o texto com atenção), quando o login dava erro (indicou o login de estrangeiro), quando um clique levava a uma URL quebrada e depois de cerca de dois erros ao tentar abrir o menu. Nessas tarefas, a ficha marca `ajuda = sim`. Na T4 de P02, o observador confirmou que orientou depois dos erros 500.
 - Votos e visitas à proposta 1 feitos por iniciativa do participante não contam como erro (regra 1 da Seção 5).
-- A plataforma respondeu com erro 500 quando P04 tentou retirar votos e com a página "Routing Error" quando P03 e P04 clicaram num destaque do carrossel. Os cliques contam como erro do participante. A resposta da plataforma fica registrada em `M1.3-eventos.csv`.
+- A plataforma respondeu com erro 500 quando P02 tentou retirar votos e com a página "Routing Error" quando P03 e P02 clicaram num destaque do carrossel. Os cliques contam como erro do participante. A resposta da plataforma fica registrada em `M1.3-eventos.csv`.
+- A T2 foi a tarefa mais afetada pela build local. O botão "WAI WCAG" do modo de desenvolvimento cobria o menu, e o banco tinha só o processo de teste: a página inicial não listava processos, a busca por "processo" não retornou nada e os destaques do carrossel apontavam para processos que não existem na cópia local. Na produção, com o banco completo, esses obstáculos podem não aparecer.
 - O botão "WAI WCAG", que cobria o menu, e a página "Routing Error" fazem parte do modo de desenvolvimento da cópia local. Eles não existem na produção, e isso precisa constar no julgamento da Fase 4.
 - O questionário SUS foi respondido num formulário digital com os dez itens do artigo, mas com as pontas da escala escritas como "Discordo totalmente" e "Concordo totalmente". O artigo usa "fortemente". O formulário não registrou a data. As respostas foram transcritas das capturas de tela do formulário preenchido.
 
@@ -251,3 +253,4 @@ Com três participantes, a amostra fica menor que a meta de cinco do plano. Regi
 | `0.1` | 22/11/2026 | Roteiro das três sessões (P02, P03 e P04), com preparação da cópia local, fala, folha de anotação e cálculo do SUS (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `0.2` | 22/11/2026 | T4 ajustada para a versão aplicada (voto na própria proposta) e registro da aplicação (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `0.3` | 22/11/2026 | Registro refeito com as sessões gravadas das 20:31, 20:33 e 20:38 (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `0.4` | 22/11/2026 | Correção dos códigos de P02 e P04, que usaram as contas trocadas, e efeito da build local na T2 | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |

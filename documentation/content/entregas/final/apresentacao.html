@@ -44,7 +44,6 @@
   h1 { font-weight: 400; font-size: 50px; text-transform: uppercase; text-align: center; letter-spacing: .01em; margin-bottom: 10px; }
   .sub { text-align: center; color: var(--ouro); font-style: italic; font-size: 21px; margin-bottom: 26px; line-height: 1.35; }
   .sub.branco { color: #fff; font-style: normal; }
-  .apresentador { position: absolute; left: 58px; bottom: 16px; font-size: 15px; color: var(--ouro); z-index: 3; }
   .grid { display: grid; gap: 20px; }
   .g2 { grid-template-columns: 1fr 1fr; }
   .g3 { grid-template-columns: repeat(3, 1fr); }
@@ -111,7 +110,7 @@
   <div class="conteudo" style="justify-content:center;align-items:center;text-align:center">
     <div style="color:var(--ouro);letter-spacing:.18em;font-size:21px;margin-top:40px">APRESENTAÇÃO FINAL</div>
     <div style="font-size:62px;font-weight:400;line-height:1.18;margin:26px 0 54px">Avaliação de Qualidade do<br>Brasil Participativo</div>
-    <div style="letter-spacing:.08em;font-size:20px">QUALIDADE DE SOFTWARE 1 · FGA0315 · EQUIPE FRANS BILAS (T02)</div>
+    <div style="letter-spacing:.08em;font-size:20px">QUALIDADE DE SOFTWARE 1 · FGA0315 · EQUIPE FRANS BILAS (T01)</div>
     <div style="margin-top:auto;align-self:flex-start;text-align:left;font-size:18px;line-height:1.8">
       <b style="font-weight:600">INTEGRANTES:</b> Davi Mesquita · João V. Farias · José Vinícius · Lucca Medeiros · Mateus Vieira · Miguel Arthur<br>
       <b style="font-weight:600">PROFESSORA:</b> Profa. Dra. Cristiane Soares Ramos · FCTE/UnB, 23/11/2026
@@ -146,7 +145,6 @@
       <div class="card centro"><div class="selo">D3</div><h3>Fluxos cidadãos</h3><p>Redesenhar telas e formulários que causam desistência ou lentidão.</p><p class="rotulo" style="margin-top:22px">Quem decide: Sec. de Participação Digital</p></div>
     </div>
   </div>
-  <div class="apresentador">João V. Farias</div>
 </section>
 
 <!-- 4. Modelo e GQM -->
@@ -171,7 +169,6 @@
     </div>
     <p class="nota">Cada métrica cai em uma de quatro faixas: Insuficiente, Regular, Bom e Excelente. O nível aceitável é o limite da faixa Bom.</p>
   </div>
-  <div class="apresentador">João V. Farias</div>
 </section>
 
 <!-- 5. Como coletamos -->
@@ -187,7 +184,6 @@
     </div>
     <div class="card escuro" style="margin-top:18px"><p><span class="rotulo">Cópia local:</span> <code>docker compose</code> do decidim-govbr em modo de desenvolvimento, num notebook Lenovo com Ubuntu e Firefox. O login Gov.br não funciona fora da produção, então as sessões usaram o login de estrangeiro, com e-mail e senha de contas de teste.</p></div>
   </div>
-  <div class="apresentador">Davi Mesquita</div>
 </section>
 
 <!-- 6. Sessões: o que aconteceu -->
@@ -198,18 +194,17 @@
     <p class="sub">Tempo tirado da gravação: começa no quadro em que a tela da tarefa aparece (momento do comando) e termina no estado final.</p>
     <table>
       <tr><th>Participante</th><th class="c">T1 · Entrar</th><th class="c">T2 · Achar o processo</th><th class="c">T3 · Enviar proposta</th><th class="c">T4 · Votar na proposta</th></tr>
-      <tr><td><b>P02</b> · mais de 50 anos</td><td class="c">31,4 s</td><td class="c">19,7 s · com ajuda</td><td class="c">49,6 s</td><td class="c">5,2 s</td></tr>
+      <tr><td><b>P02</b> · mais de 50 anos</td><td class="c">108,8 s · ajuda · 2 erros</td><td class="c">73,8 s · ajuda · 1 erro</td><td class="c">104,5 s</td><td class="c">107,1 s · ajuda · 3 erros</td></tr>
       <tr><td><b>P03</b> · estudante de humanas</td><td class="c">51,7 s · ajuda · 1 erro</td><td class="c">83,0 s · ajuda · 1 erro</td><td class="c">93,1 s · ajuda · 1 erro</td><td class="c">38,1 s</td></tr>
-      <tr><td><b>P04</b> · usuário do Gov.br</td><td class="c">108,8 s · ajuda · 2 erros</td><td class="c">73,8 s · ajuda · 1 erro</td><td class="c">104,5 s</td><td class="c">107,1 s · ajuda · 3 erros</td></tr>
+      <tr><td><b>P04</b> · usuário do Gov.br</td><td class="c">31,4 s</td><td class="c">19,7 s · com ajuda</td><td class="c">49,6 s</td><td class="c">5,2 s</td></tr>
     </table>
     <div class="grid g4" style="margin-top:18px;flex:none">
-      <div class="card escuro"><p><span class="rotulo">T1</span> Dois clicaram em "Entrar com gov.br" e caíram no login simulado. P04 errou a senha.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T2</span> Busca por "processo" sem resultado e carrossel com rota quebrada. Todos precisaram de ajuda com o menu.</p></div>
+      <div class="card escuro"><p><span class="rotulo">T1</span> Dois clicaram em "Entrar com gov.br" e caíram no login simulado. P02 errou a senha.</p></div>
+      <div class="card escuro"><p><span class="rotulo">T2</span> Build local: menu coberto pelo botão "WAI WCAG" e banco só com o processo de teste. Todos precisaram de ajuda.</p></div>
       <div class="card escuro"><p><span class="rotulo">T3</span> P03 enviou descrição com 14 caracteres. A mensagem não disse o que corrigir.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T4</span> P04 votou em proposta alheia e recebeu erro 500 ao tentar retirar votos.</p></div>
+      <div class="card escuro"><p><span class="rotulo">T4</span> P02 votou em proposta alheia e recebeu erro 500 ao tentar retirar votos.</p></div>
     </div>
   </div>
-  <div class="apresentador">Miguel Arthur</div>
 </section>
 
 <!-- 7. G1 resultados -->
@@ -231,12 +226,11 @@
         <tr><td><b>TME</b></td><td>31,4 s · 77,1 s · 21,7 s (T2 sem dado)</td><td class="c"><span class="faixa exc">Exc.</span> <span class="faixa bom">Bom</span></td></tr>
         <tr><td><b>FET</b></td><td>1,00 · 0,67 · 0,33 · 1,00</td><td class="c"><span class="faixa bom">Bom</span></td></tr>
         <tr><td><b>ICA</b></td><td>91,2% (196 de 215)</td><td class="c"><span class="faixa bom">Bom</span></td></tr>
-        <tr><td><b>SUS</b></td><td>80,0 (80,0 · 77,5 · 82,5)</td><td class="c"><span class="faixa exc">Excelente</span></td></tr>
+        <tr><td><b>SUS</b></td><td>80,0 (82,5 · 77,5 · 80,0)</td><td class="c"><span class="faixa exc">Excelente</span></td></tr>
       </table>
     </div>
     <div class="card ouro" style="margin-top:18px"><p><b>O contraste:</b> os participantes avaliaram bem a plataforma (SUS 80), mas nenhuma tarefa teve 75% de conclusão sem ajuda. Pela regra da Fase 2, TCR abaixo de 75% indica barreira ao cidadão.</p></div>
   </div>
-  <div class="apresentador">Mateus Vieira</div>
 </section>
 
 <!-- 8. Acessibilidade -->
@@ -257,7 +251,6 @@
     </div>
     <div class="card escuro" style="margin-top:18px"><p><span class="rotulo">O que a ferramenta não viu:</span> a caixa de erro do formulário de proposta tem o <code>aria-label</code> "Data de início do afastamento inválida", copiado de outra tela. O leitor de tela anuncia um erro sem relação com a proposta, e a regra automática passa porque o atributo existe.</p></div>
   </div>
-  <div class="apresentador">Davi Mesquita</div>
 </section>
 
 <!-- 9. G2 -->
@@ -274,7 +267,6 @@
     </div>
     <div class="card ouro" style="margin-top:20px"><p><b>Regra da Fase 2 disparada:</b> TSN acima de 25% com ICT abaixo de 70% indica risco de quebra ao atualizar o Decidim. A recomendação é isolar a lógica própria em <i>engines</i>.</p></div>
   </div>
-  <div class="apresentador">Lucca Medeiros</div>
 </section>
 
 <!-- 10. G3 -->
@@ -293,7 +285,6 @@
       <div class="card ouro"><p><b>Regra da Fase 2 disparada:</b> alerta de confiança alta classifica a segurança como Insuficiente e exige chamado junto ao LAPPIS.</p></div>
     </div>
   </div>
-  <div class="apresentador">José Vinícius</div>
 </section>
 
 <!-- 11. Respostas GQM -->
@@ -315,7 +306,6 @@
       <tr><td class="c"><b>Q3.3</b></td><td>Ações protegidas?</td><td><span class="faixa ins">Refutada</span></td><td>Não totalmente. 13 ações sem verificação</td></tr>
     </table>
   </div>
-  <div class="apresentador">José Vinícius</div>
 </section>
 
 <!-- 12. Relações -->
@@ -327,7 +317,7 @@
     <div class="fluxo" style="margin-bottom:14px">
       <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>TSN 60,14% · ICT 39,43%</p></div><div class="seta">▶</div>
       <div class="card branco" style="flex:2"><p><b>Botão de voto sobrescrito</b> chama um método que só existe no <code>ProposalsController</code>. Ao retirar voto, outro controller renderiza o botão → erro 500 na T4.</p></div><div class="seta">▶</div>
-      <div class="card ouro" style="flex:1"><h3>Interação</h3><p>T4 de P04</p></div>
+      <div class="card ouro" style="flex:1"><h3>Interação</h3><p>T4 de P02</p></div>
     </div>
     <div class="fluxo" style="margin-bottom:14px">
       <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>controller e formulário sobrescritos</p></div><div class="seta">▶</div>
@@ -340,7 +330,6 @@
       <div class="card azul" style="flex:1"><h3>Segurança</h3><p>M3.3</p></div>
     </div>
   </div>
-  <div class="apresentador">Mateus Vieira</div>
 </section>
 
 <!-- 13. Julgamento -->
@@ -356,7 +345,6 @@
     </div>
     <div class="card escuro" style="margin-top:20px"><p><span class="rotulo">Para cada decisão da Fase 1:</span> D1 e D2 têm evidência suficiente para começar. D3 tem evidência em parte: três participantes, que já conheciam as tarefas, e ajudas causadas pelo ambiente de teste.</p></div>
   </div>
-  <div class="apresentador">João V. Farias</div>
 </section>
 
 <!-- 14. Recomendações -->
@@ -368,10 +356,9 @@
     <div class="grid g3">
       <div class="card"><div class="selo">D1</div><h3 class="centro">LAPPIS</h3><ul><li><b>Alta:</b> testes de requisição para votar, retirar voto e publicar proposta; depois refatorar essas sobrescritas</li><li><b>Alta:</b> corrigir o erro 500 do botão de voto</li><li>Atacar <code>permissions.rb</code> e <code>form_builder.rb</code></li></ul></div>
       <div class="card"><div class="selo">D2</div><h3 class="centro">Dataprev e MGI</h3><ul><li><b>Alta:</b> abrir chamado de segurança</li><li>Atualizar Ruby, Rails e as gems com CVE</li><li>Proteger as 13 ações da M3.3 no padrão da melhoria #80</li></ul></div>
-      <div class="card"><div class="selo">D3</div><h3 class="centro">Sec. de Participação Digital</h3><ul><li><b>Alta:</b> mostrar o mínimo de caracteres e o erro junto do campo; corrigir o <code>aria-label</code></li><li><b>Média:</b> lista de processos na página inicial e busca por tipo</li><li><b>Média:</b> nomes acessíveis e textos alternativos</li></ul></div>
+      <div class="card"><div class="selo">D3</div><h3 class="centro">Sec. de Participação Digital</h3><ul><li><b>Alta:</b> mostrar o mínimo de caracteres e o erro junto do campo; corrigir o <code>aria-label</code></li><li><b>Média:</b> repetir a T2 com dados reais; se persistir, processos na página inicial e busca por tipo</li><li><b>Média:</b> nomes acessíveis e textos alternativos</li></ul></div>
     </div>
   </div>
-  <div class="apresentador">João V. Farias</div>
 </section>
 
 <!-- 15. Melhorias -->
@@ -386,7 +373,6 @@
     </div>
     <div class="card escuro" style="margin-top:20px"><p><span class="rotulo">Por que essas duas:</span> cada uma ataca um resultado Insuficiente (ICT e TPE) e foi escolhida pelos dados da coleta, não por preferência da equipe.</p></div>
   </div>
-  <div class="apresentador">Lucca Medeiros e José Vinícius</div>
 </section>
 
 <!-- 16. Gestão -->
@@ -407,7 +393,6 @@
       <div class="card escuro"><p><span class="rotulo">Contribuição:</span> divisão paritária de 16,67% por integrante, registrada na tabela do artigo.</p></div>
     </div>
   </div>
-  <div class="apresentador">Davi Mesquita e Miguel Arthur</div>
 </section>
 
 <!-- 17. Limites e lições -->
@@ -416,12 +401,11 @@
   <div class="conteudo">
     <h1>Limites e lições</h1>
     <div class="grid g2" style="flex:none;margin-top:10px">
-      <div class="card"><h3>Limites dos resultados</h3><ul><li><b>Amostra:</b> 3 participantes, abaixo da meta de 5</li><li><b>Repetição:</b> as sessões gravadas não foram a primeira tentativa</li><li><b>Ambiente:</b> login simulado, rota quebrada e botão "WAI WCAG" só existem em desenvolvimento</li><li><b>ICA:</b> só verificações automáticas</li><li><b>Gov.br:</b> o login real não foi avaliado</li></ul></div>
-      <div class="card"><h3>O que aprendemos</h3><ul><li>Testar a gravação antes de cada sessão: as primeiras três travaram</li><li>Contas novas por sessão, sem uso anterior</li><li>Script de cálculo publicado junto com os dados brutos</li><li>Números de produto e de processo explicam um ao outro: o defeito do voto apareceu na sessão e foi rastreado até o código</li></ul></div>
+      <div class="card"><h3>Limites dos resultados</h3><ul><li><b>Amostra:</b> 3 participantes, abaixo da meta de 5</li><li><b>Repetição:</b> as sessões gravadas não foram a primeira tentativa</li><li><b>Build local:</b> na T2, menu coberto pelo botão "WAI WCAG" e banco só com o processo de teste; login simulado e rota quebrada só existem em desenvolvimento</li><li><b>ICA:</b> só verificações automáticas</li><li><b>Gov.br:</b> o login real não foi avaliado</li></ul></div>
+      <div class="card"><h3>O que aprendemos</h3><ul><li>Testar a gravação antes de cada sessão: as primeiras três travaram</li><li>Contas novas por sessão, sem uso anterior, e conferir qual conta cada participante usa</li><li>Popular o banco da cópia local e esconder as ferramentas de desenvolvimento antes das sessões</li><li>Script de cálculo publicado junto com os dados brutos</li><li>Números de produto e de processo explicam um ao outro: o defeito do voto apareceu na sessão e foi rastreado até o código</li></ul></div>
     </div>
     <p class="nota">Dados brutos, scripts e relatórios na GitPage, em "Coleta de Dados" e "Resultados da Avaliação".</p>
   </div>
-  <div class="apresentador">Mateus Vieira</div>
 </section>
 
 <!-- 18. Obrigado -->
@@ -432,8 +416,8 @@
   <div class="conteudo" style="justify-content:center;align-items:center;text-align:center">
     <div style="font-size:64px;text-transform:uppercase">Obrigado!</div>
     <div style="font-size:24px;margin-top:22px">Dúvidas</div>
-    <div style="color:var(--ouro);font-size:20px;margin-top:56px">fcte-qualidade-de-software-1.github.io/2026-2_T02_FRANS_BILAS</div>
-    <div style="font-size:17px;margin-top:16px">Equipe Frans Bilas (T02)</div>
+    <div style="color:var(--ouro);font-size:20px;margin-top:56px">fcte-qualidade-de-software-1.github.io/2026-2_T01_FRANS_BILAS</div>
+    <div style="font-size:17px;margin-top:16px">Equipe Frans Bilas (T01)</div>
   </div>
 </section>
 
