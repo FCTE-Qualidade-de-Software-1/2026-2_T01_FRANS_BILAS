@@ -6,7 +6,7 @@ icon: lucide/users
 
 Esta página reúne os registros das sessões com usuários, de onde saem as métricas M1.1, M1.2, M1.3 e M1.5 definidas na [Fase 2](../../fases/2.md) e planejadas na [Fase 3](../../fases/3.md). A inspeção de acessibilidade (M1.4) não usa estas fichas.
 
-**Situação em 17/11/2026**: nenhuma sessão registrada. As fichas desta pasta têm só o cabeçalho, e nenhum valor de TCR, TME, FET ou SUS pode ser calculado a partir delas. O julgamento do objetivo G1 fica para a Fase 4.
+**Situação em 22/11/2026**: três sessões realizadas e gravadas (P02, P03 e P04). As fichas usam as gravações das 20:31, 20:33 e 20:38, com tempo tirado do vídeo. Os participantes já tinham feito as tarefas em rodadas anteriores, o que favorece os resultados. As respostas do SUS estão em `M1.5-sus.csv`, com os três questionários completos. Os detalhes estão na Seção 8 do [roteiro](roteiro.md).
 
 ---
 
@@ -21,16 +21,16 @@ A Tabela 1 identifica a execução. Os campos em aberto são preenchidos na prim
 | Repositório e commit | `decidim-govbr`, commit `176b04673d956af4b1ab645e922cedd796b6a22e` |
 | Condução das sessões | Mateus Vinícius Vieira (issue #90) |
 | Rotulagem por métrica | Miguel Arthur Oliveira de Lima (issue #72) |
-| Datas das sessões, com fuso | A preencher |
-| Máquina, sistema e navegador | A preencher |
-| Processo participativo usado em T2 | A preencher |
-| Proposta de teste usada em T4 | A preencher |
-| URLs iniciais de T1 a T4 | A preencher |
-| Sessões realizadas e sessões com gravação autorizada | A preencher |
+| Datas das sessões, com fuso | 22/11/2026, UTC−3: P02 às 20:31:03, P03 às 20:33:32 e P04 às 20:38:48 (início das gravações). Rodadas anteriores com as mesmas contas entre 19:50 e 20:25 |
+| Máquina, sistema e navegador | Notebook Lenovo, Ubuntu, Firefox (versões não registradas) |
+| Processo participativo usado em T2 | Praças e Parques do Bairro (`pracas-e-parques-teste`), criado na cópia local e listado no menu principal |
+| Proposta de teste usada em T4 | A proposta que o próprio participante publicou: proposta 10 (P02), 11 (P03) e 13 (P04, que publicou a 12 na T3 e criou a 13 durante a T4) |
+| URLs iniciais de T1 a T4 | T1: `http://localhost:3000/?locale=pt-BR`; T2: página inicial com login; T3: `http://localhost:3000/processes/pracas-e-parques-teste/f/31`; T4: página da proposta publicada na T3 (`.../f/31/proposals/{id}`) |
+| Sessões realizadas e sessões com gravação autorizada | 3 realizadas e 3 gravadas, com autorização. As gravações das rodadas anteriores travaram num quadro fixo |
 
 Fonte: elaborado pela equipe.
 
-Dois desvios do plano já estão registrados. A Fase 3 previa as sessões de 06/11 a 10/11, e até 17/11 não há registro de sessão realizada. A condução passou de João Victor da Silva Batista de Farias para Mateus Vinícius Vieira, a pedido de João. As novas datas entram na Tabela 1 e no cronograma da Fase 3.
+Dois desvios do plano estão registrados. A Fase 3 previa as sessões de 06/11 a 10/11, e elas só aconteceram em 22/11, depois que a cópia local ficou pronta. A condução passou de João Victor da Silva Batista de Farias para Mateus Vinícius Vieira, a pedido de João. As datas executadas estão na Tabela 1 e no cronograma da Fase 3.
 
 ---
 
@@ -45,6 +45,7 @@ A Tabela 2 liga cada arquivo à métrica que ele alimenta. Os nomes dos campos s
 | [`M1.1-M1.3-ficha.csv`](M1.1-M1.3-ficha.csv) | Uma linha por participante e tarefa: desfecho, ajuda, tempo e contagem de erros | M1.1, M1.2, M1.3 |
 | [`M1.3-eventos.csv`](M1.3-eventos.csv) | Uma linha por erro observado: instante, ação do participante e resposta da plataforma | M1.3 |
 | [`M1.5-sus.csv`](M1.5-sus.csv) | Uma linha por participante, com as respostas de 1 a 5 aos dez itens | M1.5 |
+| [`M1-resultados.csv`](M1-resultados.csv) | TCR, TME e FET por tarefa, ICA por página e SUS por participante, gerados pelo script [`scripts/calc_interacao.py`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/blob/main/scripts/calc_interacao.py) | M1.1 a M1.5 |
 
 Fonte: elaborado pela equipe.
 
@@ -58,37 +59,15 @@ Valores aceitos na ficha:
 - `duracao_s`: segundos, com uma casa decimal.
 - `erros`: número inteiro, igual à quantidade de linhas do participante e da tarefa em `M1.3-eventos.csv`.
 
+Para recalcular as cinco métricas e conferir as fichas, rode `python3 scripts/calc_interacao.py` na raiz do repositório. O script para com erro se o campo `erros` da ficha não bater com `M1.3-eventos.csv` ou se `M1.4-resultados.csv` não bater com os relatórios.
+
 Uma resposta em branco no SUS fica em branco no arquivo. O questionário incompleto sai da média, e a quantidade excluída é informada junto com o resultado.
 
 ---
 
 ## 3. Roteiro do observador
 
-O roteiro abaixo ordena o que os Procedimentos de coleta e o [TCLE](../../tcle.md) já definem. Ele não muda nenhuma regra de contagem.
-
-**Antes de cada sessão**
-
-1. Abra a cópia local no commit da Tabela 1 e confirme que as integrações com serviços reais estão desligadas.
-2. Deixe a plataforma no estado inicial de T1: página inicial, sessão encerrada e conta de teste disponível.
-3. Confira que o processo participativo está com propostas abertas e que a conta de teste ainda não apoiou a proposta de T4.
-4. Separe o TCLE (duas vias impressas ou o formulário digital), o questionário SUS e as três fichas.
-
-**Durante a sessão**
-
-1. Entregue o TCLE e espere a assinatura e a escolha sobre a gravação. Sem o termo assinado, a sessão não acontece.
-2. Diga ao participante que a avaliação é da plataforma, e não dele.
-3. Inicie a gravação da tela, se autorizada. Sem autorização, use o cronômetro.
-4. Leia a instrução de cada tarefa, uma por vez, sem indicar o caminho na interface.
-5. Inicie o tempo quando o participante começar a ler a instrução. Pare na conclusão observável da tarefa ou na desistência.
-6. Anote cada erro em `M1.3-eventos.csv` no momento em que acontece. Se você ajudar, marque `ajuda=sim` na ficha.
-7. Prepare o estado inicial da tarefa seguinte fora da contagem de tempo.
-8. Depois de T4, entregue o questionário SUS e não comente as respostas.
-
-**Depois da sessão**
-
-1. Preencha as quatro linhas do participante em `M1.1-M1.3-ficha.csv` e a linha dele em `M1.5-sus.csv`.
-2. Guarde o termo assinado, a gravação e a planilha que liga nome e código na pasta restrita da equipe.
-3. Devolva a plataforma ao estado inicial de T1 e confira de novo o estado inicial de T4 antes da próxima sessão.
+O passo a passo das sessões, da cópia local ao preenchimento das fichas, está no [Roteiro das sessões com usuários](roteiro.md). Ele ordena o que os Procedimentos de coleta e o [TCLE](../../tcle.md) já definem e não muda nenhuma regra de contagem.
 
 ---
 
@@ -122,3 +101,6 @@ Esses arquivos ficam na pasta restrita descrita na Seção 1 do TCLE, com o praz
 | Versão | Data | Descrição | Autor | Revisor |
 | :---: | :---: | :--- | :--- | :--- |
 | `0.1` | 17/11/2026 | Fichas das sessões com usuários, roteiro do observador e referência do SUS em português, antes da coleta (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `0.2` | 22/11/2026 | Roteiro do observador movido para página própria (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `0.3` | 22/11/2026 | Fichas preenchidas com as sessões gravadas de P02, P03 e P04 (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `0.4` | 22/11/2026 | Resultados calculados por script a partir das fichas (#71) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |

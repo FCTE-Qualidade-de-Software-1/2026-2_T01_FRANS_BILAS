@@ -28,10 +28,12 @@ nav = [
     { "TCLE das Sessões com Usuários" = "tcle.md" },
     { "Dados Brutos de Segurança" = "dados/seguranca/index.md" },
     { "Fichas das Sessões com Usuários" = "dados/interacao/index.md" },
+    { "Roteiro das Sessões com Usuários" = "dados/interacao/roteiro.md" },
   ] },
   { "Resultados da Avaliação" = [
     { "Manutenibilidade" = "dados/manutenibilidade/index.md" },
     { "Segurança" = "dados/seguranca/index.md" },
+    { "Acessibilidade (M1.4)" = "dados/acessibilidade/index.md" },
   ] },
   { "Melhorias Técnicas" = [
     { "Testes do Serviço de Embeds" = "dados/melhoria-73/index.md" },
@@ -41,6 +43,7 @@ nav = [
     { "Ponto de Controle 1" = "entregas/1.md" },
     { "Métricas de Gestão (PSM)" = "entregas/psm.md" },
     { "Ponto de Controle 2" = "entregas/pc2.md" },
+    { "Apresentação Final" = "entregas/final.md" },
   ] },
   { "Artigo Científico" = "article/index.md" },
   { "Extras" = [

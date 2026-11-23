@@ -1,0 +1,9 @@
+pagina,ferramenta,aprovadas,reprovadas,sem_decisao,observacao
+1-inicio,axe-core,24,3,2,incomplete: aria-prohibited-attr;color-contrast
+1-inicio,lighthouse,23,3,10,manual: 10;notApplicable: 40
+2-processos,axe-core,25,2,2,incomplete: aria-prohibited-attr;color-contrast
+2-processos,lighthouse,23,3,10,manual: 10;notApplicable: 40
+3-formulario,axe-core,26,2,2,incomplete: aria-prohibited-attr;color-contrast
+3-formulario,lighthouse,26,2,10,manual: 10;notApplicable: 38
+4-proposta,axe-core,25,2,2,incomplete: aria-prohibited-attr;color-contrast
+4-proposta,lighthouse,24,2,10,informative: 1;manual: 10;notApplicable: 39

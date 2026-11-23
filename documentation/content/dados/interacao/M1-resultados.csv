@@ -1,0 +1,26 @@
+metrica,recorte,valor,n,detalhe
+M1.1 TCR (%),T1,33.3,3,1 sem ajuda
+M1.2 TME (s),T1,31.4,1,conclusoes sem ajuda e com tempo valido
+M1.3 FET (erros por participante),T1,1.00,3,3 erros
+M1.1 TCR (%),T2,0.0,3,0 sem ajuda
+M1.2 TME (s),T2,indisponivel,0,conclusoes sem ajuda e com tempo valido
+M1.3 FET (erros por participante),T2,0.67,3,2 erros
+M1.1 TCR (%),T3,66.7,3,2 sem ajuda
+M1.2 TME (s),T3,77.1,2,conclusoes sem ajuda e com tempo valido
+M1.3 FET (erros por participante),T3,0.33,3,1 erros
+M1.1 TCR (%),T4,66.7,3,2 sem ajuda
+M1.2 TME (s),T4,21.7,2,conclusoes sem ajuda e com tempo valido
+M1.3 FET (erros por participante),T4,1.00,3,3 erros
+M1.4 verificacoes,1-inicio axe-core,24/27,27,aprovadas/decididas
+M1.4 verificacoes,1-inicio lighthouse,23/26,26,aprovadas/decididas
+M1.4 verificacoes,2-processos axe-core,25/27,27,aprovadas/decididas
+M1.4 verificacoes,2-processos lighthouse,23/26,26,aprovadas/decididas
+M1.4 verificacoes,3-formulario axe-core,26/28,28,aprovadas/decididas
+M1.4 verificacoes,3-formulario lighthouse,26/28,28,aprovadas/decididas
+M1.4 verificacoes,4-proposta axe-core,25/27,27,aprovadas/decididas
+M1.4 verificacoes,4-proposta lighthouse,24/26,26,aprovadas/decididas
+M1.4 ICA (%),total,91.2,215,196 aprovadas
+M1.5 SUS (pontos),P02,80.0,10,itens
+M1.5 SUS (pontos),P03,77.5,10,itens
+M1.5 SUS (pontos),P04,82.5,10,itens
+M1.5 SUS (pontos),media,80.0,3,0 questionarios excluidos
