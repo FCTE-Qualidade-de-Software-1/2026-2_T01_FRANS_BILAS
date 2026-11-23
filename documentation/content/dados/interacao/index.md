@@ -45,6 +45,7 @@ A Tabela 2 liga cada arquivo à métrica que ele alimenta. Os nomes dos campos s
 | [`M1.1-M1.3-ficha.csv`](M1.1-M1.3-ficha.csv) | Uma linha por participante e tarefa: desfecho, ajuda, tempo e contagem de erros | M1.1, M1.2, M1.3 |
 | [`M1.3-eventos.csv`](M1.3-eventos.csv) | Uma linha por erro observado: instante, ação do participante e resposta da plataforma | M1.3 |
 | [`M1.5-sus.csv`](M1.5-sus.csv) | Uma linha por participante, com as respostas de 1 a 5 aos dez itens | M1.5 |
+| [`M1-resultados.csv`](M1-resultados.csv) | TCR, TME e FET por tarefa, ICA por página e SUS por participante, gerados pelo script [`scripts/calc_interacao.py`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/blob/main/scripts/calc_interacao.py) | M1.1 a M1.5 |
 
 Fonte: elaborado pela equipe.
 
@@ -57,6 +58,8 @@ Valores aceitos na ficha:
 - `fonte_tempo`: `video` ou `cronometro`.
 - `duracao_s`: segundos, com uma casa decimal.
 - `erros`: número inteiro, igual à quantidade de linhas do participante e da tarefa em `M1.3-eventos.csv`.
+
+Para recalcular as cinco métricas e conferir as fichas, rode `python3 scripts/calc_interacao.py` na raiz do repositório. O script para com erro se o campo `erros` da ficha não bater com `M1.3-eventos.csv` ou se `M1.4-resultados.csv` não bater com os relatórios.
 
 Uma resposta em branco no SUS fica em branco no arquivo. O questionário incompleto sai da média, e a quantidade excluída é informada junto com o resultado.
 
@@ -100,3 +103,4 @@ Esses arquivos ficam na pasta restrita descrita na Seção 1 do TCLE, com o praz
 | `0.1` | 17/11/2026 | Fichas das sessões com usuários, roteiro do observador e referência do SUS em português, antes da coleta (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `0.2` | 22/11/2026 | Roteiro do observador movido para página própria (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
 | `0.3` | 22/11/2026 | Fichas preenchidas com as sessões gravadas de P02, P03 e P04 (issue #90) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `0.4` | 22/11/2026 | Resultados calculados por script a partir das fichas (#71) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |

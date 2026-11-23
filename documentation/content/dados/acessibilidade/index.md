@@ -44,10 +44,11 @@ Nas oito execuções, o `url` do axe e o `finalDisplayedUrl` do Lighthouse são 
 
 | Arquivo | Conteúdo |
 | :--- | :--- |
-| [`relatorios/`](relatorios/1-inicio-axe.json) | Os oito relatórios em JSON, um por ferramenta e página. Dos relatórios do Lighthouse foi removida só a captura de tela da página inteira (`fullPageScreenshot`) |
+| [`relatorios/`](relatorios/M1.4-1-inicio-axe.json) | Os oito relatórios em JSON, um por ferramenta e página, com nomes no formato `M1.4-<página>-<ferramenta>.json`. Dos relatórios do Lighthouse foi removida só a captura de tela da página inteira (`fullPageScreenshot`) |
 | [`M1.4-resultados.csv`](M1.4-resultados.csv) | Verificações aprovadas, reprovadas e sem decisão, por ferramenta e página |
 | [`M1.4-falhas.csv`](M1.4-falhas.csv) | Cada falha com página, ferramenta, regra, impacto (no axe) e seletor |
 | [`ferramentas/`](ferramentas/package.json) | `package.json` e `package-lock.json` das ferramentas |
+| [`scripts/calc_interacao.py`](https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS/blob/main/scripts/calc_interacao.py) | Recalcula o ICA a partir dos relatórios e confere `M1.4-resultados.csv` |
 
 Fonte: elaborado pela equipe.
 
@@ -116,3 +117,4 @@ O formulário de proposta, onde os participantes erraram na T3, passou nas regra
 | Versão | Data | Descrição | Autor | Revisor |
 | :---: | :---: | :--- | :--- | :--- |
 | `1.0` | 22/11/2026 | Inspeção automática das quatro páginas com axe-core e Lighthouse e cálculo do ICA (M1.4) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
+| `1.1` | 22/11/2026 | Relatórios com o código da métrica no nome e script de cálculo (#71) | [Mateus Vinícius Vieira](https://github.com/matix0) | A definir |
