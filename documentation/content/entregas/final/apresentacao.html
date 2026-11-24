@@ -3,421 +3,1159 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Apresentação Final · Frans Bilas</title>
+<title>Apresentação Final · Brasil Participativo · Frans Bilas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --verde: #4e6045;
-    --verde-escuro: #3d4c36;
-    --verde-card: #5d6f54;
-    --verde-claro: #b4c6a6;
-    --verde-bolha: #6b7b63;
-    --linha-1: #edf3e8;
-    --linha-2: #dde6d4;
-    --ouro: #e8c46a;
-    --azul: #3d6ca6;
-    --azul-texto: #2f5f9e;
-    --rosa: #e8a08c;
-    --verde-bom: #8ed3a0;
-    --texto: #ffffff;
-    --texto-escuro: #26301f;
+    color-scheme: light;
+    --fundo: #ffffff;
+    --fundo-tela: #ffffff;
+    --azul: #0284c7;
+    --azul-escuro: #0369a1;
+    --azul-claro: #f2f8fd;
+    --azul-card: #e6f3fc;
+    --azul-destaque: #e0f2fe;
+    --azul-bolha: #eef7fe;
+    --borda-sutil: #cde4f7;
+    --borda-card: #a8d2f2;
+    --linha-1: #ffffff;
+    --linha-2: #f5faff;
+    --texto: #0f172a;
+    --texto-sec: #475569;
+    --verde: #15803d;
+    --verde-fundo: #dcfce7;
+    --verde-borda: #86efac;
+    --bom-fundo: #e0f2fe;
+    --bom-texto: #075985;
+    --bom-borda: #7dd3fc;
+    --ambar: #b45309;
+    --ambar-linha: #d97706;
+    --ambar-fundo: #fef3c7;
+    --ambar-borda: #fcd34d;
+    --vermelho: #b91c1c;
+    --vermelho-linha: #dc2626;
+    --vermelho-fundo: #fee2e2;
+    --vermelho-borda: #fca5a5;
+    --indigo: #1d4ed8;
+    --indigo-fundo: #e0e7ff;
+    --indigo-borda: #a5b4fc;
+    --teal: #0f766e;
+    --teal-fundo: #ccfbf1;
+    --teal-borda: #5eead4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   @page { size: 1280px 720px; margin: 0; }
-  html, body { background: #2a3324; }
+  html, body { background: var(--fundo-tela); }
   body { font-family: "Hanken Grotesk", "Segoe UI", Arial, sans-serif; color: var(--texto); }
   .slide {
     position: relative; width: 1280px; height: 720px; overflow: hidden;
-    background: var(--verde); padding: 56px 58px 40px; margin: 0 auto 24px;
+    background: var(--fundo); color: var(--texto);
+    padding: 58px 54px 30px; margin: 0 auto 24px;
+    border: 1px solid var(--borda-sutil);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, .06);
     page-break-after: always; break-after: page;
   }
-  @media print { html, body { background: none; } .slide { margin: 0; } }
-  .slide.claro { background: var(--verde-claro); color: var(--texto-escuro); }
-  .unb { position: absolute; top: 34px; right: 34px; font-size: 14px; letter-spacing: .02em; opacity: .9; }
-  .bolha { position: absolute; border-radius: 50%; background: var(--verde-bolha); z-index: 0; }
-  .bolha.tl { width: 360px; height: 360px; left: -100px; top: -100px; }
-  .bolha.br { width: 330px; height: 330px; right: -90px; bottom: -120px; }
-  .onda { position: absolute; right: 0; bottom: 70px; width: 470px; z-index: 1; }
-  .capa .onda { bottom: 120px; width: 420px; }
+  @media print {
+    html, body { background: none; }
+    .slide { margin: 0; border: none; box-shadow: none; }
+  }
+  .slide-topo {
+    position: absolute; top: 18px; left: 54px; right: 54px; z-index: 3;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12.5px; letter-spacing: .02em; color: var(--texto-sec);
+    padding-bottom: 6px; border-bottom: 1px solid #dbeafe;
+  }
+  .slide-topo .slide-atual { font-weight: 600; color: var(--azul-escuro); }
+  .slide-topo .unb { font-weight: 500; letter-spacing: .03em; color: var(--texto-sec); }
+  .bolha { position: absolute; border-radius: 50%; background: var(--azul-bolha); z-index: 0; }
+  .bolha.tl { width: 340px; height: 340px; left: -100px; top: -100px; }
+  .bolha.br { width: 320px; height: 320px; right: -90px; bottom: -110px; }
+  .onda { position: absolute; right: 0; bottom: 56px; width: 450px; z-index: 1; color: #bae6fd; }
+  .capa .onda { bottom: 110px; width: 420px; }
   .conteudo { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
-  h1 { font-weight: 400; font-size: 50px; text-transform: uppercase; text-align: center; letter-spacing: .01em; margin-bottom: 10px; }
-  .sub { text-align: center; color: var(--ouro); font-style: italic; font-size: 21px; margin-bottom: 26px; line-height: 1.35; }
-  .sub.branco { color: #fff; font-style: normal; }
-  .grid { display: grid; gap: 20px; }
+  h1.capa-titulo {
+    font-weight: 600; font-size: 56px; line-height: 1.15;
+    color: var(--texto); margin: 16px 0 18px; text-align: center;
+  }
+  h2.titulo {
+    font-weight: 600; font-size: 36px; text-transform: uppercase;
+    text-align: center; letter-spacing: .01em; color: var(--texto); margin-bottom: 4px;
+  }
+  .sub {
+    text-align: center; color: var(--azul-escuro); font-size: 18px;
+    margin-bottom: 16px; line-height: 1.3; font-weight: 500;
+  }
+  .sub.neutro { color: var(--texto-sec); font-weight: 400; }
+  .grid { display: grid; gap: 16px; }
   .g2 { grid-template-columns: 1fr 1fr; }
   .g3 { grid-template-columns: repeat(3, 1fr); }
   .g4 { grid-template-columns: repeat(4, 1fr); }
-  .card { background: var(--verde-claro); color: var(--texto-escuro); border-radius: 10px; padding: 22px 24px; }
-  .card.escuro { background: var(--verde-card); color: #fff; }
-  .card.branco { background: #fff; color: var(--texto-escuro); }
-  .card.ouro { background: var(--ouro); color: var(--texto-escuro); }
-  .card.azul { background: var(--azul); color: #fff; }
-  .card h3 { font-weight: 500; font-size: 26px; margin-bottom: 10px; }
-  .card p, .card li { font-size: 20px; line-height: 1.4; }
-  .card ul { padding-left: 18px; }
-  .card li { margin-bottom: 5px; }
-  .rotulo { color: var(--azul-texto); font-weight: 500; }
-  .card.escuro .rotulo, .card.azul .rotulo { color: var(--ouro); }
-  .selo { width: 70px; height: 70px; border-radius: 50%; background: var(--verde); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; margin: 0 auto 12px; }
-  .card.escuro .selo { background: #fff; color: var(--verde); }
-  .centro { text-align: center; }
-  table { width: 100%; border-collapse: collapse; color: var(--texto-escuro); font-size: 18.5px; }
-  th { background: var(--verde-escuro); color: #fff; font-weight: 500; text-align: left; padding: 13px 14px; border: 2px solid var(--verde); }
-  td { padding: 11px 14px; border: 2px solid var(--verde); background: var(--linha-1); vertical-align: middle; line-height: 1.3; }
+  .g-asym { grid-template-columns: 1.12fr 1fr; }
+  .g-asym2 { grid-template-columns: 1fr 1.18fr; }
+  .card {
+    background: var(--azul-claro); color: var(--texto);
+    border: 1px solid var(--borda-sutil); padding: 15px 18px;
+  }
+  .card.escuro { background: var(--azul-card); border-color: var(--borda-card); }
+  .card.branco { background: #ffffff; border-color: var(--borda-card); }
+  .card.destaque { background: var(--azul-destaque); border-color: #7dd3fc; border-left: 4px solid var(--azul); }
+  .card.alerta { background: var(--vermelho-fundo); border-color: var(--vermelho-borda); border-left: 4px solid var(--vermelho-linha); }
+  .card.sucesso { background: var(--verde-fundo); border-color: var(--verde-borda); border-left: 4px solid var(--verde); }
+  .card.ambar { background: var(--ambar-fundo); border-color: var(--ambar-borda); border-left: 4px solid var(--ambar-linha); }
+  .card h3 { font-weight: 600; font-size: 19.5px; margin-bottom: 8px; color: var(--texto); }
+  .card p, .card li { font-size: 15.5px; line-height: 1.38; color: var(--texto); }
+  .card ul, .card ol { padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+  .card li:last-child { margin-bottom: 0; }
+  .rotulo { color: var(--azul-escuro); font-weight: 600; }
+  .selo {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--azul); color: #ffffff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 700; flex-shrink: 0;
+  }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 6px;
+    font-weight: 600; font-size: 13px; border: 1px solid transparent;
+    vertical-align: middle;
+  }
+  .tag.ins { background: var(--vermelho-fundo); color: var(--vermelho); border-color: var(--vermelho-borda); }
+  .tag.reg { background: var(--ambar-fundo); color: var(--ambar); border-color: var(--ambar-borda); }
+  .tag.bom { background: var(--bom-fundo); color: var(--bom-texto); border-color: var(--bom-borda); }
+  .tag.exc { background: var(--verde-fundo); color: var(--verde); border-color: var(--verde-borda); }
+  .tag.seg { background: var(--indigo-fundo); color: var(--indigo); border-color: var(--indigo-borda); }
+  .tag.man { background: var(--teal-fundo); color: var(--teal); border-color: var(--teal-borda); }
+  .tag.int { background: var(--azul-destaque); color: var(--azul-escuro); border-color: #7dd3fc; }
+  .chip {
+    display: inline-block; background: rgba(2, 132, 199, .09);
+    border: 1px solid rgba(2, 132, 199, .24); border-radius: 6px;
+    padding: 2px 7px; margin: 2px 2px 0 0; font-size: 13.5px; color: var(--texto);
+  }
+  table { width: 100%; border-collapse: collapse; color: var(--texto); font-size: 14.5px; }
+  th {
+    background: var(--azul-destaque); color: var(--texto); font-weight: 600; text-align: left;
+    padding: 8px 10px; border: 1.5px solid var(--borda-card);
+  }
+  td {
+    padding: 7px 10px; border: 1.5px solid var(--borda-sutil);
+    background: var(--linha-1); vertical-align: middle; line-height: 1.28;
+  }
   tr:nth-child(even) td { background: var(--linha-2); }
   td.c, th.c { text-align: center; }
-  .faixa { display: inline-block; padding: 3px 10px; border-radius: 6px; font-weight: 500; font-size: 16.5px; color: var(--texto-escuro); }
-  .ins { background: var(--rosa); } .reg { background: var(--ouro); } .bom { background: var(--verde-claro); } .exc { background: var(--verde-bom); }
-  .nota { text-align: center; color: var(--ouro); font-style: italic; font-size: 18px; margin-top: 18px; }
-  .grande { font-size: 58px; font-weight: 500; line-height: 1.05; }
-  .medio { font-size: 17.5px; opacity: .9; }
-  .barra-fundo { height: 22px; background: rgba(255,255,255,.18); border-radius: 4px; position: relative; }
-  .barra { height: 100%; border-radius: 4px; background: #fff; }
-  .meta { position: absolute; top: -5px; bottom: -5px; width: 3px; background: var(--ouro); }
-  .linha-tempo { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin: 10px 20px 26px; }
-  .linha-tempo::before { content: ""; position: absolute; left: 30px; right: 30px; top: 66px; height: 3px; background: #fff; }
-  .marco { width: 170px; text-align: center; position: relative; }
-  .marco b { display: block; font-size: 24px; font-weight: 500; margin-bottom: 14px; }
-  .marco i { display: block; width: 34px; height: 34px; border-radius: 50%; background: #fff; margin: 0 auto 14px; }
-  .marco.hoje b { color: var(--ouro); } .marco.hoje i { background: var(--ouro); }
-  .marco span { font-size: 15px; }
-  .fluxo { display: flex; align-items: center; gap: 12px; }
-  .seta { color: var(--ouro); font-size: 26px; }
-  .chip { display: inline-block; background: rgba(255,255,255,.14); border-radius: 6px; padding: 2px 8px; margin: 3px 2px 0 0; font-size: 16.5px; }
-  .card:not(.escuro):not(.azul) .chip { background: rgba(78,96,69,.14); }
-  table.compacta { font-size: 16.5px; }
-  table.compacta td { padding: 6px 12px; }
-  table.compacta th { padding: 9px 12px; }
-  .fluxo .card { padding: 14px 18px; }
-  .fluxo .card h3 { font-size: 22px; margin-bottom: 4px; }
-  .fluxo .card p { font-size: 18px; }
-  code { font-family: "Hanken Grotesk", monospace; background: rgba(0,0,0,.08); padding: 0 5px; border-radius: 4px; font-size: .95em; }
-  .card.escuro code, .card.azul code { background: rgba(255,255,255,.15); }
+  .nota { text-align: center; color: var(--azul-escuro); font-size: 14.5px; margin-top: auto; padding-top: 8px; }
+  .kpi-row { display: grid; gap: 12px; margin-bottom: 12px; }
+  .kpi {
+    background: #ffffff; border: 1px solid var(--borda-card); border-radius: 10px;
+    padding: 10px 14px; text-align: center;
+  }
+  .kpi .num { font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--azul-escuro); }
+  .kpi .lbl { font-size: 13.5px; color: var(--texto-sec); margin-top: 2px; }
+  .chart-svg { width: 100%; height: auto; display: block; font-family: "Hanken Grotesk", "Segoe UI", Arial, sans-serif; }
+  code {
+    font-family: "Hanken Grotesk", monospace; font-weight: 600;
+    background: rgba(15, 23, 42, .07); padding: 0 4px; border-radius: 4px; font-size: .92em;
+  }
+  .agenda-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; width: 100%; margin: 20px 0 24px; }
+  .agenda-box {
+    background: var(--azul-claro); border: 1px solid var(--borda-card);
+    border-radius: 8px; padding: 10px 8px; text-align: center;
+  }
+  .agenda-box b { display: block; font-size: 14.5px; color: var(--azul-escuro); }
+  .agenda-box span { display: block; font-size: 13px; color: var(--texto); margin-top: 3px; }
+  .agenda-box small { display: block; font-size: 12px; color: var(--texto-sec); margin-top: 2px; }
+  .capa-centro {
+    flex: 1; width: 100%; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; gap: 28px;
+  }
+  .capa-midia {
+    display: flex; align-items: center; justify-content: center; gap: 36px;
+  }
+  .capa-img-box {
+    /* background: #ffffff; border: 1px solid var(--borda-card); border-radius: 12px; */
+    padding: 12px; box-shadow: 0 4px 14px rgba(15, 23, 42, .06);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .capa-img-box img { display: block; height: 210px; width: auto;
+    /* border-radius: 6px; */
+    object-fit: contain; }
+  @media (forced-colors: active) {
+    .slide, .card, .tag, .chip, .kpi, .agenda-box, th, td { border-color: CanvasText; }
+  }
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute">
-  <symbol id="onda" viewBox="0 0 470 60"><path d="M2 48 C 60 2, 120 2, 190 30 S 330 62, 400 20 S 460 10, 470 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="onda" viewBox="0 0 470 60"><path d="M2 48 C 60 2, 120 2, 190 30 S 330 62, 400 20 S 460 10, 470 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
 </svg>
 
 <!-- 1. Capa -->
 <section class="slide capa">
   <div class="bolha tl"></div><div class="bolha br"></div>
-  <svg class="onda" viewBox="0 0 470 60"><use href="#onda"/></svg>
-  <div class="unb">UNB</div>
-  <div class="conteudo" style="justify-content:center;align-items:center;text-align:center">
-    <div style="color:var(--ouro);letter-spacing:.18em;font-size:21px;margin-top:40px">APRESENTAÇÃO FINAL</div>
-    <div style="font-size:62px;font-weight:400;line-height:1.18;margin:26px 0 54px">Avaliação de Qualidade do<br>Brasil Participativo</div>
-    <div style="letter-spacing:.08em;font-size:20px">QUALIDADE DE SOFTWARE 1 · FGA0315 · EQUIPE FRANS BILAS (T01)</div>
-    <div style="margin-top:auto;align-self:flex-start;text-align:left;font-size:18px;line-height:1.8">
-      <b style="font-weight:600">INTEGRANTES:</b> Davi Mesquita · João V. Farias · José Vinícius · Lucca Medeiros · Mateus Vieira · Miguel Arthur<br>
-      <b style="font-weight:600">PROFESSORA:</b> Profa. Dra. Cristiane Soares Ramos · FCTE/UnB, 23/11/2026
-    </div>
-  </div>
-</section>
-
-<!-- 2. Sumário -->
-<section class="slide claro">
-  <div style="position:absolute;width:780px;height:780px;border-radius:50%;background:var(--verde);left:-300px;top:-240px"></div>
-  <div class="bolha br" style="background:#9db08f"></div>
-  <svg class="onda" viewBox="0 0 470 60"><use href="#onda"/></svg>
-  <div class="unb">UNB</div>
-  <div style="position:absolute;left:150px;top:300px;font-size:64px;color:#fff;z-index:2">Sumário</div>
-  <div style="position:absolute;left:640px;top:70px;z-index:2;display:grid;grid-template-columns:1fr 1fr;column-gap:60px;row-gap:0;text-align:center;font-size:19px;color:var(--texto-escuro)">
-    <div><div style="font-size:30px;margin-bottom:26px">O que avaliamos</div>
-      <p style="margin-bottom:28px">Produto e propósito</p><p style="margin-bottom:28px">Modelo e GQM</p><p style="margin-bottom:28px">Como coletamos</p><p style="margin-bottom:28px">Sessões com usuários</p><p style="margin-bottom:28px">Acessibilidade</p><p>Gestão do projeto</p></div>
-    <div><div style="font-size:30px;margin-bottom:26px">O que encontramos</div>
-      <p style="margin-bottom:28px">Resultados G1, G2 e G3</p><p style="margin-bottom:28px">Respostas do GQM</p><p style="margin-bottom:28px">Relações entre características</p><p style="margin-bottom:28px">Julgamento e decisões</p><p style="margin-bottom:28px">Recomendações e melhorias</p><p>Limites e lições</p></div>
-  </div>
-</section>
-
-<!-- 3. Produto e propósito -->
-<section class="slide">
-  <div class="bolha tl"></div><div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>Produto e propósito</h1>
-    <p class="sub branco">Brasil Participativo: plataforma do Governo Federal, fork do Decidim mantido pelo LAPPIS. Avaliamos o commit <b>176b046</b> do <b>decidim-govbr</b> para apoiar três decisões:</p>
-    <div class="grid g3">
-      <div class="card centro"><div class="selo">D1</div><h3>Refatoração</h3><p>Priorizar as partes do código Ruby on Rails que mais pesam na manutenção.</p><p class="rotulo" style="margin-top:22px">Quem decide: LAPPIS</p></div>
-      <div class="card centro"><div class="selo">D2</div><h3>Autenticação e autorização</h3><p>Revisar permissões dos controllers e dependências com vulnerabilidade conhecida.</p><p class="rotulo" style="margin-top:22px">Quem decide: Dataprev e MGI</p></div>
-      <div class="card centro"><div class="selo">D3</div><h3>Fluxos cidadãos</h3><p>Redesenhar telas e formulários que causam desistência ou lentidão.</p><p class="rotulo" style="margin-top:22px">Quem decide: Sec. de Participação Digital</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 4. Modelo e GQM -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>Modelo e GQM em uma tela</h1>
-    <p class="sub">ISO/IEC 25010:2023 · 3 características · 3 objetivos · 9 questões · 12 métricas</p>
-    <div class="grid g3">
-      <div class="card"><h3>G1 · Capacidade de Interação</h3><p class="medio" style="margin-bottom:10px">Ponto de vista do cidadão · decisão D3</p>
-        <p><span class="rotulo">Q1.1</span> Conclui sem ajuda? <span class="chip">TCR ≥ 75%</span><span class="chip">TME ≤ 120 s</span></p>
-        <p style="margin-top:8px"><span class="rotulo">Q1.2</span> Evita e corrige erros? <span class="chip">FET ≤ 1,0</span></p>
-        <p style="margin-top:8px"><span class="rotulo">Q1.3</span> Inclusivo? <span class="chip">ICA ≥ 85%</span><span class="chip">SUS ≥ 68</span></p></div>
-      <div class="card"><h3>G2 · Manutenibilidade</h3><p class="medio" style="margin-bottom:10px">Ponto de vista do LAPPIS · decisão D1</p>
-        <p><span class="rotulo">Q2.1</span> Sobrescritas concentradas? <span class="chip">TSN ≤ 25%</span></p>
-        <p style="margin-top:8px"><span class="rotulo">Q2.2</span> Fácil de entender? <span class="chip">CCM ≤ 7</span><span class="chip">DLC ≤ 100</span></p>
-        <p style="margin-top:8px"><span class="rotulo">Q2.3</span> Sobrescritas testadas? <span class="chip">ICT ≥ 70%</span></p></div>
-      <div class="card"><h3>G3 · Segurança</h3><p class="medio" style="margin-bottom:10px">Ponto de vista do órgão gestor · decisão D2</p>
-        <p><span class="rotulo">Q3.1</span> Padrões vulneráveis? <span class="chip">0 alertas altos, DVC ≤ 7</span></p>
-        <p style="margin-top:8px"><span class="rotulo">Q3.2</span> Dependências seguras? <span class="chip">CDV ≤ 1</span></p>
-        <p style="margin-top:8px"><span class="rotulo">Q3.3</span> Ações protegidas? <span class="chip">TPE ≥ 95%</span></p></div>
-    </div>
-    <p class="nota">Cada métrica cai em uma de quatro faixas: Insuficiente, Regular, Bom e Excelente. O nível aceitável é o limite da faixa Bom.</p>
-  </div>
-</section>
-
-<!-- 5. Como coletamos -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>Como coletamos (Fase 3)</h1>
-    <p class="sub">Nenhum teste contra a produção do governo. Tudo no commit 176b046, com data, ferramenta e responsável registrados.</p>
-    <div class="grid g3" style="flex:none">
-      <div class="card"><h3>Análise estática</h3><p class="medio" style="margin-bottom:8px">G2 e G3 · 03/11 e 08/11</p><ul><li>RuboCop e coletor com Ripper: sobrescritas, complexidade, linhas e testes</li><li>Brakeman 8.1.0 e bundler-audit 0.9.3</li><li>Script próprio para as ações sensíveis (M3.3)</li></ul></div>
-      <div class="card"><h3>Sessões com usuários</h3><p class="medio" style="margin-bottom:8px">G1 · 22/11 · 3 participantes com TCLE</p><ul><li>P02 (50+), P03 (humanas) e P04 (usuário do Gov.br)</li><li>4 tarefas: entrar, achar o processo, enviar proposta e votar nela</li><li>Tela gravada no OBS, sem áudio; SUS ao final</li></ul></div>
-      <div class="card"><h3>Inspeção automática</h3><p class="medio" style="margin-bottom:8px">M1.4 · 22/11</p><ul><li>axe-core 4.14 e Lighthouse 13.6</li><li>Página inicial, lista de processos, formulário e proposta</li><li>Conta de teste logada, 8 relatórios JSON</li></ul></div>
-    </div>
-    <div class="card escuro" style="margin-top:18px"><p><span class="rotulo">Cópia local:</span> <code>docker compose</code> do decidim-govbr em modo de desenvolvimento, num notebook Lenovo com Ubuntu e Firefox. O login Gov.br não funciona fora da produção, então as sessões usaram o login de estrangeiro, com e-mail e senha de contas de teste.</p></div>
-  </div>
-</section>
-
-<!-- 6. Sessões: o que aconteceu -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>G1 · As sessões, tarefa a tarefa</h1>
-    <p class="sub">Tempo tirado da gravação: começa no quadro em que a tela da tarefa aparece (momento do comando) e termina no estado final.</p>
-    <table>
-      <tr><th>Participante</th><th class="c">T1 · Entrar</th><th class="c">T2 · Achar o processo</th><th class="c">T3 · Enviar proposta</th><th class="c">T4 · Votar na proposta</th></tr>
-      <tr><td><b>P02</b> · mais de 50 anos</td><td class="c">108,8 s · ajuda · 2 erros</td><td class="c">73,8 s · ajuda · 1 erro</td><td class="c">104,5 s</td><td class="c">107,1 s · ajuda · 3 erros</td></tr>
-      <tr><td><b>P03</b> · estudante de humanas</td><td class="c">51,7 s · ajuda · 1 erro</td><td class="c">83,0 s · ajuda · 1 erro</td><td class="c">93,1 s · ajuda · 1 erro</td><td class="c">38,1 s</td></tr>
-      <tr><td><b>P04</b> · usuário do Gov.br</td><td class="c">31,4 s</td><td class="c">19,7 s · com ajuda</td><td class="c">49,6 s</td><td class="c">5,2 s</td></tr>
-    </table>
-    <div class="grid g4" style="margin-top:18px;flex:none">
-      <div class="card escuro"><p><span class="rotulo">T1</span> Dois clicaram em "Entrar com gov.br" e caíram no login simulado. P02 errou a senha.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T2</span> Build local: menu coberto pelo botão "WAI WCAG" e banco só com o processo de teste. Todos precisaram de ajuda.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T3</span> P03 enviou descrição com 14 caracteres. A mensagem não disse o que corrigir.</p></div>
-      <div class="card escuro"><p><span class="rotulo">T4</span> P02 votou em proposta alheia e recebeu erro 500 ao tentar retirar votos.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 7. G1 resultados -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>G1 · Resultados</h1>
-    <p class="sub">Conclusão sem ajuda (TCR) por tarefa. A linha amarela é o nível aceitável de 75%.</p>
-    <div class="grid" style="grid-template-columns:1.25fr 1fr;flex:none">
-      <div class="card escuro" style="padding:26px 28px">
-        <p style="margin-bottom:6px">T1 · Entrar <b style="float:right">33,3%</b></p><div class="barra-fundo"><div class="barra" style="width:33.3%"></div><div class="meta" style="left:75%"></div></div>
-        <p style="margin:20px 0 6px">T2 · Achar o processo <b style="float:right">0%</b></p><div class="barra-fundo"><div class="barra" style="width:0.6%"></div><div class="meta" style="left:75%"></div></div>
-        <p style="margin:20px 0 6px">T3 · Enviar proposta <b style="float:right">66,7%</b></p><div class="barra-fundo"><div class="barra" style="width:66.7%"></div><div class="meta" style="left:75%"></div></div>
-        <p style="margin:20px 0 6px">T4 · Votar <b style="float:right">66,7%</b></p><div class="barra-fundo"><div class="barra" style="width:66.7%"></div><div class="meta" style="left:75%"></div></div>
+  <svg class="onda" viewBox="0 0 470 60" aria-hidden="true"><use href="#onda"/></svg>
+  <header class="slide-topo"><span class="slide-atual">1 / 17 · Capa</span><span class="unb">UnB FCTE</span></header>
+  <div class="conteudo" style="align-items:center;text-align:center">
+    <div class="capa-centro">
+      <div>
+        <!-- <div style="color:var(--azul-escuro);letter-spacing:.18em;font-size:18px;font-weight:700;margin-top:18px">APRESENTAÇÃO FINAL · MÁXIMO 20 MIN</div> -->
+        <h1 class="capa-titulo" style="margin:0 0 14px">Avaliação de Qualidade</h1>
+        <div style="letter-spacing:.07em;font-size:17px;color:var(--texto-sec)">EQUIPE FRANS BILAS</div>
       </div>
-      <table>
-        <tr><th>Métrica</th><th>Resultado</th><th class="c">Faixa</th></tr>
-        <tr><td><b>TCR</b></td><td>abaixo de 75% nas 4 tarefas</td><td class="c"><span class="faixa ins">Insuf.</span> <span class="faixa reg">Regular</span></td></tr>
-        <tr><td><b>TME</b></td><td>31,4 s · 77,1 s · 21,7 s (T2 sem dado)</td><td class="c"><span class="faixa exc">Exc.</span> <span class="faixa bom">Bom</span></td></tr>
-        <tr><td><b>FET</b></td><td>1,00 · 0,67 · 0,33 · 1,00</td><td class="c"><span class="faixa bom">Bom</span></td></tr>
-        <tr><td><b>ICA</b></td><td>91,2% (196 de 215)</td><td class="c"><span class="faixa bom">Bom</span></td></tr>
-        <tr><td><b>SUS</b></td><td>80,0 (82,5 · 77,5 · 80,0)</td><td class="c"><span class="faixa exc">Excelente</span></td></tr>
-      </table>
+      <div class="capa-midia">
+        <div class="capa-img-box">
+          <img src="brasil%20participativo.png" alt="Logo do Brasil Participativo">
+        </div>
+        <div class="capa-img-box">
+          <img src="frans_bilas.jpg" alt="Foto histórica de Frances Bilas operando o ENIAC">
+        </div>
+      </div>
     </div>
-    <div class="card ouro" style="margin-top:18px"><p><b>O contraste:</b> os participantes avaliaram bem a plataforma (SUS 80), mas nenhuma tarefa teve 75% de conclusão sem ajuda. Pela regra da Fase 2, TCR abaixo de 75% indica barreira ao cidadão.</p></div>
-  </div>
-</section>
-
-<!-- 8. Acessibilidade -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>G1 · Acessibilidade (M1.4)</h1>
-    <p class="sub">ICA = aprovadas ÷ (aprovadas + reprovadas), somando axe-core e Lighthouse nas 4 páginas</p>
-    <div class="grid" style="grid-template-columns:1fr 2fr;flex:none">
-      <div class="card branco centro" style="display:flex;flex-direction:column;justify-content:center"><div class="grande" style="color:var(--verde)">91,2%</div><p style="margin-top:8px">196 de 215 verificações</p><p style="margin-top:6px"><span class="faixa bom">Bom</span></p><p class="medio" style="margin-top:12px">axe 91,7% · Lighthouse 90,6%<br>48 itens sem decisão (contraste e auditorias manuais)</p></div>
-      <table>
-        <tr><th>Falha</th><th>Onde aparece</th></tr>
-        <tr><td><b>Link sem nome acessível</b></td><td>Logos do rodapé, carrossel, cartão do processo e botões de compartilhar</td></tr>
-        <tr><td><b>Nome diferente do texto visível</b></td><td>Botões de idioma e de conta, nas 4 páginas</td></tr>
-        <tr><td><b>Imagem sem texto alternativo</b></td><td>3 cartões de novidades da página inicial (impacto crítico)</td></tr>
-        <tr><td><b>Título fora de ordem</b></td><td>Lista de processos</td></tr>
-      </table>
-    </div>
-    <div class="card escuro" style="margin-top:18px"><p><span class="rotulo">O que a ferramenta não viu:</span> a caixa de erro do formulário de proposta tem o <code>aria-label</code> "Data de início do afastamento inválida", copiado de outra tela. O leitor de tela anuncia um erro sem relação com a proposta, e a regra automática passa porque o atributo existe.</p></div>
-  </div>
-</section>
-
-<!-- 9. G2 -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>G2 · Manutenibilidade</h1>
-    <p class="sub">Análise estática das classes de app/ e lib/ do decidim-govbr</p>
-    <div class="grid g4" style="flex:none">
-      <div class="card centro"><p class="rotulo">TSN · sobrescritas</p><div class="grande" style="margin:12px 0">60,14%</div><p>175 de 291 classes reescrevem o Decidim</p><p style="margin-top:12px"><span class="faixa ins">Insuficiente</span></p></div>
-      <div class="card centro"><p class="rotulo">CCM · complexidade</p><div class="grande" style="margin:12px 0">2,29</div><p>média; máximo de 47 em <code>permissions.rb</code></p><p style="margin-top:12px"><span class="faixa exc">Excelente pela média</span></p></div>
-      <div class="card centro"><p class="rotulo">DLC · linhas por classe</p><div class="grande" style="margin:12px 0">67</div><p>média; máximo de 595 em <code>form_builder.rb</code></p><p style="margin-top:12px"><span class="faixa ins">Insuficiente pelo máximo</span></p></div>
-      <div class="card centro"><p class="rotulo">ICT · sobrescritas testadas</p><div class="grande" style="margin:12px 0">39,43%</div><p>69 de 175 têm teste correspondente</p><p style="margin-top:12px"><span class="faixa ins">Insuficiente</span></p></div>
-    </div>
-    <div class="card ouro" style="margin-top:20px"><p><b>Regra da Fase 2 disparada:</b> TSN acima de 25% com ICT abaixo de 70% indica risco de quebra ao atualizar o Decidim. A recomendação é isolar a lógica própria em <i>engines</i>.</p></div>
-  </div>
-</section>
-
-<!-- 10. G3 -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>G3 · Segurança</h1>
-    <p class="sub">Brakeman, bundler-audit e inspeção das ações sensíveis dos controllers</p>
-    <div class="grid g3" style="flex:none">
-      <div class="card centro"><p class="rotulo">DVC · alertas no código</p><div class="grande" style="margin:12px 0">22</div><p>2 alertas altos (Rails e Ruby sem suporte) e 8 médios</p><p style="margin-top:12px"><span class="faixa ins">Insuficiente</span></p></div>
-      <div class="card centro"><p class="rotulo">CDV · dependências</p><div class="grande" style="margin:12px 0">156</div><p>pares (gem, CVE) em 51 gems do Gemfile.lock</p><p style="margin-top:12px"><span class="faixa ins">Insuficiente</span></p></div>
-      <div class="card centro"><p class="rotulo">TPE · ações protegidas</p><div class="grande" style="margin:12px 0">91,3%</div><p>136 de 149 ações sensíveis com verificação explícita</p><p style="margin-top:12px"><span class="faixa reg">Regular</span></p></div>
-    </div>
-    <div class="grid g2" style="margin-top:20px;flex:none">
-      <div class="card escuro"><p><span class="rotulo">Das 13 ações sem proteção,</span> 8 foram criadas pelo decidim-govbr e 5 são iguais às do Decidim 0.27.2.</p></div>
-      <div class="card ouro"><p><b>Regra da Fase 2 disparada:</b> alerta de confiança alta classifica a segurança como Insuficiente e exige chamado junto ao LAPPIS.</p></div>
+    <!-- <div class="agenda-grid">
+      <div class="agenda-box"><b>Introdução</b><span>Davi</span><small>2 slides</small></div>
+      <div class="agenda-box"><b>Segurança</b><span>Miguel</span><small>3 slides</small></div>
+      <div class="agenda-box"><b>Manutenib.</b><span>Medeiros</span><small>3 slides</small></div>
+      <div class="agenda-box"><b>Interação</b><span>Mateus</span><small>3 slides</small></div>
+      <div class="agenda-box"><b>Gestão</b><span>José · João</span><small>4 slides</small></div>
+      <div class="agenda-box"><b>Lições</b><span>Todos</span><small>1 slide · 1 min cada</small></div>
+    </div> -->
+    <div style="margin-top:auto;width:100%;display:flex;justify-content:space-between;font-size:15.5px;color:var(--texto);border-top:1px solid var(--borda-sutil);padding-top:12px">
+      <span><b>Equipe:</b> Davi · João V. · José Vinícius · Lucca Medeiros · Mateus · Miguel</span>
+      <span><b>Professora:</b> Profa. Dra. Cristiane Soares Ramos</span>
     </div>
   </div>
 </section>
 
-<!-- 11. Respostas GQM -->
+<!-- 2. Intro 1 (Davi) -->
 <section class="slide">
-  <div class="unb">UNB</div>
+  <div class="bolha tl"></div>
+  <header class="slide-topo"><span class="slide-atual">2 / 17 · Introdução (1/2) · Brasil Participativo</span><span class="unb">Davi · UnB</span></header>
   <div class="conteudo">
-    <h1>Respostas às questões</h1>
-    <p class="sub" style="margin-bottom:16px">As hipóteses foram registradas na Fase 2, antes de qualquer coleta</p>
-    <table class="compacta">
-      <tr><th class="c">ID</th><th>Questão</th><th>Hipótese</th><th>Resposta</th></tr>
-      <tr><td class="c"><b>Q1.1</b></td><td>Conclui sem ajuda?</td><td><span class="faixa ins">Refutada</span></td><td>Não. A menor taxa foi achar o processo, não enviar a proposta</td></tr>
-      <tr><td class="c"><b>Q1.2</b></td><td>Evita e ajuda a corrigir erros?</td><td><span class="faixa reg">Em parte</span></td><td>Em parte. FET no limite, mas mensagens não orientam</td></tr>
-      <tr><td class="c"><b>Q1.3</b></td><td>Inclusivo?</td><td><span class="faixa reg">Em parte</span></td><td>Em parte. ICA 91,2% e SUS 80, com falhas nos componentes comuns</td></tr>
-      <tr><td class="c"><b>Q2.1</b></td><td>Sobrescritas concentradas?</td><td><span class="faixa exc">Confirmada</span></td><td>Não. Mais da metade das classes sobrescreve o Decidim</td></tr>
-      <tr><td class="c"><b>Q2.2</b></td><td>Fácil de entender?</td><td><span class="faixa exc">Confirmada</span></td><td>Em geral, sim. Médias baixas, com picos em poucos arquivos</td></tr>
-      <tr><td class="c"><b>Q2.3</b></td><td>Sobrescritas testadas?</td><td><span class="faixa exc">Confirmada</span></td><td>Não. Só 39,43% têm teste</td></tr>
-      <tr><td class="c"><b>Q3.1</b></td><td>Padrões vulneráveis?</td><td><span class="faixa ins">Refutada</span></td><td>Sim. 2 alertas altos e DVC 22</td></tr>
-      <tr><td class="c"><b>Q3.2</b></td><td>Dependências seguras?</td><td><span class="faixa exc">Confirmada</span></td><td>Não. 156 pares (gem, CVE)</td></tr>
-      <tr><td class="c"><b>Q3.3</b></td><td>Ações protegidas?</td><td><span class="faixa ins">Refutada</span></td><td>Não totalmente. 13 ações sem verificação</td></tr>
+    <h2 class="titulo">Brasil Participativo</h2>
+    <p class="sub">Plataforma oficial de consulta pública do Governo Federal, baseada no Decidim e mantida pelo LAPPIS/UnB</p>
+    <div class="grid g-asym" style="flex:1;align-items:stretch">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="kpi-row" style="grid-template-columns:repeat(3,1fr);margin-bottom:0">
+          <div class="kpi"><div class="num">1,4M+</div><div class="lbl">Votos no PPA 2024–2027</div></div>
+          <div class="kpi"><div class="num">0.27.2</div><div class="lbl">Núcleo Decidim Rails</div></div>
+          <div class="kpi"><div class="num"><code>176b046</code></div><div class="lbl">Último commit avaliado</div></div>
+        </div>
+        <div class="card">
+          <h3>Classificação e Pilha Tecnológica</h3>
+          <ul>
+            <li><b>Tipo de produto:</b> web app</li>
+            <li><b>Núcleo:</b> Ruby & Rails, PostgreSQL, Redis + Sidekiq</li>
+            <li><b>Autenticação:</b> SSO Gov.br via OpenID Connect e chaves criptográficas JWKS</li>
+            <li><b>4 módulos do governo:</b> <code>decidim-ej</code>, <code>decidim-extra_user_fields</code>, <code>decidim-homes</code> e <code>decidim-mobile</code>.</li>
+          </ul>
+        </div>
+        <!-- <div class="card destaque">
+          <p><span class="rotulo">Código auditado:</span> 291 classes de produção em <code>app/</code> e <code>lib/</code> (175 sobrescrevem o Decidim), 156 specs em <code>spec/</code> e o manifesto <code>Gemfile.lock</code>.</p>
+        </div> -->
+      </div>
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 style="text-align:center;margin-bottom:6px">Arquitetura do <code>decidim-govbr</code></h3>
+        <svg class="chart-svg" viewBox="0 0 500 390" role="img" aria-label="Diagrama da arquitetura do Brasil Participativo: navegador acessa Puma e Decidim Core, conectado às engines oficiais, extensões LAPPIS/Gov.br e persistência em PostgreSQL e Redis/Sidekiq.">
+          <title>Arquitetura do Brasil Participativo</title>
+          <rect x="130" y="10" width="240" height="44" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+          <text x="250" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0369a1">Cidadão / Administrador</text>
+          <text x="250" y="46" text-anchor="middle" font-size="12" fill="#475569">Navegador desktop ou celular</text>
+          <line x1="250" y1="54" x2="250" y2="78" stroke="#0284c7" stroke-width="2"/>
+          <polygon points="244,74 256,74 250,82" fill="#0284c7"/>
+
+          <rect x="65" y="84" width="370" height="48" rx="8" fill="#0284c7"/>
+          <text x="250" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Núcleo decidim-govbr</text>
+          <text x="250" y="123" text-anchor="middle" font-size="12.5" fill="#e0f2fe">Sobrescritas em app/permissions/, app/commands/, controllers</text>
+
+          <line x1="150" y1="132" x2="125" y2="160" stroke="#0284c7" stroke-width="2"/>
+          <line x1="350" y1="132" x2="375" y2="160" stroke="#0284c7" stroke-width="2"/>
+
+          <rect x="14" y="162" width="224" height="114" rx="8" fill="#f2f8fd" stroke="#a8d2f2" stroke-width="1.5"/>
+          <text x="126" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Módulos Oficiais Decidim 0.27.2</text>
+          <text x="24" y="206" font-size="11.5" fill="#334155">• decidim-core, participatory_processes</text>
+          <text x="24" y="226" font-size="11.5" fill="#334155">• decidim-proposals (Propostas e votos)</text>
+          <text x="24" y="246" font-size="11.5" fill="#334155">• decidim-consultations e initiatives</text>
+          <!-- <text x="24" y="266" font-size="11.5" fill="#0369a1" font-weight="600">→ Medidos em TSN, ICT e DVC</text> -->
+
+          <rect x="262" y="162" width="224" height="114" rx="8" fill="#e0e7ff" stroke="#a5b4fc" stroke-width="1.5"/>
+          <text x="374" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Extensões Gov. Federal / LAPPIS</text>
+          <text x="272" y="206" font-size="11.5" fill="#1e293b">• OmniAuth Gov.br (OIDC / JWKS)</text>
+          <text x="272" y="226" font-size="11.5" fill="#1e293b">• decidim-ej (Empurrando Juntos)</text>
+          <text x="272" y="246" font-size="11.5" fill="#1e293b">• extra_user_fields, homes, mobile</text>
+          <!-- <text x="272" y="266" font-size="11.5" fill="#b45309" font-weight="600">→ Repos externos (fora de escopo)</text> -->
+
+          <line x1="126" y1="276" x2="126" y2="306" stroke="#475569" stroke-width="1.8"/>
+          <line x1="374" y1="276" x2="374" y2="306" stroke="#475569" stroke-width="1.8"/>
+
+          <rect x="14" y="308" width="224" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="126" y="331" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0f172a">PostgreSQL 13.2 + JSONB</text>
+          <text x="126" y="352" text-anchor="middle" font-size="12" fill="#475569">Propostas, votos, permissões, usuários</text>
+
+          <rect x="262" y="308" width="224" height="66" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="374" y="331" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0f172a">Redis 6.0 + Sidekiq 6.5.7</text>
+          <text x="374" y="352" text-anchor="middle" font-size="12" fill="#475569">Filas assíncronas e cache</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Intro 2 (Davi) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">3 / 17 · Introdução (2/2) · Avaliação de Qualidade</span><span class="unb">Davi · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Propósito, Partes, Priorização e Escopo</h2>
+    <!-- <p class="sub">ISO/IEC 25010:2023 + GQM (3 objetivos · 9 questões · 12 métricas) alinhados ao ODS 16 (Meta 16.7)</p> -->
+    <div class="grid g2" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <h3>Propósito</h3>
+          <ul>
+            <li><b>LAPPIS:</b> priorizar refatoração no código Rails com maior débito.</li>
+            <li><b>Dataprev e MGI:</b> endurecer permissões e atualizar gems com CVE.</li>
+            <li><b>Participação Digital:</b> encontrar possíveis melhorias de fluxos e telas que geram desistência.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Partes Interessadas</h3>
+          <ul>
+            <li><b>Cidadão:</b> interface clara, acessibilidade e sigilo do voto.</li>
+            <li><b>LAPPIS:</b> código modular, baixa complexidade e suíte RSpec.</li>
+            <li><b>Órgão Gestor (MGI):</b> estabilidade, conformidade LGPD e segurança.</li>
+            <li><b>Requisitante (UnB):</b> rigor ISO/IEC 25010, GQM e dados rastreáveis.</li>
+          </ul>
+        </div>
+        <div class="card destaque">
+          <p>
+            <span class="rotulo">Escopo:</span> análise estática de <code>decidim-govbr</code> (commit <code>176b046</code>) + sessões em cópia local Docker.<br>
+            <span class="rotulo">Fora de escopo:</span> testes de carga ou invasão em produção e repos externos das 4 gems.
+          </p>
+        </div>
+      </div>
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:center">
+        <h3>Priorização Ponderada (ISO/IEC 25010:2023)</h3>
+        <p style="font-size:13.5px;color:var(--texto-sec);margin-bottom:8px">Fórmula: <code>3 × Impacto + 2 × Risco + 1 × Viabilidade</code></p>
+        <svg class="chart-svg" viewBox="0 0 510 300" role="img" aria-label="Gráfico de barras horizontais da matriz ponderada: Segurança 29, Capacidade de Interação 28 e Manutenibilidade 25 selecionadas; Confiabilidade 22, Eficiência 20, Adequação Funcional 19, Flexibilidade 18, Compatibilidade 17 e Safety 7 descartadas.">
+          <title>Matriz ponderada das características ISO/IEC 25010:2023</title>
+          <line x1="160" y1="15" x2="160" y2="275" stroke="#cbd5e1" stroke-width="1"/>
+          <line x1="410" y1="15" x2="410" y2="275" stroke="#0369a1" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="410" y="292" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0369a1">Corte: 25 pts</text>
+
+          <text x="152" y="34" text-anchor="end" font-size="13.5" font-weight="700" fill="#0f172a">1. Segurança</text>
+          <rect x="160" y="20" width="290" height="20" rx="4" fill="#1d4ed8"/>
+          <text x="456" y="35" font-size="13" font-weight="700" fill="#1d4ed8">29 (5·5·4)</text>
+
+          <text x="152" y="64" text-anchor="end" font-size="13.5" font-weight="700" fill="#0f172a">2. Cap. Interação</text>
+          <rect x="160" y="50" width="280" height="20" rx="4" fill="#0284c7"/>
+          <text x="446" y="65" font-size="13" font-weight="700" fill="#0369a1">28 (5·4·5)</text>
+
+          <text x="152" y="94" text-anchor="end" font-size="13.5" font-weight="700" fill="#0f172a">3. Manutenibilidade</text>
+          <rect x="160" y="80" width="250" height="20" rx="4" fill="#0f766e"/>
+          <text x="416" y="95" font-size="13" font-weight="700" fill="#0f766e">25 (4·4·5)</text>
+
+          <text x="152" y="126" text-anchor="end" font-size="13" fill="#475569">Confiabilidade</text>
+          <rect x="160" y="113" width="220" height="18" rx="4" fill="#cbd5e1"/>
+          <text x="386" y="127" font-size="12.5" fill="#475569">22 (viab. 2)</text>
+
+          <text x="152" y="154" text-anchor="end" font-size="13" fill="#475569">Eficiência Desemp.</text>
+          <rect x="160" y="141" width="200" height="18" rx="4" fill="#cbd5e1"/>
+          <text x="366" y="155" font-size="12.5" fill="#475569">20 (viab. 2)</text>
+
+          <text x="152" y="182" text-anchor="end" font-size="13" fill="#475569">Adequação Func.</text>
+          <rect x="160" y="169" width="190" height="18" rx="4" fill="#cbd5e1"/>
+          <text x="356" y="183" font-size="12.5" fill="#475569">19</text>
+
+          <text x="152" y="210" text-anchor="end" font-size="13" fill="#475569">Flexibilidade</text>
+          <rect x="160" y="197" width="180" height="18" rx="4" fill="#cbd5e1"/>
+          <text x="346" y="211" font-size="12.5" fill="#475569">18</text>
+
+          <text x="152" y="238" text-anchor="end" font-size="13" fill="#475569">Compatibilidade</text>
+          <rect x="160" y="225" width="170" height="18" rx="4" fill="#cbd5e1"/>
+          <text x="336" y="239" font-size="12.5" fill="#475569">17</text>
+
+          <text x="152" y="266" text-anchor="end" font-size="13" fill="#475569">Proteção (Safety)</text>
+          <rect x="160" y="253" width="70" height="18" rx="4" fill="#cbd5e1"/>
+          <text x="236" y="267" font-size="12.5" fill="#475569">7</text>
+        </svg>
+        <p style="font-size:13px;color:var(--texto-sec);margin-top:4px">Confiabilidade e Eficiência perderam viabilidade (nota 2) por exigirem testes ativos em produção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Segurança 1 (Miguel) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">4 / 17 · Segurança (1/3) · Coleta e Ambiente</span><span class="unb">Miguel · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Segurança (G3) · Coleta e Ambiente</h2>
+    <p class="sub">Análise estática passiva (SAST, SCA e auditoria de rotas) no commit <code>176b046</code>, sem requisições à produção</p>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Procedimentos e Organização</h3>
+        <ul>
+          <li><b>M3.1 (DVC):</b> varredura SAST no código contando alertas por confiança (<code>3×alta + 2×média + 1×fraca</code>), sem duplicar o relatório textual.</li>
+          <li><b>M3.2 (CDV):</b> checagem SCA do <code>Gemfile.lock</code> contra a base RubySec atualizada no dia, somando pares distintos <code>(gem, CVE)</code>.</li>
+          <li><b>M3.3 (TPE):</b> script lista ações públicas e conferência manual checa rota em <code>routes.rb</code>, <code>before_action</code> e <code>enforce_permission_to</code>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Instrumentos, Recursos e Ambiente</h3>
+        <ul>
+          <li><b>M3.1:</b> Brakeman <code>8.1.0</code> (saídas <code>.json</code> e <code>.txt</code>).</li>
+          <li><b>M3.2:</b> <code>bundler-audit</code> <code>0.9.3</code> com base <code>ruby-advisory-db</code> de 03/11.</li>
+          <li><b>M3.3:</b> Python 3 (<code>scripts/m33_endpoints.py</code>) + inspeção de <code>app/controllers/</code> e <code>app/permissions/</code>.</li>
+          <li><b>Ambiente:</b> clone limpo do ramo <code>develop</code> em estação local, isolado do ambiente federal (conforme salvaguarda da Ata 01).</li>
+          <li><b>Limite de repetição:</b> M3.1 e M3.3 são determinísticos; M3.2 cresce com novos avisos na RubySec.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card escuro">
+      <h3>Evidências</h3>
+      <div class="grid g4" style="margin-top:8px">
+        <div class="card branco" style="padding:10px 12px"><p><b><code>execucao.txt</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">Timestamp, hash completo do commit e versões das ferramentas</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.1-brakeman.*</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">10 alertas totais (2 confiança alta, 8 média, 0 fraca)</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.2-bundler-audit.txt</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">198 avisos em 51 gems (156 pares gem-CVE)</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.3-endpoints.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">188 ações varridas → 149 sensíveis confirmadas na triagem</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Segurança 2 (Miguel) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">5 / 17 · Segurança (2/3) · Métricas, GQM e Conclusões</span><span class="unb">Miguel · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Segurança · Métricas, GQM e Conclusões</h2>
+    <p class="sub">Objetivo G3 não atingido: nenhuma métrica chegou à faixa Bom, disparando chamado de segurança ao LAPPIS</p>
+    <div class="grid g2" style="margin-bottom:12px">
+      <div class="card branco">
+        <h3>M3.2: 198 Avisos no <code>Gemfile.lock</code> por Gravidade</h3>
+        <svg class="chart-svg" viewBox="0 0 490 155" role="img" aria-label="Avisos de dependências por gravidade: 3 críticos, 49 altos, 81 médios, 7 baixos e 58 sem classificação.">
+          <title>Distribuição de avisos do bundler-audit por gravidade</title>
+          <text x="108" y="24" text-anchor="end" font-size="13" font-weight="600" fill="#b91c1c">Críticos</text>
+          <rect x="116" y="10" width="12" height="18" rx="3" fill="#dc2626"/>
+          <text x="134" y="24" font-size="12.5" font-weight="700" fill="#b91c1c">3 (graphql 1.12.24 RCE)</text>
+
+          <text x="108" y="52" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Altos</text>
+          <rect x="116" y="38" width="175" height="18" rx="3" fill="#ea580c"/>
+          <text x="297" y="52" font-size="12.5" font-weight="600" fill="#9a3412">49</text>
+
+          <text x="108" y="80" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Médios</text>
+          <rect x="116" y="66" width="290" height="18" rx="3" fill="#d97706"/>
+          <text x="412" y="80" font-size="12.5" font-weight="600" fill="#b45309">81</text>
+
+          <text x="108" y="108" text-anchor="end" font-size="13" fill="#475569">Baixos</text>
+          <rect x="116" y="94" width="25" height="18" rx="3" fill="#0284c7"/>
+          <text x="147" y="108" font-size="12.5" fill="#0369a1">7</text>
+
+          <text x="108" y="136" text-anchor="end" font-size="13" fill="#475569">Sem classif.</text>
+          <rect x="116" y="122" width="207" height="18" rx="3" fill="#94a3b8"/>
+          <text x="329" y="136" font-size="12.5" fill="#475569">58</text>
+        </svg>
+        <p style="font-size:13.5px;color:var(--texto-sec)">Total: <b>156 pares (gem, CVE)</b> em 51 gems (147 CVEs únicas); destaques em <code>rack</code>, <code>nokogiri</code>, <code>net-imap</code> e <code>loofah</code>.</p>
+      </div>
+      <div class="card branco">
+        <h3>M3.1 (DVC) e Origem das 13 Ações Sem Proteção (M3.3)</h3>
+        <svg class="chart-svg" viewBox="0 0 490 155" role="img" aria-label="Comparativo de DVC igual a 22 frente à meta menor ou igual a 7, e TPE de 91,3 por cento com 8 ações desprotegidas no decidim-govbr e 5 no Decidim 0.27.2.">
+          <title>Indicadores M3.1 e M3.3 de Segurança</title>
+          <text x="10" y="20" font-size="13" font-weight="700" fill="#0f172a">M3.1 DVC = 22 (meta Bom: 0 alta, DVC ≤ 7)</text>
+          <rect x="10" y="28" width="120" height="20" rx="3" fill="#dc2626"/>
+          <rect x="132" y="28" width="260" height="20" rx="3" fill="#f59e0b"/>
+          <line x1="138" y1="24" x2="138" y2="52" stroke="#0f172a" stroke-width="2" stroke-dasharray="3 2"/>
+          <text x="70" y="42" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">Alta: 2 (×3=6)</text>
+          <text x="262" y="42" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">Média: 8 (×2=16: 4 permit! + 4 SQLi)</text>
+
+          <text x="10" y="82" font-size="13" font-weight="700" fill="#0f172a">M3.3 TPE = 91,3% (136/149 ações · meta ≥ 95%)</text>
+          <rect x="10" y="92" width="400" height="22" rx="4" fill="#0284c7"/>
+          <rect x="412" y="92" width="38" height="22" rx="3" fill="#dc2626"/>
+          <rect x="452" y="92" width="24" height="22" rx="3" fill="#f59e0b"/>
+          <line x1="452" y1="88" x2="452" y2="118" stroke="#0f172a" stroke-width="2" stroke-dasharray="3 2"/>
+          <text x="210" y="107" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">136 protegidas (91,3%)</text>
+          <text x="245" y="138" text-anchor="middle" font-size="12.5" fill="#475569">13 sem verificação: <tspan fill="#b91c1c" font-weight="700">8 do decidim-govbr</tspan> + <tspan fill="#b45309" font-weight="700">5 do Decidim 0.27.2</tspan></text>
+        </svg>
+      </div>
+    </div>
+    <table>
+      <tr><th>Questão GQM &amp; Métrica</th><th>Medido vs Critério Bom</th><th>Hipótese</th><th>Conclusão</th></tr>
+      <tr><td><b>Q3.1</b> Padrões vulneráveis · <b>DVC</b></td><td><b>22</b> (2 altas + 8 médias) vs ≤ 7 <span class="tag ins">Insuficiente</span></td><td><span class="tag ins">H3.1 Refutada</span></td><td>Ruby <code>3.0.4</code> e Rails <code>6.1.7.2</code> sem suporte; 4 alertas de SQLi em model próprio.</td></tr>
+      <tr><td><b>Q3.2</b> Dependências seguras · <b>CDV</b></td><td><b>156</b> pares gem-CVE vs ≤ 1 <span class="tag ins">Insuficiente</span></td><td><span class="tag exc">H3.2 Confirmada</span></td><td>Risco alto concentrado em gems desatualizadas (RCE na <code>graphql</code> 1.12.24).</td></tr>
+      <tr><td><b>Q3.3</b> Ações protegidas · <b>TPE</b></td><td><b>91,3%</b> (136/149) vs ≥ 95% <span class="tag reg">Regular</span></td><td><span class="tag ins">H3.3 Refutada</span></td><td>Selos sem controle nem escopo admin e <code>reports#create</code> só redireciona.</td></tr>
     </table>
   </div>
 </section>
 
-<!-- 12. Relações -->
+<!-- 6. Segurança 3 (Miguel) -->
 <section class="slide">
-  <div class="unb">UNB</div>
+  <header class="slide-topo"><span class="slide-atual">6 / 17 · Segurança (3/3) · Melhorias e Patch Aplicado</span><span class="unb">Miguel · UnB</span></header>
   <div class="conteudo">
-    <h1>Relações entre as características</h1>
-    <p class="sub branco">Os defeitos que chegaram ao usuário estão em código que o decidim-govbr sobrescreveu ou criou, sem teste no caminho com problema.</p>
-    <div class="fluxo" style="margin-bottom:14px">
-      <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>TSN 60,14% · ICT 39,43%</p></div><div class="seta">▶</div>
-      <div class="card branco" style="flex:2"><p><b>Botão de voto sobrescrito</b> chama um método que só existe no <code>ProposalsController</code>. Ao retirar voto, outro controller renderiza o botão → erro 500 na T4.</p></div><div class="seta">▶</div>
-      <div class="card ouro" style="flex:1"><h3>Interação</h3><p>T4 de P02</p></div>
-    </div>
-    <div class="fluxo" style="margin-bottom:14px">
-      <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>controller e formulário sobrescritos</p></div><div class="seta">▶</div>
-      <div class="card branco" style="flex:2"><p><b>Mensagem fixa</b> "Verifique os campos obrigatórios", sem dizer qual campo, e <code>aria-label</code> copiado de outra tela.</p></div><div class="seta">▶</div>
-      <div class="card ouro" style="flex:1"><h3>Interação</h3><p>T3 e acessibilidade</p></div>
-    </div>
-    <div class="fluxo">
-      <div class="card" style="flex:1"><h3>Manutenibilidade</h3><p>controller criado sem teste</p></div><div class="seta">▶</div>
-      <div class="card branco" style="flex:2"><p><b>Ações de selos</b> sem verificação de permissão, corrigidas na melhoria #80.</p></div><div class="seta">▶</div>
-      <div class="card azul" style="flex:1"><h3>Segurança</h3><p>M3.3</p></div>
+    <h2 class="titulo">Segurança · Melhorias</h2>
+    <!-- <p class="sub">Melhorias recomendadas a Dataprev/MGI e correção priorizada no <code>ProposalBadgesController</code></p> -->
+    <div class="grid g-asym2" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <h3>Sugestões</h3>
+          <ul>
+            <li><b>1. Autorização nos selos:</b> exigir permissão e isolar rotas admin (<i>esforço baixo</i>).</li>
+            <li><b>2. Relatórios (<code>reports_controller</code>):</b> interromper fluxo para não-admin com <code>enforce_permission_to</code> (<i>esforço baixo</i>).</li>
+            <li><b>3. Gems e runtime:</b> atualizar <code>graphql</code> (<code>1.12.24→1.12.25</code>), <code>rack</code>, <code>puma</code>, Ruby e Rails (<i>esforço médio</i>).</li>
+            <li><b>4. SQL injection:</b> confirmar e parametrizar 4 alertas em <code>user_proposals_statistic_setting.rb</code>.</li>
+          </ul>
+        </div>
+        <div class="card destaque">
+          <h3>Priorizada</h3>
+          <ul>
+            <li><b>Problema:</b> 4 ações em <code>ProposalBadgesController</code> com rota no <code>routes.rb</code> principal e sem checagem de usuário.</li>
+            <li><b>Justificativa da prioridade:</b> código próprio do <code>decidim-govbr</code>, baixo esforço de correção (16 linhas) e padrão replicável para as outras ações da M3.3.</li>
+            <li><b>Ação executada (15/11):</b> dois <code>before_action</code> carregando componente/usuário e aplicando <code>enforce_permission_to :update, :organization</code>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <h3>Verificação do Efeito em Docker + PostgreSQL 13.2</h3>
+          <svg class="chart-svg" viewBox="0 0 470 235" role="img" aria-label="Antes e depois da melhoria nos selos de propostas: testes RSpec passaram de 2 de 8 aprovados para 8 de 8; ações protegidas pelo script subiram de 136 para 141 de 149.">
+            <title>Efeito verificado da melhoria nos selos antes e depois do patch</title>
+            <text x="10" y="22" font-size="13.5" font-weight="700" fill="#0f172a">Suíte RSpec do controller (8 exemplos)</text>
+            <text x="10" y="48" font-size="13" fill="#475569">Antes (original)</text>
+            <rect x="125" y="34" width="60" height="22" rx="3" fill="#15803d"/>
+            <rect x="187" y="34" width="180" height="22" rx="3" fill="#dc2626"/>
+            <text x="155" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">2 pass</text>
+            <text x="277" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">6 falhas (acesso aberto)</text>
+
+            <text x="10" y="84" font-size="13" font-weight="700" fill="#0f172a">Depois (com patch)</text>
+            <rect x="125" y="70" width="242" height="22" rx="3" fill="#15803d"/>
+            <text x="246" y="85" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">8 / 8 exemplos aprovados (0 falhas)</text>
+
+            <line x1="10" y1="112" x2="460" y2="112" stroke="#cbd5e1" stroke-width="1"/>
+
+            <text x="10" y="136" font-size="13.5" font-weight="700" fill="#0f172a">Ações protegidas no script m33_endpoints.py</text>
+            <text x="10" y="162" font-size="13" fill="#475569">Baseline M3.3</text>
+            <rect x="120" y="148" width="215" height="22" rx="3" fill="#94a3b8"/>
+            <text x="342" y="163" font-size="12.5" font-weight="600" fill="#475569">136/149 (91,3%)</text>
+
+            <text x="10" y="198" font-size="13" font-weight="700" fill="#0f172a">Com patch</text>
+            <rect x="120" y="184" width="223" height="22" rx="3" fill="#0284c7"/>
+            <text x="350" y="199" font-size="12.5" font-weight="700" fill="#0369a1">141/149 (94,6%)</text>
+          </svg>
+        </div>
+        <div class="card ambar" style="padding:10px 12px">
+          <p style="font-size:13.5px"><b>Escopo e limite:</b> M3.3 oficial permanece <code>91,3%</code> (coleta única). O teste também achou <code>DestroyOneProposalBadge</code> inexistente (ainda quebra para admin), e administradores de espaço não passam pela regra de organização.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 13. Julgamento -->
+<!-- 7. Manutenibilidade 1 (Medeiros) -->
 <section class="slide">
-  <div class="unb">UNB</div>
+  <header class="slide-topo"><span class="slide-atual">7 / 17 · Manutenibilidade (1/3) · Coleta e Ambiente</span><span class="unb">Medeiros · UnB</span></header>
   <div class="conteudo">
-    <h1>Julgamento por objetivo</h1>
-    <p class="sub">Cada objetivo comparado ao nível aceitável e às regras de decisão da Fase 2</p>
-    <div class="grid g3" style="flex:none">
-      <div class="card"><p class="rotulo">G1 · Capacidade de Interação</p><div style="margin:14px 0"><span class="faixa reg" style="font-size:20px">Atingido em parte</span></div><p>TME, FET, ICA e SUS no aceitável. TCR abaixo de 75% em todas as tarefas.</p><p style="margin-top:12px"><b>Regra disparada:</b> redesenho do formulário de propostas.</p></div>
-      <div class="card"><p class="rotulo">G2 · Manutenibilidade</p><div style="margin:14px 0"><span class="faixa ins" style="font-size:20px">Não atingido</span></div><p>Só as médias de complexidade e de tamanho no aceitável.</p><p style="margin-top:12px"><b>Regra disparada:</b> refatorar em <i>engines</i> isoladas.</p></div>
-      <div class="card"><p class="rotulo">G3 · Segurança</p><div style="margin:14px 0"><span class="faixa ins" style="font-size:20px">Não atingido</span></div><p>Nenhuma métrica no aceitável.</p><p style="margin-top:12px"><b>Regra disparada:</b> chamado de segurança junto ao LAPPIS.</p></div>
+    <h2 class="titulo">Manutenibilidade (G2) · Coleta e Ambiente</h2>
+    <!-- <p class="sub">Análise léxica e sintática determinística sobre dois checkouts limpos (<code>decidim-govbr</code> e Decidim v0.27.2)</p> -->
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Procedimentos e Organização</h3>
+        <ul>
+          <li><b>M2.1 (TSN):</b> compara constantes de classes em <code>app/</code> e <code>lib/</code> contra a referência do Decidim v0.27.2 (exclui testes e migrações).</li>
+          <li><b>M2.2 e M2.3 (CCM e DLC):</b> inventário por método via RuboCop e contagem de linhas efetivas (<code>Ripper.lex</code>) por arquivo que declara classe.</li>
+          <li><b>M2.4 (ICT):</b> cruza sobrescritas com <code>spec/</code> por nome da classe em <code>describe</code> ou caminho espelhado com exemplo ativo.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Instrumentos, Recursos e Verificação</h3>
+        <ul>
+          <li><b>Ferramentas:</b> Ruby <code>3.4.7</code>, RuboCop <code>1.86.2</code> (limiar 0), parser <code>Ripper</code>, coletor <code>scripts/collect_maintainability.rb</code> e wrapper Docker.</li>
+          <li><b>Ambiente:</b> contêiner Linux x86_64 com rede desativada e montagens somente leitura (<code>reproduction.txt</code>).</li>
+          <li><b>Conferência cruzada:</b> <code>verify_maintainability.py</code> validou totais contra o JSON original e <b>11 testes RSpec do coletor</b> passaram.</li>
+          <li><b>Correção auditada (<code>corrections.json</code>):</b> eliminou 5 auxiliares de teste (TSN: 59,12% → <b>60,14%</b>) e resolveu namespaces (ICT: 29,14% → <b>39,43%</b>).</li>
+        </ul>
+      </div>
     </div>
-    <div class="card escuro" style="margin-top:20px"><p><span class="rotulo">Para cada decisão da Fase 1:</span> D1 e D2 têm evidência suficiente para começar. D3 tem evidência em parte: três participantes, que já conheciam as tarefas, e ajudas causadas pelo ambiente de teste.</p></div>
+    <div class="card escuro">
+      <h3>Evidências</h3>
+      <div class="grid g4" style="margin-top:8px">
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.1-classes.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">291 classes de produção mapeadas e 175 sobrescritas</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.2-methods.csv</code> / JSON</b><br><span style="font-size:13.5px;color:var(--texto-sec)">1.275 métodos em 4 diretórios (soma 2.916)</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.3-sloc.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">273 arquivos de classe (18.298 linhas efetivas)</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.4-specs.csv</code> &amp; JSONs</b><br><span style="font-size:13.5px;color:var(--texto-sec)">69 com spec, 106 sem correspondência + hashes SHA-256</span></p></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 14. Recomendações -->
+<!-- 8. Manutenibilidade 2 (Medeiros) -->
 <section class="slide">
-  <div class="unb">UNB</div>
+  <header class="slide-topo"><span class="slide-atual">8 / 17 · Manutenibilidade (2/3) · Métricas, GQM e Conclusões</span><span class="unb">Medeiros · UnB</span></header>
   <div class="conteudo">
-    <h1>Recomendações</h1>
-    <p class="sub">Prioridade alta quando a regra da Fase 2 exige ação</p>
-    <div class="grid g3">
-      <div class="card"><div class="selo">D1</div><h3 class="centro">LAPPIS</h3><ul><li><b>Alta:</b> testes de requisição para votar, retirar voto e publicar proposta; depois refatorar essas sobrescritas</li><li><b>Alta:</b> corrigir o erro 500 do botão de voto</li><li>Atacar <code>permissions.rb</code> e <code>form_builder.rb</code></li></ul></div>
-      <div class="card"><div class="selo">D2</div><h3 class="centro">Dataprev e MGI</h3><ul><li><b>Alta:</b> abrir chamado de segurança</li><li>Atualizar Ruby, Rails e as gems com CVE</li><li>Proteger as 13 ações da M3.3 no padrão da melhoria #80</li></ul></div>
-      <div class="card"><div class="selo">D3</div><h3 class="centro">Sec. de Participação Digital</h3><ul><li><b>Alta:</b> mostrar o mínimo de caracteres e o erro junto do campo; corrigir o <code>aria-label</code></li><li><b>Média:</b> repetir a T2 com dados reais; se persistir, processos na página inicial e busca por tipo</li><li><b>Média:</b> nomes acessíveis e textos alternativos</li></ul></div>
-    </div>
-  </div>
-</section>
+    <h2 class="titulo">Manutenibilidade · Métricas e Conclusões</h2>
+    <!-- <p class="sub">Objetivo G2 não atingido: acoplamento alto com o núcleo (TSN 60,14%) e baixa cobertura de testes (ICT 39,43%)</p> -->
+    <div class="grid g2" style="margin-bottom:12px">
+      <div class="card branco">
+        <h3>Taxa de Sobrescrita (TSN) e Cobertura (ICT) vs Meta Bom</h3>
+        <svg class="chart-svg" viewBox="0 0 490 155" role="img" aria-label="Gráfico comparando TSN medido em 60,14 por cento contra teto aceitável de 25 por cento e ICT medido em 39,43 por cento contra piso aceitável de 70 por cento.">
+          <title>TSN e ICT comparados ao nível aceitável</title>
+          <text x="10" y="22" font-size="13" font-weight="700" fill="#0f172a">M2.1 TSN = 60,14% (175/291) · Meta Bom: ≤ 25%</text>
+          <rect x="10" y="30" width="440" height="24" rx="4" fill="#e2e8f0"/>
+          <rect x="10" y="30" width="265" height="24" rx="4" fill="#dc2626"/>
+          <line x1="120" y1="25" x2="120" y2="59" stroke="#0f172a" stroke-width="2.2" stroke-dasharray="4 2"/>
+          <text x="140" y="46" font-size="12" font-weight="700" fill="#ffffff">60,14% (Insuficiente)</text>
+          <text x="122" y="72" font-size="11.5" font-weight="600" fill="#0f172a">Limite ≤ 25%</text>
 
-<!-- 15. Melhorias -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>Melhorias executadas</h1>
-    <p class="sub">Duas recomendações já aplicadas como patch sobre o commit avaliado</p>
-    <div class="grid g2" style="flex:none">
-      <div class="card"><p class="rotulo">#73 · Manutenibilidade</p><h3>Testes do serviço de embeds</h3><p>Testes de regressão para o <code>MeetingIframeEmbedder</code>, uma sobrescrita que não tinha teste.</p><p style="margin-top:12px"><b>Mostra o caminho de D1:</b> testar antes de refatorar.</p></div>
-      <div class="card"><p class="rotulo">#80 · Segurança</p><h3>Permissão nas ações de selos</h3><p>Dois <code>before_action</code> e 8 exemplos de teste no <code>ProposalBadgesController</code>, que não conferia quem fazia a requisição.</p><p style="margin-top:12px"><b>Modelo para D2:</b> o mesmo padrão serve às outras ações sem proteção.</p></div>
-    </div>
-    <div class="card escuro" style="margin-top:20px"><p><span class="rotulo">Por que essas duas:</span> cada uma ataca um resultado Insuficiente (ICT e TPE) e foi escolhida pelos dados da coleta, não por preferência da equipe.</p></div>
-  </div>
-</section>
+          <text x="10" y="102" font-size="13" font-weight="700" fill="#0f172a">M2.4 ICT = 39,43% (69/175) · Meta Bom: ≥ 70%</text>
+          <rect x="10" y="110" width="440" height="24" rx="4" fill="#e2e8f0"/>
+          <rect x="10" y="110" width="174" height="24" rx="4" fill="#d97706"/>
+          <line x1="318" y1="105" x2="318" y2="139" stroke="#15803d" stroke-width="2.2" stroke-dasharray="4 2"/>
+          <text x="97" y="126" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">39,43%</text>
+          <text x="318" y="152" text-anchor="middle" font-size="11.5" font-weight="600" fill="#15803d">Meta ≥ 70% (106 sem spec)</text>
+        </svg>
+      </div>
+      <div class="card branco">
+        <h3>Média vs Pico Máximo (M2.2 CCM e M2.3 DLC)</h3>
+        <svg class="chart-svg" viewBox="0 0 490 155" role="img" aria-label="Complexidade média 2,29 com pico de 47 em permissions.rb; densidade média de 67,03 linhas com pico de 595 em form_builder.rb.">
+          <title>Concentração de complexidade e tamanho em poucos arquivos</title>
+          <text x="10" y="22" font-size="13" font-weight="700" fill="#0f172a">M2.2 CCM (Complexidade · Meta médio ≤ 7)</text>
+          <text x="10" y="45" font-size="12.5" fill="#15803d" font-weight="600">Média: 2,29</text>
+          <rect x="115" y="33" width="16" height="16" rx="3" fill="#15803d"/>
+          <text x="138" y="45" font-size="12" fill="#475569">Excelente (1.275 métodos)</text>
+          <text x="10" y="71" font-size="12.5" fill="#b91c1c" font-weight="600">Máximo: 47</text>
+          <rect x="115" y="59" width="240" height="16" rx="3" fill="#dc2626"/>
+          <text x="360" y="71" font-size="11.5" font-weight="600" fill="#0f172a">admin/permissions.rb</text>
 
-<!-- 16. Gestão -->
-<section class="slide">
-  <div class="unb">UNB</div>
-  <div class="conteudo">
-    <h1>Gestão do projeto · PSM/CID</h1>
-    <p class="sub">Seis necessidades de informação (N1 a N6), medidas no GitHub Projects 33</p>
-    <table class="compacta" style="font-size:17.5px">
-      <tr><th>Indicador</th><th>Sprint 3 (medido em 04/11)</th><th>Decisão tomada</th></tr>
-      <tr><td><b>N1</b> Comprometido × concluído</td><td>1 de 17 itens no critério de Pronto</td><td>Ação corretiva: critério de Pronto revisto</td></tr>
-      <tr><td><b>N2</b> Burndown da E2</td><td>20% concluído com 32% do prazo</td><td>Escopo replanejado</td></tr>
-      <tr><td><b>N3 a N5</b> Esforço e cycle time</td><td>Não calculáveis: horas e datas em branco nas issues</td><td>Preencher horas e datas ao fechar cada issue</td></tr>
-      <tr><td><b>N6</b> Revisão por pares</td><td>1 de 9 integrações revisada por outra dupla</td><td>A <code>main</code> passou a exigir PR</td></tr>
+          <line x1="10" y1="88" x2="480" y2="88" stroke="#cbd5e1" stroke-width="1"/>
+
+          <text x="10" y="108" font-size="13" font-weight="700" fill="#0f172a">M2.3 DLC (Linhas por classe · Meta médio ≤ 100, máx ≤ 300)</text>
+          <text x="10" y="130" font-size="12.5" fill="#0369a1" font-weight="600">Média: 67,03</text>
+          <rect x="115" y="118" width="42" height="16" rx="3" fill="#0284c7"/>
+          <text x="164" y="130" font-size="12" fill="#475569">18.298 eLOC / 273 arquivos</text>
+          <text x="10" y="152" font-size="12.5" fill="#b91c1c" font-weight="600">Máximo: 595</text>
+          <rect x="115" y="140" width="242" height="16" rx="3" fill="#dc2626"/>
+          <text x="364" y="152" font-size="11.5" font-weight="600" fill="#0f172a">form_builder.rb (&gt; 400)</text>
+        </svg>
+      </div>
+    </div>
+    <table>
+      <tr><th>Questão GQM &amp; Métrica</th><th>Faixa Obtida</th><th>Hipótese</th><th>Conclusão</th></tr>
+      <tr><td><b>Q2.1</b> Sobrescritas concentradas · <b>TSN</b></td><td><b>60,14%</b> <span class="tag ins">Insuficiente</span></td><td><span class="tag exc">H2.1 Confirmada</span></td><td>Metade do código sobrescreve o núcleo; atualizações exigem ampla revisão.</td></tr>
+      <tr><td><b>Q2.2</b> Fácil de entender · <b>CCM / DLC</b></td><td>CCM <b>2,29</b> <span class="tag exc">Exc.</span> · DLC <b>595</b> <span class="tag ins">Insuf.</span></td><td><span class="tag exc">H2.2 Confirmada</span></td><td>Médias boas escondem picos graves em <code>permissions.rb</code> (47) e <code>form_builder.rb</code>.</td></tr>
+      <tr><td><b>Q2.3</b> Sobrescritas testadas · <b>ICT</b></td><td><b>39,43%</b> <span class="tag ins">Insuficiente</span></td><td><span class="tag exc">H2.3 Confirmada</span></td><td>106 classes sem spec espelho elevam risco de regressão silenciosa ao atualizar.</td></tr>
     </table>
-    <div class="grid g2" style="margin-top:18px;flex:none">
-      <div class="card escuro"><p><span class="rotulo">Seis sprints:</span> Fase 1 e PC1 · Fase 2 e E1 · Fase 3 e PSM · coleta estática e melhoria #73 · Fase 4, #80 e PC2 · entrega final.</p></div>
-      <div class="card escuro"><p><span class="rotulo">Contribuição:</span> divisão paritária de 16,67% por integrante, registrada na tabela do artigo.</p></div>
-    </div>
   </div>
 </section>
 
-<!-- 17. Limites e lições -->
+<!-- 9. Manutenibilidade 3 (Medeiros) -->
 <section class="slide">
-  <div class="unb">UNB</div>
+  <header class="slide-topo"><span class="slide-atual">9 / 17 · Manutenibilidade (3/3) · Melhorias e Testes no Serviço</span><span class="unb">Medeiros · UnB</span></header>
   <div class="conteudo">
-    <h1>Limites e lições</h1>
-    <div class="grid g2" style="flex:none;margin-top:10px">
-      <div class="card"><h3>Limites dos resultados</h3><ul><li><b>Amostra:</b> 3 participantes, abaixo da meta de 5</li><li><b>Repetição:</b> as sessões gravadas não foram a primeira tentativa</li><li><b>Build local:</b> na T2, menu coberto pelo botão "WAI WCAG" e banco só com o processo de teste; login simulado e rota quebrada só existem em desenvolvimento</li><li><b>ICA:</b> só verificações automáticas</li><li><b>Gov.br:</b> o login real não foi avaliado</li></ul></div>
-      <div class="card"><h3>O que aprendemos</h3><ul><li>Testar a gravação antes de cada sessão: as primeiras três travaram</li><li>Contas novas por sessão, sem uso anterior, e conferir qual conta cada participante usa</li><li>Popular o banco da cópia local e esconder as ferramentas de desenvolvimento antes das sessões</li><li>Script de cálculo publicado junto com os dados brutos</li><li>Números de produto e de processo explicam um ao outro: o defeito do voto apareceu na sessão e foi rastreado até o código</li></ul></div>
+    <h2 class="titulo">Manutenibilidade · Melhorias e Testes no Serviço</h2>
+    <!-- <p class="sub">Estratégia: blindar sobrescritas críticas com testes antes de refatorar para <i>engines</i> isoladas</p> -->
+    <div class="grid g-asym2" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <h3>Melhorias Sugeridas</h3>
+          <ul>
+            <li><b>Testar antes de refatorar:</b> criar specs de requisição nos fluxos de votar, retirar voto e publicar proposta.</li>
+            <li><b>Corrigir erro 500 de voto:</b> desacoplar <code>_vote_button.html.erb</code> de método exclusivo do <code>ProposalsController</code>.</li>
+            <li><b>Modularizar picos:</b> quebrar <code>permissions.rb</code> (CCM 47), <code>form_builder.rb</code> (595 linhas) e <code>ProposalsController</code> (300 linhas) em <i>engines</i>.</li>
+          </ul>
+        </div>
+        <div class="card destaque">
+          <h3>Melhoria Priorizada: <code>MeetingIframeEmbedder</code></h3>
+          <ul>
+            <li><b>Problema:</b> serviço sobrescrito que transforma URLs (YouTube/Twitch) e monta <code>&lt;iframe&gt;</code> figurava entre as 106 classes sem teste em M2.4.</li>
+            <li><b>Justificativa:</b> ataca diretamente o déficit de Testabilidade (ICT 39,43%) com patch isolado e valida a estratégia "testar antes de mexer" para o LAPPIS.</li>
+            <li><b>Ação (08/11):</b> adicionado <code>meeting_iframe_embedder_spec.rb</code> exercitando a classe real sem alterar o código de produção.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <h3>Verificação do Efeito: 20 Exemplos de Regressão</h3>
+          <svg class="chart-svg" viewBox="0 0 470 225" role="img" aria-label="Cobertura adicionada no serviço: de 0 para 20 exemplos RSpec aprovados com 0 falhas, divididos em 12 casos para embed_transformed_url, 5 para embeddable e 3 para embed_code.">
+            <title>Exemplos RSpec validados na melhoria do serviço</title>
+            <text x="10" y="22" font-size="13.5" font-weight="700" fill="#0f172a">Testes no serviço antes vs depois do patch</text>
+            <text x="10" y="46" font-size="13" fill="#475569">Antes (M2.4)</text>
+            <rect x="120" y="33" width="6" height="20" rx="2" fill="#dc2626"/>
+            <text x="134" y="48" font-size="12.5" font-weight="600" fill="#b91c1c">0 testes identificados</text>
+
+            <text x="10" y="80" font-size="13" font-weight="700" fill="#0f172a">Com testes</text>
+            <rect x="120" y="66" width="320" height="22" rx="4" fill="#0f766e"/>
+            <text x="280" y="81" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">20 exemplos · 0 falhas · 0 pendências</text>
+
+            <line x1="10" y1="104" x2="460" y2="104" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="10" y="126" font-size="13.5" font-weight="700" fill="#0f172a">Distribuição por método verificado (rspec.json)</text>
+
+            <text x="10" y="152" font-size="12.5" font-weight="600" fill="#0f172a">embed_transformed_url</text>
+            <rect x="165" y="139" width="168" height="18" rx="3" fill="#0284c7"/>
+            <text x="340" y="152" font-size="12" font-weight="700" fill="#0369a1">12 (URLs, v, Twitch)</text>
+
+            <text x="10" y="180" font-size="12.5" font-weight="600" fill="#0f172a">embeddable?</text>
+            <rect x="165" y="167" width="70" height="18" rx="3" fill="#0284c7"/>
+            <text x="242" y="180" font-size="12" font-weight="700" fill="#0369a1">5 (hosts, www, filtro)</text>
+
+            <text x="10" y="208" font-size="12.5" font-weight="600" fill="#0f172a">embed_code</text>
+            <rect x="165" y="195" width="42" height="18" rx="3" fill="#0284c7"/>
+            <text x="214" y="208" font-size="12" font-weight="700" fill="#0369a1">3 (CSS, iframe comentado)</text>
+          </svg>
+        </div>
+        <div class="card ambar" style="padding:10px 12px">
+          <p style="font-size:13.5px"><b>Limite registrado:</b> rodou isolado com Ruby <code>3.4.7</code> e RSpec <code>3.13.6</code> (sem carregar Rails nem o banco completo). Os resultados de M2.4 não foram recalculados.</p>
+        </div>
+      </div>
     </div>
-    <p class="nota">Dados brutos, scripts e relatórios na GitPage, em "Coleta de Dados" e "Resultados da Avaliação".</p>
   </div>
 </section>
 
-<!-- 18. Obrigado -->
+<!-- 10. Capacidade de Interação 1 (Mateus) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">10 / 17 · Capacidade de Interação (1/3) · Coleta e Ambiente</span><span class="unb">Mateus · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Capacidade de Interação (G1) · Coleta</h2>
+    <!-- <p class="sub">Sessões observadas em cópia local (TCLE assinado) + inspeção automática de 4 páginas, em <code>22/11/2026</code></p> -->
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Procedimentos e Organização</h3>
+        <ul>
+          <li><b>Ética (TCLE):</b> leitura e assinatura prévia; gravação de tela autorizada, <b>microfone desligado</b>, armazenamento privado fora do Git.</li>
+          <li><b>4 tarefas fixas (M1.1–M1.3):</b> T1 Entrar · T2 Achar processo · T3 Enviar proposta · T4 Votar nela; cronometragem do 1º quadro ao estado final + questionário SUS (Lourenço et al., 2022).</li>
+          <li><b>M1.4 (Acessibilidade):</b> varredura autenticada na página inicial, processos, formulário e proposta, calculando <code>ICA = 100 × A / (A + R)</code>.</li>
+          <li><b>Papéis:</b> condução Mateus; rotulagem Miguel.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Instrumentos, Recursos e Ambiente</h3>
+        <ul>
+          <li><b>Equipamento:</b> Notebook Lenovo G50-80 (i7-5500U, 11 GiB RAM), Ubuntu 26.04.1 LTS, <code>docker compose</code> em desenvolvimento no commit <code>176b046</code>.</li>
+          <li><b>Navegadores:</b> Firefox <code>154.0</code> nas sessões; Chrome for Testing <code>158</code> com <code>@axe-core/cli</code> 4.14 (1366×568) e Lighthouse 13.6 (emulação móvel 412×823).</li>
+          <li><b>Dados e cálculo:</b> OBS Studio, fichas CSV e auditoria automática via <code>scripts/calc_interacao.py</code>.</li>
+          <li><b>Contas de teste:</b> login de estrangeiro (sem Gov.br em dev) e processo local <i>Praças e Parques do Bairro</i>.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="card ambar">
+      <h3>Evidências e Desvios Registrados (Transparência)</h3>
+      <p style="margin-top:4px"><b>3 participantes gravados</b> (meta 5): P02 (&gt;50 anos), P03 (humanas) e P04 (Gov.br), gerando <code>M1.1-M1.3-ficha.csv</code>, <code>M1.3-eventos.csv</code>, <code>M1.5-sus.csv</code> e 8 JSONs de M1.4. <b>Fatores de interferência:</b> sessões repetidas após travamento inicial do OBS, contas <code>p02</code>/<code>p04</code> trocadas (fichas ajustadas por perfil) e elementos exclusivos de desenvolvimento (botão "WAI WCAG" cobrindo menu, banco com 1 processo e carrossel quebrado).</p>
+    </div> -->
+  </div>
+</section>
+
+<!-- 11. Capacidade de Interação 2 (Mateus) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">11 / 17 · Capacidade de Interação (2/3) · Métricas, GQM e Conclusões</span><span class="unb">Mateus · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Capacidade de Interação · Métricas e GQM</h2>
+    <!-- <p class="sub">Objetivo G1 atingido em parte: SUS (80,0) e ICA (91,2%) satisfatórios, mas TCR ficou abaixo de 75% nas 4 tarefas</p> -->
+    <div class="grid g2" style="margin-bottom:12px">
+      <div class="card branco">
+        <h3>M1.1 TCR por Tarefa vs Meta (75%) + TME e FET</h3>
+        <svg class="chart-svg" viewBox="0 0 490 140" role="img" aria-label="Taxa de conclusão sem ajuda por tarefa: T1 33,3 por cento, T2 0 por cento, T3 66,7 por cento e T4 66,7 por cento, todas abaixo da linha aceitável de 75 por cento.">
+          <title>TCR por tarefa comparado à meta de 75%</title>
+          <line x1="355" y1="6" x2="355" y2="118" stroke="#b45309" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="355" y="134" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">Meta Bom: ≥ 75%</text>
+
+          <text x="6" y="24" font-size="12.5" font-weight="600" fill="#0f172a">T1 · Entrar</text>
+          <rect x="120" y="10" width="313" height="20" rx="3" fill="#e2e8f0"/>
+          <rect x="120" y="10" width="104" height="20" rx="3" fill="#dc2626"/>
+          <text x="232" y="25" font-size="12" font-weight="700" fill="#b91c1c">33,3% (1/3)</text>
+
+          <text x="6" y="52" font-size="12.5" font-weight="600" fill="#0f172a">T2 · Achar proc.</text>
+          <rect x="120" y="38" width="313" height="20" rx="3" fill="#e2e8f0"/>
+          <rect x="120" y="38" width="5" height="20" rx="2" fill="#dc2626"/>
+          <text x="132" y="53" font-size="12" font-weight="700" fill="#b91c1c">0% (build local)</text>
+
+          <text x="6" y="80" font-size="12.5" font-weight="600" fill="#0f172a">T3 · Proposta</text>
+          <rect x="120" y="66" width="313" height="20" rx="3" fill="#e2e8f0"/>
+          <rect x="120" y="66" width="209" height="20" rx="3" fill="#d97706"/>
+          <text x="224" y="81" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">66,7% (2/3)</text>
+
+          <text x="6" y="108" font-size="12.5" font-weight="600" fill="#0f172a">T4 · Votar</text>
+          <rect x="120" y="94" width="313" height="20" rx="3" fill="#e2e8f0"/>
+          <rect x="120" y="94" width="209" height="20" rx="3" fill="#d97706"/>
+          <text x="224" y="109" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">66,7% (2/3)</text>
+        </svg>
+        <p style="font-size:13px;color:var(--texto-sec)"><b>TME (≤ 120 s):</b> T1 31,4 s · T2 indisp. · T3 77,1 s · T4 21,7 s. <b>FET (≤ 1,0):</b> 1,00 · 0,67 · 0,33 · 1,00.</p>
+      </div>
+      <div class="card branco">
+        <h3>M1.4 ICA (91,2%) e M1.5 SUS (80,0) vs Limites</h3>
+        <svg class="chart-svg" viewBox="0 0 490 155" role="img" aria-label="ICA aprovado em 91,2 por cento nas 4 páginas e SUS médio de 80,0 pontos entre os 3 participantes.">
+          <title>Resultados de ICA e SUS em Capacidade de Interação</title>
+          <text x="10" y="20" font-size="13" font-weight="700" fill="#0f172a">M1.4 Acessibilidade Automática = 91,2% (196/215 · meta ≥ 85%)</text>
+          <rect x="10" y="28" width="440" height="20" rx="4" fill="#e2e8f0"/>
+          <rect x="10" y="28" width="401" height="20" rx="4" fill="#0284c7"/>
+          <line x1="374" y1="24" x2="374" y2="52" stroke="#15803d" stroke-width="2" stroke-dasharray="3 2"/>
+          <text x="205" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">axe 91,7% · Lighthouse 90,6% (Bom)</text>
+          <text x="10" y="66" font-size="12" fill="#475569">48 itens sem decisão (contraste + manuais); 4 regras comuns falharam.</text>
+
+          <line x1="10" y1="78" x2="480" y2="78" stroke="#cbd5e1" stroke-width="1"/>
+          <text x="10" y="98" font-size="13" font-weight="700" fill="#0f172a">M1.5 Escala SUS = Média 80,0 (meta ≥ 68 · Excelente)</text>
+
+          <rect x="10" y="108" width="142" height="24" rx="4" fill="#dcfce7" stroke="#86efac"/>
+          <text x="81" y="124" text-anchor="middle" font-size="12.5" font-weight="700" fill="#15803d">P02: 82,5 pts</text>
+
+          <rect x="162" y="108" width="142" height="24" rx="4" fill="#e0f2fe" stroke="#7dd3fc"/>
+          <text x="233" y="124" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0369a1">P03: 77,5 pts</text>
+
+          <rect x="314" y="108" width="142" height="24" rx="4" fill="#dcfce7" stroke="#86efac"/>
+          <text x="385" y="124" text-anchor="middle" font-size="12.5" font-weight="700" fill="#15803d">P04: 80,0 pts</text>
+          <text x="10" y="150" font-size="12" fill="#475569">Percepção positiva mesmo após ajudas e erros nas tarefas.</text>
+        </svg>
+      </div>
+    </div>
+    <table>
+      <tr><th>Questão GQM</th><th>Situação &amp; Hipótese</th><th>Conclusão (Participação Digital)</th></tr>
+      <tr><td><b>Q1.1</b> Sem ajuda (TCR, TME)</td><td><span class="tag ins">H1.1 Refutada</span></td><td>Pior taxa foi na T2 (ambiente local), não na T3; quem concluiu sozinho foi rápido (≤ 77,1 s).</td></tr>
+      <tr><td><b>Q1.2</b> Evita/corrige erros (FET)</td><td><span class="tag reg">H1.2 Em parte</span></td><td>FET no aceitável, mas T3 deu aviso vago sem citar o mínimo de 15 caracteres e T4 gerou <b>erro 500</b> ao retirar voto.</td></tr>
+      <tr><td><b>Q1.3</b> Inclusivo (ICA, SUS)</td><td><span class="tag reg">H1.3 Em parte</span></td><td>Falhas repetidas (<code>link-name</code>, <code>image-alt</code>) e <code>aria-label</code> copiado de outra tela invisível ao axe/Lighthouse.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 12. Capacidade de Interação 3 (Mateus) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">12 / 17 · Capacidade de Interação (3/3) · Melhorias e Priorização</span><span class="unb">Mateus · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Capacidade de Interação · Melhorias</h2>
+    <!-- <p class="sub">Regra da Fase 2 (TCR &lt; 75%) exige redesenho do formulário de propostas; relação direta com sobrescritas sem teste</p> -->
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Melhorias Sugeridas · Prioridade Alta</h3>
+        <ul>
+          <li><b>Formulário de propostas (<code>ProposalsController</code> / <code>new.html.erb</code>):</b> destacar requisito de 15 caracteres antes do envio, apontar o campo com erro e corrigir o <code>aria-label</code> copiado ("Data de início do afastamento inválida").</li>
+          <li><b>Botão de voto (<code>_vote_button.html.erb</code>):</b> eliminar dependência de método exclusivo do <code>ProposalsController</code> para evitar erro 500 ao retirar voto em outra rota (T4).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Melhorias Sugeridas · Prioridade Média</h3>
+        <ul>
+          <li><b>Navegação (T2):</b> repetir o teste em produção ou banco povoado antes de redesenhar busca e página inicial (evitar viés do ambiente de dev).</li>
+          <li><b>Componentes comuns (M1.4):</b> texto alternativo nas 3 novidades (<code>image-alt</code>), nome acessível em logos/carrossel/compartilhar (<code>link-name</code>), alinhar botões de idioma e conta e corrigir <code>heading-order</code>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card destaque">
+      <h3>Escopo das Ações Executadas na Disciplina e Priorização Prática</h3>
+      <div class="grid g2" style="margin-top:8px;gap:14px">
+        <div>
+          <p><b>Escolha e justificativa da equipe:</b> para cumprir a entrega técnica sem abrir frentes incompletas em todas as características, a equipe executou dois patches de código completos onde havia risco crítico determinístico: testes em <code>MeetingIframeEmbedder</code> (G2) e autorização em <code>ProposalBadgesController</code> (G3).</p>
+        </div>
+        <div>
+          <p><b>O que foi feito em G1 e efeito verificado:</b> em 22/11, estruturou-se o processo real <i>Praças e Parques do Bairro</i> e contas limpas na cópia local para viabilizar as sessões após travamento inicial na T2; o redesenho do formulário segue como ação prioritária nº.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. Gestão 1 (José) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">13 / 17 · Gestão (1/4) · Processos, Calendário e Progresso</span><span class="unb">José · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Gestão PSM/CID · Processos e Progresso</h2>
+    <!-- <p class="sub">Desempenho dos Processos (N5 e N6) e Calendário/Progresso (N1 e N2)</p> -->
+    <div class="grid g2" style="margin-bottom:10px">
+      <div class="card branco">
+        <h3>1. Desempenho dos Processos · Revisão (N6) e Cycle Time (N5)</h3>
+        <svg class="chart-svg" viewBox="0 0 490 215" role="img" aria-label="Integrações na main por sprint e percentual de revisão cruzada: Base 44 integrações com 0 por cento revisado, Sprint 3 com 18,8 por cento, Sprint 4 com 30 por cento, Sprint 5 com 36,4 por cento e Sprint 6 com 66,7 por cento.">
+          <title>Integrações na main e revisão por pares por janela</title>
+          <rect x="10" y="4" width="10" height="10" rx="2" fill="#cbd5e1"/><text x="24" y="13" font-size="11" fill="#475569">Direto</text>
+          <rect x="70" y="4" width="10" height="10" rx="2" fill="#0284c7"/><text x="84" y="13" font-size="11" fill="#0369a1">Via branch</text>
+          <rect x="155" y="4" width="10" height="10" rx="2" fill="#15803d"/><text x="169" y="13" font-size="11" font-weight="600" fill="#15803d">Rev. outra dupla (%)</text>
+          <line x1="40" y1="168" x2="475" y2="168" stroke="#cbd5e1" stroke-width="1.2"/>
+
+          <!-- Base: 44 total (110px scale max 44 = 2.5px/item), 4 branch (10px), 0 rev -->
+          <rect x="65" y="58" width="38" height="110" rx="3" fill="#cbd5e1"/>
+          <rect x="65" y="158" width="38" height="10" rx="2" fill="#0284c7"/>
+          <text x="84" y="50" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">44 (0% rev)</text>
+          <text x="84" y="185" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">Base</text>
+          <text x="84" y="199" text-anchor="middle" font-size="10.5" fill="#475569">4 branch · 0 rev</text>
+
+          <!-- S3: 16 total (48px), 13 branch (39px), 3 rev (9px) -->
+          <rect x="150" y="120" width="38" height="48" rx="3" fill="#cbd5e1"/>
+          <rect x="150" y="129" width="38" height="39" rx="2" fill="#0284c7"/>
+          <rect x="150" y="159" width="38" height="9" rx="2" fill="#15803d"/>
+          <text x="169" y="113" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0369a1">16 (18,8%)</text>
+          <text x="169" y="185" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">Sprint 3</text>
+          <text x="169" y="199" text-anchor="middle" font-size="10.5" fill="#475569">13 branch · 3 rev</text>
+
+          <!-- S4: 10 total (30px), 5 branch (15px), 3 rev (9px) -->
+          <rect x="235" y="138" width="38" height="30" rx="3" fill="#cbd5e1"/>
+          <rect x="235" y="153" width="38" height="15" rx="2" fill="#0284c7"/>
+          <rect x="235" y="159" width="38" height="9" rx="2" fill="#15803d"/>
+          <text x="254" y="131" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d">10 (30%)</text>
+          <text x="254" y="185" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">Sprint 4</text>
+          <text x="254" y="199" text-anchor="middle" font-size="10.5" fill="#475569">5 branch · 3 rev</text>
+
+          <!-- S5: 11 total (33px), 5 branch (15px), 4 rev (12px) -->
+          <rect x="320" y="135" width="38" height="33" rx="3" fill="#cbd5e1"/>
+          <rect x="320" y="153" width="38" height="15" rx="2" fill="#0284c7"/>
+          <rect x="320" y="156" width="38" height="12" rx="2" fill="#15803d"/>
+          <text x="339" y="128" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d">11 (36,4%)</text>
+          <text x="339" y="185" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">Sprint 5</text>
+          <text x="339" y="199" text-anchor="middle" font-size="10.5" fill="#475569">5 branch · 4 rev</text>
+
+          <!-- S6: 3 total (18px visual), 3 branch, 2 rev (12px) -->
+          <rect x="405" y="150" width="38" height="18" rx="2" fill="#0284c7"/>
+          <rect x="405" y="156" width="38" height="12" rx="2" fill="#15803d"/>
+          <text x="424" y="143" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d">3 (66,7%)</text>
+          <text x="424" y="185" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">Sprint 6</text>
+          <text x="424" y="199" text-anchor="middle" font-size="10.5" fill="#475569">3 branch · 2 rev</text>
+        </svg>
+        <!-- <p style="font-size:13px;color:var(--texto-sec)">Total: 30 integrações via branch, <b>12 revisadas por outra dupla (40,0%)</b>. <b>N5 Cycle time:</b> 1,6 d (S1) e 1,0 d (S2/S3); <i>sem data manual no S4–S5</i>.</p> -->
+      </div>
+      <div class="card branco">
+        <h3>2. Calendário e Progresso · Burndown Milestone E2 (N2)</h3>
+        <svg class="chart-svg" viewBox="0 0 490 215" role="img" aria-label="Burndown de 43 tarefas do milestone E2 entre 27/10 e 23/11: subiu para 33 em 30/10, manteve 31 até 14/11, caiu para 22 em 15/11, 9 em 17 a 21/11 e zerou em 22/11.">
+          <title>Burndown do Milestone E2 de 27/10 a 23/11</title>
+          <line x1="42" y1="24" x2="42" y2="174" stroke="#cbd5e1" stroke-width="1.2"/>
+          <line x1="42" y1="174" x2="470" y2="174" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="36" y="29" text-anchor="end" font-size="11" fill="#475569">40</text>
+          <text x="36" y="67" text-anchor="end" font-size="11" fill="#475569">30</text>
+          <text x="36" y="104" text-anchor="end" font-size="11" fill="#475569">20</text>
+          <text x="36" y="142" text-anchor="end" font-size="11" fill="#475569">10</text>
+          <text x="36" y="177" text-anchor="end" font-size="11" fill="#475569">0</text>
+          <!-- Ideal line: 27/10 (x=42, y=58 for 31) to 21/11 (x=438, y=174 for 0) -->
+          <line x1="42" y1="58" x2="438" y2="174" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="160" y="138" font-size="11.5" fill="#475569">Linha ideal (21/11)</text>
+          <!-- Real polyline: y = 174 - val * 3.75 -->
+          <!-- x step across 27 days (42..470 = 428px -> 15.85px/day) -->
+          <!-- 27/10(0):31(58), 29/10(2):31(58), 30/10(3):33(50), 03/11(7):33(50), 04/11(8):31(58), 14/11(18):31(58), 15/11(19):22(91.5), 16/11(20):22(91.5), 17/11(21):9(140), 21/11(25):9(140), 22/11(26):0(174), 23/11(27):0(174) -->
+          <polyline fill="none" stroke="#0284c7" stroke-width="3"
+            points="42,58 74,58 90,50 153,50 169,58 327,58 343,91.5 359,91.5 375,140 438,140 454,174 470,174"/>
+          <circle cx="90" cy="50" r="4" fill="#dc2626"/>
+          <circle cx="343" cy="91.5" r="4" fill="#0284c7"/>
+          <circle cx="375" cy="140" r="4" fill="#0284c7"/>
+          <circle cx="438" cy="140" r="4" fill="#d97706"/>
+          <circle cx="454" cy="174" r="4.5" fill="#15803d"/>
+          <text x="95" y="42" font-size="11.5" font-weight="700" fill="#b91c1c">33 (+escopo)</text>
+          <text x="330" y="46" font-size="11.5" font-weight="700" fill="#0369a1">31</text>
+          <text x="378" y="130" font-size="11.5" font-weight="700" fill="#0369a1">9 (17/11)</text>
+          <text x="418" y="192" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d">0 em 22/11</text>
+          <text x="42" y="192" font-size="11" fill="#475569">27/10</text>
+          <text x="169" y="192" text-anchor="middle" font-size="11" fill="#475569">04/11</text>
+          <text x="275" y="192" text-anchor="middle" font-size="11" fill="#475569">11/11</text>
+        </svg>
+        <!-- <p style="font-size:13px;color:var(--texto-sec)"><b>43/43 tarefas da E2 concluídas</b> (9 restantes em 21/11 concluídas em 22/11 com G1). Repositório geral: <b>96/96 tarefas concluídas (100%)</b>.</p> -->
+      </div>
+    </div>
+    <!-- <div class="card escuro" style="padding:10px 16px">
+      <p style="font-size:14.5px"><span class="rotulo">N1 Comprometido × Concluído por Sprint:</span> <b>S1:</b> 37/37 · <b>S2:</b> 8/8 · <b>S3:</b> 1/17 Pronto em 04/11 (5,9%; 20/20 no fim) · <b>S4:</b> 12/12 · <b>S5:</b> 13/13 · <b>S6:</b> 4/4 (<b>100% do quadro concluído</b>).</p>
+    </div> -->
+  </div>
+</section>
+
+<!-- 14. Gestão 2 (José) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">14 / 17 · Gestão (2/4) · Recursos e Custos (N3 e N4)</span><span class="unb">José · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Recursos e Custos</h2>
+    <!-- <p class="sub">Esforço individual (N3) dentro da faixa de 10% a 25% em todos os membros; N4 (29,8%) fora da banda 80%–120%</p> -->
+    <div class="grid g2" style="flex:1">
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:space-between">
+        <h3>3. N3 · Esforço Real (%)</h3>
+        <svg class="chart-svg" viewBox="0 0 490 265" role="img" aria-label="Participação percentual nas 66,1 horas reais registradas no Projects 33: João 23,2, Mateus 18,8, Lucca 16,4, José 15,7, Davi 14,0 e Miguel 11,8 por cento, todos dentro da faixa de controle de 10 a 25 por cento.">
+          <title>N3 Participação no esforço real por integrante</title>
+          <!-- 0..30% scale: x = 115 + pct * 11.5 -->
+          <rect x="230" y="15" width="172.5" height="210" fill="#dcfce7" opacity="0.7"/>
+          <line x1="230" y1="15" x2="230" y2="225" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="307" y1="15" x2="307" y2="225" stroke="#0f766e" stroke-width="1.2" stroke-dasharray="2 3"/>
+          <line x1="402.5" y1="15" x2="402.5" y2="225" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="316" y="244" text-anchor="middle" font-size="11.5" font-weight="700" fill="#15803d">Faixa de controle: 10% a 25% (média 16,7%)</text>
+
+          <text x="108" y="42" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">João Victor</text>
+          <rect x="115" y="27" width="267" height="20" rx="3" fill="#0284c7"/>
+          <text x="389" y="42" font-size="12.5" font-weight="700" fill="#0369a1">23,2% (15,4h)</text>
+
+          <text x="108" y="77" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Mateus Vieira</text>
+          <rect x="115" y="62" width="216" height="20" rx="3" fill="#0284c7"/>
+          <text x="338" y="77" font-size="12.5" font-weight="700" fill="#0369a1">18,8% (12,4h)</text>
+
+          <text x="108" y="112" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Lucca Medeiros</text>
+          <rect x="115" y="97" width="189" height="20" rx="3" fill="#0284c7"/>
+          <text x="311" y="112" font-size="12.5" font-weight="700" fill="#0369a1">16,4% (10,9h)</text>
+
+          <text x="108" y="147" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">José Vinícius</text>
+          <rect x="115" y="132" width="181" height="20" rx="3" fill="#0284c7"/>
+          <text x="303" y="147" font-size="12.5" font-weight="700" fill="#0369a1">15,7% (10,4h)</text>
+
+          <text x="108" y="182" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Davi Mesquita</text>
+          <rect x="115" y="167" width="161" height="20" rx="3" fill="#0284c7"/>
+          <text x="283" y="182" font-size="12.5" font-weight="700" fill="#0369a1">14,0% (9,3h)</text>
+
+          <text x="108" y="217" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Miguel Arthur</text>
+          <rect x="115" y="202" width="136" height="20" rx="3" fill="#0284c7"/>
+          <text x="258" y="217" font-size="12.5" font-weight="700" fill="#0369a1">11,8% (7,8h)</text>
+        </svg>
+        <p style="font-size:13px;color:var(--texto-sec)">Fonte: GitHub Projects.</p>
+      </div>
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:space-between">
+        <h3>3. N4 · Horas Estimadas vs Reais (221,5h × 66,1h)</h3>
+        <svg class="chart-svg" viewBox="0 0 490 265" role="img" aria-label="Comparação entre horas estimadas e reais no Projects 33 por integrante: total de 221,5 horas estimadas contra 66,1 horas reais, igual a 29,8 por cento.">
+          <title>N4 Horas estimadas versus reais por integrante</title>
+          <rect x="120" y="4" width="14" height="10" rx="2" fill="#cbd5e1"/><text x="139" y="13" font-size="11.5" fill="#475569">Estimada (h)</text>
+          <rect x="230" y="4" width="14" height="10" rx="2" fill="#0284c7"/><text x="249" y="13" font-size="11.5" font-weight="600" fill="#0369a1">Real registrada (h)</text>
+
+          <!-- scale 0..55h -> 5.8px/h starting x=115 -->
+          <text x="108" y="42" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">João Victor</text>
+          <rect x="115" y="24" width="291" height="12" rx="2" fill="#cbd5e1"/>
+          <rect x="115" y="38" width="89" height="12" rx="2" fill="#0284c7"/>
+          <text x="412" y="39" font-size="12" fill="#475569">50,2h / <tspan fill="#0369a1" font-weight="700">15,4h</tspan></text>
+
+          <text x="108" y="77" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Mateus Vieira</text>
+          <rect x="115" y="59" width="249" height="12" rx="2" fill="#cbd5e1"/>
+          <rect x="115" y="73" width="72" height="12" rx="2" fill="#0284c7"/>
+          <text x="370" y="74" font-size="12" fill="#475569">43,0h / <tspan fill="#0369a1" font-weight="700">12,4h</tspan></text>
+
+          <text x="108" y="112" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">José Vinícius</text>
+          <rect x="115" y="94" width="233" height="12" rx="2" fill="#cbd5e1"/>
+          <rect x="115" y="108" width="60" height="12" rx="2" fill="#0284c7"/>
+          <text x="354" y="109" font-size="12" fill="#475569">40,2h / <tspan fill="#0369a1" font-weight="700">10,4h</tspan></text>
+
+          <text x="108" y="147" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Lucca Medeiros</text>
+          <rect x="115" y="129" width="187" height="12" rx="2" fill="#cbd5e1"/>
+          <rect x="115" y="143" width="63" height="12" rx="2" fill="#0284c7"/>
+          <text x="308" y="144" font-size="12" fill="#475569">32,2h / <tspan fill="#0369a1" font-weight="700">10,9h</tspan></text>
+
+          <text x="108" y="182" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Miguel Arthur</text>
+          <rect x="115" y="164" width="166" height="12" rx="2" fill="#cbd5e1"/>
+          <rect x="115" y="178" width="45" height="12" rx="2" fill="#0284c7"/>
+          <text x="287" y="179" font-size="12" fill="#475569">28,7h / <tspan fill="#0369a1" font-weight="700">7,8h</tspan></text>
+
+          <text x="108" y="217" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Davi Mesquita</text>
+          <rect x="115" y="199" width="158" height="12" rx="2" fill="#cbd5e1"/>
+          <rect x="115" y="213" width="54" height="12" rx="2" fill="#0284c7"/>
+          <text x="279" y="214" font-size="12" fill="#475569">27,2h / <tspan fill="#0369a1" font-weight="700">9,3h</tspan></text>
+
+          <text x="245" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">Razão Real / Estimado: 29,8%</text>
+        </svg>
+        <p style="font-size:13px;color:var(--texto-sec)">Causa: superestimação inicial antes da automação/IA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. Gestão 3 (João) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">15 / 17 · Gestão (3/4)</span><span class="unb">João · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">O Que Deu Certo e Errado</h2>
+    <!-- <p class="sub">Diagnóstico contínuo pelo PSM/CID (Sprints 1 a 6) e o efeito prático das correções aplicadas</p> -->
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card sucesso">
+        <h3>O que deu certo</h3>
+        <ul>
+          <li><b>Modelo v2.0:</b> necessidades que fazem sentido com a equipe.</li>
+          <li><b>Automação de coleta:</b> em CI/pre-commit.</li>
+          <li><b>Divisão em duplas:</b> revisão cruzada.</li>
+        </ul>
+      </div>
+      <div class="card alerta">
+        <h3>O que deu errado</h3>
+        <ul>
+          <li>Sobrecarga e divisão inicial desigual; na Sprint 3, só 1 de 17 entregas concluídas</li>
+          <li>39/42 integrações iniciais direto na <code>main</code> sem revisão cruzada</li>
+          <li>Risco de erro na coleta e no cálculo</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <tr><th>Questão</th><th>Decisão tomada</th><th>Efeito observado</th></tr>
+      <tr><td><b>N1: Os itens comprometidos em cada sprint são entregues?<br>N3: Quanto esforço cada integrante investe, e a divisão está equilibrada?</b></td>
+        <td>Redistribuição de tarefas mais pesadas e leves</td>
+        <td>Esforço real equilibrado e 100% das entregas concluídas.</td></tr>
+      <tr><td><b>N6: Todo trabalho passa por revisão de outra dupla antes de integrar?</b></td><td>Revisão obrigatória por outra dupla antes de integrar à <code>main</code></td><td>Revisão cruzada subiu de <b>0% → 18,8% → 30% → 36,4% → 66,7%</b>.</td></tr>
+      <tr><td><b>Qualidade da avaliação entregue manteve?</b></td><td>Revisão por todos e scripts de conferência</td><td><b>Sim:</b> corrigiram Taxa de Sobrescrita e Cobertura e garantiram rastreabilidade.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 16. Gestão 4 (João) -->
+<section class="slide">
+  <header class="slide-topo"><span class="slide-atual">16 / 17 · Gestão (4/4) · Compromissos da Retrospectiva E1</span><span class="unb">João · UnB</span></header>
+  <div class="conteudo">
+    <h2 class="titulo">Compromissos da Retrospectiva</h2>
+    <!-- <p class="sub">Do diagnóstico dos Três Porquinhos (planejamento tardio e distribuição) às métricas executadas no Projects 33</p> -->
+    <div class="grid g-asym" style="flex:1">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <h3>Organização <span class="tag bom">Executado</span></h3>
+          <p>José Vinícius<b>:</b> Tarefas atribuídas por integrante</p>
+          <ul style="margin-top:6px">
+            <li><b>Ação combinada:</b> levantar tudo antes da entrega e comunicar a equipe.</li>
+            <li><b>O que foi feito:</b> plannings em ata, redistribuição por pessoa.</li>
+            <li><b>Resultado:</b> todo mundo sabe o que fazer.</li>
+          </ul>
+        </div>
+        <div class="card destaque">
+          <h3>Proatividade <span class="tag reg">Parcial no prazo</span></h3>
+          <p>João V. Farias<b>:</b> Tarefas concluídas por integrante</p>
+          <ul style="margin-top:6px">
+            <li><b>Ação combinada:</b> antecipar entregas ligadas.</li>
+            <li><b>O que foi feito:</b> painel automatizado semanal no GitHub Pages.</li>
+            <li><b>Resultado:</b> 100% concluídas, mas entregas ainda foram deixas para as últimas horas.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card branco" style="display:flex;flex-direction:column;justify-content:center">
+        <svg class="chart-svg" viewBox="0 0 470 280" role="img" aria-label="Tarefas atribuídas versus concluídas por integrante em 23/11: João 25 de 25, Mateus 19 de 19, Miguel 16 de 16, José 15 de 15, Davi 15 de 15 e Lucca 12 de 12, totalizando 100 por cento concluído.">
+          <title>Tarefas atribuídas e concluídas por integrante</title>
+          <rect x="115" y="6" width="14" height="10" rx="2" fill="#cbd5e1"/><text x="134" y="15" font-size="12" fill="#475569">Atribuídas (C4)</text>
+          <rect x="245" y="6" width="14" height="10" rx="2" fill="#0284c7"/><text x="264" y="15" font-size="12" font-weight="600" fill="#0369a1">Concluídas (C3)</text>
+
+          <!-- max 25 -> 9.2px per item starting x=112 -->
+          <text x="105" y="47" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">João Victor</text>
+          <rect x="112" y="33" width="230" height="20" rx="3" fill="#0284c7"/>
+          <text x="350" y="48" font-size="12.5" font-weight="700" fill="#15803d">25 / 25</text>
+
+          <text x="105" y="87" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Mateus Vieira</text>
+          <rect x="112" y="73" width="175" height="20" rx="3" fill="#0284c7"/>
+          <text x="295" y="88" font-size="12.5" font-weight="700" fill="#15803d">19 / 19</text>
+
+          <text x="105" y="127" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Miguel Arthur</text>
+          <rect x="112" y="113" width="147" height="20" rx="3" fill="#0284c7"/>
+          <text x="267" y="128" font-size="12.5" font-weight="700" fill="#15803d">16 / 16</text>
+
+          <text x="105" y="167" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">José Vinícius</text>
+          <rect x="112" y="153" width="138" height="20" rx="3" fill="#0284c7"/>
+          <text x="258" y="168" font-size="12.5" font-weight="700" fill="#15803d">15 / 15</text>
+
+          <text x="105" y="207" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Davi Mesquita</text>
+          <rect x="112" y="193" width="138" height="20" rx="3" fill="#0284c7"/>
+          <text x="258" y="208" font-size="12.5" font-weight="700" fill="#15803d">15 / 15</text>
+
+          <text x="105" y="247" text-anchor="end" font-size="13" font-weight="600" fill="#0f172a">Lucca Medeiros</text>
+          <rect x="112" y="233" width="110" height="20" rx="3" fill="#0284c7"/>
+          <text x="230" y="248" font-size="12.5" font-weight="700" fill="#15803d">12 / 12</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. Lições Aprendidas -->
 <section class="slide">
   <div class="bolha tl"></div><div class="bolha br"></div>
-  <svg class="onda" viewBox="0 0 470 60"><use href="#onda"/></svg>
-  <div class="unb">UNB</div>
-  <div class="conteudo" style="justify-content:center;align-items:center;text-align:center">
-    <div style="font-size:64px;text-transform:uppercase">Obrigado!</div>
-    <div style="font-size:24px;margin-top:22px">Dúvidas</div>
-    <div style="color:var(--ouro);font-size:20px;margin-top:56px">fcte-qualidade-de-software-1.github.io/2026-2_T01_FRANS_BILAS</div>
-    <div style="font-size:17px;margin-top:16px">Equipe Frans Bilas (T01)</div>
+  <svg class="onda" viewBox="0 0 470 60" aria-hidden="true"><use href="#onda"/></svg>
+  <header class="slide-topo"><span class="slide-atual">17 / 17 · Lições Aprendidas</span><span class="unb">Todos · UnB</span></header>
+  <div class="conteudo" style="justify-content:space-between">
+    <div>
+      <h2 class="titulo">Lições Aprendidas</h2>
+    </div>
+    <div class="grid g3" style="margin:12px 0">
+      <div class="card" style="text-align:center;padding:30px 24px">
+        <div class="selo" style="margin-bottom:16px">1</div>
+        <h3 style="font-size:23px;margin-bottom:10px">O que aprendeu</h3>
+      </div>
+      <div class="card" style="text-align:center;padding:30px 24px">
+        <div class="selo" style="margin-bottom:16px">2</div>
+        <h3 style="font-size:23px;margin-bottom:10px">Dificuldade e solução</h3>
+
+      </div>
+      <div class="card" style="text-align:center;padding:30px 24px">
+        <div class="selo" style="margin-bottom:16px">3</div>
+        <h3 style="font-size:23px;margin-bottom:10px">O que faria diferente</h3>
+      </div>
+    </div>
+    <div style="text-align:center">
+    </div>
   </div>
 </section>
 
