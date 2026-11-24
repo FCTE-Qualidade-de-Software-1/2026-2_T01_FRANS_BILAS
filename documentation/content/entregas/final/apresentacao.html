@@ -388,34 +388,33 @@
   <header class="slide-topo"><span class="slide-atual">4 / 17 · Segurança (1/3) · Coleta e Ambiente</span><span class="unb">Miguel · UnB</span></header>
   <div class="conteudo">
     <h2 class="titulo">Segurança (G3) · Coleta e Ambiente</h2>
-    <p class="sub">Análise estática passiva (SAST, SCA e auditoria de rotas) no commit <code>176b046</code>, sem requisições à produção</p>
+    <p class="sub">Análise estática passiva (SAST, SCA e rotas) · commit <code>176b046</code> · 03/11</p>
     <div class="grid g2" style="margin-bottom:14px">
       <div class="card">
         <h3>Procedimentos e Organização</h3>
         <ul>
-          <li><b>M3.1 (DVC):</b> varredura SAST no código contando alertas por confiança (<code>3×alta + 2×média + 1×fraca</code>), sem duplicar o relatório textual.</li>
-          <li><b>M3.2 (CDV):</b> checagem SCA do <code>Gemfile.lock</code> contra a base RubySec atualizada no dia, somando pares distintos <code>(gem, CVE)</code>.</li>
-          <li><b>M3.3 (TPE):</b> script lista ações públicas e conferência manual checa rota em <code>routes.rb</code>, <code>before_action</code> e <code>enforce_permission_to</code>.</li>
+          <li><b>M3.1 (DVC):</b> SAST ponderado (<code>3×alta + 2×média + 1×fraca</code>)</li>
+          <li><b>M3.2 (CDV):</b> SCA no <code>Gemfile.lock</code> · pares <code>(gem, CVE)</code></li>
+          <li><b>M3.3 (TPE):</b> script de rotas + checagem de permissões</li>
         </ul>
       </div>
       <div class="card">
         <h3>Instrumentos, Recursos e Ambiente</h3>
         <ul>
-          <li><b>M3.1:</b> Brakeman <code>8.1.0</code> (saídas <code>.json</code> e <code>.txt</code>).</li>
-          <li><b>M3.2:</b> <code>bundler-audit</code> <code>0.9.3</code> com base <code>ruby-advisory-db</code> de 03/11.</li>
-          <li><b>M3.3:</b> Python 3 (<code>scripts/m33_endpoints.py</code>) + inspeção de <code>app/controllers/</code> e <code>app/permissions/</code>.</li>
-          <li><b>Ambiente:</b> clone limpo do ramo <code>develop</code> em estação local, isolado do ambiente federal (conforme salvaguarda da Ata 01).</li>
-          <li><b>Limite de repetição:</b> M3.1 e M3.3 são determinísticos; M3.2 cresce com novos avisos na RubySec.</li>
+          <li><b>M3.1:</b> Brakeman <code>8.1.0</code></li>
+          <li><b>M3.2:</b> <code>bundler-audit</code> <code>0.9.3</code> (RubySec 03/11)</li>
+          <li><b>M3.3:</b> <code>scripts/m33_endpoints.py</code> + inspeção manual</li>
+          <li><b>Ambiente:</b> clone local limpo (<code>develop</code>), isolado da produção</li>
         </ul>
       </div>
     </div>
     <div class="card escuro">
       <h3>Evidências</h3>
       <div class="grid g4" style="margin-top:8px">
-        <div class="card branco" style="padding:10px 12px"><p><b><code>execucao.txt</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">Timestamp, hash completo do commit e versões das ferramentas</span></p></div>
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.1-brakeman.*</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">10 alertas totais (2 confiança alta, 8 média, 0 fraca)</span></p></div>
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.2-bundler-audit.txt</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">198 avisos em 51 gems (156 pares gem-CVE)</span></p></div>
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.3-endpoints.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">188 ações varridas → 149 sensíveis confirmadas na triagem</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>execucao.txt</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">Commit, data e versões</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.1-brakeman.*</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">10 alertas (2 alta, 8 média)</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.2-bundler-audit.txt</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">198 avisos · 156 pares em 51 gems</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M3.3-endpoints.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">188 ações → 149 sensíveis</span></p></div>
       </div>
     </div>
   </div>
@@ -495,18 +494,18 @@
         <div class="card">
           <h3>Sugestões</h3>
           <ul>
-            <li><b>1. Autorização nos selos:</b> exigir permissão e isolar rotas admin (<i>esforço baixo</i>).</li>
-            <li><b>2. Relatórios (<code>reports_controller</code>):</b> interromper fluxo para não-admin com <code>enforce_permission_to</code> (<i>esforço baixo</i>).</li>
-            <li><b>3. Gems e runtime:</b> atualizar <code>graphql</code> (<code>1.12.24→1.12.25</code>), <code>rack</code>, <code>puma</code>, Ruby e Rails (<i>esforço médio</i>).</li>
-            <li><b>4. SQL injection:</b> confirmar e parametrizar 4 alertas em <code>user_proposals_statistic_setting.rb</code>.</li>
+            <li><b>1. Selos:</b> exigir permissão e isolar rotas admin</li>
+            <li><b>2. Relatórios:</b> <code>enforce_permission_to</code> em <code>reports_controller</code></li>
+            <li><b>3. Dependências:</b> atualizar <code>graphql</code>, <code>rack</code>, <code>puma</code>, Ruby e Rails</li>
+            <li><b>4. SQLi:</b> parametrizar 4 alertas em <code>user_proposals_statistic_setting.rb</code></li>
           </ul>
         </div>
         <div class="card destaque">
           <h3>Priorizada</h3>
           <ul>
-            <li><b>Problema:</b> 4 ações em <code>ProposalBadgesController</code> com rota no <code>routes.rb</code> principal e sem checagem de usuário.</li>
-            <li><b>Justificativa da prioridade:</b> código próprio do <code>decidim-govbr</code>, baixo esforço de correção (16 linhas) e padrão replicável para as outras ações da M3.3.</li>
-            <li><b>Ação executada (15/11):</b> dois <code>before_action</code> carregando componente/usuário e aplicando <code>enforce_permission_to :update, :organization</code>.</li>
+            <li><b>Problema:</b> 4 rotas em <code>ProposalBadgesController</code> sem autenticação</li>
+            <li><b>Prioridade:</b> código próprio, 16 linhas, padrão replicável</li>
+            <li><b>Ação (15/11):</b> dois <code>before_action</code> + <code>enforce_permission_to :organization</code></li>
           </ul>
         </div>
       </div>
@@ -539,7 +538,7 @@
           </svg>
         </div>
         <div class="card ambar" style="padding:10px 12px">
-          <p style="font-size:13.5px"><b>Escopo e limite:</b> M3.3 oficial permanece <code>91,3%</code> (coleta única). O teste também achou <code>DestroyOneProposalBadge</code> inexistente (ainda quebra para admin), e administradores de espaço não passam pela regra de organização.</p>
+          <p style="font-size:13.5px"><b>Limite:</b> M3.3 oficial segue em <code>91,3%</code>; <code>DestroyOneProposalBadge</code> inexistente.</p>
         </div>
       </div>
     </div>
@@ -556,28 +555,28 @@
       <div class="card">
         <h3>Procedimentos e Organização</h3>
         <ul>
-          <li><b>M2.1 (TSN):</b> compara constantes de classes em <code>app/</code> e <code>lib/</code> contra a referência do Decidim v0.27.2 (exclui testes e migrações).</li>
-          <li><b>M2.2 e M2.3 (CCM e DLC):</b> inventário por método via RuboCop e contagem de linhas efetivas (<code>Ripper.lex</code>) por arquivo que declara classe.</li>
-          <li><b>M2.4 (ICT):</b> cruza sobrescritas com <code>spec/</code> por nome da classe em <code>describe</code> ou caminho espelhado com exemplo ativo.</li>
+          <li><b>M2.1 (TSN):</b> classes em <code>app/</code> e <code>lib/</code> vs Decidim v0.27.2</li>
+          <li><b>M2.2–M2.3 (CCM, DLC):</b> complexidade RuboCop e eLOC via <code>Ripper</code></li>
+          <li><b>M2.4 (ICT):</b> sobrescritas cruzadas com <code>spec/</code></li>
         </ul>
       </div>
       <div class="card">
-        <h3>Instrumentos, Recursos e Verificação</h3>
+        <h3>Instrumentos e Ambiente</h3>
         <ul>
-          <li><b>Ferramentas:</b> Ruby <code>3.4.7</code>, RuboCop <code>1.86.2</code> (limiar 0), parser <code>Ripper</code>, coletor <code>scripts/collect_maintainability.rb</code> e wrapper Docker.</li>
-          <li><b>Ambiente:</b> contêiner Linux x86_64 com rede desativada e montagens somente leitura (<code>reproduction.txt</code>).</li>
-          <li><b>Conferência cruzada:</b> <code>verify_maintainability.py</code> validou totais contra o JSON original e <b>11 testes RSpec do coletor</b> passaram.</li>
-          <li><b>Correção auditada (<code>corrections.json</code>):</b> eliminou 5 auxiliares de teste (TSN: 59,12% → <b>60,14%</b>) e resolveu namespaces (ICT: 29,14% → <b>39,43%</b>).</li>
+          <li><b>Stack:</b> Ruby <code>3.4.7</code>, RuboCop <code>1.86.2</code>, <code>collect_maintainability.rb</code></li>
+          <li><b>Ambiente:</b> Docker Linux x86_64 offline, leitura apenas</li>
+          <li><b>Verificação:</b> <code>verify_maintainability.py</code> + 11 RSpecs do coletor</li>
+          <li><b>Ajuste (<code>corrections.json</code>):</b> TSN <b>60,14%</b> · ICT <b>39,43%</b></li>
         </ul>
       </div>
     </div>
     <div class="card escuro">
       <h3>Evidências</h3>
       <div class="grid g4" style="margin-top:8px">
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.1-classes.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">291 classes de produção mapeadas e 175 sobrescritas</span></p></div>
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.2-methods.csv</code> / JSON</b><br><span style="font-size:13.5px;color:var(--texto-sec)">1.275 métodos em 4 diretórios (soma 2.916)</span></p></div>
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.3-sloc.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">273 arquivos de classe (18.298 linhas efetivas)</span></p></div>
-        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.4-specs.csv</code> &amp; JSONs</b><br><span style="font-size:13.5px;color:var(--texto-sec)">69 com spec, 106 sem correspondência + hashes SHA-256</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.1-classes.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">291 classes · 175 sobrescritas</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.2-methods.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">1.275 métodos (soma 2.916)</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.3-sloc.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">273 arquivos · 18.298 eLOC</span></p></div>
+        <div class="card branco" style="padding:10px 12px"><p><b><code>M2.4-specs.csv</code></b><br><span style="font-size:13.5px;color:var(--texto-sec)">69 com spec · 106 sem spec</span></p></div>
       </div>
     </div>
   </div>
@@ -653,17 +652,17 @@
         <div class="card">
           <h3>Melhorias Sugeridas</h3>
           <ul>
-            <li><b>Testar antes de refatorar:</b> criar specs de requisição nos fluxos de votar, retirar voto e publicar proposta.</li>
-            <li><b>Corrigir erro 500 de voto:</b> desacoplar <code>_vote_button.html.erb</code> de método exclusivo do <code>ProposalsController</code>.</li>
-            <li><b>Modularizar picos:</b> quebrar <code>permissions.rb</code> (CCM 47), <code>form_builder.rb</code> (595 linhas) e <code>ProposalsController</code> (300 linhas) em <i>engines</i>.</li>
+            <li><b>Specs de fluxo:</b> votar, retirar voto e publicar proposta</li>
+            <li><b>Erro 500 de voto:</b> desacoplar <code>_vote_button.html.erb</code> de <code>ProposalsController</code></li>
+            <li><b>Modularizar picos:</b> <code>permissions.rb</code> (47), <code>form_builder.rb</code> (595), <code>ProposalsController</code> (300)</li>
           </ul>
         </div>
         <div class="card destaque">
           <h3>Melhoria Priorizada: <code>MeetingIframeEmbedder</code></h3>
           <ul>
-            <li><b>Problema:</b> serviço sobrescrito que transforma URLs (YouTube/Twitch) e monta <code>&lt;iframe&gt;</code> figurava entre as 106 classes sem teste em M2.4.</li>
-            <li><b>Justificativa:</b> ataca diretamente o déficit de Testabilidade (ICT 39,43%) com patch isolado e valida a estratégia "testar antes de mexer" para o LAPPIS.</li>
-            <li><b>Ação (08/11):</b> adicionado <code>meeting_iframe_embedder_spec.rb</code> exercitando a classe real sem alterar o código de produção.</li>
+            <li><b>Problema:</b> serviço de <code>&lt;iframe&gt;</code> entre as 106 classes sem spec</li>
+            <li><b>Prioridade:</b> ataca ICT (39,43%) com risco zero</li>
+            <li><b>Ação (08/11):</b> criado <code>meeting_iframe_embedder_spec.rb</code></li>
           </ul>
         </div>
       </div>
@@ -698,7 +697,7 @@
           </svg>
         </div>
         <div class="card ambar" style="padding:10px 12px">
-          <p style="font-size:13.5px"><b>Limite registrado:</b> rodou isolado com Ruby <code>3.4.7</code> e RSpec <code>3.13.6</code> (sem carregar Rails nem o banco completo). Os resultados de M2.4 não foram recalculados.</p>
+          <p style="font-size:13.5px"><b>Limite:</b> execução isolada em Ruby <code>3.4.7</code> (sem Rails/banco); M2.4 não recalculado.</p>
         </div>
       </div>
     </div>
@@ -715,19 +714,19 @@
       <div class="card">
         <h3>Procedimentos e Organização</h3>
         <ul>
-          <li><b>Ética (TCLE):</b> leitura e assinatura prévia; gravação de tela autorizada, <b>microfone desligado</b>, armazenamento privado fora do Git.</li>
-          <li><b>4 tarefas fixas (M1.1–M1.3):</b> T1 Entrar · T2 Achar processo · T3 Enviar proposta · T4 Votar nela; cronometragem do 1º quadro ao estado final + questionário SUS (Lourenço et al., 2022).</li>
-          <li><b>M1.4 (Acessibilidade):</b> varredura autenticada na página inicial, processos, formulário e proposta, calculando <code>ICA = 100 × A / (A + R)</code>.</li>
-          <li><b>Papéis:</b> condução Mateus; rotulagem Miguel.</li>
+          <li><b>Ética:</b> TCLE assinado, gravação de tela sem áudio, fora do Git</li>
+          <li><b>4 tarefas (M1.1–M1.3):</b> T1 Entrar · T2 Buscar · T3 Proposta · T4 Votar</li>
+          <li><b>M1.4–M1.5:</b> acessibilidade (<code>ICA</code> em 4 telas) + escala SUS</li>
+          <li><b>Papéis:</b> condução Mateus · rotulagem Miguel</li>
         </ul>
       </div>
       <div class="card">
         <h3>Instrumentos, Recursos e Ambiente</h3>
         <ul>
-          <li><b>Equipamento:</b> Notebook Lenovo G50-80 (i7-5500U, 11 GiB RAM), Ubuntu 26.04.1 LTS, <code>docker compose</code> em desenvolvimento no commit <code>176b046</code>.</li>
-          <li><b>Navegadores:</b> Firefox <code>154.0</code> nas sessões; Chrome for Testing <code>158</code> com <code>@axe-core/cli</code> 4.14 (1366×568) e Lighthouse 13.6 (emulação móvel 412×823).</li>
-          <li><b>Dados e cálculo:</b> OBS Studio, fichas CSV e auditoria automática via <code>scripts/calc_interacao.py</code>.</li>
-          <li><b>Contas de teste:</b> login de estrangeiro (sem Gov.br em dev) e processo local <i>Praças e Parques do Bairro</i>.</li>
+          <li><b>Ambiente:</b> Docker local no commit <code>176b046</code> (Ubuntu Linux)</li>
+          <li><b>Navegadores:</b> Firefox 154 (sessões) · Chrome 158 (<code>axe</code> 4.14 e Lighthouse 13.6)</li>
+          <li><b>Coleta e cálculo:</b> OBS Studio, fichas CSV e <code>scripts/calc_interacao.py</code></li>
+          <li><b>Cenário:</b> login local e processo <i>Praças e Parques do Bairro</i></li>
         </ul>
       </div>
     </div>
@@ -819,26 +818,26 @@
       <div class="card">
         <h3>Melhorias Sugeridas · Prioridade Alta</h3>
         <ul>
-          <li><b>Formulário de propostas (<code>ProposalsController</code> / <code>new.html.erb</code>):</b> destacar requisito de 15 caracteres antes do envio, apontar o campo com erro e corrigir o <code>aria-label</code> copiado ("Data de início do afastamento inválida").</li>
-          <li><b>Botão de voto (<code>_vote_button.html.erb</code>):</b> eliminar dependência de método exclusivo do <code>ProposalsController</code> para evitar erro 500 ao retirar voto em outra rota (T4).</li>
+          <li><b>Formulário de propostas:</b> avisar mínimo de 15 caracteres, destacar campo e corrigir <code>aria-label</code></li>
+          <li><b>Botão de voto:</b> desacoplar <code>_vote_button.html.erb</code> do <code>ProposalsController</code> (erro 500)</li>
         </ul>
       </div>
       <div class="card">
         <h3>Melhorias Sugeridas · Prioridade Média</h3>
         <ul>
-          <li><b>Navegação (T2):</b> repetir o teste em produção ou banco povoado antes de redesenhar busca e página inicial (evitar viés do ambiente de dev).</li>
-          <li><b>Componentes comuns (M1.4):</b> texto alternativo nas 3 novidades (<code>image-alt</code>), nome acessível em logos/carrossel/compartilhar (<code>link-name</code>), alinhar botões de idioma e conta e corrigir <code>heading-order</code>.</li>
+          <li><b>Navegação (T2):</b> reavaliar busca e home em ambiente povoado/produção</li>
+          <li><b>Acessibilidade (M1.4):</b> <code>image-alt</code>, <code>link-name</code>, alinhamento e <code>heading-order</code></li>
         </ul>
       </div>
     </div>
     <div class="card destaque">
-      <h3>Escopo das Ações Executadas na Disciplina e Priorização Prática</h3>
+      <h3>Ações Executadas e Priorização Prática</h3>
       <div class="grid g2" style="margin-top:8px;gap:14px">
         <div>
-          <p><b>Escolha e justificativa da equipe:</b> para cumprir a entrega técnica sem abrir frentes incompletas em todas as características, a equipe executou dois patches de código completos onde havia risco crítico determinístico: testes em <code>MeetingIframeEmbedder</code> (G2) e autorização em <code>ProposalBadgesController</code> (G3).</p>
+          <p><b>Foco dos patches:</b> código alterado apenas onde havia risco crítico determinístico (<code>MeetingIframeEmbedder</code> em G2 e <code>ProposalBadgesController</code> em G3).</p>
         </div>
         <div>
-          <p><b>O que foi feito em G1 e efeito verificado:</b> em 22/11, estruturou-se o processo real <i>Praças e Parques do Bairro</i> e contas limpas na cópia local para viabilizar as sessões após travamento inicial na T2; o redesenho do formulário segue como ação prioritária nº.</p>
+          <p><b>Ação em G1 (22/11):</b> criação do processo local e contas limpas para destravar as sessões; redesenho do formulário segue prioridade nº 1 para D3.</p>
         </div>
       </div>
     </div>
