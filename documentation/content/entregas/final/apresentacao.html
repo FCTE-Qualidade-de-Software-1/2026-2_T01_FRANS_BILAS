@@ -88,74 +88,190 @@
     margin-bottom: 16px; line-height: 1.3; font-weight: 600;
   }
   .sub.neutro { color: var(--texto-sec); font-weight: 500; }
-  .grid { display: grid; gap: 16px; }
+  .grid { display: grid; gap: 26px; }
   .g2 { grid-template-columns: 1fr 1fr; }
   .g3 { grid-template-columns: repeat(3, 1fr); }
   .g4 { grid-template-columns: repeat(4, 1fr); }
   .g-asym { grid-template-columns: 1.12fr 1fr; }
   .g-asym2 { grid-template-columns: 1fr 1.18fr; }
+
+  /* Open editorial containers (borderless on #FFFFFF with top grid rules) */
   .card {
-    background: var(--azul-claro); color: var(--texto);
-    border: 1.5px solid var(--borda-sutil); border-radius: 6px; padding: 15px 18px;
+    background: transparent; color: var(--texto);
+    border: none; border-top: 2.5px solid var(--texto); border-radius: 0;
+    padding: 12px 2px 6px;
   }
-  .card.escuro { background: var(--azul-card); border-color: var(--borda-card); }
-  .card.branco { background: #FFFFFF; border-color: var(--borda-card); }
-  .card.destaque { background: var(--azul-destaque); border-color: var(--borda-card); border-left: 4px solid var(--azul); }
-  .card.alerta { background: var(--vermelho-fundo); border-color: #FCA5A5; border-left: 4px solid var(--vermelho); }
-  .card.sucesso { background: var(--verde-fundo); border-color: #86EFAC; border-left: 4px solid var(--verde); }
-  .card.ambar { background: var(--amarelo-fundo); border-color: #FDE047; border-left: 4px solid var(--amarelo); }
-  .card h3 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 19px; margin-bottom: 8px; color: var(--texto); }
-  .card p, .card li { font-size: 15.5px; line-height: 1.38; color: var(--texto); }
+  .card.branco {
+    background: transparent; border: none; border-top: 2.5px solid var(--azul);
+    border-radius: 0; padding: 12px 2px 4px;
+  }
+
+  /* Geometric chamfered light hero blocks with complete 1.5px colored border (including chamfer edge) */
+  .card.destaque,
+  .card.hero-preto,
+  .card.hero-amarelo,
+  .card.escuro,
+  .card.alerta,
+  .card.ambar,
+  .card.licao {
+    position: relative; z-index: 0; background: transparent; color: var(--texto);
+    border: none; border-radius: 0; padding: 15px 20px 17px;
+  }
+  .card.destaque::before, .card.hero-preto::before, .card.hero-amarelo::before,
+  .card.escuro::before, .card.alerta::before, .card.ambar::before, .card.licao::before {
+    content: ""; position: absolute; inset: 0; z-index: -2;
+    background: var(--chamfer-border, var(--azul));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  }
+  .card.destaque::after, .card.hero-preto::after, .card.hero-amarelo::after,
+  .card.escuro::after, .card.alerta::after, .card.ambar::after, .card.licao::after {
+    content: ""; position: absolute; inset: 1.5px; z-index: -1;
+    background: var(--chamfer-bg, #F4F8FF);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 17px), calc(100% - 17px) 100%, 0 100%);
+  }
+
+  /* Blue highlight (Priorizada patches) */
+  .card.destaque { --chamfer-border: var(--azul); --chamfer-bg: #F3F8FF; }
+  .card.destaque h3 { color: var(--azul); }
+  .card.destaque b, .card.destaque .rotulo { color: var(--texto); }
+  .card.destaque code { background: #E3EEFF; color: var(--texto); }
+
+  /* Neutral dark-slate outline (Escopo, Evidências, Ações Executadas) */
+  .card.hero-preto, .card.escuro { --chamfer-border: var(--texto); --chamfer-bg: #F8FAFC; }
+  .card.hero-preto h3, .card.escuro h3 { color: var(--azul); }
+  .card.hero-preto b, .card.hero-preto .rotulo { color: var(--azul); }
+  .card.hero-preto code, .card.escuro code { background: #E8EFF8; color: var(--texto); }
+
+  /* Evidence inner light cards */
+  .card.escuro .card.branco {
+    background: #FFFFFF; border: 1px solid var(--borda-sutil);
+    border-top: 2px solid var(--verde); padding: 9px 12px; color: var(--texto);
+  }
+  .card.escuro .card.branco span { color: var(--texto-sec) !important; }
+  .card.escuro .card.branco code { background: #ECFDF3; color: var(--texto); }
+
+  /* Open green editorial block (O que deu certo) */
+  .card.sucesso {
+    background: transparent; border: none; border-top: 3px solid var(--verde);
+    padding: 12px 2px 6px;
+  }
+  .card.sucesso h3 { color: var(--verde-texto); }
+
+  /* Light red alert chamfered block (O que deu errado) */
+  .card.alerta { --chamfer-border: var(--vermelho); --chamfer-bg: #FFF5F5; }
+  .card.alerta h3 { color: var(--vermelho-texto); }
+  .card.alerta code { background: #FEE2E2; color: var(--texto); }
+
+  /* Light yellow chamfered highlight/limit strip */
+  .card.ambar, .card.hero-amarelo { --chamfer-border: var(--amarelo); --chamfer-bg: #FFFDF0; }
+  .card.ambar { padding: 10px 18px 11px 15px; }
+  .card.ambar::before, .card.hero-amarelo::before {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  }
+  .card.ambar::after, .card.hero-amarelo::after {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
+  }
+  .card.ambar h3, .card.hero-amarelo h3 { color: var(--amarelo-texto); }
+  .card.ambar b { color: var(--amarelo-texto); }
+  .card.ambar code, .card.hero-amarelo code { background: #FEF3C7; color: var(--texto); }
+
+  /* Editorial headings with geometric square accents */
+  .card h3 {
+    font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 18.5px;
+    margin-bottom: 9px; color: var(--texto);
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .card:not(.destaque):not(.hero-preto):not(.hero-amarelo):not(.escuro):not(.alerta):not(.ambar):not(.licao) h3::before {
+    content: ""; display: inline-block; width: 10px; height: 10px;
+    background: var(--azul); flex-shrink: 0;
+  }
+  .card.sucesso h3::before { background: var(--verde) !important; }
+  .card.branco h3::before { background: var(--verde) !important; }
+
+  .card p, .card li { font-size: 15.5px; line-height: 1.4; color: var(--texto); }
   .card ul, .card ol { padding-left: 18px; }
-  .card li { margin-bottom: 4px; }
+  .card li { margin-bottom: 5px; }
   .card li:last-child { margin-bottom: 0; }
   .rotulo { color: var(--azul); font-weight: 700; }
+
+  /* Slide 17 light chamfered trio with colored borders & colored titles */
+  .card.licao { padding: 34px 24px; text-align: center; }
+  .card.licao h3 { justify-content: center; font-size: 23px; margin-bottom: 0; }
+  .card.licao.v { --chamfer-border: var(--verde); --chamfer-bg: #F3FDF5; }
+  .card.licao.v h3 { color: var(--verde-texto); }
+  .card.licao.a { --chamfer-border: var(--azul); --chamfer-bg: #F4F8FF; }
+  .card.licao.a h3 { color: var(--azul); }
+  .card.licao.y { --chamfer-border: var(--amarelo); --chamfer-bg: #FFFDF0; }
+  .card.licao.y h3 { color: var(--amarelo-texto); }
+
   .selo {
-    width: 46px; height: 46px; border-radius: 8px;
-    background: var(--azul); color: #FFFFFF;
+    position: relative; z-index: 0;
+    width: 48px; height: 48px; border-radius: 0;
+    background: transparent; color: var(--texto);
     font-family: "Space Grotesk", sans-serif;
     display: inline-flex; align-items: center; justify-content: center;
-    font-size: 19px; font-weight: 700; flex-shrink: 0;
+    font-size: 20px; font-weight: 700; flex-shrink: 0;
   }
-  .selo.verde { background: var(--verde); color: var(--texto); }
-  .selo.azul { background: var(--azul); color: #FFFFFF; }
-  .selo.amarelo { background: var(--amarelo); color: var(--texto); }
+  .selo::before {
+    content: ""; position: absolute; inset: 0; z-index: -2;
+    background: var(--selo-border, var(--azul));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  }
+  .selo::after {
+    content: ""; position: absolute; inset: 1.5px; z-index: -1;
+    background: var(--selo-bg, #FFFFFF);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+  }
+  .selo.verde { --selo-border: var(--verde); --selo-bg: #FFFFFF; color: var(--texto); }
+  .selo.azul { --selo-border: var(--azul); --selo-bg: #FFFFFF; color: var(--texto); }
+  .selo.amarelo { --selo-border: var(--amarelo); --selo-bg: #FFFFFF; color: var(--texto); }
+
+  /* Light high-contrast projector-safe pills */
   .tag {
-    display: inline-block; padding: 2px 8px; border-radius: 5px;
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
     font-weight: 700; font-size: 12.5px; border: 1.5px solid transparent;
-    vertical-align: middle;
+    color: var(--texto); vertical-align: middle;
   }
-  .tag.ins { background: var(--vermelho); color: #FFFFFF; border-color: var(--vermelho); }
-  .tag.reg { background: var(--amarelo); color: var(--texto); border-color: var(--amarelo); }
-  .tag.bom { background: var(--azul); color: #FFFFFF; border-color: var(--azul); }
-  .tag.exc { background: var(--verde); color: var(--texto); border-color: var(--verde); }
-  .tag.seg { background: var(--azul); color: #FFFFFF; border-color: var(--azul); }
-  .tag.man { background: var(--amarelo); color: var(--texto); border-color: var(--amarelo); }
-  .tag.int { background: var(--verde); color: var(--texto); border-color: var(--verde); }
+  .tag.ins { background: #FEF2F2; border-color: var(--vermelho); color: var(--texto); }
+  .tag.reg, .tag.man, .tag.dark { background: #FFFDF0; border-color: var(--amarelo); color: var(--texto); }
+  .tag.bom, .tag.seg { background: #F0F6FF; border-color: var(--azul); color: var(--texto); }
+  .tag.exc, .tag.int { background: #F0FDF4; border-color: var(--verde); color: var(--texto); }
+
   .chip {
     display: inline-block; background: var(--azul-destaque);
-    border: 1px solid var(--borda-card); border-radius: 5px;
-    padding: 2px 7px; margin: 2px 2px 0 0; font-size: 13.5px; color: var(--texto);
+    border: 1px solid var(--borda-card); border-radius: 999px;
+    padding: 3px 10px; margin: 2px 2px 0 0; font-size: 13.5px; color: var(--texto); font-weight: 600;
   }
+
+  /* Open editorial tables (horizontal rules only) */
   table { width: 100%; border-collapse: collapse; color: var(--texto); font-size: 14.5px; }
   th {
-    background: var(--azul-destaque); color: var(--texto); font-weight: 700; text-align: left;
-    padding: 8px 10px; border: 1.5px solid var(--borda-card); border-bottom: 2.5px solid var(--azul);
+    background: transparent; color: var(--azul); font-family: "Space Grotesk", sans-serif;
+    font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .04em;
+    text-align: left; padding: 8px 10px;
+    border: none; border-top: 2.5px solid var(--texto); border-bottom: 2px solid var(--azul);
   }
   td {
-    padding: 7px 10px; border: 1.5px solid var(--borda-sutil);
-    background: var(--linha-1); vertical-align: middle; line-height: 1.28;
+    padding: 8px 10px; border: none; border-bottom: 1px solid var(--borda-sutil);
+    background: transparent; vertical-align: middle; line-height: 1.3;
   }
-  tr:nth-child(even) td { background: var(--linha-2); }
+  tr:nth-child(even) td { background: #F8FAFC; }
   td.c, th.c { text-align: center; }
+
   .nota { text-align: center; color: var(--azul); font-size: 14.5px; font-weight: 600; margin-top: auto; padding-top: 8px; }
-  .kpi-row { display: grid; gap: 12px; margin-bottom: 12px; }
+
+  /* Open typographic KPIs */
+  .kpi-row { display: grid; gap: 18px; margin-bottom: 10px; }
   .kpi {
-    background: #FFFFFF; border: 1.5px solid var(--borda-card); border-top: 4px solid var(--azul);
-    border-radius: 6px; padding: 10px 14px; text-align: center;
+    background: transparent; border: none; border-top: 4px solid var(--azul);
+    border-radius: 0; padding: 8px 2px 4px; text-align: left;
   }
-  .kpi .num { font-family: "Space Grotesk", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--azul); }
-  .kpi .lbl { font-size: 13.5px; color: var(--texto-sec); margin-top: 2px; }
+  .kpi:nth-child(1) { border-top-color: var(--verde); }
+  .kpi:nth-child(2) { border-top-color: var(--azul); }
+  .kpi:nth-child(3) { border-top-color: var(--amarelo); }
+  .kpi .num { font-family: "Space Grotesk", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--texto); }
+  .kpi .lbl { font-size: 13px; color: var(--texto-sec); margin-top: 3px; font-weight: 500; }
+
   .chart-svg { width: 100%; height: auto; display: block; font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif; }
   code {
     font-family: "JetBrains Mono", monospace; font-weight: 600;
@@ -175,13 +291,15 @@
     justify-content: center; align-items: center; gap: 28px;
   }
   .capa-midia {
-    display: flex; align-items: center; justify-content: center; gap: 36px;
+    display: flex; align-items: center; justify-content: center; gap: 40px;
   }
   .capa-img-box {
-    background: #FFFFFF; border: 1.5px solid var(--borda-sutil); border-radius: 8px;
-    padding: 12px; display: flex; align-items: center; justify-content: center;
+    background: #FFFFFF; border: none; border-bottom: 4px solid var(--azul);
+    padding: 8px 12px 12px; display: flex; align-items: center; justify-content: center;
   }
-  .capa-img-box img { display: block; height: 210px; width: auto; border-radius: 4px; object-fit: contain; }
+  .capa-img-box:first-child { border-bottom-color: var(--verde); }
+  .capa-img-box:last-child { border-bottom-color: var(--amarelo); }
+  .capa-img-box img { display: block; height: 210px; width: auto; object-fit: contain; }
   @media (forced-colors: active) {
     .slide, .card, .tag, .chip, .kpi, .agenda-box, th, td { border-color: CanvasText; }
   }
@@ -338,7 +456,7 @@
             <li><b>Requisitante (UnB):</b> rigor ISO/IEC 25010, GQM e dados rastreáveis.</li>
           </ul>
         </div>
-        <div class="card destaque">
+        <div class="card hero-preto">
           <p>
             <span class="rotulo">Escopo:</span> análise estática de <code>decidim-govbr</code> (commit <code>176b046</code>) + sessões em cópia local Docker.<br>
             <span class="rotulo">Fora de escopo:</span> testes de carga ou invasão em produção e repos externos das 4 gems.
@@ -348,7 +466,7 @@
       <div class="card branco" style="display:flex;flex-direction:column;justify-content:center">
         <h3>Priorização Ponderada (ISO/IEC 25010:2023)</h3>
         <p style="font-size:13.5px;color:var(--texto-sec);margin-bottom:8px">Fórmula: <code>3 × Impacto + 2 × Risco + 1 × Viabilidade</code></p>
-        <svg class="chart-svg" viewBox="0 0 510 300" role="img" aria-label="Gráfico de barras horizontais da matriz ponderada: Segurança 29, Capacidade de Interação 28 e Manutenibilidade 25 selecionadas; Confiabilidade 22, Eficiência 20, Adequação Funcional 19, Flexibilidade 18, Compatibilidade 17 e Safety 7 descartadas.">
+        <svg class="chart-svg" viewBox="0 0 535 300" role="img" aria-label="Gráfico de barras horizontais da matriz ponderada: Segurança 29, Capacidade de Interação 28 e Manutenibilidade 25 selecionadas; Confiabilidade 22, Eficiência 20, Adequação Funcional 19, Flexibilidade 18, Compatibilidade 17 e Safety 7 descartadas.">
           <title>Matriz ponderada das características ISO/IEC 25010:2023</title>
           <line x1="160" y1="15" x2="160" y2="275" stroke="#cbd5e1" stroke-width="1"/>
           <line x1="410" y1="15" x2="410" y2="275" stroke="#FF0505" stroke-width="1.8" stroke-dasharray="4 3"/>
@@ -401,7 +519,7 @@
   <header class="slide-topo"><span class="slide-atual">4 / 17 · Segurança (1/3) · Coleta e Ambiente</span><span class="unb">Miguel · UnB</span></header>
   <div class="conteudo">
     <h2 class="titulo">Segurança (G3) · Coleta e Ambiente</h2>
-    <p class="sub">Análise estática passiva (SAST, SCA e rotas) · commit <code>176b046</code> · 03/11</p>
+    <!-- <p class="sub">Análise estática passiva (SAST, SCA e rotas) · commit <code>176b046</code> · 03/11</p> -->
     <div class="grid g2" style="margin-bottom:14px">
       <div class="card">
         <h3>Procedimentos e Organização</h3>
@@ -843,7 +961,7 @@
         </ul>
       </div>
     </div>
-    <div class="card destaque">
+    <div class="card hero-preto">
       <h3>Ações Executadas e Priorização Prática</h3>
       <div class="grid g2" style="margin-top:8px;gap:14px">
         <div>
@@ -1096,8 +1214,8 @@
             <li><b>Resultado:</b> todo mundo sabe o que fazer.</li>
           </ul>
         </div>
-        <div class="card destaque">
-          <h3>Proatividade <span class="tag reg">Parcial no prazo</span></h3>
+        <div class="card hero-amarelo">
+          <h3>Proatividade <span class="tag dark">Parcial no prazo</span></h3>
           <p>João V. Farias<b>:</b> Tarefas concluídas por integrante</p>
           <ul style="margin-top:6px">
             <li><b>Ação combinada:</b> antecipar entregas ligadas.</li>
@@ -1152,17 +1270,17 @@
       <h2 class="titulo">Lições Aprendidas</h2>
     </div>
     <div class="grid g3" style="margin:12px 0">
-      <div class="card branco" style="text-align:center;padding:30px 24px;border-top:5px solid var(--verde)">
+      <div class="card licao v">
         <div class="selo verde" style="margin-bottom:16px">1</div>
-        <h3 style="font-size:23px;margin-bottom:10px">O que aprendeu</h3>
+        <h3>O que aprendeu</h3>
       </div>
-      <div class="card branco" style="text-align:center;padding:30px 24px;border-top:5px solid var(--azul)">
+      <div class="card licao a">
         <div class="selo azul" style="margin-bottom:16px">2</div>
-        <h3 style="font-size:23px;margin-bottom:10px">Dificuldade e solução</h3>
+        <h3>Dificuldade e solução</h3>
       </div>
-      <div class="card branco" style="text-align:center;padding:30px 24px;border-top:5px solid var(--amarelo)">
+      <div class="card licao y">
         <div class="selo amarelo" style="margin-bottom:16px">3</div>
-        <h3 style="font-size:23px;margin-bottom:10px">O que faria diferente</h3>
+        <h3>O que faria diferente</h3>
       </div>
     </div>
     <div style="text-align:center">
