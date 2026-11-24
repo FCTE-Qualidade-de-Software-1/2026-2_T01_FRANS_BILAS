@@ -4,12 +4,16 @@
 \usepackage[brazilian]{babel}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
-% \usepackage{algorithmic}
+\usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
 \usepackage{url}
+% Caminhos em \path quebram só depois de / - _ e .
+\def\UrlBreaks{\do\/\do\-\do\_\do\.}
 \usepackage{hyperref}
 
 \hyphenation{par-ti-ci-pa-tivo qua-li-dade de-sen-vol-vi-mento ma-nu-ten-bi-li-dade}
@@ -24,16 +28,16 @@
         Lucca~Medeiros~Silva,
         Mateus~Vinícius~Vieira,
         e~Miguel~Arthur~Oliveira~de~Lima%
-\thanks{Os autores integram a equipe Frans Bilas na disciplina Qualidade de Software 1 (FGA0315 - 2026.2), Turma 01, Campus UnB Gama: Faculdade de Ciências e Tecnologias em Engenharia - Brasília (FCTE), Universidade de Brasília (UnB), sob orientação da Profa. Dra. Cristiane Soares Ramos. Repositório público do projeto: \url{https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T02_FRANS_BILAS}}%
+\thanks{Os autores integram a equipe Frans Bilas na disciplina Qualidade de Software 1 (FGA0315 - 2026.2), Turma 01, Campus UnB Gama: Faculdade de Ciências e Tecnologias em Engenharia - Brasília (FCTE), Universidade de Brasília (UnB), sob orientação da Profa. Dra. Cristiane Soares Ramos. Repositório público do projeto: \url{https://github.com/FCTE-Qualidade-de-Software-1/2026-2_T01_FRANS_BILAS}}%
 }
 
-\markboth{Qualidade de Software 1 (FGA0315), Turma 01, Outubro de 2026}%
+\markboth{Qualidade de Software 1 (FGA0315), Turma 01, Novembro de 2026}%
 {Equipe Frans Bilas: Avaliação da Qualidade do Brasil Participativo}
 
 \maketitle
 
 \begin{abstract}
-Este artigo relata o planejamento e a especificação da avaliação de qualidade de produto de software da plataforma Brasil Participativo, a instância governamental brasileira baseada no ecossistema livre Decidim. A metodologia do projeto apoia-se no processo de avaliação da norma ISO/IEC 25040:2024, no modelo de qualidade de produto da norma ISO/IEC 25010:2023 (SQuaRE) e no método Goal-Question-Metric (GQM), com governança de processo orientada pelo Practical Software Measurement (PSM / ISO/IEC/IEEE 15939:2017). O escopo da avaliação concentra-se em três características prioritárias: Capacidade de Interação, Manutenibilidade e Segurança. O trabalho documenta a caracterização arquitetural do software, o propósito da avaliação, o mapeamento das partes interessadas, o modelo adaptado, a matriz de priorização formal ponderada, o grafo GQM com doze métricas quantitativas e os critérios de interpretação dos resultados.
+Este artigo relata o planejamento e a especificação da avaliação de qualidade de produto de software da plataforma Brasil Participativo, a instância governamental brasileira baseada no ecossistema livre Decidim. A metodologia do projeto apoia-se no processo de avaliação da norma ISO/IEC 25040:2024, no modelo de qualidade de produto da norma ISO/IEC 25010:2023 (SQuaRE) e no método Goal-Question-Metric (GQM), com governança de processo orientada pelo Practical Software Measurement (PSM / ISO/IEC/IEEE 15939:2017). O escopo da avaliação concentra-se em três características prioritárias: Capacidade de Interação, Manutenibilidade e Segurança. O artigo apresenta o modelo adaptado, a priorização das características, o grafo GQM com doze métricas e os critérios de julgamento, o plano de avaliação, os resultados das doze métricas no commit \texttt{176b046} e o julgamento de cada objetivo. Em três sessões com usuários, nenhuma das quatro tarefas chegou a 75\% de conclusão sem ajuda, embora o SUS médio tenha ficado em 80,0 pontos e 91,2\% das verificações automáticas de acessibilidade tenham passado. Na análise estática, 60,14\% das classes sobrescrevem o núcleo do Decidim, só 39,43\% dessas sobrescritas têm teste identificável, o manifesto reúne 156 pares de gem e CVE, e 91,3\% das ações sensíveis verificam permissão. Capacidade de Interação e Manutenibilidade ficaram em Regular, e Segurança em Insuficiente. Os três defeitos observados durante a avaliação estão em código que o \texttt{decidim-govbr} sobrescreveu ou criou. A equipe implementou duas melhorias: testes de regressão para um serviço sem cobertura e a verificação de permissão em quatro ações administrativas, esta validada por teste antes e depois da correção.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -75,7 +79,7 @@ O método Goal-Question-Metric (GQM), proposto por Basili, Caldiera e Rombach~\c
 \subsection{PSM e ISO/IEC/IEEE 15939}
 \label{sec:psm}
 
-A norma internacional ISO/IEC/IEEE 15939:2017 define o processo padrão de medição em engenharia de software e sistemas~\cite{iso15939}, derivado da metodologia \textit{Practical Software Measurement} (PSM)~\cite{mcgarry2002psm}. O framework estrutura a gestão da medição em categorias de informação analíticas: Desempenho dos Processos, Calendário e Progresso, e Recursos e Custos. Essas categorias apoiam a tomada de decisão gerencial baseada em evidências quantitativas durante todo o ciclo de vida do projeto.
+A norma internacional ISO/IEC/IEEE 15939:2017 define o processo padrão de medição em engenharia de software e sistemas~\cite{iso15939}. O \textit{Practical Software Measurement} (PSM) é um guia prático de medição alinhado a essa norma~\cite{mcgarry2002psm} e estrutura a gestão da medição em categorias de informação analíticas: Desempenho dos Processos, Calendário e Progresso, e Recursos e Custos. Essas categorias apoiam a tomada de decisão gerencial baseada em evidências quantitativas durante todo o ciclo de vida do projeto.
 
 \subsection{Fundamentos Clássicos de Qualidade de Software}
 \label{sec:galin}
@@ -96,7 +100,7 @@ A condução do trabalho segue rigorosamente as cinco atividades prescritas pela
     \item \textbf{Atividade 1: Estabelecer os Requisitos da Avaliação (Fase 1)}: explicitação do propósito da auditoria, mapeamento exaustivo das partes interessadas, classificação do software, caracterização arquitetural, escolha e adaptação do modelo de qualidade SQuaRE, priorização formal de características, delimitação de escopo e alinhamento aos Objetivos de Desenvolvimento Sustentável (ODS).
     \item \textbf{Atividade 2: Especificar a Avaliação (Fase 2)}: aplicação do método GQM para estruturar a hierarquia de medição, formulação dos objetivos conceituais, questões analíticas, hipóteses operacionais, fichas técnicas das métricas quantitativas, níveis de pontuação e critérios de julgamento.
     \item \textbf{Atividade 3: Projetar a Avaliação (Fase 3)}: planejamento detalhado dos instrumentos de coleta, elaboração de roteiros de teste de usabilidade sob consentimento formal (TCLE), seleção e configuração de ferramentas de análise estática e auditoria de dependências.
-    \item \textbf{Atividade 4: Executar a Avaliação (Fase 3)}: coleta empírica de dados brutos sobre o repositório \texttt{decidim-govbr}, aplicação dos testes de conformidade e tratamento sistemático das medições.
+    \item \textbf{Atividade 4: Executar a Avaliação (Fase 4)}: coleta empírica de dados brutos sobre o repositório \path{decidim-govbr}, aplicação dos testes de conformidade e tratamento sistemático das medições.
     \item \textbf{Atividade 5: Concluir a Avaliação (Fase 4)}: comparação dos resultados com os limiares de julgamento estabelecidos, correlação cruzada entre características, fundamentação de oportunidades de melhoria e implementação de melhorias técnicas no software.
 \end{enumerate}
 
@@ -116,15 +120,7 @@ A execução prática do projeto adota rituais ágeis e métricas de processo ba
     \item \textbf{Dupla 3 (Davi Mesquita e Miguel Arthur Lima)}: concepção do modelo SQuaRE adaptado, diagrama hierárquico, matriz de priorização ponderada e trade-offs, delimitação de escopo e profundidade, alinhamento aos ODS, modelo inicial de métricas PSM/CID, alinhamento de slides e referências no artigo.
 \end{itemize}
 
-O monitoramento do processo apoia-se em seis métricas PSM/CID:
-\begin{enumerate}
-    \item \textbf{M-PSM-1 (Horas Trabalhadas por Membro - HTM)}: acompanhamento do tempo semanal de dedicação, com linha de base entre 6 e 8 horas semanais por membro.
-    \item \textbf{M-PSM-2 (Percentual de Contribuição Individual - PCI)}: distribuição paritária do esforço, assegurando 16,67\% por integrante e totalizando exatamente 100\%.
-    \item \textbf{M-PSM-3 (Taxa de Conclusão de Sprints - TCS)}: proporção de tarefas planejadas concluídas dentro de cada sprint.
-    \item \textbf{M-PSM-4 (Índice de Aderência a Prazos - IAP)}: desvio temporal entre a data da release planejada e a entrega efetiva no Git.
-    \item \textbf{M-PSM-5 (Taxa de Revisão por Pares - TRP)}: percentual de contribuições técnicas que passam por revisão cruzada compulsória de outra dupla antes do merge.
-    \item \textbf{M-PSM-6 (Conformidade Anti-Meat-Proxy - CAMP)}: índice de conformidade com as diretrizes de escrita humana, verificado por auditoria automatizada.
-\end{enumerate}
+O monitoramento do processo parte de seis necessidades de informação, duas por categoria do PSM~\cite{mcgarry2002psm}: entrega dos itens comprometidos em cada sprint (N1) e progresso até a Entrega 2 (N2), em Calendário e Progresso; esforço por integrante (N3) e precisão das estimativas (N4), em Recursos e Custos; tempo de ciclo por item (N5) e revisão por pares antes da integração (N6), em Desempenho dos Processos. Cada necessidade tem um indicador, um modelo de análise e um critério de decisão, detalhados na GitPage do projeto. A linha de base, tirada do histórico do repositório em 26/10/2026, mostrou que 3 das 42 integrações na \texttt{main} vieram de \textit{pull request} e nenhuma teve revisão registrada; por isso a revisão por outra dupla passou a fazer parte do critério de Pronto a partir do Sprint 3. A medição de fechamento do Sprint 3, em 04/11/2026, registrou 6 das 17 issues comprometidas fechadas (35,3\%) e 7 das 9 integrações feitas por \textit{pull request}, mas só uma revisada por outra dupla (11,1\%). Nenhuma issue tinha horas reais lançadas, o que deixou N3 e N4 sem valor nesse sprint.
 
 \subsection{Salvaguardas Éticas e Princípio de Não-Intrusão}
 \label{sec:eticas}
@@ -138,20 +134,9 @@ A metodologia estabelece salvaguardas operacionais rígidas:
 \subsection{Governança de Código, Rastreabilidade e Repositório}
 \label{sec:governanca}
 
-Todo o ciclo de vida do projeto é público e auditável. O código-fonte do artigo em LaTeX, a documentação estática e os scripts utilitários residem no repositório oficial da disciplina no GitHub. Adota-se o padrão de ramificação \texttt{tipo/numero-descricao} e convenções do \textit{Conventional Commits}. 
+Todo o ciclo de vida do projeto é público e auditável. O código-fonte do artigo em LaTeX, a documentação estática e os scripts utilitários residem no repositório oficial da disciplina no GitHub. Adota-se o padrão de ramificação \path{tipo/numero-descricao} e convenções do \textit{Conventional Commits}. 
 
-Para barrar práticas de \textit{meat-proxy} (geração artificial de texto sem curadoria humana), a equipe implementou um script de auditoria estática em Python (\texttt{scripts/check\_humanizer.py}), executado localmente via hook pré-commit do Git e no pipeline de integração contínua (GitHub Actions). O script fiscaliza e impede construções clichês, termos vazios e dados fictícios. A documentação completa é publicada continuamente na GitPage do projeto.
-
-\subsection{Incorporação dos Apontamentos do Ponto de Controle 1}
-\label{sec:correcoes_pc1}
-
-As deliberações decorrentes da avaliação docente no Ponto de Controle 1 (PC1) motivaram correções estruturais na governança e na padronização dos artefatos do projeto:
-
-\begin{enumerate}
-    \item \textbf{Processo de Medição e Gestão (PSM/CID)}: a versão preliminar da documentação apoiava-se apenas nas categorias genéricas do PSM. Na revisão pós-PC1, a equipe estruturou formalmente o modelo de informação derivado da norma ISO/IEC/IEEE 15939:2017 e do framework CID, definindo construtos analíticos completos para seis necessidades de informação (N1 a N6). A coleta passou a ser rastreada no GitHub Projects (Quadro 33), e foram homologadas faixas de controle consensuais (10\% a 25\% de esforço individual em N3 e 80\% a 120\% de precisão de estimativas em N4).
-    \item \textbf{Padronização Terminológica (Critério F2-C12)}: uniformizou-se um identificador exclusivo para cada uma das doze métricas (M1.1 a M1.5, M2.1 a M2.4 e M3.1 a M3.3), expurgando ambiguidades de nomenclatura e retirando tópicos desprovidos de instrumental de coleta (como políticas CSP e infraestrutura física).
-    \item \textbf{Legendas, Fontes e Rastreabilidade Normativa (Critérios F2-C8 e AG-C2)}: todas as tabelas e figuras receberam numeração formal, legendas descritivas e referências explícitas no texto. A fundamentação bibliográfica foi alinhada às versões vigentes das normas ISO/IEC 25010:2023 e ISO/IEC 25040:2024.
-\end{enumerate}
+Para barrar práticas de \textit{meat-proxy} (geração artificial de texto sem curadoria humana), a equipe implementou um script de auditoria estática em Python (\path{scripts/check_humanizer.py}), executado localmente via hook pré-commit do Git e no pipeline de integração contínua (GitHub Actions). O script fiscaliza e impede construções clichês, termos vazios e dados fictícios. A documentação completa é publicada continuamente na GitPage do projeto.
 
 \section{Planejamento da Avaliação e Modelo de Qualidade}
 \label{sec:fase1}
@@ -170,28 +155,29 @@ O objetivo central desta avaliação é gerar evidências quantificáveis sobre 
 \subsection{Requisitante e Partes Interessadas}
 \label{sec:stakeholders}
 
-O processo de avaliação atende às necessidades de quatro grupos principais de partes interessadas:
+A requisitante da avaliação é a Profa. Dra. Cristiane Soares Ramos (UnB), que demanda o trabalho no contexto acadêmico e espera métricas rastreáveis e dados brutos auditáveis, conforme a ISO/IEC 25010:2023 e o GQM. Ela avalia o rigor do processo, mas não é ponto de vista de nenhum objetivo de medição, porque não usa o produto. As demais partes interessadas são:
 
 \begin{itemize}
-    \item \textbf{Cidadãos / Usuários Finais}: demandam interfaces claras, baixa carga cognitiva, navegabilidade eficiente em dispositivos móveis e garantia de sigilo de sua participação.
+    \item \textbf{Cidadãos / Usuários Finais}: demandam interfaces claras, baixa carga cognitiva, navegação simples para pessoas de diferentes idades e níveis de letramento digital e garantia de sigilo de sua participação.
     \item \textbf{Equipe de Engenharia (LAPPIS)}: busca manutenibilidade do código, independência modular das extensões governamentais e facilidade de execução de testes automatizados em RSpec.
     \item \textbf{Órgão Gestor Governamental (MGI)}: exige disponibilidade do serviço durante períodos de consulta pública, integridade dos votos populares e conformidade legal com a legislação brasileira de proteção de dados.
-    \item \textbf{Comunidade Decidim}: beneficia-se da identificação de inconformidades técnicas e de correções de código devolvidas ao repositório livre internacional.
 \end{itemize}
 
 \subsection{Tipo de Produto e Caracterização Arquitetural}
 \label{sec:arquitetura}
 
-O Brasil Participativo é categorizado como uma aplicação web transacional de deliberação cívica, estruturada sob a forma de um monólito modular baseado no framework Ruby on Rails. O repositório central (\texttt{decidim-govbr}) integra o núcleo do Decidim a extensões governamentais:
+O Brasil Participativo é categorizado como uma aplicação web transacional de deliberação cívica, estruturada sob a forma de um monólito modular baseado no framework Ruby on Rails. O repositório central (\path{decidim-govbr}) integra o núcleo do Decidim a extensões governamentais:
 
 \begin{itemize}
     \item \textbf{Ambiente de Execução}: linguagem Ruby 3.0.4 e framework Ruby on Rails 6.1.7.2.
     \item \textbf{Núcleo Funcional}: Decidim 0.27.2 com módulos de processos participativos, consultas, iniciativas e propostas.
     \item \textbf{Persistência Relacional}: banco de dados PostgreSQL com atributos serializados em colunas JSONB.
     \item \textbf{Processamento em Segundo Plano}: filas assíncronas gerenciadas pelo Sidekiq 6.5.7 apoiadas em servidor de memória Redis 4.7.
-    \item \textbf{Autenticação Unificada}: Single Sign-On com o Gov.br via protocolo OpenID Connect com chaves criptográficas JWKS (\texttt{omniauth\_govbr.rb}).
-    \item \textbf{Extensões Governamentais}: módulos desenvolvidos pelo LAPPIS incluindo \texttt{decidim-ej} (Empurrando Juntos), \texttt{decidim-extra\_user\_fields}, \texttt{decidim-homes} e \texttt{decidim-mobile}.
+    \item \textbf{Autenticação Unificada}: Single Sign-On com o Gov.br via protocolo OpenID Connect com chaves criptográficas JWKS (\path{omniauth_govbr.rb}).
+    \item \textbf{Extensões Governamentais}: módulos desenvolvidos pelo LAPPIS, como \texttt{decidim-ej} (Empurrando Juntos), \path{decidim-extra_user_fields}, \path{decidim-homes} e \path{decidim-mobile}, mantidos em repositórios separados e declarados no \texttt{Gemfile} do \path{decidim-govbr}.
 \end{itemize}
+
+Essa arquitetura define o que a avaliação consegue medir. Por análise estática, dá para medir o código do \path{decidim-govbr} no commit \texttt{176b046} (ramo \texttt{develop}), incluindo as classes que sobrescrevem o Decidim, os testes RSpec e as dependências do \texttt{Gemfile.lock}. Os fluxos de participação exigem uma instância local com o login Gov.br simulado e sessões com usuários. Ficam fora o código das extensões, que está em outros repositórios, e o comportamento sob carga real, que exigiria testes contra a produção.
 
 \subsection{Modelo de Qualidade Adaptado ISO/IEC 25010:2023}
 \label{sec:modelo_square}
@@ -199,7 +185,7 @@ O Brasil Participativo é categorizado como uma aplicação web transacional de 
 A avaliação adota o modelo de qualidade de produto de software da norma ISO/IEC 25010:2023. A adaptação ao contexto do Brasil Participativo selecionou três características prioritárias e onze subcaracterísticas fundamentadas nas necessidades das partes interessadas (Tabela~\ref{tab:modelo_square}):
 
 \begin{itemize}
-    \item \textbf{Capacidade de Interação}: apreensibilidade, operabilidade, proteção contra erros de usuário e inclusividade (acessibilidade digital e responsividade móvel).
+    \item \textbf{Capacidade de Interação}: apreensibilidade, operabilidade, proteção contra erros de usuário e inclusividade (uso por cidadãos de diferentes idades e perfis e acessibilidade digital das páginas do fluxo).
     \item \textbf{Manutenibilidade}: modularidade das extensões, analisabilidade de código e testabilidade das classes sobrescritas.
     \item \textbf{Segurança}: confidencialidade de dados, integridade das deliberações, autenticidade de acesso via Gov.br e resistência a vulnerabilidades em dependências.
 \end{itemize}
@@ -208,19 +194,60 @@ A avaliação adota o modelo de qualidade de produto de software da norma ISO/IE
 \centering
 \caption{Mapeamento do modelo adaptado da ISO/IEC 25010:2023 ao contexto do Brasil Participativo.}
 \label{tab:modelo_square}
-\small
-\begin{tabular}{@{}p{0.25\columnwidth} p{0.32\columnwidth} p{0.35\columnwidth}@{}}
+\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.23\columnwidth} >{\raggedright\arraybackslash}p{0.30\columnwidth} >{\raggedright\arraybackslash}p{0.35\columnwidth}@{}}
 \toprule
 \textbf{Característica} & \textbf{Subcaracterísticas} & \textbf{Contexto no Software} \\
 \midrule
 Capacidade de Interação & Apreensibilidade, Operabilidade, Proteção contra Erros, Inclusividade & Jornadas de autenticação Gov.br, busca de processos e formulários de envio de propostas. \\
 \midrule
-Manutenibilidade & Modularidade, Analisabilidade, Testabilidade & Classes customizadas em \texttt{app/permissions/} e \texttt{app/commands/}, complexidade ciclomática e suíte RSpec. \\
+Manutenibilidade & Modularidade, Analisabilidade, Testabilidade & Classes customizadas em \path{app/permissions/} e \path{app/commands/}, complexidade ciclomática e suíte RSpec. \\
 \midrule
 Segurança & Confidencialidade, Integridade, Autenticidade, Resistência & Auditoria com Brakeman, checagem de CVEs nas gems e proteção de controladores administrativos. \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
+
 \end{table}
+
+A Fig.~\ref{fig:modelo} representa graficamente o modelo adaptado, com a parte interessada que orienta cada característica.
+
+\begin{figure*}[!t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  every node/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, inner sep=3pt},
+  car/.style={fill=gray!12, font=\scriptsize\bfseries, text width=3.4cm},
+  sub/.style={text width=1.85cm, minimum height=0.9cm},
+  >=stealth]
+\node[fill=gray!25, font=\small\bfseries, text width=6cm] (raiz) at (10.5,3.2) {ISO/IEC 25010:2023 adaptada ao Brasil Participativo};
+\node[car] (c1) at (3.15,1.7) {Capacidade de Interação\\[-1pt]{\normalfont foco: cidadão}};
+\node[car] (c2) at (10.5,1.7) {Manutenibilidade\\[-1pt]{\normalfont foco: LAPPIS}};
+\node[car] (c3) at (17.85,1.7) {Segurança\\[-1pt]{\normalfont foco: órgão gestor}};
+\foreach \c in {c1,c2,c3} \draw[->] (raiz.south) -- (\c.north);
+\node[sub] (s11) at (0.0,0) {Apreensibilidade};
+\node[sub] (s12) at (2.1,0) {Operabilidade};
+\node[sub] (s13) at (4.2,0) {Proteção contra erros};
+\node[sub] (s14) at (6.3,0) {Inclusividade};
+\node[sub] (s21) at (8.4,0) {Modularidade};
+\node[sub] (s22) at (10.5,0) {Analisabilidade};
+\node[sub] (s23) at (12.6,0) {Testabilidade};
+\node[sub] (s31) at (14.7,0) {Confidencialidade};
+\node[sub] (s32) at (16.8,0) {Integridade};
+\node[sub] (s33) at (18.9,0) {Autenticidade};
+\node[sub] (s34) at (21.0,0) {Resistência};
+\foreach \s in {s11,s12,s13,s14} \draw[->] (c1.south) -- (\s.north);
+\foreach \s in {s21,s22,s23} \draw[->] (c2.south) -- (\s.north);
+\foreach \s in {s31,s32,s33,s34} \draw[->] (c3.south) -- (\s.north);
+\end{tikzpicture}}
+\caption{Modelo de qualidade adaptado: características selecionadas e subcaracterísticas avaliadas.}
+\label{fig:modelo}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe com base na ISO/IEC 25010:2023~\cite{iso25010}.}
+\end{figure*}
 
 \subsection{Seleção e Priorização das Características}
 \label{sec:priorizacao}
@@ -243,41 +270,47 @@ A Tabela~\ref{tab:priorizacao} apresenta os resultados da avaliação comparativ
 
 \begin{table}[!t]
 \centering
-\caption{Matriz de priorização ponderada das características candidatas da norma ISO/IEC 25010:2023.}
+\caption{Matriz de priorização ponderada das características da norma ISO/IEC 25010:2023.}
 \label{tab:priorizacao}
-\small
-\begin{tabular}{@{}l c c c c l@{}}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}l c c c c@{}}
 \toprule
-\textbf{Característica} & \textbf{Imp. (3)} & \textbf{Risc. (2)} & \textbf{Viab. (1)} & \textbf{Total} & \textbf{Decisão} \\
+\textbf{Característica} & \textbf{Imp. (3)} & \textbf{Risc. (2)} & \textbf{Viab. (1)} & \textbf{Total} \\
 \midrule
-\textbf{Segurança} & 5 & 5 & 4 & \textbf{29} & \textbf{Selecionada (1º)} \\
-\textbf{Cap. Interação} & 5 & 4 & 5 & \textbf{28} & \textbf{Selecionada (2º)} \\
-\textbf{Manutenibilidade} & 4 & 4 & 5 & \textbf{25} & \textbf{Selecionada (3º)} \\
-Confiabilidade & 4 & 4 & 2 & 22 & Descartada \\
-Eficiência Desempenho & 4 & 3 & 2 & 20 & Descartada \\
-Adequação Funcional & 4 & 2 & 3 & 19 & Descartada \\
-Flexibilidade & 3 & 3 & 3 & 18 & Descartada \\
-Compatibilidade & 3 & 2 & 4 & 17 & Descartada \\
-Proteção (\textit{Safety}) & 1 & 1 & 2 & 7 & Descartada \\
+\textbf{Segurança} & 5 & 5 & 4 & \textbf{29} \\
+\textbf{Cap. de Interação} & 5 & 4 & 5 & \textbf{28} \\
+\textbf{Manutenibilidade} & 4 & 4 & 5 & \textbf{25} \\
+Confiabilidade & 4 & 4 & 2 & 22 \\
+Eficiência de Desempenho & 4 & 3 & 2 & 20 \\
+Adequação Funcional & 4 & 2 & 3 & 19 \\
+Flexibilidade & 3 & 3 & 3 & 18 \\
+Compatibilidade & 3 & 2 & 4 & 17 \\
+Proteção (\textit{Safety}) & 1 & 1 & 2 & 7 \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Em negrito, as três características selecionadas. Fonte: elaborado pela equipe.}
 \end{table}
 
-A análise de \textit{trade-offs} justificou o descarte de Confiabilidade e Eficiência de Desempenho. Embora de alto impacto público, ambas obtiveram nota mínima em viabilidade operacional ($2$), pois testes de estresse e tolerância a falhas exigiriam testes invasivos contra a infraestrutura em produção do Governo Federal, violando as salvaguardas éticas do projeto. O recorte estrito de três características permitiu aprofundar doze métricas quantitativas executáveis, evitando diagnósticos superficiais.
+A análise de \textit{trade-offs} justificou o descarte de Confiabilidade e Eficiência de Desempenho. Embora de alto impacto público, ambas obtiveram nota mínima em viabilidade operacional ($2$), pois testes de estresse e tolerância a falhas exigiriam testes invasivos contra a infraestrutura em produção do Governo Federal, violando as salvaguardas éticas do projeto. O recorte estrito de três características permitiu aprofundar doze métricas quantitativas executáveis, evitando diagnósticos superficiais. A Capacidade de Interação, equivalente à antiga Usabilidade, foi aprovada pela professora em 09/09/2026 como exceção, porque o Brasil Participativo existe para a participação de cidadãos com diferentes níveis de letramento digital.
 
 \subsection{Escopo, Profundidade e Objetos de Avaliação}
 \label{sec:escopo}
 
 O perímetro da avaliação abrange:
 \begin{itemize}
-    \item Código-fonte das classes que estendem ou sobrescrevem o Decidim em \texttt{app/permissions/} e \texttt{app/commands/} no repositório \texttt{decidim-govbr}.
-    \item Os 156 testes automatizados em RSpec em \texttt{spec/}.
+    \item Código-fonte das classes que estendem ou sobrescrevem o Decidim em \path{app/permissions/} e \path{app/commands/} no repositório \path{decidim-govbr}.
+    \item A suíte de testes RSpec em \path{spec/}.
     \item Fluxos centrais de participação: autenticação Gov.br, localização de processos, envio de propostas e apoio a propostas.
-    \item Conformidade de acessibilidade digital (eMAG e WCAG 2.1 AA) e responsividade móvel nos navegadores web.
+    \item Verificações automáticas de acessibilidade digital, com base nas regras da WCAG 2.1 AA, nas páginas do fluxo de participação acessadas pelo navegador do computador.
     \item Dependências de software fixadas no \texttt{Gemfile.lock} e vulnerabilidades catalogadas pelo Brakeman.
 \end{itemize}
 
 Ficam formalmente fora do escopo deste trabalho: testes de sobrecarga ou estresse contra a infraestrutura em produção do governo federal, auditoria do código-fonte de repositórios de gems mantidos externamente e a infraestrutura física de nuvem que hospeda o serviço público.
+
+Os resultados valem para o commit \texttt{176b046} (27/08/2026), não para a instância em produção, que pode estar em outra versão. As sessões com um grupo pequeno de voluntários indicam problemas de interação, mas não representam estatisticamente os usuários da plataforma.
 
 \subsection{Alinhamento aos Objetivos de Desenvolvimento Sustentável}
 \label{sec:ods}
@@ -293,9 +326,9 @@ Esta seção desdobra as características priorizadas em objetivos de medição,
 \label{sec:objetivos}
 
 \begin{itemize}
-    \item \textbf{G1 (Capacidade de Interação)}: analisar o fluxo de participação (autenticação Gov.br, busca temática de processo, envio e apoio a propostas) com o propósito de identificar barreiras operacionais que levam à desistência, em relação à apreensibilidade, operabilidade, proteção contra erros e inclusividade, do ponto de vista do cidadão, no contexto de novos usuários em navegadores desktop e móveis.
-    \item \textbf{G2 (Manutenibilidade)}: analisar o código do repositório \texttt{decidim-govbr}, com foco nas sobrescritas e extensões do governo, com o propósito de diagnosticar módulos com débito técnico, em relação à modularidade, analisabilidade e testabilidade, do ponto de vista da equipe de engenharia do LAPPIS, no contexto de análise estática do repositório aberto.
-    \item \textbf{G3 (Segurança)}: analisar o código-fonte e o manifesto de dependências do \texttt{decidim-govbr} com o propósito de avaliar a proteção dos dados dos participantes, em relação à confidencialidade, integridade, autenticidade e resistência, do ponto de vista do órgão gestor governamental, no contexto de auditoria estática sem testes intrusivos em produção.
+    \item \textbf{G1 (Capacidade de Interação)}: analisar o fluxo de participação (autenticação Gov.br, busca temática de processo, envio e apoio a propostas) com o propósito de identificar barreiras operacionais que levam à desistência, em relação à apreensibilidade, operabilidade, proteção contra erros e inclusividade, do ponto de vista do cidadão, no contexto de cidadãos de diferentes idades e perfis usando o navegador do computador.
+    \item \textbf{G2 (Manutenibilidade)}: analisar o código do repositório \path{decidim-govbr}, com foco nas classes que sobrescrevem o núcleo do Decidim, com o propósito de diagnosticar módulos com débito técnico, em relação à modularidade, analisabilidade e testabilidade, do ponto de vista da equipe de engenharia do LAPPIS, no contexto de análise estática do commit \texttt{176b046}.
+    \item \textbf{G3 (Segurança)}: analisar o código-fonte e o manifesto de dependências do \path{decidim-govbr} com o propósito de avaliar a proteção dos dados dos participantes, em relação à confidencialidade, integridade, autenticidade e resistência, do ponto de vista do órgão gestor governamental, no contexto de auditoria estática sem testes intrusivos em produção.
 \end{itemize}
 
 \subsection{Questões e Hipóteses}
@@ -315,7 +348,7 @@ A Tabela~\ref{tab:gqm} relaciona as questões analíticas operacionais e suas re
 \multicolumn{3}{@{}l}{\textit{G1: Capacidade de Interação (Perspectiva do Cidadão)}} \\
 Q1.1 & O cidadão conclui as tarefas de participação sem assistência externa? & Ao menos 80\% concluem as tarefas; o envio de proposta apresenta a menor taxa de sucesso. \\
 Q1.2 & A plataforma sinaliza erros operacionais e orienta a sua recuperação? & Erros de preenchimento são indicados, mas mensagens não instruem a correção imediata. \\
-Q1.3 & Os fluxos mantêm operabilidade para pessoas com deficiência e em telas móveis? & Ausência de falhas impeditivas totais, com desvios em contraste visual e rótulos de acessibilidade. \\
+Q1.3 & O fluxo atende cidadãos de diferentes idades e perfis e passa nas verificações automáticas de acessibilidade? & Ausência de falhas impeditivas totais, com desvios em contraste visual e rótulos de acessibilidade. \\
 \midrule
 \multicolumn{3}{@{}l}{\textit{G2: Manutenibilidade (Perspectiva da Engenharia LAPPIS)}} \\
 Q2.1 & As classes customizadas estão desacopladas do núcleo oficial do Decidim? & Há concentração de regras de negócio sobrescrevendo controladores e comandos do núcleo. \\
@@ -323,11 +356,15 @@ Q2.2 & A estrutura do código facilita a localização e a modificação de comp
 Q2.3 & As classes customizadas contam com suíte de testes automatizados em RSpec? & Módulos governamentais exibem cobertura de testes heterogênea nas classes sobrescritas. \\
 \midrule
 \multicolumn{3}{@{}l}{\textit{G3: Segurança (Perspectiva do Órgão Gestor)}} \\
-Q3.1 & O código-fonte apresenta vulnerabilidades detectáveis por análise estática? & O código não apresenta achados de alta severidade reportados pelo analisador Brakeman. \\
+Q3.1 & O código-fonte apresenta vulnerabilidades detectáveis por análise estática? & O analisador Brakeman não reporta alertas de confiança alta no código. \\
 Q3.2 & O manifesto de dependências inclui bibliotecas com vulnerabilidades conhecidas? & O arquivo de bloqueio contém ao menos uma dependência com aviso de segurança catalogado. \\
 Q3.3 & Os endpoints e ações sensíveis exigem autenticação e autorização explícita? & Controladores administrativos restringem o acesso via políticas de autorização do Decidim. \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
+
 \end{table*}
 
 \subsection{Métricas e Procedimentos de Cálculo}
@@ -340,7 +377,7 @@ Para responder objetivamente às questões formuladas, foram especificadas doze 
 \caption{Especificação das doze métricas quantitativas da avaliação com fórmulas e fontes de coleta.}
 \label{tab:metricas}
 \small
-\begin{tabular}{@{}l l p{0.32\textwidth} p{0.24\textwidth} p{0.26\textwidth}@{}}
+\begin{tabular}{@{}l l p{0.30\textwidth} p{0.24\textwidth} p{0.22\textwidth}@{}}
 \toprule
 \textbf{Código} & \textbf{Questão} & \textbf{Métrica e Definição} & \textbf{Procedimento / Fórmula} & \textbf{Fonte e Ferramenta} \\
 \midrule
@@ -352,17 +389,21 @@ M1.4 & Q1.3 & Conformidade de Acessibilidade (ICA): aderência às diretrizes WC
 M1.5 & Q1.3 & Escala de Usabilidade do Sistema (SUS): índice padronizado de satisfação subjetiva~\cite{brooke1996sus}. & Escala Likert de 10 itens convertida (0--100) & Questionário pós-teste com participante \\
 \midrule
 \multicolumn{5}{@{}l}{\textit{G2: Manutenibilidade}} \\
-M2.1 & Q2.1 & Taxa de Sobrescritas do Núcleo (TSN): razão de classes customizadas que reabrem módulos Decidim. & $TSN = (C_{\text{sobrescritas}} / C_{\text{total}}) \times 100$ & Inspeção da árvore em \texttt{app/} \\
-M2.2 & Q2.2 & Complexidade Ciclomática Média (CCM): fluxo de controle independente por método~\cite{mccabe1976complexity}. & $CCM = \frac{1}{M} \sum v(G_j)$ & RuboCop (\texttt{CyclomaticComplexity}) \\
-M2.3 & Q2.2 & Densidade de Linhas por Classe (DLC): contagem de linhas efetivas de código (SLOC) por classe. & $DLC_{\text{media}} = (\sum SLOC_c) / C$ & Analisador estático RuboCop \\
-M2.4 & Q2.3 & Índice de Cobertura de Sobrescritas (ICT): classes sobrescritas com arquivo de teste espelho. & $ICT = (S_{\text{cobertas}} / C_{\text{sobrescritas}}) \times 100$ & Mapeamento cruzado \texttt{app/} e \texttt{spec/} \\
+M2.1 & Q2.1 & Taxa de Sobrescritas do Núcleo (TSN): razão de classes customizadas que reabrem módulos Decidim. & $TSN = (C_{\text{sobrescritas}} / C_{\text{total}}) \times 100$ & Inspeção da árvore em \path{app/} \\
+M2.2 & Q2.2 & Complexidade Ciclomática Média (CCM): fluxo de controle independente por método~\cite{mccabe1976complexity}. & $CCM = \frac{1}{M} \sum v(G_j)$ & RuboCop (\path{CyclomaticComplexity}) \\
+M2.3 & Q2.2 & Densidade de Linhas por Classe (DLC): contagem de linhas efetivas de código (SLOC) por classe. & $DLC_{\text{media}} = (\sum SLOC_c) / C$ & Tokens do Ripper (Ruby) \\
+M2.4 & Q2.3 & Índice de Cobertura de Sobrescritas (ICT): classes sobrescritas com arquivo de teste espelho. & $ICT = (S_{\text{cobertas}} / C_{\text{sobrescritas}}) \times 100$ & Mapeamento cruzado \path{app/} e \path{spec/} \\
 \midrule
 \multicolumn{5}{@{}l}{\textit{G3: Segurança}} \\
-M3.1 & Q3.1 & Densidade Ponderada de Vulnerabilidades (DVC): achados ponderados por severidade. & $DVC = 3N_{\text{alta}} + 2N_{\text{media}} + 1N_{\text{baixa}}$ & Relatório do analisador Brakeman \\
-M3.2 & Q3.2 & Contagem de Dependências Vulneráveis (CDV): CVEs catalogadas nas gems do projeto. & $CDV = \sum N_{\text{CVE}}$ & Auditoria via \texttt{bundler-audit} \\
+M3.1 & Q3.1 & Densidade Ponderada de Vulnerabilidades (DVC): alertas ponderados pelo nível de confiança do Brakeman. & $DVC = 3N_{\text{alta}} + 2N_{\text{média}} + 1N_{\text{fraca}}$ & Relatório do analisador Brakeman \\
+M3.2 & Q3.2 & Contagem de Dependências Vulneráveis (CDV): CVEs catalogadas nas gems do projeto. & $CDV = \sum N_{\text{CVE}}$ & Auditoria via \path{bundler-audit} \\
 M3.3 & Q3.3 & Proteção de Endpoints Sensíveis (TPE): ações com autorização explícita nos controladores. & $TPE = (N_{\text{prot}} / N_{\text{sens}}) \times 100$ & Inspeção de controladores e rotas \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
+
 \end{table*}
 
 \subsection{Níveis de Pontuação e Critérios de Julgamento}
@@ -375,7 +416,7 @@ A interpretação das métricas adota quatro níveis de pontuação: Insuficient
 \caption{Níveis de pontuação e critérios de interpretação das doze métricas quantitativas.}
 \label{tab:julgamento}
 \small
-\begin{tabular}{@{}l p{0.21\textwidth} p{0.18\textwidth} p{0.18\textwidth} p{0.18\textwidth} p{0.13\textwidth}@{}}
+\begin{tabular}{@{}l p{0.17\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.17\textwidth} p{0.14\textwidth}@{}}
 \toprule
 \textbf{Código} & \textbf{Métrica} & \textbf{Insuficiente} & \textbf{Regular} & \textbf{Bom} & \textbf{Excelente} \\
 \midrule
@@ -393,142 +434,265 @@ M3.2 & Dependências Vulneráveis (CDV) & $\ge 5$ CVEs & $2\text{--}4$ CVEs & $1
 M3.3 & Proteção de Endpoints (TPE) & $< 80\%$ & $80\% \le \text{TPE} < 95\%$ & $95\% \le \text{TPE} < 100\%$ & $100\%$ \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
+
 \end{table*}
+
+O julgamento de cada objetivo segue três regras, aplicadas em ordem. Primeiro, cada métrica recebe a pontuação da sua faixa (Insuficiente = 1, Regular = 2, Bom = 3, Excelente = 4). Segundo, se qualquer métrica de um objetivo ficar em Insuficiente, o objetivo é julgado no máximo como Regular, para que uma média boa não esconda um problema grave. Terceiro, sem esse veto, o objetivo recebe a faixa da média arredondada das suas métricas. Cada hipótese é comparada ao que os dados mostram: é confirmada quando os valores medidos correspondem ao que ela afirma e refutada quando não correspondem. O nível aceitável de cada métrica, a fronteira inferior da faixa Bom, orienta as ações abaixo; hipóteses refutadas são discutidas na Fase 4.
+
+Os resultados abaixo do nível aceitável levam a ações ligadas às decisões da Seção~\ref{sec:proposito}. Para G1, TCR abaixo de 75\% ou SUS abaixo de 68 indica barreiras no fluxo e justifica o redesenho do formulário de propostas; ICA abaixo de 85\% exige correções de contraste e rótulos. Para G2, TSN acima de 25\% com ICT abaixo de 70\% indica risco de quebra nas atualizações do Decidim e prioriza a refatoração das sobrescritas sem teste. Para G3, qualquer alerta de confiança alta no Brakeman ou CVE crítica sem correção classifica a segurança como Insuficiente e leva a pedidos de correção ao LAPPIS e ao órgão gestor.
+
+\subsection{Hierarquia GQM}
+\label{sec:hierarquia}
+
+A Fig.~\ref{fig:gqm} mostra o desdobramento completo, com os três níveis do GQM identificados à esquerda.
+
+\begin{figure*}[!t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  every node/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, inner sep=2pt},
+  g/.style={fill=gray!25, font=\scriptsize\bfseries, text width=3.2cm},
+  q/.style={fill=gray!10, text width=1.3cm, minimum height=1.15cm},
+  m/.style={text width=1.25cm, minimum height=0.7cm},
+  lvl/.style={draw=none, font=\scriptsize\itshape, text width=1.6cm, align=right},
+  >=stealth]
+\node[lvl] at (-0.4,3.4) {Conceitual\\(Objetivo)};
+\node[lvl] at (-0.4,1.8) {Operacional\\(Questão)};
+\node[lvl] at (-0.4,0) {Quantitativo\\(Métrica)};
+\node[m] (m11) at (1.5,0) {M1.1 TCR};
+\node[m] (m12) at (2.95,0) {M1.2 TME};
+\node[m] (m13) at (4.4,0) {M1.3 FET};
+\node[m] (m14) at (5.85,0) {M1.4 ICA};
+\node[m] (m15) at (7.3,0) {M1.5 SUS};
+\node[m] (m21) at (8.75,0) {M2.1 TSN};
+\node[m] (m22) at (10.2,0) {M2.2 CCM};
+\node[m] (m23) at (11.65,0) {M2.3 DLC};
+\node[m] (m24) at (13.1,0) {M2.4 ICT};
+\node[m] (m31) at (14.55,0) {M3.1 DVC};
+\node[m] (m32) at (16.0,0) {M3.2 CDV};
+\node[m] (m33) at (17.45,0) {M3.3 TPE};
+\node[q] (q11) at (2.225,1.8) {Q1.1 Conclui sem ajuda?};
+\node[q] (q12) at (4.4,1.8) {Q1.2 Evita e corrige erros?};
+\node[q] (q13) at (6.575,1.8) {Q1.3 Inclusivo e acessível?};
+\node[q] (q21) at (8.75,1.8) {Q2.1 Sobrescritas desacopladas?};
+\node[q] (q22) at (10.925,1.8) {Q2.2 Fácil de mudar?};
+\node[q] (q23) at (13.1,1.8) {Q2.3 Testes suficientes?};
+\node[q] (q31) at (14.55,1.8) {Q3.1 Vulnera\-bilidades?};
+\node[q] (q32) at (16.0,1.8) {Q3.2 Dependências?};
+\node[q] (q33) at (17.45,1.8) {Q3.3 Permissões?};
+\node[g] (g1) at (4.4,3.4) {G1 Capacidade de Interação\\{\normalfont cidadão}};
+\node[g] (g2) at (10.925,3.4) {G2 Manutenibilidade\\{\normalfont LAPPIS}};
+\node[g] (g3) at (16.0,3.4) {G3 Segurança\\{\normalfont órgão gestor}};
+\foreach \a/\b in {g1/q11,g1/q12,g1/q13,g2/q21,g2/q22,g2/q23,g3/q31,g3/q32,g3/q33} \draw[->] (\a.south) -- (\b.north);
+\foreach \a/\b in {q11/m11,q11/m12,q12/m13,q13/m14,q13/m15,q21/m21,q22/m22,q22/m23,q23/m24,q31/m31,q32/m32,q33/m33} \draw[->] (\a.south) -- (\b.north);
+\end{tikzpicture}}
+\caption{Hierarquia GQM: três objetivos, nove questões e doze métricas.}
+\label{fig:gqm}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
+\end{figure*}
 
 \subsection{Consistência entre Fases e Rastreabilidade Vertical}
 \label{sec:rastreabilidade}
 
-A especificação da Fase 2 preserva alinhamento vertical com a Fase 1:
-\begin{enumerate}
-    \item As métricas M1.1 a M1.5 avaliam a experiência prática do cidadão e sua capacidade de concluir tarefas cívicas sem atrito, fornecendo subsídios para o redesenho dos fluxos participativos.
-    \item As métricas M2.1 a M2.4 diagnosticam o acoplamento estrutural e o débito técnico sob a perspectiva da equipe de engenharia do LAPPIS, direcionando refatorações preventivas no repositório \texttt{decidim-govbr}.
-    \item As métricas M3.1 a M3.3 asseguram visibilidade ao órgão gestor sobre a integridade dos dados e a exposição a vulnerabilidades, orientando a gestão de segurança do software público.
-\end{enumerate}
-
-\section{Projeto e Execução da Avaliação (Fase 3)}
-\label{sec:fase3}
-
-O planejamento operacional e a execução da coleta de dados estruturam-se em quatro métodos e instrumentos especializados, desenhados para assegurar a reprodutibilidade dos experimentos sem violar as salvaguardas éticas do projeto.
-
-\subsection{Instrumentos e Métodos Operacionais}
-\label{sec:metodos_fase3}
-
-A avaliação adota quatro abordagens complementares de coleta:
-\begin{enumerate}
-    \item \textbf{Análise Estática de Segurança (SAST e SCA)}: execução automatizada da ferramenta Brakeman 8.1.0~\cite{brakeman} para identificação de falhas sintáticas e estruturais na árvore do repositório, combinada ao utilitário \texttt{bundler-audit} 0.9.3 para varredura de dependências contra a base de vulnerabilidades RubySec.
-    \item \textbf{Inspeção Estática de Código (Métricas de Software)}: emprego do analisador sintático RuboCop 1.86.2~\cite{rubocop} para cômputo da complexidade ciclomática de McCabe~\cite{mccabe1976complexity} e de rotinas automatizadas em Ruby e Python para quantificação de sobrescritas do núcleo Decidim e densidade de linhas por classe.
-    \item \textbf{Inspeção Automatizada de Acessibilidade}: auditoria de conformidade das páginas estáticas e renderizadas contra as diretrizes WCAG 2.1 (nível AA)~\cite{wcag21} e o padrão governamental e-MAG, utilizando os motores axe-core e Lighthouse sobre Chromium.
-    \item \textbf{Testes Empíricos com Usuários e Avaliação Subjetiva}: execução de roteiro estruturado com quatro tarefas cívicas centrais, seguido da aplicação do questionário padronizado \textit{System Usability Scale} (SUS)~\cite{brooke1996sus}.
-\end{enumerate}
-
-\subsection{Protocolo de Amostragem e Recrutamento Ético}
-\label{sec:recrutamento}
-
-Em atendimento ao Critério F3-C2 da disciplina, a equipe estabeleceu um protocolo de recrutamento padronizado para as sessões de teste com usuários, selecionando cinco participantes voluntários (P1 a P5) com base em critérios explícitos de inclusão: cidadãos com idade mínima de 18 anos, usuários de dispositivos digitais, portadores ou não de conta Gov.br e sem vínculo de desenvolvimento com a plataforma Brasil Participativo. 
-
-Para salvaguardar os direitos fundamentais e o consentimento livre e esclarecido, cada voluntário recebeu previamente o Termo de Consentimento Livre e Esclarecido (TCLE), contendo a explicação da finalidade acadêmica, a duração prevista (20 a 30 minutos), a garantia de anonimização estrita e a opção irrevogável de não autorizar a gravação de áudio e tela, sem prejuízo da coleta manual de métricas de tempo e erros.
-
-\subsection{Ambiente Controlado e Princípio de Não-Intrusão}
-\label{sec:ambiente}
-
-Para resguardar os servidores públicos federais em produção contra qualquer sobrecarga ou instabilidade operacional, as medições foram executadas exclusivamente em ambiente isolado. O código-fonte do Brasil Participativo foi congelado no commit \texttt{176b04673d956af4b1ab645e922cedd796b6a22e} (ramo \texttt{develop}, de 27 de agosto de 2026). A reprodução das rotinas utiliza contêineres Docker x86\_64 com rede desativada durante as análises de código e com o módulo de autenticação OmniAuth configurado em modo de teste local.
-
-\subsection{Rastreabilidade Vertical entre Fases}
-\label{sec:rastreabilidade_vertical}
-
-A consistência entre os requisitos de medição (Fase 2) e os recursos de coleta (Fase 3) é formalizada por meio da matriz de rastreabilidade vertical (Tabela~\ref{tab:rastreabilidade_vertical}). Cada uma das doze métricas quantitativas possui instrumento definido, ambiente controlado, fórmula de cálculo determinística e níveis objetivos de pontuação, eliminando julgamentos subjetivos.
+A Tabela~\ref{tab:rastreabilidade} liga cada decisão da Fase 1 às questões e métricas da Fase 2. O ponto de vista de cada objetivo é a parte interessada que sente primeiro a falha daquela característica, e nenhuma métrica exige teste fora do escopo da Seção~\ref{sec:escopo}.
 
 \begin{table*}[!t]
 \centering
-\caption{Matriz de rastreabilidade vertical entre a especificação GQM (Fase 2) e o plano de avaliação operacional (Fase 3).}
-\label{tab:rastreabilidade_vertical}
-\small
-\begin{tabular}{@{}c l p{0.28\textwidth} p{0.25\textwidth} p{0.18\textwidth} c@{}}
+\caption{Rastreabilidade entre a Fase 1 e a Fase 2.}
+\label{tab:rastreabilidade}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{0.17\textwidth} p{0.10\textwidth} p{0.13\textwidth} p{0.17\textwidth} l p{0.10\textwidth} p{0.18\textwidth}@{}}
 \toprule
-\textbf{ID} & \textbf{Métrica} & \textbf{Método e Instrumento} & \textbf{Ambiente e Ferramentas} & \textbf{Saída Gerada} & \textbf{Nível Alvo} \\
+\textbf{Decisão (Fase 1)} & \textbf{Parte interessada} & \textbf{Característica} & \textbf{Subcaracterística} & \textbf{Questão} & \textbf{Métricas} & \textbf{Nível aceitável} \\
 \midrule
-M1.1 & Taxa Conclusão (TCR) & Teste com usuários (4 tarefas cívicas) & Cópia local em contêiner Docker & Ficha de observação manual & $\ge 75\%$ (Bom) \\
-M1.2 & Tempo Médio (TME) & Cronometragem em segundos por tarefa & Cronômetro manual / gravação & Registro temporal discreto & $\le 120\text{ s}$ (Bom) \\
-M1.3 & Frequência Erros (FET) & Catalogação de falhas operacionais & Formulário de incidentes & Contagem de ocorrências & $\le 1{,}0$ (Bom) \\
-M1.4 & Conformidade Acessibilidade (ICA) & Inspeção automatizada DOM/WCAG 2.1 & axe-core e Lighthouse & Relatório estruturado JSON & $\ge 85\%$ (Bom) \\
-M1.5 & Escore SUS & Questionário padronizado de 10 itens & Escala Likert de 1 a 5 & Pontuação SUS (0--100) & $\ge 68$ (Bom) \\
-\midrule
-M2.1 & Taxa Sobrescrita (TSN) & Mapeamento estático de namespaces & Comparação com Decidim 0.27.2 & Inventário CSV de classes & $\le 25\%$ (Bom) \\
-M2.2 & Complexidade Ciclomática (CCM) & Análise de fluxo de controle & RuboCop (\texttt{Metrics/Cyclomatic}) & Relatório JSON com médias & $\le 7$ (Bom) \\
-M2.3 & Densidade Linhas (DLC) & Contagem de linhas efetivas (eLOC) & Parser sintático Ripper / Ruby & Matriz volumétrica por classe & $\le 100$ e Máx $\le 300$ \\
-M2.4 & Cobertura Sobrescritas (ICT) & Cruzamento de sobrescritas e specs & Varredura do diretório \texttt{spec/} & Mapeamento binário em CSV & $\ge 70\%$ (Bom) \\
-\midrule
-M3.1 & Vulnerabilidades Código (DVC) & Análise estática de segurança (SAST) & Brakeman 8.1.0 & Relatório JSON e alertas & $\text{Score} \le 7$ e $N_{\text{alta}} = 0$ \\
-M3.2 & Dependências Vulneráveis (CDV) & Análise de composição de software (SCA) & \texttt{bundler-audit} 0.9.3 e RubySec & Inventário de CVEs & $0$ CVE (Excelente) \\
-M3.3 & Proteção Endpoints (TPE) & Inspeção estática de controladores & Script \texttt{m33\_endpoints.py} & Tabela CSV de rotas & $\ge 95\%$ (Bom) \\
+Aprimoramento da interação cívica & Cidadão & Capacidade de Interação & Apreensibilidade e operabilidade & Q1.1 & M1.1, M1.2 & TCR $\ge 75\%$; TME $\le 120$ s \\
+Aprimoramento da interação cívica & Cidadão & Capacidade de Interação & Proteção contra erros & Q1.2 & M1.3 & FET $\le 1{,}0$ \\
+Aprimoramento da interação cívica & Cidadão & Capacidade de Interação & Inclusividade & Q1.3 & M1.4, M1.5 & ICA $\ge 85\%$; SUS $\ge 68$ \\
+Priorização de refatoração & LAPPIS & Manutenibilidade & Modularidade & Q2.1 & M2.1 & TSN $\le 25\%$ \\
+Priorização de refatoração & LAPPIS & Manutenibilidade & Analisabilidade & Q2.2 & M2.2, M2.3 & CCM $\le 7$; DLC média $\le 100$ \\
+Priorização de refatoração & LAPPIS & Manutenibilidade & Testabilidade & Q2.3 & M2.4 & ICT $\ge 70\%$ \\
+Segurança e conformidade de acesso & Órgão gestor & Segurança & Confidencialidade e integridade & Q3.1 & M3.1 & $N_{\text{alta}} = 0$; DVC $\le 7$ \\
+Segurança e conformidade de acesso & Órgão gestor & Segurança & Resistência & Q3.2 & M3.2 & CDV $\le 1$ \\
+Segurança e conformidade de acesso & Órgão gestor & Segurança & Autenticidade & Q3.3 & M3.3 & TPE $\ge 95\%$ \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
 \end{table*}
 
-\section{Resultados Empíricos e Discussão}
+\section{Plano de Avaliação}
+\label{sec:fase3}
+
+A Fase 3 definiu como cada métrica seria obtida. A avaliação combina quatro métodos, escolhidos pela origem dos dados (Tabela~\ref{tab:metodos}).
+
+\begin{table}[!t]
+\centering
+\caption{Métodos de avaliação e métricas atendidas.}
+\label{tab:metodos}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\columnwidth} >{\raggedright\arraybackslash}p{0.22\columnwidth} >{\raggedright\arraybackslash}p{0.40\columnwidth}@{}}
+\toprule
+\textbf{Método} & \textbf{Métricas} & \textbf{Onde acontece} \\
+\midrule
+Teste com usuários & M1.1, M1.2, M1.3 & Cópia local, com login de teste \\
+Questionário SUS & M1.5 & Mesma sessão do teste \\
+Inspeção automatizada de acessibilidade & M1.4 & axe-core e Lighthouse na cópia local \\
+Análise estática & M2.1 a M2.4, M3.1 a M3.3 & Clone do \path{decidim-govbr} no commit \texttt{176b046} \\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: elaborado pela equipe.}
+\end{table}
+
+Três decisões valem para todos os métodos. Nenhum teste é feito contra a produção. Toda medição usa o commit \texttt{176b046}, o mesmo da Fase 1. E cada métrica é coletada uma única vez: a equipe decidiu em 30/10/2026 não fazer coleta piloto nem medir de novo depois das melhorias.
+
+Para G1, o plano previa cinco sessões, com participantes de perfis distintos: uma pessoa sem formação em computação (P01), uma pessoa com mais de 50 anos (P02), um estudante de ciências humanas (P03), um usuário frequente de serviços do Gov.br (P04) e um usuário com perfil técnico intermediário (P05). Cada sessão começa pela assinatura do TCLE, segue com as quatro tarefas do fluxo de participação (T1, entrar; T2, encontrar um processo; T3, enviar uma proposta; T4, apoiar uma proposta) e termina com o questionário SUS, na tradução brasileira de Lourenço, Carmona e Lopes~\cite{lourenco2022sus}. A diversidade buscada foi de idade e de familiaridade com serviços digitais, e as sessões usaram o navegador do computador. Os nomes ficam fora do repositório; os registros usam os códigos P01 a P05.
+
+As sessões aconteceram em 22/11/2026. Participaram três pessoas, com os perfis P02, P03 e P04. As três assinaram o TCLE e autorizaram a gravação da tela, de onde saíram os tempos. A cópia local rodou em modo de desenvolvimento no commit \texttt{176b046}, num notebook com Ubuntu e Firefox. Como o login pelo Gov.br só funciona na produção, os participantes entraram pelo login de estrangeiro, com contas de teste. A inspeção de acessibilidade foi feita no mesmo dia, com \texttt{axe-core} 4.14.1 e Lighthouse 13.6.0, nas quatro páginas do fluxo: página inicial, lista de processos, formulário de proposta e visualização de proposta. Fichas, relatórios e o script \path{scripts/calc_interacao.py}, que recalcula as cinco métricas, estão no repositório.
+
+Para G2 e G3, cada execução registra a data, o commit e a versão das ferramentas, e as saídas brutas ficam no repositório, na GitPage do projeto. A coleta de Segurança foi feita em 03/11/2026 com Brakeman 8.1.0, \path{bundler-audit} 0.9.3 e o script \path{scripts/m33_endpoints.py} da equipe. A de Manutenibilidade foi feita em 08/11/2026 com RuboCop 1.86.2, o Ripper do Ruby 3.4.7 e um coletor próprio, que compara as classes de \path{app/} com as do Decidim 0.27.2.
+
+\section{Resultados}
 \label{sec:resultados}
 
-Esta seção expõe as medições empíricas obtidas no repositório \texttt{decidim-govbr}, confrontando os valores medidos contra os níveis de julgamento definidos no planejamento GQM.
+A Tabela~\ref{tab:resultados} reúne as doze métricas, com a faixa da Tabela~\ref{tab:julgamento} e a situação da hipótese de cada questão. As métricas de G1 são apresentadas por tarefa, porque cada tarefa exercita uma parte diferente do fluxo.
 
-\subsection{Avaliação de Segurança (G3)}
-\label{sec:resultados_seguranca}
+\begin{table*}[!t]
+\centering
+\caption{Resultados das doze métricas no commit \texttt{176b046}.}
+\label{tab:resultados}
+\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{0.40\textwidth} >{\raggedright\arraybackslash}p{0.19\textwidth} >{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\toprule
+\textbf{Métrica} & \textbf{Valor medido} & \textbf{Faixa} & \textbf{Hipótese} \\
+\midrule
+M1.1 TCR & Conclusão sem ajuda: T1 1/3 (33,3\%); T2 0/3 (0\%); T3 2/3 (66,7\%); T4 2/3 (66,7\%) & T1 e T2 Insuficiente; T3 e T4 Regular & H1.1 refutada \\
+M1.2 TME & T1 31,4 s ($n=1$); T3 77,1 s ($n=2$); T4 21,7 s ($n=2$); T2 sem conclusão sem ajuda & T1 e T4 Excelente; T3 Bom & H1.1 refutada \\
+M1.3 FET & 1,00; 0,67; 0,33 e 1,00 erro por participante em T1 a T4 & T3 Excelente; demais Bom & H1.2 confirmada em parte \\
+M1.4 ICA & 196 de 215 verificações aprovadas: 91,2\% (axe 91,7\%; Lighthouse 90,6\%); 48 itens sem decisão & Bom & H1.3 confirmada em parte \\
+M1.5 SUS & Média de 80,0 pontos (P02 82,5; P03 77,5; P04 80,0) & Excelente & H1.3 confirmada em parte \\
+\midrule
+M2.1 TSN & 175 classes sobrescritas em 291 classes de produção: 60,14\% & Insuficiente & H2.1 confirmada \\
+M2.2 CCM & Média de 2,29 em 1.275 métodos; máximo de 47 & Excelente (média) & H2.2 confirmada \\
+M2.3 DLC & Média de 67,03 linhas efetivas em 273 arquivos; máximo de 595 & Insuficiente & H2.2 confirmada \\
+M2.4 ICT & 69 das 175 sobrescritas com teste identificável: 39,43\% & Insuficiente & H2.3 confirmada \\
+\midrule
+M3.1 DVC & 2 alertas de confiança alta e 8 de média: $3 \times 2 + 2 \times 8 = 22$ & Insuficiente & H3.1 refutada \\
+M3.2 CDV & 156 pares (gem, CVE), com 147 CVEs distintas, em 51 gems & Insuficiente & H3.2 confirmada \\
+M3.3 TPE & 136 de 149 ações sensíveis com verificação explícita: 91,3\% & Regular & H3.3 refutada \\
+\bottomrule
+\end{tabular}
 
-A coleta automatizada de Segurança foi executada no commit \texttt{176b046}, gerando três diagnósticos quantitativos:
+\vspace{2pt}
+{\footnotesize Fonte: dados de coleta de G1 (22/11/2026), G2 (08/11/2026) e G3 (03/11/2026) publicados na GitPage do projeto.}
+\end{table*}
 
-\begin{enumerate}
-    \item \textbf{M3.1: Densidade de Vulnerabilidades de Código (DVC)}: O analisador Brakeman catalogou 10 alertas de segurança no código da aplicação, sendo 2 de confiança alta e 8 de confiança média, sem alertas de confiança fraca. Aplicando a ponderação normativa ($\text{DVC} = 3 \times N_{\text{alta}} + 2 \times N_{\text{media}} + 1 \times N_{\text{fraca}}$), o escore calculado foi de \textbf{22 pontos}, enquadrando a métrica no nível \textbf{Insuficiente} e refutando a hipótese H3.1. Os dois alertas de confiança alta decorrem da utilização de versões descontinuadas da linguagem Ruby (3.0.4, sem suporte desde março de 2024) e do framework Rails (6.1.7.2, descontinuado em outubro de 2024). Os alertas de média confiança referem-se a práticas de atribuição em massa não filtrada (\texttt{permit!}) em controladores e potenciais construções vulneráveis a injeção SQL no modelo \texttt{user\_proposals\_statistic\_setting.rb}.
-    \item \textbf{M3.2: Contagem de Dependências Vulneráveis (CDV)}: A ferramenta \texttt{bundler-audit} identificou 198 avisos de segurança distribuídos em 51 gems declaradas no \texttt{Gemfile.lock}, totalizando \textbf{156 pares únicos (gem, CVE)} e 147 identificadores CVE distintos. O indicador enquadra-se no nível \textbf{Insuficiente}, confirmando a hipótese H3.2. A auditoria revelou 3 vulnerabilidades de severidade crítica, 49 de alta e 81 de média. Destaca-se uma vulnerabilidade crítica de Execução Remota de Código (RCE) na biblioteca \texttt{graphql} (versão 1.12.24), corrigida na versão 1.12.25 da mesma ramificação.
-    \item \textbf{M3.3: Taxa de Proteção de Endpoints Sensíveis (TPE)}: O mapeamento estático identificou 149 ações de controle em controladores da aplicação com potencial de mutação de estado ou acesso administrativo. A verificação manual e automatizada evidenciou que 136 ações possuem verificação explícita de autenticação ou autorização, resultando em uma taxa de \textbf{91,3\%} (nível \textbf{Regular}, refutando H3.3). Foram identificadas 13 ações desprovidas de verificação explícita de autorização, das quais 8 situam-se em extensões desenvolvidas pela equipe governamental (em especial nos controladores de concessão de selos a propostas e geração de relatórios administrativos).
-\end{enumerate}
+\subsection{Capacidade de Interação (G1)}
+\label{sec:res_g1}
 
-\subsection{Avaliação de Manutenibilidade (G2)}
-\label{sec:resultados_manutenibilidade}
+Nenhuma tarefa chegou a 75\% de conclusão sem ajuda, e H1.1 foi refutada nas duas partes: a taxa ficou abaixo de 80\%, e a menor delas foi a de encontrar o processo (T2), não a de enviar a proposta. Parte das ajudas na T1 e na T2 veio de elementos que só existem no modo de desenvolvimento: o botão do login simulado, a página ``Routing Error'' aberta por um destaque do carrossel e o botão ``WAI WCAG'', que cobria o menu. O banco local tinha um único processo, e a busca por ``processo'' não o encontrou. Por isso, a TCR dessas duas tarefas mede em parte o ambiente de teste.
 
-A análise estática da manutenibilidade do código das extensões customizadas revelou o estado estrutural do monólito:
+A T3 é o resultado mais ligado à plataforma. P03 enviou a proposta com 14 caracteres na descrição, e o formulário respondeu, no topo da página, só com ``Erro ao criar proposta. Verifique os campos obrigatórios''; o mínimo de 15 caracteres aparece em letra pequena abaixo do campo. O erro foi sinalizado, mas a mensagem não disse o que corrigir, o que confirma H1.2 em parte, já que o caso ocorreu em uma sessão de três. Na T4, P02 votou numa proposta de outra pessoa e recebeu erro 500 ao tentar retirar votos.
 
-\begin{enumerate}
-    \item \textbf{M2.1: Taxa de Sobrescrita do Núcleo (TSN)}: Identificou-se que 175 das 291 classes de produção mapeadas em \texttt{app/} e \texttt{lib/} sobrescrevem ou redefinem constantes homônimas da referência do Decidim 0.27.2. A taxa de sobrescrita de \textbf{60,14\%} situa-se no nível \textbf{Insuficiente}, indicando acoplamento estrutural pronunciado com o núcleo upstream e alto esforço de manutenção preventiva em futuras atualizações.
-    \item \textbf{M2.2: Complexidade Ciclomática Média (CCM)}: A análise dos 1.275 métodos customizados totalizou 2.916 pontos de decisão, resultando em uma complexidade ciclomática média de \textbf{2,29} (nível \textbf{Excelente}). Contudo, a distribuição exibe concentração atípica de complexidade em componentes de controle: o método \texttt{permissions} em \texttt{decidim/admin/permissions.rb} atinge complexidade 47, e seu homônimo em propostas atinge 25, configurando alvos prioritários de refatoração.
-    \item \textbf{M2.3: Densidade de Linhas por Arquivo (DLC)}: A contagem de linhas efetivas em 273 arquivos de classe registrou média de \textbf{67,03 linhas}. Não obstante a média favorável, o valor máximo registrado atingiu \textbf{595 linhas} no componente \texttt{decidim/form\_builder.rb}, violando o teto de 400 linhas e enquadrando a métrica no nível \textbf{Insuficiente}.
-    \item \textbf{M2.4: Índice de Cobertura de Sobrescritas por Testes (ICT)}: Das 175 classes sobrescritas, apenas 69 dispõem de suítes de testes unitários ou de integração identificáveis em \texttt{spec/}, resultando em uma cobertura de \textbf{39,43\%} (nível \textbf{Insuficiente}). Essa lacuna deixa 106 classes customizadas expostas a regressões funcionais silenciosas.
-\end{enumerate}
+Quando a tarefa foi concluída sem ajuda, as médias de tempo ficaram abaixo de 120 s, mas cada uma usa uma ou duas observações, e a T2 não tem valor. O SUS médio de 80,0 pontos contrasta com a TCR: os participantes avaliaram bem a plataforma mesmo depois de precisar de ajuda. O SUS mede a percepção declarada, não o desempenho.
 
-\subsection{Avaliação de Capacidade de Interação (G1)}
-\label{sec:resultados_interacao}
+O ICA de 91,2\% ficou em Bom. As falhas se repetem nas quatro páginas e estão em componentes comuns: links feitos só de imagem (logotipos, carrossel e botões de compartilhar), botões do cabeçalho com nome acessível diferente do texto visível, imagens sem texto alternativo e um título fora de ordem. Na página inicial, uma imagem sem texto alternativo (\texttt{image-alt}) tem impacto crítico no axe. Os 48 itens sem decisão incluem o contraste de cor, e por isso H1.3 foi confirmada só em parte. Na percepção dos participantes, de idades e perfis diferentes, o SUS ficou acima de 68 nos três casos.
 
-Para a característica de Capacidade de Interação, a equipe estabeleceu quatro cenários operacionais de teste cívico representativos da jornada cidadã: (i) autenticação com simulação de fluxo Gov.br; (ii) localização temático-geográfica de processos de consulta pública; (iii) preenchimento e submissão formal de proposta deliberativa; e (iv) apoio público a propostas da comunidade.
+\subsection{Manutenibilidade (G2)}
+\label{sec:res_g2}
 
-Em estrita consonância com o princípio de transparência factual, registra-se que os dados numéricos consolidados das métricas M1.1 (TCR), M1.2 (TME), M1.3 (FET), M1.4 (ICA) e M1.5 (SUS) estão em fase de apuração nas fichas individuais de teste de usabilidade no âmbito da Fase 4. A documentação completa dos formulários e relatórios de observação será consolidada no repositório público do projeto para o fechamento final da avaliação.
+Mais da metade das classes de produção (60,14\%) reabre uma classe do Decidim, o que confirma as sobrescritas de controladores e comandos previstas em H2.1. A métrica mede a proporção, mas não a concentração por diretório. A complexidade média é baixa (2,29), mas convive com métodos muito complexos: o método \texttt{permissions} de \path{app/permissions/decidim/admin/permissions.rb} chega a 47, e o equivalente do módulo de propostas, a 25. Isso confirma a concentração em arquivos de permissão prevista em H2.2, embora a média fique abaixo do nível moderado que a hipótese supunha. O maior arquivo, \path{app/lib/decidim/form_builder.rb}, tem 595 linhas efetivas e põe a DLC em Insuficiente mesmo com média de 67. Das 175 sobrescritas, 106 não têm teste identificável pelo nome, o que confirma a cobertura heterogênea de H2.3. A busca é por correspondência de nome, então testes indiretos podem ter ficado de fora.
 
-\section{Aprimoramentos Técnicos Implementados}
+\subsection{Segurança (G3)}
+\label{sec:res_g3}
+
+O Brakeman reportou dois alertas de confiança alta, e H3.1 foi refutada. Os dois tratam de versões sem suporte, Ruby 3.0.4 desde 31/03/2024 e Rails 6.1.7.2 desde 01/10/2024, e não de padrões no código. Sem eles, a DVC seria 16 e continuaria acima do limite de 15. Os oito alertas de confiança média são quatro atribuições em massa com \texttt{permit!} e quatro possíveis injeções de SQL num model criado no \path{decidim-govbr}; esses quatro dependem de confirmação manual.
+
+O \path{bundler-audit} encontrou 198 avisos em 51 gems, com três de gravidade crítica. Um deles, na \texttt{graphql} 1.12.24, permite execução remota de código e tem correção na versão 1.12.25, da mesma série. H3.2 previa ao menos uma dependência vulnerável e foi confirmada com folga.
+
+Das 149 ações sensíveis dos controllers, 13 não verificam permissão de forma explícita. Oito foram introduzidas no \path{decidim-govbr} e cinco vêm do Decidim 0.27.2. Entre as do governo, quatro alteram os selos das propostas e não conferiam o usuário em nenhum ponto; numa ação de relatórios, a checagem de administrador só agenda um redirecionamento e não interrompe a execução. Por isso H3.3, que supunha a restrição feita pelas políticas do Decidim, foi refutada.
+
+\begin{table*}[!t]
+\centering
+\caption{Relações entre as características avaliadas, com a evidência de cada uma.}
+\label{tab:relacoes}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth} >{\raggedright\arraybackslash}p{0.45\textwidth} >{\raggedright\arraybackslash}p{0.32\textwidth}@{}}
+\toprule
+\textbf{Relação} & \textbf{Evidência} & \textbf{Leitura} \\
+\midrule
+Manutenibilidade afeta a Capacidade de Interação & Na T4, o erro 500 ao retirar o voto vem do template sobrescrito \path{_vote_button.html.erb}, que chama um método existente só no \texttt{ProposalsController}, também sobrescrito. A ação de voto roda em outro controller, onde o método não existe & A sobrescrita quebrou um fluxo do cidadão, e nenhum teste cobria esse caminho \\
+\midrule
+Manutenibilidade afeta a Capacidade de Interação & A mensagem vaga da T3 está fixa no \texttt{ProposalsController} sobrescrito. A caixa de erro do formulário, também sobrescrito, tem o \texttt{aria-label} ``Data de início do afastamento inválida'', copiado de outra tela & Um leitor de tela anuncia um erro sem relação com a proposta. As ferramentas automáticas não detectam o problema, porque o rótulo existe \\
+\midrule
+Manutenibilidade afeta a Segurança & As quatro ações do controller de selos, criado pelo \texttt{decidim-govbr}, não conferiam permissão & Das 13 ações sem proteção da M3.3, oito foram criadas pelo \texttt{decidim-govbr} \\
+\midrule
+Segurança e Capacidade de Interação no login & As sessões usaram o login de estrangeiro, em inglês, porque o Gov.br não funciona na cópia local. Dois de três participantes precisaram de ajuda na T1 & A T1 mede o login alternativo; a usabilidade do login pelo Gov.br não foi medida \\
+\midrule
+Acessibilidade automática e conclusão de tarefas & ICA em Bom e TCR abaixo de 75\% nas quatro tarefas & As ferramentas não avaliam mensagens de validação, navegação até o processo nem erros de servidor; os dois indicadores não se substituem \\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: dados de coleta de G1, G2 e G3 e log do servidor da cópia local em 22/11/2026.}
+\end{table*}
+
+\subsection{Julgamento dos objetivos}
+\label{sec:julgamento_obj}
+
+Aplicando as regras da Seção~\ref{sec:julgamento}, G1 tem a TCR em Insuficiente na T1 e na T2, e o veto limita o objetivo a Regular. As outras quatro métricas chegaram ao nível aceitável, e G1 fica em Regular. G2 soma as pontuações 1, 4, 1 e 1, com média 1,75, arredondada para Regular; como há métricas em Insuficiente, o objetivo fica no máximo em Regular, e o resultado é Regular. G3 soma 1, 1 e 2, com média 1,33, e fica em Insuficiente.
+
+Pelas ações da Seção~\ref{sec:julgamento}, a TCR abaixo de 75\% justifica o redesenho do formulário de propostas. G2 e G3 levam a pedidos de correção: atualização das versões de Ruby, Rails e das gems com CVE crítica, verificação de permissão nas ações sem checagem e testes para as sobrescritas antes de qualquer refatoração.
+
+\section{Relações entre as Características}
+\label{sec:relacoes}
+
+As três características foram medidas no mesmo commit, e alguns achados de uma explicam os de outra (Tabela~\ref{tab:relacoes}).
+
+A relação mais forte é a da Manutenibilidade com as outras duas. Os três defeitos que chegam ao cidadão ou ao administrador estão em código que o \texttt{decidim-govbr} sobrescreveu ou criou, e nenhum tinha teste que cobrisse o caminho com problema.
+
+\section{Melhorias Técnicas}
 \label{sec:melhorias}
 
-Em cumprimento aos requisitos avaliativos da disciplina, a equipe projetou, implementou e validou dois aprimoramentos técnicos concretos no software público, justificados diretamente pelos diagnósticos das Fases 2 e 3.
+As duas melhorias foram aplicadas numa cópia do commit \texttt{176b046} e ficaram como \textit{patch} no repositório da equipe, sem envio ao repositório do \path{decidim-govbr}. Pela decisão de coleta única, nenhuma das duas mudou os valores oficiais da Tabela~\ref{tab:resultados}.
 
-\subsection{Melhoria em Manutenibilidade: Suíte de Testes para Serviço de Embeds (\#73)}
-\label{sec:melhoria73}
+\textbf{Testes de regressão do serviço de \textit{embeds} (G2, Q2.3).} A classe \texttt{Decidim::Meetings::MeetingIframeEmbedder} é uma das 106 sobrescritas sem teste. A melhoria acrescenta 20 exemplos RSpec, que cobrem a transformação de URLs do YouTube e do Twitch, a identificação dos serviços permitidos e o HTML gerado. Os exemplos passaram sem falhas numa execução isolada, com Ruby 3.4.7 e sem carregar o Rails.
 
-O diagnóstico da métrica M2.4 evidenciou que a classe customizada \texttt{Decidim::Meetings::MeetingIframeEmbedder} operava sem nenhuma suíte de testes correspondente. Essa classe manipula parâmetros sensíveis de transformação de URLs de vídeo (YouTube e Twitch) e geração de elementos de código \texttt{iframe} em reuniões virtuais deliberativas.
+\textbf{Permissão nas ações de selos (G3, Q3.3).} A melhoria acrescenta dois \texttt{before\_action} ao controller dos selos: um carrega o componente e o usuário, o outro exige permissão de administrador da organização e recusa componentes de outra organização. O corpo das ações não mudou. O mesmo teste, com oito exemplos, rodou no ambiente Docker do próprio projeto (Ruby 3.0.4, Rails 6.1.7.2, PostgreSQL 13.2): no controller original, seis exemplos falharam, entre eles o de um visitante sem login que conseguia acionar a remoção de selos; no corrigido, nenhum falhou. O teste também revelou que uma das quatro ações chama uma classe inexistente e continua quebrada para administradores, o que ficou registrado sem correção.
 
-A equipe desenvolveu e validou um conjunto de testes de regressão em RSpec (\texttt{meeting\_iframe\_embedder\_spec.rb}), estruturado em 20 exemplos de comportamento que exercitam a implementação original sem modificar o código de produção. A suíte cobre sanitização de parâmetros de consulta, normalização de domínios, detecção de hosts não autorizados e geração segura de marcação HTML. A execução em contêiner Docker isolado obteve \textbf{20 exemplos executados, zero falhas e zero pendências}, elevando a testabilidade do módulo e mitigando regressões de software.
+\section{Recomendações}
+\label{sec:recomendacoes}
 
-\subsection{Melhoria em Segurança: Proteção de Endpoints em Ações de Selos (\#80)}
-\label{sec:melhoria80}
+As recomendações respondem às três decisões da Seção~\ref{sec:proposito}:
 
-A auditoria estática da métrica M3.3 catalogou vulnerabilidades de controle de acesso nas quatro ações administrativas do controlador \texttt{ProposalBadgesController}, responsável por atribuir e revogar selos cívicos às propostas populares. As ações não implementavam verificação de credenciais de usuário, permitindo potenciais manipulações indevidas por chamadas diretas.
+\begin{enumerate}
+    \item \textbf{Priorização de refatoração (LAPPIS).} Começar pelas sobrescritas dos fluxos de proposta e voto, como o \texttt{ProposalsController} e os templates de voto e de proposta, e pelos arquivos que concentram complexidade e tamanho (\path{permissions.rb} e \path{form_builder.rb}). Antes de refatorar, criar testes de requisição para votar, retirar voto e publicar proposta, como fez a melhoria de \textit{embeds}. O template de voto deve deixar de depender de um método exclusivo do \texttt{ProposalsController}.
+    \item \textbf{Autenticação e autorização (órgão gestor).} Abrir chamado de segurança junto ao LAPPIS, atualizar Ruby, Rails e as gems com CVE conhecida e proteger as ações sem verificação listadas na M3.3, seguindo o padrão da melhoria dos selos.
+    \item \textbf{Redesenho dos fluxos de interação (Secretaria de Participação Digital).} No formulário de proposta, mostrar o mínimo de caracteres antes do envio, exibir o erro junto do campo com o motivo da recusa e corrigir o \texttt{aria-label} da caixa de erro. Dar nome acessível aos links feitos só de imagem e texto alternativo às imagens. Repetir a T2 na produção ou numa cópia com dados reais antes de mudar o acesso aos processos, porque parte da dificuldade veio da cópia local.
+\end{enumerate}
 
-A intervenção técnica introduziu ganchos de pré-processamento (\texttt{before\_action}) que impõem a chamada compulsória de autorização \texttt{enforce\_permission\_to :update, :organization}. A validação foi conduzida no ambiente Docker oficial do projeto contra o banco relacional PostgreSQL, executando 8 testes comparativos de regressão antes e depois da correção. A suíte demonstrou que as 6 tentativas de acesso indevido por usuários não logados, usuários comuns ou administradores de outras instâncias foram bloqueadas com sucesso, elevando o cômputo de ações protegidas de 136 para 141 no ecossistema avaliado.
+\section{Limitações}
+\label{sec:limitacoes}
 
-\section{Conclusão e Trabalhos Futuros}
+Os resultados de G1 têm limites que a leitura deve considerar. Foram três participantes, abaixo da meta de cinco, e uma resposta diferente muda a faixa de qualquer métrica. Os resultados de Manutenibilidade e Segurança descrevem a análise estática do commit \texttt{176b046}. Eles não representam execução funcional completa nem demonstram ausência de defeitos ou vulnerabilidades.
+
+\section{Conclusão}
 \label{sec:conclusao}
 
-Este trabalho consolidou a avaliação de qualidade de produto de software da plataforma Brasil Participativo sob a perspectiva da norma ISO/IEC 25010:2023, operacionalizada pelo método GQM e sustentada pelo controle de processo do PSM/CID.
+O trabalho especificou e coletou doze métricas para três características da ISO/IEC 25010:2023 no Brasil Participativo. Capacidade de Interação e Manutenibilidade ficaram em Regular, e Segurança em Insuficiente. Para o cidadão, o resultado mais importante é a distância entre percepção e desempenho: o SUS ficou em 80,0 pontos, mas nenhuma tarefa chegou a 75\% de conclusão sem ajuda, e o formulário de proposta recusa o envio sem dizer o que corrigir.
 
-Os resultados empíricos das Fases 2 e 3 revelaram um perfil assimétrico no software público. Na dimensão de Manutenibilidade, o monólito apresenta baixa complexidade ciclomática média (2,29), mas sofre com alta taxa de sobrescrita do núcleo upstream (60,14\%) e déficit de testes automatizados nas classes customizadas (39,43\% de cobertura). Na dimensão de Segurança, evidenciou-se a urgência de atualização das versões base de Ruby e Rails e a mitigação de 156 pares de dependências vulneráveis, além da necessidade de proteção sistemática em controladores customizados.
+Os dados também mostram que as características não falham isoladas. O erro 500 no voto, a mensagem e o rótulo errados no formulário e as ações de selos sem permissão estão em código sobrescrito ou criado pelo \texttt{decidim-govbr}, sem teste. Por isso, testar as sobrescritas antes de refatorá-las beneficia as três características ao mesmo tempo. As duas melhorias atacaram pontos dessa lista e mostraram, no caso dos selos, uma falha que a leitura do código indicava e o teste confirmou em execução.
 
-A viabilidade técnica de remediação foi comprovada empiricamente pelas duas melhorias implementadas no repositório (\#73 e \#80), as quais sanaram lacunas críticas de testabilidade e autorização sem introduzir quebras nas rotinas de deliberação.
-
-Como trabalhos futuros, a equipe procederá à consolidação dos testes de usabilidade e acessibilidade com usuários reais (Fase 4), fechando a matriz de julgamento global da qualidade de produto do Brasil Participativo e disponibilizando os dados abertos à comunidade acadêmica e aos órgãos governamentais de tecnologia.
+Os próximos passos são encaminhar os achados de segurança aos mantenedores do \path{decidim-govbr} por canal privado, entregar as recomendações de interação à Secretaria de Participação Digital e repetir as sessões com mais participantes, numa cópia com dados reais.
 
 \section*{Agradecimentos}
 
@@ -542,33 +706,37 @@ Os autores agradecem à Profa. Dra. Cristiane Soares Ramos pela condução pedag
 \section{Tabela de Contribuição dos Membros da Equipe}
 \label{app:contribuicao}
 
-Em cumprimento à Premissa 13 e ao Critério Geral AG-C5 da disciplina, a Tabela~\ref{tab:contribuicao_equipe} detalha as principais responsabilidades, papéis e o esforço individual relativo de cada membro da equipe Frans Bilas na realização da Entrega 2 (Sprints 3 a 5). O modelo adota divisão de esforço estritamente paritária, totalizando exatamente 100\% de dedicação coletiva.
+Em cumprimento à Premissa 13 e ao Critério Geral AG-C5 da disciplina, a Tabela~\ref{tab:contribuicao_equipe} detalha as principais responsabilidades de cada integrante da equipe Frans Bilas nas Entregas 1 e 2. Na Entrega 1, a equipe dividiu o esforço em partes iguais, 16,67\% para cada integrante. Na Entrega 2, as horas reais não foram registradas, e a tabela não atribui percentual: ela mostra o que cada um fez, segundo os autores dos commits e dos \textit{pull requests} conferidos no GitHub em 23/11/2026. Os números de participação de cada integrante estão na Seção 13 da página de Gestão da GitPage. Em várias issues, quem executou o trabalho não foi o responsável atribuído, e a tabela registra quem executou.
 
 \begin{table*}[!t]
 \centering
-\caption{Tabela oficial de contribuição individual e esforço paritário na Entrega 2 (Critério AG-C5).}
+\caption{Contribuição individual nas Entregas 1 e 2.}
 \label{tab:contribuicao_equipe}
-\small
-\begin{tabular}{@{}p{0.24\textwidth} p{0.18\textwidth} p{0.46\textwidth} c@{}}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.06\textwidth} >{\raggedright\arraybackslash}p{0.34\textwidth} >{\raggedright\arraybackslash}p{0.38\textwidth}@{}}
 \toprule
-\textbf{Integrante} & \textbf{Papel no Projeto} & \textbf{Principais Responsabilidades e Entregáveis Executados} & \textbf{Esforço (\%)} \\
+\textbf{Integrante} & \textbf{Papel} & \textbf{Entrega 1 (Fases 1 e 2)} & \textbf{Entrega 2 (Fases 3 e 4)} \\
 \midrule
-\textbf{João Victor da Silva Batista de Farias} & Dupla 1 (Qualidade/GQM) & Especificação e validação de campos do TCLE (\#45), revisão de português e legendas das Fases 1 e 2 (\#60), apoio no plano piloto de usabilidade (\#90), revisão cruzada de PRs e governança de artefatos. & \textbf{16,67\%} \\
+\textbf{João Victor da Silva Batista de Farias} & Dupla 1 & Propósito da avaliação, partes interessadas, caracterização arquitetural, estrutura do artigo em LaTeX, introdução, metodologia, governança anti-meat-proxy e estimativa de esforço do backlog. & TCLE preenchido, Ata 03, revisão da narrativa e da acessibilidade da GitPage, revisão de escrita da Gestão e revisão de cinco \textit{pull requests}. \\
 \midrule
-\textbf{Mateus Vinícius Vieira} & Dupla 1 (Qualidade/GQM) & Coordenação geral de backlog e sprints no Projects 33 (\#41, \#42), revisão terminológica das Fases 1 e 2 (\#59), registro das correções do PC1 (\#69), elaboração dos slides do PC2 (\#70) e governança PSM/CID. & \textbf{16,67\%} \\
+\textbf{Mateus Vinícius Vieira} & Dupla 1 & Coordenação do backlog e dos sprints, gestão pelo PSM/CID e primeira versão do TCLE. & Kit e condução das sessões com usuários, inspeção de acessibilidade (M1.4), fichas por métrica, cálculo e gráficos das respostas do GQM, julgamento, relações e recomendações da Fase 4, medição do Sprint 3, revisão das Fases 1 e 2, correções do PC1 e apresentações do PC2, do PSM e final. \\
 \midrule
-\textbf{José Vinícius Alvares Soares de Queiroz} & Dupla 2 (GQM/Métricas) & Estruturação do Plano de Avaliação da Fase 3 (\#62), cronograma operacional (\#65), execução da análise estática de segurança M3.1 a M3.3 (\#66) e implementação da melhoria técnica de autorização de selos (\#80). & \textbf{16,67\%} \\
+\textbf{José Vinícius Alvares Soares de Queiroz} & Dupla 2 & Referencial teórico (SQuaRE, GQM e PSM), objetivos GQM, questões e hipóteses, apoio na priorização e correção técnica do Rails. & Plano de Avaliação e cronograma da coleta (Fase 3), coleta das métricas de Segurança (M3.1 a M3.3), segunda melhoria técnica, com o teste antes e depois da permissão nas ações de selos, e revisão de cinco \textit{pull requests}. \\
 \midrule
-\textbf{Lucca Medeiros Silva} & Dupla 2 (GQM/Métricas) & Detalhamento dos procedimentos das 12 métricas (\#63), execução da coleta estática de manutenibilidade M2.1 a M2.4 (\#89) e implementação da melhoria técnica de testes no serviço de embeds (\#73). & \textbf{16,67\%} \\
+\textbf{Lucca Medeiros Silva} & Dupla 2 & Fichas das doze métricas, fórmulas, níveis de pontuação, critérios de julgamento, grafo GQM e rastreabilidade vertical. & Procedimentos de coleta das doze métricas, análise estática de Manutenibilidade (M2.1 a M2.4) e primeira melhoria técnica, com os testes do serviço de \textit{embeds}. \\
 \midrule
-\textbf{Miguel Arthur Oliveira de Lima} & Dupla 3 (Gestão/Infra) & Protocolo de recrutamento dos participantes P1--P5 (\#67), matriz de rastreabilidade vertical Fase 2 $\times$ Fase 3 (\#68), fechamento dos pontos em validação da gestão (\#44) e redação consolidada do artigo v2 (\#81, \#82). & \textbf{16,67\%} \\
+\textbf{Miguel Arthur Oliveira de Lima} & Dupla 3 & Modelo SQuaRE adaptado, diagrama hierárquico, matriz de priorização e \textit{trade-offs}, modelo inicial PSM/CID e referências cruzadas no artigo. & Exigência de PR na \texttt{main}, fechamento dos pontos em validação da Gestão, protocolo de recrutamento, rastreabilidade entre as Fases 2 e 3, artigo v2 com as correções do PC1 e resumo de participação da Gestão. \\
 \midrule
-\textbf{Davi Mesquita Sousa} & Dupla 3 (Gestão/Infra) & Especificação e suporte ao ambiente de avaliação controlado (\#64), condução e script da medição de gestão do Sprint 3 (\#46, \#47), coapresentação do PC2 e revisão do artigo v2. & \textbf{16,67\%} \\
-\midrule
-\textbf{TOTAL CONSOLIDADO} & - & \textbf{Execução coletiva e paritária das atividades da Entrega 2} & \textbf{100,00\%} \\
+\textbf{Davi Mesquita Sousa} & Dupla 3 & Escopo, profundidade e objetos de avaliação, alinhamento aos ODS e revisão dos slides e referências do artigo. & Privacidade e anonimização dos dados dos participantes, registro do andamento das Fases 3 e 4 e da ausência das medições dos Sprints 4 e 5. \\
 \bottomrule
 \end{tabular}
+
+\vspace{2pt}
+{\footnotesize Fonte: acordo da equipe para a Entrega 1; commits e \textit{pull requests} no GitHub em 23/11/2026 para a Entrega 2.}
+
 \end{table*}
+
 
 \section{Declaração de Uso de Inteligência Artificial}
 \label{app:uso_ia}
@@ -576,9 +744,9 @@ Em cumprimento à Premissa 13 e ao Critério Geral AG-C5 da disciplina, a Tabela
 Em cumprimento ao Critério Geral AG-C3 e ao Critério F2-C9 da avaliação da disciplina, declara-se que a equipe utilizou ferramentas de Inteligência Artificial de forma transparente, ética e responsável como copiloto de ideação, estruturação sintática e revisão ortográfica, sem prática de cópia cega (\textit{meat-proxy}):
 
 \begin{itemize}
-    \item \textbf{Antigravity e Claude Code}: utilizadas na ideação preliminar de estruturas de tópicos, conversão de tabelas Markdown para código-fonte LaTeX e geração de rotinas utilitárias. Todo o conteúdo técnico e formalizações matemáticas foram conferidos diretamente contra as normas ISO/IEC 25010:2023, ISO/IEC 25040:2024 e o código-fonte do Brasil Participativo.
-    \item \textbf{Fiscalização Automatizada Anti-Meat-Proxy}: a equipe desenvolveu e aplicou o script \texttt{scripts/check\_humanizer.py}, acoplado a hooks de pré-commit do Git e ao GitHub Actions, para barrar jargões inflados, clichês e termos corporativos vazios, garantindo uma redação concisa e fundamentada em dados primários.
-    \item \textbf{Registro Individual}: o histórico nominal de ferramentas empregadas, tarefas realizadas e procedimentos humanos de revisão está publicado integralmente na página de transparência da GitPage (\url{https://fcte-qualidade-de-software-1.github.io/2026-2_T02_FRANS_BILAS/uso-de-ia/}).
+    \item \textbf{Antigravity (Gemini), Gemini e Claude}: utilizadas na ideação preliminar de estruturas de tópicos, conversão de tabelas Markdown para código-fonte LaTeX e geração de rotinas utilitárias. Todo o conteúdo técnico e formalizações matemáticas foram conferidos diretamente contra as normas ISO/IEC 25010:2023, ISO/IEC 25040:2024 e o código-fonte do Brasil Participativo.
+    \item \textbf{Fiscalização Automatizada Anti-Meat-Proxy}: a equipe desenvolveu e aplicou o script \path{scripts/check_humanizer.py}, acoplado a hooks de pré-commit do Git e ao GitHub Actions, para barrar jargões inflados, clichês e termos corporativos vazios, garantindo uma redação concisa e fundamentada em dados primários.
+    \item \textbf{Registro Individual}: o histórico nominal de ferramentas empregadas, tarefas realizadas e procedimentos humanos de revisão está publicado integralmente na página de uso de IA da GitPage do projeto.
 \end{itemize}
 
 \end{document}
