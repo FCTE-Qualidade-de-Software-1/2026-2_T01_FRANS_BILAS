@@ -37,7 +37,7 @@
 \maketitle
 
 \begin{abstract}
-Este artigo relata o planejamento e a especificação da avaliação de qualidade de produto de software da plataforma Brasil Participativo, a instância governamental brasileira baseada no ecossistema livre Decidim. A metodologia do projeto apoia-se no processo de avaliação da norma ISO/IEC 25040:2024, no modelo de qualidade de produto da norma ISO/IEC 25010:2023 (SQuaRE) e no método Goal-Question-Metric (GQM), com governança de processo orientada pelo Practical Software Measurement (PSM / ISO/IEC/IEEE 15939:2017). O escopo da avaliação concentra-se em três características prioritárias: Capacidade de Interação, Manutenibilidade e Segurança. O artigo apresenta o modelo adaptado, a priorização das características, o grafo GQM com doze métricas e os critérios de julgamento, o plano de avaliação, os resultados das doze métricas no commit \texttt{176b046} e o julgamento de cada objetivo. Em três sessões com usuários, nenhuma das quatro tarefas chegou a 75\% de conclusão sem ajuda, embora o SUS médio tenha ficado em 80,0 pontos e 91,2\% das verificações automáticas de acessibilidade tenham passado. Na análise estática, 60,14\% das classes sobrescrevem o núcleo do Decidim, só 39,43\% dessas sobrescritas têm teste identificável, o manifesto reúne 156 pares de gem e CVE, e 91,3\% das ações sensíveis verificam permissão. Capacidade de Interação e Manutenibilidade ficaram em Regular, e Segurança em Insuficiente. Os três defeitos observados durante a avaliação estão em código que o \texttt{decidim-govbr} sobrescreveu ou criou. A equipe implementou duas melhorias: testes de regressão para um serviço sem cobertura e a verificação de permissão em quatro ações administrativas, esta validada por teste antes e depois da correção.
+Este artigo relata a avaliação de qualidade de produto de software da plataforma Brasil Participativo, a instância governamental brasileira baseada no ecossistema livre Decidim. A metodologia do projeto apoia-se no processo de avaliação da norma ISO/IEC 25040:2024, no modelo de qualidade de produto da norma ISO/IEC 25010:2023 (SQuaRE) e no método Goal-Question-Metric (GQM), com governança de processo orientada pelo Practical Software Measurement (PSM / ISO/IEC/IEEE 15939:2017). O escopo da avaliação concentra-se em três características prioritárias: Capacidade de Interação, Manutenibilidade e Segurança. O artigo apresenta o modelo adaptado, a priorização das características, o grafo GQM com doze métricas e os critérios de julgamento, o plano de avaliação, os resultados das doze métricas no commit \texttt{176b046} e o julgamento de cada objetivo. Em três sessões com usuários, nenhuma das quatro tarefas chegou a 75\% de conclusão sem ajuda, embora o SUS médio tenha ficado em 80,0 pontos e 91,2\% das verificações automáticas de acessibilidade tenham passado. Na análise estática, 60,14\% das classes sobrescrevem o núcleo do Decidim, só 39,43\% dessas sobrescritas têm teste identificável, o manifesto reúne 156 pares de gem e CVE, e 91,3\% das ações sensíveis verificam permissão. Capacidade de Interação e Manutenibilidade ficaram em Regular, e Segurança em Insuficiente. Os três defeitos observados durante a avaliação estão em código que o \texttt{decidim-govbr} sobrescreveu ou criou. A equipe implementou duas melhorias: testes de regressão para um serviço sem cobertura e a verificação de permissão em quatro ações administrativas, esta validada por teste antes e depois da correção.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -89,7 +89,7 @@ A literatura clássica de qualidade de software, representada por Galin~\cite{ga
 \section{Metodologia de Desenvolvimento do Projeto}
 \label{sec:metodologia}
 
-A metodologia do projeto integra o processo normativo de avaliação de qualidade de software, a operacionalização de medição via GQM, o controle de gestão por métricas PSM/CID e uma governança estrita de transparência e reproducibilidade.
+A metodologia do projeto integra o processo normativo de avaliação de qualidade de software, a operacionalização de medição via GQM, o controle de gestão por métricas PSM/CID e uma governança estrita de transparência e reprodutibilidade.
 
 \subsection{Processo Geral de Avaliação de Produto (ISO/IEC 25040)}
 \label{sec:processo_avaliacao}
@@ -120,7 +120,7 @@ A execução prática do projeto adota rituais ágeis e métricas de processo ba
     \item \textbf{Dupla 3 (Davi Mesquita e Miguel Arthur Lima)}: concepção do modelo SQuaRE adaptado, diagrama hierárquico, matriz de priorização ponderada e trade-offs, delimitação de escopo e profundidade, alinhamento aos ODS, modelo inicial de métricas PSM/CID, alinhamento de slides e referências no artigo.
 \end{itemize}
 
-O monitoramento do processo parte de seis necessidades de informação, duas por categoria do PSM~\cite{mcgarry2002psm}: entrega dos itens comprometidos em cada sprint (N1) e progresso até a Entrega 2 (N2), em Calendário e Progresso; esforço por integrante (N3) e precisão das estimativas (N4), em Recursos e Custos; tempo de ciclo por item (N5) e revisão por pares antes da integração (N6), em Desempenho dos Processos. Cada necessidade tem um indicador, um modelo de análise e um critério de decisão, detalhados na GitPage do projeto. A linha de base, tirada do histórico do repositório em 26/10/2026, mostrou que 3 das 42 integrações na \texttt{main} vieram de \textit{pull request} e nenhuma teve revisão registrada; por isso a revisão por outra dupla passou a fazer parte do critério de Pronto a partir do Sprint 3. A medição de fechamento do Sprint 3, em 04/11/2026, registrou 6 das 17 issues comprometidas fechadas (35,3\%) e 7 das 9 integrações feitas por \textit{pull request}, mas só uma revisada por outra dupla (11,1\%). Nenhuma issue tinha horas reais lançadas, o que deixou N3 e N4 sem valor nesse sprint.
+O monitoramento do processo parte de seis necessidades de informação, duas por categoria do PSM~\cite{mcgarry2002psm}: entrega dos itens comprometidos em cada sprint (N1) e progresso até a Entrega 2 (N2), em Calendário e Progresso; esforço por integrante (N3) e precisão das estimativas (N4), em Recursos e Custos; tempo de ciclo por item (N5) e revisão por pares antes da integração (N6), em Desempenho dos Processos. Cada necessidade tem um indicador, um modelo de análise e um critério de decisão, detalhados na GitPage do projeto. A linha de base, tirada do histórico do repositório em 26/10/2026, mostrou que 3 das 42 integrações na \texttt{main} vieram de \textit{pull request} e nenhuma teve revisão registrada; por isso a revisão por outra dupla passou a fazer parte do critério de Pronto a partir do Sprint 3. A medição de fechamento do Sprint 3, em 04/11/2026, registrou 6 das 17 issues comprometidas fechadas (35,3\%) e 7 das 9 integrações feitas por \textit{pull request}, mas só uma revisada por outra dupla (11,1\%). Nenhuma issue tinha horas reais lançadas na data, o que deixou N3 e N4 sem valor nesse sprint.
 
 \subsection{Salvaguardas Éticas e Princípio de Não-Intrusão}
 \label{sec:eticas}
@@ -177,7 +177,7 @@ O Brasil Participativo é categorizado como uma aplicação web transacional de 
     \item \textbf{Extensões Governamentais}: módulos desenvolvidos pelo LAPPIS, como \texttt{decidim-ej} (Empurrando Juntos), \path{decidim-extra_user_fields}, \path{decidim-homes} e \path{decidim-mobile}, mantidos em repositórios separados e declarados no \texttt{Gemfile} do \path{decidim-govbr}.
 \end{itemize}
 
-Essa arquitetura define o que a avaliação consegue medir. Por análise estática, dá para medir o código do \path{decidim-govbr} no commit \texttt{176b046} (ramo \texttt{develop}), incluindo as classes que sobrescrevem o Decidim, os testes RSpec e as dependências do \texttt{Gemfile.lock}. Os fluxos de participação exigem uma instância local com o login Gov.br simulado e sessões com usuários. Ficam fora o código das extensões, que está em outros repositórios, e o comportamento sob carga real, que exigiria testes contra a produção.
+Essa arquitetura define o que a avaliação consegue medir. Por análise estática, dá para medir o código do \path{decidim-govbr} no commit \texttt{176b046} (ramo \texttt{develop}), incluindo as classes que sobrescrevem o Decidim, os testes RSpec e as dependências do \texttt{Gemfile.lock}. Os fluxos de participação exigem uma instância local, com login de teste, e sessões com usuários. Ficam fora o código das extensões, que está em outros repositórios, e o comportamento sob carga real, que exigiria testes contra a produção.
 
 \subsection{Modelo de Qualidade Adaptado ISO/IEC 25010:2023}
 \label{sec:modelo_square}
@@ -199,7 +199,7 @@ A avaliação adota o modelo de qualidade de produto de software da norma ISO/IE
 \toprule
 \textbf{Característica} & \textbf{Subcaracterísticas} & \textbf{Contexto no Software} \\
 \midrule
-Capacidade de Interação & Apreensibilidade, Operabilidade, Proteção contra Erros, Inclusividade & Jornadas de autenticação Gov.br, busca de processos e formulários de envio de propostas. \\
+Capacidade de Interação & Apreensibilidade, Operabilidade, Proteção contra Erros, Inclusividade & Entrada na plataforma, busca de processos e formulários de envio de propostas. \\
 \midrule
 Manutenibilidade & Modularidade, Analisabilidade, Testabilidade & Classes customizadas em \path{app/permissions/} e \path{app/commands/}, complexidade ciclomática e suíte RSpec. \\
 \midrule
@@ -303,7 +303,7 @@ O perímetro da avaliação abrange:
 \begin{itemize}
     \item Código-fonte das classes que estendem ou sobrescrevem o Decidim em \path{app/permissions/} e \path{app/commands/} no repositório \path{decidim-govbr}.
     \item A suíte de testes RSpec em \path{spec/}.
-    \item Fluxos centrais de participação: autenticação Gov.br, localização de processos, envio de propostas e apoio a propostas.
+    \item Fluxos centrais de participação: entrada na plataforma, localização de processos, envio de propostas e apoio a propostas.
     \item Verificações automáticas de acessibilidade digital, com base nas regras da WCAG 2.1 AA, nas páginas do fluxo de participação acessadas pelo navegador do computador.
     \item Dependências de software fixadas no \texttt{Gemfile.lock} e vulnerabilidades catalogadas pelo Brakeman.
 \end{itemize}
@@ -326,7 +326,7 @@ Esta seção desdobra as características priorizadas em objetivos de medição,
 \label{sec:objetivos}
 
 \begin{itemize}
-    \item \textbf{G1 (Capacidade de Interação)}: analisar o fluxo de participação (autenticação Gov.br, busca temática de processo, envio e apoio a propostas) com o propósito de identificar barreiras operacionais que levam à desistência, em relação à apreensibilidade, operabilidade, proteção contra erros e inclusividade, do ponto de vista do cidadão, no contexto de cidadãos de diferentes idades e perfis usando o navegador do computador.
+    \item \textbf{G1 (Capacidade de Interação)}: analisar o fluxo de participação (entrada na plataforma, busca temática de processo, envio e apoio a propostas) com o propósito de identificar barreiras operacionais que levam à desistência, em relação à apreensibilidade, operabilidade, proteção contra erros e inclusividade, do ponto de vista do cidadão, no contexto de cidadãos de diferentes idades e perfis usando o navegador do computador.
     \item \textbf{G2 (Manutenibilidade)}: analisar o código do repositório \path{decidim-govbr}, com foco nas classes que sobrescrevem o núcleo do Decidim, com o propósito de diagnosticar módulos com débito técnico, em relação à modularidade, analisabilidade e testabilidade, do ponto de vista da equipe de engenharia do LAPPIS, no contexto de análise estática do commit \texttt{176b046}.
     \item \textbf{G3 (Segurança)}: analisar o código-fonte e o manifesto de dependências do \path{decidim-govbr} com o propósito de avaliar a proteção dos dados dos participantes, em relação à confidencialidade, integridade, autenticidade e resistência, do ponto de vista do órgão gestor governamental, no contexto de auditoria estática sem testes intrusivos em produção.
 \end{itemize}
@@ -385,7 +385,7 @@ Para responder objetivamente às questões formuladas, foram especificadas doze 
 M1.1 & Q1.1 & Taxa de Conclusão de Tarefas (TCR): proporção de usuários que concluem as tarefas sem intervenção. & $TCR = (N_{\text{sucesso}} / N_{\text{total}}) \times 100$ & Observação em sessões com TCLE \\
 M1.2 & Q1.1 & Tempo Médio de Execução (TME): duração média decorrida para finalização bem-sucedida. & $TME = \frac{1}{n} \sum t_i$ (em segundos) & Carimbos de tempo das gravações \\
 M1.3 & Q1.2 & Frequência de Erros por Tarefa (FET): média de falhas e mensagens de validação por participante. & $FET = (\sum E_i) / N$ & Registro sistemático do observador \\
-M1.4 & Q1.3 & Conformidade de Acessibilidade (ICA): aderência às diretrizes WCAG 2.1 AA e eMAG. & $ICA = (N_{\text{aprov}} / N_{\text{aplic}}) \times 100$ & Axe-core e Google Lighthouse CLI \\
+M1.4 & Q1.3 & Conformidade de Acessibilidade (ICA): aderência às regras da WCAG 2.1 AA verificáveis por ferramenta. & $ICA = (N_{\text{aprov}} / N_{\text{aplic}}) \times 100$ & Axe-core e Google Lighthouse CLI \\
 M1.5 & Q1.3 & Escala de Usabilidade do Sistema (SUS): índice padronizado de satisfação subjetiva~\cite{brooke1996sus}. & Escala Likert de 10 itens convertida (0--100) & Questionário pós-teste com participante \\
 \midrule
 \multicolumn{5}{@{}l}{\textit{G2: Manutenibilidade}} \\
@@ -706,7 +706,7 @@ Os autores agradecem à Profa. Dra. Cristiane Soares Ramos pela condução pedag
 \section{Tabela de Contribuição dos Membros da Equipe}
 \label{app:contribuicao}
 
-Em cumprimento à Premissa 13 e ao Critério Geral AG-C5 da disciplina, a Tabela~\ref{tab:contribuicao_equipe} detalha as principais responsabilidades de cada integrante da equipe Frans Bilas nas Entregas 1 e 2. Na Entrega 1, a equipe dividiu o esforço em partes iguais, 16,67\% para cada integrante. Na Entrega 2, as horas reais não foram registradas, e a tabela não atribui percentual: ela mostra o que cada um fez, segundo os autores dos commits e dos \textit{pull requests} conferidos no GitHub em 23/11/2026. Os números de participação de cada integrante estão na Seção 13 da página de Gestão da GitPage. Em várias issues, quem executou o trabalho não foi o responsável atribuído, e a tabela registra quem executou.
+Em cumprimento à Premissa 13 e ao Critério Geral AG-C5 da disciplina, a Tabela~\ref{tab:contribuicao_equipe} detalha as principais responsabilidades de cada integrante da equipe Frans Bilas nas Entregas 1 e 2, e a Tabela~\ref{tab:esforco_equipe} mostra o esforço de cada um. O esforço vem do campo de esforço real das issues no GitHub Projects da equipe, exportado em 24/11/2026, e soma as horas de todas as issues, separadas pelo milestone: E1, E2 e E3. As horas de cada issue contam para o responsável atribuído no Projects e, quando há mais de um, são divididas igualmente.
 
 \begin{table*}[!t]
 \centering
@@ -733,8 +733,32 @@ Em cumprimento à Premissa 13 e ao Critério Geral AG-C5 da disciplina, a Tabela
 \end{tabular}
 
 \vspace{2pt}
-{\footnotesize Fonte: acordo da equipe para a Entrega 1; commits e \textit{pull requests} no GitHub em 23/11/2026 para a Entrega 2.}
+{\footnotesize Fonte: issues, commits e \textit{pull requests} no GitHub em 23/11/2026.}
 
+\end{table*}
+
+\begin{table*}[!t]
+\centering
+\caption{Esforço real por integrante e por milestone, em horas.}
+\label{tab:esforco_equipe}
+\small
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}l r r r r r@{}}
+\toprule
+\textbf{Integrante} & \textbf{E1} & \textbf{E2} & \textbf{E3} & \textbf{Total} & \textbf{\%} \\
+\midrule
+João Victor & 12,4 & 4,2 & 1,1 & 17,7 & 22,9 \\
+Mateus & 2,3 & 10,4 & 4,0 & 16,7 & 21,7 \\
+José Vinícius & 6,0 & 7,4 & 0,1 & 13,4 & 17,4 \\
+Lucca & 6,7 & 4,1 & 0,1 & 10,9 & 14,1 \\
+Davi & 3,1 & 6,1 & 0,1 & 9,3 & 12,0 \\
+Miguel Arthur & 4,1 & 4,9 & 0,2 & 9,1 & 11,8 \\
+\midrule
+\textbf{Total} & \textbf{34,5} & \textbf{37,1} & \textbf{5,4} & \textbf{77,0} & \textbf{100,0} \\
+\bottomrule
+\end{tabular*}
+
+\vspace{2pt}
+{\footnotesize  Fonte: campo de esforço real do GitHub Projects, exportado em 24/11/2026.}
 \end{table*}
 
 

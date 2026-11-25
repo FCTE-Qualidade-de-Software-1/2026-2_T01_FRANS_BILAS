@@ -276,19 +276,21 @@ O planejamento do Sprint 3 foi feito na reunião de 29/10 ([Ata 02](atas/index.m
 
 ## 8. Tabela de Contribuição da Equipe (Critério AG-C5)
 
-**Tabela 11**: Contribuição da equipe na Entrega 1.
+A Tabela 11 reúne o papel de cada integrante, as entregas nas Fases 1 a 4 e o esforço real medido no GitHub Projects 33. O esforço soma o campo de esforço real das issues separadas nos milestones E1, E2 e E3. Quando uma issue tem mais de um responsável, as horas são divididas igualmente entre os membros atribuídos.
 
-| Integrante | Usuário GitHub | Papel no Projeto | Principais Responsabilidades e Entregáveis | Horas Estimadas | Esforço real | Participação estimada (%) |
-| :--- | :--- | :--- | :--- | :---: | :---: | :---: |
-| **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | Dupla 1 (Qualidade/GQM) | Propósito da avaliação, partes interessadas, contextualização técnica, arquitetura do software, estruturação do artigo em LaTeX IEEEtran, introdução, metodologia, governança anti-meat-proxy e estimativa de esforço do backlog no Projects. | 39,0h | 13,2h | **36,3%** |
-| **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | Dupla 2 (GQM/Métricas) | Fichas técnicas das doze métricas quantitativas, formulação matemática com MathJax, níveis de pontuação, critérios de julgamento, grafo GQM completo e matriz de rastreabilidade vertical. | 20,0h | 6,7h | **18,4%** |
-| **José Vinícius Alvares Soares de Queiroz** | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | Dupla 2 (GQM/Métricas) | Levantamento do referencial teórico (SQuaRE, GQM e PSM), objetivos conceituais GQM, questões operacionais, hipóteses iniciais, apoio na priorização da Fase 1 e correção técnica do Rails. | 18,0h | 6,0h | **16,3%** |
-| **Miguel Arthur Oliveira de Lima** | [@zlimaz](https://github.com/zlimaz) | Dupla 3 (Gestão/Infra) | Concepção do modelo de qualidade SQuaRE adaptado, diagrama hierárquico em Mermaid, matriz de priorização ponderada e trade-offs, modelo inicial PSM/CID e referências cruzadas no artigo. | 12,0h | 4,1h | **11,1%** |
-| **Mateus Vinícius Vieira** | [@matix0](https://github.com/matix0) | Dupla 1 (Qualidade/GQM) | Coordenação geral do backlog e sprints, estruturação da gestão do projeto adequada ao PSM/CID e elaboração do Termo de Consentimento Livre e Esclarecido (TCLE) para testes de usabilidade. | 10,0h | 3,4h | **9,3%** |
-| **Davi Mesquita Sousa** | [@davimesquit](https://github.com/davimesquit) | Dupla 3 (Gestão/Infra) | Delimitação de escopo, profundidade e objetos de avaliação, alinhamento aos ODS e metas, alinhamento de seções e slides com a Fase 1 e revisão de sumário e referências do artigo. | 9,0h | 3,1h | **8,5%** |
-| **TOTAL** | - | **Esforço Coletivo Consolidado** | **Execução das atividades da Entrega 1 registradas no GitHub Projects 33** | **108,0h** | **36,4h** | **100,00%** |
+**Tabela 11**: Contribuição individual nas Entregas 1 e 2 e esforço real por milestone (em horas).
 
-Fonte: GitHub Projects 33, issues do milestone E1 (PC1). Para o resumo consolidado da Entrega 2 e 2ª Avaliação Cruzada, veja a [Seção 13](#13-avaliacao-cruzada-2).
+| Integrante | GitHub | Papel | Entrega 1 (Fases 1 e 2) | Entrega 2 (Fases 3 e 4) | E1 (h) | E2 (h) | E3 (h) | Total (h) | % |
+| :--- | :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | Dupla 1 | Propósito da avaliação, partes interessadas, caracterização arquitetural, estrutura do artigo em LaTeX, introdução, metodologia, governança anti-meat-proxy e estimativa de esforço do backlog. | TCLE preenchido, Ata 03, revisão da narrativa e da acessibilidade da GitPage, revisão de escrita da Gestão e revisão de cinco *pull requests*. | 12,4 | 4,2 | 1,1 | 17,7 | 22,9% |
+| **Mateus Vinícius Vieira** | [@matix0](https://github.com/matix0) | Dupla 1 | Coordenação do backlog e dos sprints, gestão pelo PSM/CID e primeira versão do TCLE. | Kit e condução das sessões com usuários, inspeção de acessibilidade (M1.4), fichas por métrica, cálculo e gráficos das respostas do GQM, julgamento, relações e recomendações da Fase 4, medição do Sprint 3, revisão das Fases 1 e 2, correções do PC1 e apresentações do PC2, do PSM e final. | 2,3 | 10,4 | 4,0 | 16,7 | 21,7% |
+| **José Vinícius Alvares Soares de Queiroz** | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | Dupla 2 | Referencial teórico (SQuaRE, GQM e PSM), objetivos GQM, questões e hipóteses, apoio na priorização e correção técnica do Rails. | Plano de Avaliação e cronograma da coleta (Fase 3), coleta das métricas de Segurança (M3.1 a M3.3), segunda melhoria técnica com teste antes e depois da permissão nas ações de selos e revisão de cinco *pull requests*. | 6,0 | 7,4 | 0,1 | 13,4 | 17,4% |
+| **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | Dupla 2 | Fichas das doze métricas, fórmulas, níveis de pontuação, critérios de julgamento, grafo GQM e rastreabilidade vertical. | Procedimentos de coleta das doze métricas, análise estática de Manutenibilidade (M2.1 a M2.4) e primeira melhoria técnica com testes do serviço de *embeds*. | 6,7 | 4,1 | 0,1 | 10,9 | 14,1% |
+| **Davi Mesquita Sousa** | [@davimesquit](https://github.com/davimesquit) | Dupla 3 | Escopo, profundidade e objetos de avaliação, alinhamento aos ODS e revisão dos slides e referências do artigo. | Privacidade e anonimização dos dados dos participantes, registro do andamento das Fases 3 e 4 e da ausência das medições dos Sprints 4 e 5. | 3,1 | 6,1 | 0,1 | 9,3 | 12,0% |
+| **Miguel Arthur Oliveira de Lima** | [@zlimaz](https://github.com/zlimaz) | Dupla 3 | Modelo SQuaRE adaptado, diagrama hierárquico, matriz de priorização e *trade-offs*, modelo inicial PSM/CID e referências cruzadas no artigo. | Exigência de PR na `main`, fechamento dos pontos em validação da Gestão, protocolo de recrutamento, rastreabilidade entre as Fases 2 e 3, artigo v2 com as correções do PC1 e resumo de participação da Gestão. | 4,1 | 4,9 | 0,2 | 9,1 | 11,8% |
+| **Total** | - | **Equipe** | **Fases 1 e 2** | **Fases 3 e 4** | **34,5** | **37,1** | **5,4** | **77,0** | **100,0%** |
+
+Fonte: issues, commits e *pull requests* no GitHub em 23/11/2026 e campo de esforço real do GitHub Projects 33 exportado em 24/11/2026. O resumo de participação para a 2ª Avaliação Cruzada fica na [Seção 13](#13-avaliacao-cruzada-2).
 
 ---
 
@@ -465,27 +467,28 @@ Fonte: gerado por `.github/scripts/update_metrics.py` a partir das issues do rep
 
 ## 13. Resumo de participação para a 2ª Avaliação Cruzada <a id="13-avaliacao-cruzada-2"></a>
 
-A Tabela 16 reúne os dados individuais exigidos pela issue #85, apurados em 23/11/2026 no repositório do GitHub, nas atas publicadas ([Atas de Reunião](atas/index.md)) e nos registros desta página. Commits e linhas alteradas estão no painel automático da [Seção 9.1](#91-resumo-de-atividade-e-esforco-por-integrante).
+A Tabela 16 reúne os dados individuais exigidos pela issue #85. A contagem de issues concluídas e o esforço real refletem a consolidação de 24/11/2026, enquanto pull requests e presença em atas mantêm a apuração de 23/11/2026. Commits e linhas alteradas aparecem no painel da [Seção 9.1](#91-resumo-de-atividade-e-esforco-por-integrante).
 
-**Tabela 16**: Resumo individual de participação para a 2ª Avaliação Cruzada até 23/11/2026 (issue #85).
+**Tabela 16**: Resumo individual de participação para a 2ª Avaliação Cruzada (issue #85).
 
-| Integrante | GitHub | Issues fechadas (E2 / Total) | PRs abertos (mesclados) | PRs revisados | Presença em atas | Horas registradas (E1 / Sprint 3) |
+| Integrante | GitHub | Issues fechadas (24/11) | PRs abertos (23/11) | PRs revisados (23/11) | Presença em atas | Esforço real E1 / E2 / E3 (Total e %) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | 5 / 25 de 25 | 2 | 5 (#112 a #116) | 2/2 (Atas 01 e 02) | E1: 39,0h est., 13,2h real; Sprint 3: 4,5h est. |
-| **Mateus Vinícius Vieira** | [@matix0](https://github.com/matix0) | 14 / 17 de 19 | 14 | 1 (#92) | 2/2 (Atas 01 e 02) | E1: 10,0h est., 3,4h real; Sprint 3: 8,0h est. |
-| **José Vinícius Alvares Soares de Queiroz** | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | 6 / 15 de 15 | 3 | 5 (#121 a #124, #126) | 2/2 (Atas 01 e 02) | E1: 18,0h est., 6,0h real; Sprint 3: 5,0h est. |
-| **Miguel Arthur Oliveira de Lima** | [@zlimaz](https://github.com/zlimaz) | 7 / 15 de 16 | 4 | 0 | 2/2 (Atas 01 e 02) | E1: 12,0h est., 4,1h real; Sprint 3: 5,5h est. |
-| **Davi Mesquita Sousa** | [@davimesquit](https://github.com/davimesquit) | 8 / 15 de 15 | 1 | 0 | 2/2 (Atas 01 e 02) | E1: 9,0h est., 3,1h real; Sprint 3: 4,0h est. |
-| **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | 3 / 12 de 12 | 5 | 0 | 1/2 (Ata 01; ausente na 02) | E1: 20,0h est., 6,7h real; Sprint 3: 4,0h est. |
+| **João Victor da Silva Batista de Farias** | [@BeyondMagic](https://github.com/BeyondMagic) | 25 de 25 (100%) | 2 | 5 (#112 a #116) | 2/2 (Atas 01 e 02) | 12,4h / 4,2h / 1,1h (**17,7h · 22,9%**) |
+| **Mateus Vinícius Vieira** | [@matix0](https://github.com/matix0) | 19 de 19 (100%) | 14 | 1 (#92) | 2/2 (Atas 01 e 02) | 2,3h / 10,4h / 4,0h (**16,7h · 21,7%**) |
+| **José Vinícius Alvares Soares de Queiroz** | [@JoseViniciusQueiroz](https://github.com/JoseViniciusQueiroz) | 15 de 15 (100%) | 3 | 5 (#121 a #124, #126) | 2/2 (Atas 01 e 02) | 6,0h / 7,4h / 0,1h (**13,4h · 17,4%**) |
+| **Lucca Medeiros Silva** | [@luccameds](https://github.com/luccameds) | 12 de 12 (100%) | 5 | 0 | 1/2 (Ata 01; ausente na 02) | 6,7h / 4,1h / 0,1h (**10,9h · 14,1%**) |
+| **Davi Mesquita Sousa** | [@davimesquit](https://github.com/davimesquit) | 15 de 15 (100%) | 1 | 0 | 2/2 (Atas 01 e 02) | 3,1h / 6,1h / 0,1h (**9,3h · 12,0%**) |
+| **Miguel Arthur Oliveira de Lima** | [@zlimaz](https://github.com/zlimaz) | 16 de 16 (100%) | 4 | 0 | 2/2 (Atas 01 e 02) | 4,1h / 4,9h / 0,2h (**9,1h · 11,8%**) |
+| **Total** | - | **102 de 102 (100%)** | **29** | **11** | - | **34,5h / 37,1h / 5,4h (77,0h · 100,0%)** |
 
-Fonte: API do GitHub e `issues-summary.md` em 23/11/2026, [Atas de Reunião](atas/index.md) e Tabela 11.
+Fonte: `issues-summary.md` e campo de esforço real do GitHub Projects 33 em 24/11/2026, API do GitHub em 23/11/2026 e [Atas de Reunião](atas/index.md).
 
-Critérios e limites dos números da Tabela 16:
+A apuração da Tabela 16 segue quatro critérios.
 
-- **Issues**: em 23/11, permanecem abertas apenas `#84` e `#99` (Mateus) e `#85` (Miguel, fechada pelo PR desta seção). Issues com dois responsáveis contam para ambos na soma individual (96 issues distintas ao todo: 93 fechadas e 3 abertas). Issues sem milestone associada no GitHub completam a diferença entre E2 e o total.
-- **Pull Requests**: todos os 29 PRs do repositório foram mesclados na `main`. A revisão contabiliza apenas aprovações ou comentários formais na aba *Reviews* por integrante diferente do autor (11 PRs); os outros 18 PRs foram mesclados sem revisão formal registrada no GitHub.
-- **Presença**: considera apenas as duas reuniões formalmente documentadas em [`atas/index.md`](atas/index.md) (Ata 01 em 16/10 e Ata 02 em 29/10, na qual Lucca tentou entrar após o encerramento).
-- **Horas registradas**: na Entrega 1, os valores de horas (108,0h estimadas e 36,4h distribuídas) são estimativas (Seção 6 e Tabela 11). No Sprint 3, a redistribuição de 30/10 somou 31,0h estimadas (Ata 02, §3.6), sem preenchimento de "Esforço real" nas issues em [`dados/gestao/sprint-3.json`](dados/gestao/sprint-3.json). As tabelas da Seção 9 registram `sem acesso` ao Projects 33 por falta do token `PROJECTS_TOKEN`, e os Sprints 4 e 5 não têm arquivo local com horas reais apuradas.
+- Todas as 102 atribuições registradas em `issues-summary.md` estavam fechadas em 24/11/2026, incluindo issues com dois responsáveis que somam para ambos.
+- Todos os 29 pull requests levantados até 23/11/2026 entraram na `main`. A coluna de revisões soma apenas as 11 aprovações ou comentários na aba *Reviews* por membro diferente do autor.
+- A presença considera apenas a Ata 01 (16/10) e a Ata 02 (29/10) em [`atas/index.md`](atas/index.md). Na Ata 02, Lucca tentou entrar após o encerramento.
+- O esforço real soma `77,0h` nos milestones E1 (`34,5h`), E2 (`37,1h`) e E3 (`5,4h`), com divisão igual em issues compartilhadas. Esses valores substituem as estimativas da Entrega 1 (`108,0h` e `36,4h`) e do Sprint 3 (`31,0h`). As tabelas da Seção 9 continuam com `sem acesso` enquanto o GitHub Actions não ler `PROJECTS_TOKEN`.
 
 ---
 
@@ -516,3 +519,4 @@ A Parte 3 do guia (garantia de software e dívida técnica) não entra na gestã
 | `2.8` | 17/11/2026 | Registro da ausência de medições publicadas dos Sprints 4 e 5 e distinção entre estimativa e horas reais | Davi Mesquita Sousa | - |
 | `2.9` | 17/11/2026 | Humanização da escrita, simplificação de termos e atualização de status dos sprints | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | [Mateus Vinícius Vieira](https://github.com/matix0) |
 | `2.10` | 23/11/2026 | Inclusão do resumo individual de participação para a 2ª Avaliação Cruzada (issue #85) | [Miguel Arthur Oliveira de Lima](https://github.com/zlimaz) | A definir |
+| `2.11` | 24/11/2026 | Atualização das Tabelas 11 e 16 com as entregas das Fases 3 e 4 e o esforço real por milestone (E1, E2 e E3) exportado do artigo | [João Victor da Silva Batista de Farias](https://github.com/beyondmagic) | A definir |
